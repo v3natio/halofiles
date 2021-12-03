@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# This script is the SUDO_ASKPASS variable, meaning that it will be used as a
+# password prompt if needed.
+
+dmenu -p "$1" -fn 'FiraCode\NF-13' -nf '#eceff4' -nb '#2e3440' -sf '#eceff4' -sb '#88c0d0' <&-

@@ -1,0 +1,4 @@
+#!/bin/sh
+rsync -avz /home/hooregi/Documents/Notes /run/media/hooregi/C386-B783/Documents/
+
+rsync -avz /home/hooregi/Documents/Resources /run/media/hooregi/C386-B783/Documents/
