@@ -1,0 +1,58 @@
+#!/bin/sh
+alias np='nvim -w PKGBUILD'
+alias more=less
+alias l='ls -al'
+alias c='clear'
+alias q='exit'
+alias back='cd - > /dev/null'
+alias mkd='mkdir -pv'
+alias p='sudo pacman'
+alias y='yay'
+alias nvst='nvim --startuptime /tmp/startup.log -c exit && tail -100 /tmp/startup.log'
+alias nv='nvim'
+alias capslock='/usr/bin/setxkbmap -option "ctrl:nocaps"'
+alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
+
+# git
+alias g='git'
+alias gm='git checkout master'
+alias gs='git checkout stable'
+
+# Media
+alias fm6000='~/.local/bin/fm6000 -f ~/.local/bin/fm6000_manjaro.txt -c random'
+alias nw='newsboat'
+alias yt='ytfzf -t'
+alias ani='ani-cli'
+
+# get fastest mirrors
+alias mirror='sudo pacman-mirrors --fasttrack && sudo pacman -Syyu'
+
+# Colorize output (good for log files)
+alias grep='grep -Hn --color=auto'
+alias egrep='egrep -Hn --color=auto'
+alias pgrep='pgrep -Hn --color=auto'
+alias ccat='highlight --out-format=ansi'
+alias ls='ls -hN --color=auto --group-directories-first'
+
+# confirm before overwriting something
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# easier to read disk
+alias df='df -h'     # human-readable sizes
+alias free='free -m' # show sizes in MB
+
+# get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4 | head -5'
+
+# get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3 | head -5'
+
+# systemd
+alias halo_list_systemctl='systemctl list-unit-files --state=enabled'
+alias SS='sudo systemctl'
+
+# color temperature
+alias dim='sct 2700'
+alias undim='sct'

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+
+<channel>
+  <item>
+    <title>French Essentials Course</title>
+    <link>https://www.youtube.com/playlist?list=PLV1-QgpUU7N2TVWS6gEVMqEfAFjAl-DV6</link>
+    <description>It all started here: Alexa's popular 'French Essentials' course. It's fun, friendly and stress-free!</description>
+  </item>
+  <item>
+    <title>2017 Personality and Its Transformations (University of Toronto)</title>
+    <link>https://www.youtube.com/playlist?list=PL22J3VaeABQApSdW8X71Ihe34eKN6XhCi</link>
+  </item>
+  <item>
+    <title>Everything You Need to be Faster on Track - The Driver's University</title>
+    <link>https://www.youtube.com/playlist?list=PLAZL0MKQigFNSY0BTdt_GsDwxdHoeJ302</link>
+    <description>Driving technique tutorials for sim, track day and racing drivers to make you faster, safer and more consistent on track. The driving technique lessons are written and presented by professional driver and coach Scott Mansell.</description>
+  </item>
+  <item>
+    <title>Watch and Learn Video Series - Long Island Watch</title>
+    <link>https://www.youtube.com/playlist?list=PLUfNlzMeX0JueoZ-yeiB1-RnwyQBwMPSL</link>
+    <description>Watch and Learn with Marc of LongIslandWatch.com is the one-stop-show for watch obsessives.  Marc's videos feature explainers, how-to's and informative videos focused on watch basics, styles, movements, and timepiece history. Our mission is to bring the most informative watch content -- with features, explainers, animations, and much more. Don't forget to subscribe and stay tuned for new content weekly!</description>
+  </item>
+  <item>
+    <title>Breaking Monero</title>
+    <link>https://www.youtube.com/playlist?list=PLsSYUeVwrHBnAUre2G_LYDsdo-tD0ov-y</link>
+  </item>
+  <item>
+    <title>C++ Crash Course</title>
+    <link>https://www.youtube.com/playlist?list=PLxNPSjHT5qvubtIv3yh-AKYF6-HYvkG2z</link>
+  </item>
+  <item>
+    <title>Learn Finance C++</title>
+    <link>https://www.youtube.com/playlist?list=PLLLuxp_C798FgdhHllQ8pvzUv-_D1PhF0</link>
+    <description>A Comprehensive introduction to financial programming in C++, starting from the very basics, and working our way up to object orientation and algorithms for pricing complex financial derivative products.</description>
+  </item>
+  <item>
+    <title>HFT C++</title>
+    <link>https://www.youtube.com/playlist?list=PLGvfHSgImk4Z5RJJw91bsbxdcuErkWVCM</link>
+  </item>
+  <item>
+    <title>Computational Finance Course</title>
+    <link>https://www.youtube.com/playlist?list=PL6zzGYGhbWrPaI-op1UfNl0uDglxdkaOB</link>
+  </item>
+  <item>
+    <title>Quantitative Finance</title>
+    <link>https://www.youtube.com/playlist?list=PL8DC1113ADB63358E</link>
+    <description>All the videos I've made related to quantitative finance.  Most are based on the book "Paul Wilmott on Quantitative Finance, 2nd Edition".  Some are from "The Concepts and Practice of Mathematical Finance" by Mark Joshi.</description>
+  </item>
+  <item>
+    <title>MINI LECTURES IN PROBABILITY</title>
+    <link>https://www.youtube.com/playlist?list=PLMV8UXQuOWKPAIjvnyMN2317LHF3ydvnG</link>
+    <description>Going through the core of probabilistic concepts without the BS, focusing on the intuition. Many use canned statistical metrics without knowing what they mean, hence make huge mistakes in interpretations and applications.</description>
+  </item>
+  <item>
+    <title>OCAML Tutorial</title>
+    <link>https://www.youtube.com/playlist?list=PLea0WJq13cnCef-3KSU3qWFge9OGUlKx1</link>
+  </item>
+  <item>
+    <title>Python: Making a Discord Bot (Rewrite / v1.x)</title>
+    <link>https://www.youtube.com/playlist?list=PLW3GfRiBCHOhfVoiDZpSz8SM_HybXRPzZ</link>
+    <description>In this series, we make a discord bot in python using discord.py version 1.0 also known as the rewrite branch of discord.py.</description>
+  </item>
+</channel>
+
+</rss>
