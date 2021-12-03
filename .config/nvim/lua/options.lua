@@ -1,5 +1,8 @@
 vim.opt.fillchars = { eob = " " }
 vim.opt.termguicolors = true
+vim.g.nord_contrast = true
+vim.g.nord_disable_background = true
+vim.g.nord_enable_sidebar_background = true
 vim.opt.undofile = true
 vim.opt.swapfile = false
 vim.opt.ignorecase = true
