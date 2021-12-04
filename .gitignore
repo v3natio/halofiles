@@ -7,3 +7,6 @@
 .config/zsh/plugins
 
 .local/bin/fm6000
+
+.config/emacs/straight
+.config/emacs/elpa
