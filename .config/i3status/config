@@ -56,7 +56,7 @@ ethernet enp4s0f1 {
 }
 
 wireless wlp6s0 {
-        format_up = "<span background='#88c0d0'> 直 %essid </span>"
+        format_up = "<span background='#88c0d0'> 直 %bitrate </span>"
         format_down = "<span background='#bf616a'> 睊 Disconnected </span>"
 }
 
