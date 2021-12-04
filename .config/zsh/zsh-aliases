@@ -8,8 +8,10 @@ alias back='cd - > /dev/null'
 alias mkd='mkdir -pv'
 alias p='sudo pacman'
 alias y='yay'
+alias vote='ssh aur@aur.archlinux.org vote'
 alias nvst='nvim --startuptime /tmp/startup.log -c exit && tail -100 /tmp/startup.log'
 alias nv='nvim'
+alias em='emacsclient -c -a "emacs"'
 alias capslock='/usr/bin/setxkbmap -option "ctrl:nocaps"'
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
