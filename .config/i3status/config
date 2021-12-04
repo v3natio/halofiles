@@ -4,8 +4,8 @@ general {
         markup = pango
         interval = 5
         color_good = '#2f343f'
-		color_degraded = '#ebcb8b'
-		color_bad = '#ba5e57'
+        color_degraded = '#ebcb8b'
+        color_bad = '#ba5e57'
 }
 
 #order += "load"
@@ -22,11 +22,11 @@ order += "tztime date"
 order += "tztime hour"
 
 load {
-        format = "<span background='#88c0d0'>  %5min Load </span>"
+        format = "<span background='#88c0d0'>  %5min Load </span>"
 }
 
 cpu_temperature 0 {
-        format = "<span background='#bf616a'>  %degrees °C </span>"
+        format = "<span background='#bf616a'>  %degrees °C </span>"
         path = "/sys/class/thermal/thermal_zone0/temp"
 }
 
@@ -37,22 +37,22 @@ cpu_usage {
 }
 
 disk "/" {
-        format = "<span background='#fec7cd'>  %free Free </span>"
+        format = "<span background='#fec7cd'> 﫭 %free Free </span>"
 }
 
 disk "/home" {
-        format = "<span background='#88c0d0'>  %free Free </span>"
+        format = "<span background='#88c0d0'> 﫭 %free Free </span>"
 }
 
 memory {
-        format = "<span background='#88c0d0'>  %used</span>"
+        format = "<span background='#88c0d0'>  %used</span>"
         threshold_degraded = "10%"
-        format_degraded = "<span background='#bf616a'>  %free</span>"
+        format_degraded = "<span background='#bf616a'>  %free</span>"
 }
 
 ethernet enp4s0f1 {
-        format_up = "<span background='#88c0d0'>  %ip </span>"
-        format_down = "<span background='#88c0d0'> Disconnected </span>"
+        format_up = "<span background='#88c0d0'>  %ip </span>"
+        format_down = "<span background='#bf616a'>  Disconnected </span>"
 }
 
 wireless wlp6s0 {
