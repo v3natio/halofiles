@@ -1,5 +1,5 @@
 # set CAPSLOCK key to CTRL
-#/usr/bin/setxkbmap -option "ctrl:nocaps"
+/usr/bin/setxkbmap -option "ctrl:nocaps"
 
 # default programs:
 export EDITOR=/usr/bin/nvim
