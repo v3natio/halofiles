@@ -10,3 +10,4 @@
 
 .config/emacs/straight
 .config/emacs/elpa
+.config/emacs/auto-save-list
