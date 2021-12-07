@@ -81,6 +81,9 @@
 	      (expand-file-name (format "emacs-custom-%s.el" (user-uid)) temporary-file-directory)))
 (load custom-file t)
 
+;; move extra save files to .cache
+(setq backup-directory-alist `(("." . "~/.cache/emacs/saves")))
+
 ;; Add my library path to load-path
 (push "~/Halofiles/.config/emacs/lisp" load-path)
 
@@ -89,6 +92,8 @@
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
+
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 (server-start)
 
@@ -215,6 +220,11 @@
   (org-show-subtree)
   (forward-line))
 
+(defun config-reload ()
+  (interactive)
+  (org-babel-load-file (expand-file-name "~/.config/emacs/init.org")))
+(global-set-key (kbd "C-c r") 'config-reload)
+
 (halo/leader-key-def
   "fn" '((lambda () (interactive) (counsel-find-file "~/Documents/Notes/")) :which-key "notes")
   "fd"  '(:ignore t :which-key "halofiles")
@@ -234,6 +244,11 @@
 
 ;; Set up the visible bell
 (setq visible-bell t)
+
+;; '(warning-suppress-log-types '((comp) (comp)))
+;; '(warning-suppress-types '((comp))))
+(setq warning-suppress-log-types '((comp)))
+(setq warning-suppress-types '((comp)))
 
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
 (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
@@ -275,6 +290,15 @@
 (use-package visual-fill-column
   :defer t
   :hook (org-mode . halo/org-mode-visual-fill))
+
+(use-package dashboard
+  :ensure t
+  :config
+    (dashboard-setup-startup-hook)
+    (setq dashboard-startup-banner "~/.config/emacs/img/hooregi.png")
+    (setq dashboard-items '((recents  . 5)
+			      (projects . 5)))
+    (setq dashboard-banner-logo-title "I am just a coder for fun"))
 
 (use-package doom-themes
   :init (load-theme 'doom-nord t))
@@ -394,9 +418,17 @@
 
 ;; commenting this out since I don't use vterm yet
 ;;(use-package vterm
-;;  :commands vterm
-;;  :config
-;;  (setq vterm-max-scrollback 10000))
+;;  :straight t
+;;  :custom
+;;  (vterm-always-compile-module t)
+;;  ;; https://github.com/akermu/emacs-libvterm/issues/525
+;;  :bind (("C-x v" . (lambda () (interactive) (vterm t)))
+;;  ("C-x 4 v" . vterm-other-window)
+;;  :map vterm-mode-map
+;;  ("<C-backspace>" . (lambda () (interactive) (vterm-send-meta-backspace)))))
+;;  ;; came up with this myself, fixes C-backspace, pretty proud of it not going to lie :)
+;;(halo/leader-key-def
+;;  "vv" '((lambda () (interactive) (vterm t)) :wk "vterm"))
 
 (use-package yasnippet
   :hook (prog-mode . yas-minor-mode)
@@ -770,14 +802,58 @@
   :keymaps '(visual)
   "er" '(eval-region :which-key "eval region"))
 
+;; (use-package python-mode
+;;   ;; :ensure t
+;;   :straight t
+;;   :defer t
+;;   :hook (python-mode . lsp-deferred)
+;;   :custom
+;;   (python-shell-interpreter "python3"))
+
+(setq python-shell-interpreter "python3")
+
+(use-package pyenv-mode)
+
+;;(use-package pkgbuild-mode
+;;   :ensure nil
+;;  :defer t
+;;   :load-path "/usr/share/emacs/site-lisp/"
+;;   :mode "/PKGBUILD$")
+
 ;;"emacs-tuareg"
 
-;;(use-package ccls
-;;  :hook ((c-mode c++-mode objc-mode cuda-mode) .
-;;         (lambda () (require 'ccls) (lsp))))
+(use-package c-mode
+  :straight nil
+  :hook (c-mode . lsp-deferred))
+
+(use-package c++-mode
+  :straight nil
+  :hook (c++-mode . lsp-deferred))
 
 (use-package yaml-mode
   :mode "\\.ya?ml\\'")
+
+;; (use-package docker-compose-mode
+;;   :mode ("docker-compose.yml\\'" . docker-compose-mode)
+;; 	("docker-compose.yaml\\'" . docker-compose-mode)
+;; 	("stack.yml\\'" . docker-compose-mode))
+
+(use-package dockerfile-mode
+  :hook (dockerfile-mode . lsp-deferred))
+
+(use-package cmake-mode)
+
+(use-package solidity-mode
+  :mode ("\\.sol\\'" . solidity-mode)
+  :config
+  (setq solidity-comment-style 'slash)
+  )
+
+(use-package lua-mode
+  :mode ("\\.lua$" . lua-mode)
+  :hook (lua-mode . lsp-deferred)
+  :config
+  (add-to-list 'interpreter-mode-alist '("lua" . lua-mode)))
 
 (use-package dap-mode
   :straight t
@@ -813,6 +889,10 @@
 (halo/leader-key-def
   "tf" '(dw/toggle-focus-mode :which-key "focus mode"))
 
+(use-package ispell
+  :config
+  (setq ispell-dictionary "british-ize-w_accents"))
+
 (setq-default fill-column 80)
 
 ;; Turn on indentation and auto-fill mode for Org files
@@ -841,7 +921,7 @@
 
   (setq org-modules
     '(org-crypt
-        org-habit))
+      org-habit))
 
   (setq org-refile-targets '((nil :maxlevel . 1)
                              (org-agenda-files :maxlevel . 1)))
@@ -856,9 +936,13 @@
   (evil-define-key '(normal insert visual) org-mode-map (kbd "M-k") 'org-metaup)
 
   (org-babel-do-load-languages
-    'org-babel-load-languages
+   'org-babel-load-languages
     '((emacs-lisp . t)
-      (python . t)))
+      (python . t)
+      (latex . t)
+      (shell . t)
+      (latex . t)
+      (R . t)))
 
 ;; NOTE: Subsequent sections are still part of this use-package block!
 
@@ -908,8 +992,12 @@
 (add-to-list 'org-structure-template-alist '("ts" . "src typescript"))
 (add-to-list 'org-structure-template-alist '("py" . "src python"))
 (add-to-list 'org-structure-template-alist '("go" . "src go"))
+(add-to-list 'org-structure-template-alist '("sr" . "src R"))
 (add-to-list 'org-structure-template-alist '("yaml" . "src yaml"))
 (add-to-list 'org-structure-template-alist '("json" . "src json"))
+
+(use-package ob-async
+  :after org)
 
 (use-package evil-org
   :after org
@@ -957,6 +1045,10 @@
     (dw/set-markdown-header-font-sizes))
 
   (add-hook 'markdown-mode-hook 'halo/markdown-mode-hook))
+
+(use-package polymode :defer t)
+(use-package poly-markdown :defer t)
+;; (use-package poly-R)
 
 (use-package elcord
   :straight t
