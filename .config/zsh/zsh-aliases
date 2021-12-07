@@ -25,6 +25,7 @@ alias fm6000='~/.local/bin/fm6000 -f ~/.local/bin/fm6000_manjaro.txt -c random'
 alias nw='newsboat'
 alias yt='ytfzf -t'
 alias ani='ani-cli'
+alias terraria='"/home/hooregi/Documents/Games/Terraria/start.sh" ""'
 
 # get fastest mirrors
 alias mirror='sudo pacman-mirrors --fasttrack && sudo pacman -Syyu'
