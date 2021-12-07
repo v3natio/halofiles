@@ -196,6 +196,33 @@
   "jw"  '(avy-goto-word-0 :which-key "jump to word")
   "jl"  '(avy-goto-line :which-key "jump to line"))
 
+(defun halo/org-file-jump-to-heading (org-file heading-title)
+  (interactive)
+  (find-file (expand-file-name org-file))
+  (goto-char (point-min))
+  (search-forward (concat "* " heading-title))
+  (org-overview)
+  (org-reveal)
+  (org-show-subtree)
+  (forward-line))
+
+(defun halo/org-file-show-headings (org-file)
+  (interactive)
+  (find-file (expand-file-name org-file))
+  (counsel-org-goto)
+  (org-overview)
+  (org-reveal)
+  (org-show-subtree)
+  (forward-line))
+
+(halo/leader-key-def
+  "fn" '((lambda () (interactive) (counsel-find-file "~/Documents/Notes/")) :which-key "notes")
+  "fd"  '(:ignore t :which-key "halofiles")
+  "fdd" '((lambda () (interactive) (counsel-find-file "~/Halofiles/.config/x11/")) :which-key "x11")
+  "fde" '((lambda () (interactive) (find-file (expand-file-name "~/Halofiles/.config/emacs/init.org"))) :which-key "edit config")
+  "fdE" '((lambda () (interactive) (halo/org-file-show-headings "~/Halofiles/.config/emacs/init.org")) :which-key "edit config")
+  "fdm" '((lambda () (interactive) (find-file "~/Halofiles/.config/mutt/")) :which-key "mail"))
+
 ;; Thanks, but no thanks
 (setq inhibit-startup-message t)
 
@@ -235,6 +262,19 @@
 (setq vc-follow-symlinks t)
 
 (setq ad-redefinition-action 'accept)
+
+;; (defun halo/center-buffer-with-margins ()
+;;   (let ((margin-size (/ (- (frame-width) 80) 3)))
+;;     (set-window-margins nil margin-size margin-size)))
+
+(defun halo/org-mode-visual-fill ()
+  (setq visual-fill-column-width 110
+        visual-fill-column-center-text t)
+  (visual-fill-column-mode 1))
+
+(use-package visual-fill-column
+  :defer t
+  :hook (org-mode . halo/org-mode-visual-fill))
 
 (use-package doom-themes
   :init (load-theme 'doom-nord t))
@@ -282,6 +322,8 @@
 
 (setq display-time-format "%l:%M %p %b %y"
       display-time-default-load-average nil)
+
+(use-package diminish)
 
 (use-package smart-mode-line
   :config
@@ -350,10 +392,26 @@
   (unless (equal persp-mode t)
     (persp-mode)))
 
+;; commenting this out since I don't use vterm yet
+;;(use-package vterm
+;;  :commands vterm
+;;  :config
+;;  (setq vterm-max-scrollback 10000))
+
+(use-package yasnippet
+  :hook (prog-mode . yas-minor-mode)
+  :config
+  (yas-reload-all))
+
 (halo/leader-key-def
   "t"  '(:ignore t :which-key "toggles")
   "tw" 'whitespace-mode
   "tt" '(counsel-load-theme :which-key "choose theme"))
+
+(use-package default-text-scale
+  :defer 1
+  :config
+  (default-text-scale-mode))
 
 (use-package ivy
   :diminish
@@ -467,6 +525,294 @@
   "fR"  '(revert-buffer :which-key "revert file")
   "fj"  '(counsel-file-jump :which-key "jump to file"))
 
+(setq-default tab-width 2)
+(setq-default evil-shift-width tab-width)
+
+(setq-default indent-tabs-mode nil)
+
+(use-package evil-nerd-commenter
+  :bind ("M-/" . evilnc-comment-or-uncomment-lines))
+
+(use-package ws-butler
+  :hook ((text-mode . ws-butler-mode)
+         (prog-mode . ws-butler-mode)))
+
+(use-package paren
+  :config
+  (set-face-attribute 'show-paren-match-expression nil :background "#363e4a")
+  (show-paren-mode 1))
+
+(use-package smartparens
+  :hook (prog-mode . smartparens-mode))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package origami
+  :hook (yaml-mode . origami-mode))
+
+(use-package flycheck
+  :defer t
+  :hook (lsp-mode . flycheck-mode))
+
+(use-package magit
+  :bind ("C-M-;" . magit-status)
+  :commands (magit-status magit-get-current-branch)
+  :custom
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+(halo/leader-key-def
+  "g"   '(:ignore t :which-key "git")
+  "gs"  'magit-status
+  "gd"  'magit-diff-unstaged
+  "gc"  'magit-branch-or-checkout
+  "gl"   '(:ignore t :which-key "log")
+  "glc" 'magit-log-current
+  "glf" 'magit-log-buffer-file
+  "gb"  'magit-branch
+  "gP"  'magit-push-current
+  "gp"  'magit-pull-branch
+  "gf"  'magit-fetch
+  "gF"  'magit-fetch-all
+  "gr"  'magit-rebase)
+
+(use-package forge
+  :disabled)
+
+(use-package git-link
+  :commands git-link
+  :config
+  (setq git-link-open-in-browser t)
+  (halo/leader-key-def
+    "gL"  'git-link))
+
+(use-package git-gutter
+  :straight git-gutter-fringe
+  :diminish
+  :hook ((text-mode . git-gutter-mode)
+         (prog-mode . git-gutter-mode))
+  :config
+  (setq git-gutter:update-interval 2)
+  (require 'git-gutter-fringe)
+  (set-face-foreground 'git-gutter-fr:added "LightGreen")
+  (fringe-helper-define 'git-gutter-fr:added nil
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    ".........."
+    ".........."
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    ".........."
+    ".........."
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    "XXXXXXXXXX")
+
+  (set-face-foreground 'git-gutter-fr:modified "LightGoldenrod")
+  (fringe-helper-define 'git-gutter-fr:modified nil
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    ".........."
+    ".........."
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    ".........."
+    ".........."
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    "XXXXXXXXXX")
+
+  (set-face-foreground 'git-gutter-fr:deleted "LightCoral")
+  (fringe-helper-define 'git-gutter-fr:deleted nil
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    ".........."
+    ".........."
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    ".........."
+    ".........."
+    "XXXXXXXXXX"
+    "XXXXXXXXXX"
+    "XXXXXXXXXX")
+
+  ;; These characters are used in terminal mode
+  (setq git-gutter:modified-sign "≡")
+  (setq git-gutter:added-sign "≡")
+  (setq git-gutter:deleted-sign "≡")
+  (set-face-foreground 'git-gutter:added "LightGreen")
+  (set-face-foreground 'git-gutter:modified "LightGoldenrod")
+  (set-face-foreground 'git-gutter:deleted "LightCoral"))
+
+(defun halo/switch-project-action ()
+  "Switch to a workspace with the project name and start `magit-status'."
+  ;; TODO: Switch to EXWM workspace 1?
+  (persp-switch (projectile-project-name))
+  (magit-status))
+
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :demand t
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  (when (file-directory-p "~/Documents/Projects/Code")
+    (setq projectile-project-search-path '("~/Documents/Projects/Code")))
+  (setq projectile-switch-project-action #'halo/switch-project-action))
+
+(use-package counsel-projectile
+  :after projectile
+  :bind (("C-M-p" . counsel-projectile-find-file))
+  :config
+  (counsel-projectile-mode))
+
+(halo/leader-key-def
+  "pf"  'counsel-projectile-find-file
+  "ps"  'counsel-projectile-switch-project
+  "pF"  'counsel-projectile-rg
+  ;; "pF"  'consult-ripgrep
+  "pp"  'counsel-projectile
+  "pc"  'projectile-compile-project
+  "pd"  'projectile-dired)
+
+(use-package lsp-mode
+  :straight t
+  :commands lsp
+  :hook ((ocaml-mode python-mode c++-mode) . lsp)
+  :bind (:map lsp-mode-map
+         ("TAB" . completion-at-point))
+  :custom (lsp-headerline-breadcrumb-enable nil))
+
+(halo/leader-key-def
+  "l"  '(:ignore t :which-key "lsp")
+  "ld" 'xref-find-definitions
+  "lr" 'xref-find-references
+  "ln" 'lsp-ui-find-next-reference
+  "lp" 'lsp-ui-find-prev-reference
+  "ls" 'counsel-imenu
+  "le" 'lsp-ui-flycheck-list
+  "lS" 'lsp-ui-sideline-mode
+  "lX" 'lsp-execute-code-action)
+
+(use-package lsp-ui
+  :straight t
+  :hook (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-sideline-show-hover nil)
+  (setq lsp-ui-doc-position 'bottom)
+  (lsp-ui-doc-show))
+
+(use-package lsp-ivy
+  :hook (lsp-mode . lsp-ivy-mode))
+
+(use-package parinfer
+  :disabled
+  :hook ((clojure-mode . parinfer-mode)
+         (emacs-lisp-mode . parinfer-mode)
+         (common-lisp-mode . parinfer-mode)
+         (scheme-mode . parinfer-mode)
+         (lisp-mode . parinfer-mode))
+  :config
+  (setq parinfer-extensions
+      '(defaults       ; should be included.
+        pretty-parens  ; different paren styles for different modes.
+        evil           ; If you use Evil.
+        smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
+        smart-yank)))  ; Yank behavior depend on mode.
+
+(halo/leader-key-def
+  "tp" 'parinfer-toggle-mode)
+
+(use-package expand-region
+  :bind (("M-[" . er/expand-region)
+         ("C-(" . er/mark-outside-pairs)))
+
+(use-package lispy
+  :hook ((emacs-lisp-mode . lispy-mode)
+         (scheme-mode . lispy-mode)))
+
+;; (use-package evil-lispy
+;;   :hook ((lispy-mode . evil-lispy-mode)))
+
+(use-package lispyville
+  :hook ((lispy-mode . lispyville-mode))
+  :config
+  (lispyville-set-key-theme '(operators c-w additional
+                              additional-movement slurp/barf-cp
+                              prettify)))
+
+(add-hook 'emacs-lisp-mode-hook #'flycheck-mode)
+
+(use-package helpful
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . helpful-function)
+  ([remap describe-symbol] . helpful-symbol)
+  ([remap describe-variable] . helpful-variable)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-key] . helpful-key))
+
+(halo/leader-key-def
+  "e"   '(:ignore t :which-key "eval")
+  "eb"  '(eval-buffer :which-key "eval buffer"))
+
+(halo/leader-key-def
+  :keymaps '(visual)
+  "er" '(eval-region :which-key "eval region"))
+
+;;"emacs-tuareg"
+
+;;(use-package ccls
+;;  :hook ((c-mode c++-mode objc-mode cuda-mode) .
+;;         (lambda () (require 'ccls) (lsp))))
+
+(use-package yaml-mode
+  :mode "\\.ya?ml\\'")
+
+(use-package dap-mode
+  :straight t
+  :custom
+  (lsp-enable-dap-auto-configure nil)
+  :config
+  (dap-ui-mode 1)
+  (dap-tooltip-mode 1)
+  (require 'dap-node)
+  (dap-node-setup))
+
+(use-package darkroom
+  :commands darkroom-mode
+  :config
+  (setq darkroom-text-scale-increase 0))
+
+(defun halo/enter-focus-mode ()
+  (interactive)
+  (darkroom-mode 1)
+  (display-line-numbers-mode 0))
+
+(defun halo/leave-focus-mode ()
+  (interactive)
+  (darkroom-mode 0)
+  (display-line-numbers-mode 1))
+
+(defun halo/toggle-focus-mode ()
+  (interactive)
+  (if (symbol-value darkroom-mode)
+    (halo/leave-focus-mode)
+    (halo/enter-focus-mode)))
+
+(halo/leader-key-def
+  "tf" '(dw/toggle-focus-mode :which-key "focus mode"))
+
 (setq-default fill-column 80)
 
 ;; Turn on indentation and auto-fill mode for Org files
@@ -495,10 +841,7 @@
 
   (setq org-modules
     '(org-crypt
-        org-habit
-        org-bookmark
-        org-eshell
-        org-irc))
+        org-habit))
 
   (setq org-refile-targets '((nil :maxlevel . 1)
                              (org-agenda-files :maxlevel . 1)))
@@ -590,6 +933,37 @@
 
 ;; This ends the use-package org-mode block
 )
+
+(use-package org-make-toc
+  :hook (org-mode . org-make-toc-mode))
+
+(use-package org-appear
+  :hook (org-mode . org-appear-mode))
+
+(use-package markdown-mode
+  :straight t
+  :mode "\\.md\\'"
+  :config
+  (setq markdown-command "marked")
+  (defun halo/set-markdown-header-font-sizes ()
+    (dolist (face '((markdown-header-face-1 . 1.2)
+                    (markdown-header-face-2 . 1.1)
+                    (markdown-header-face-3 . 1.0)
+                    (markdown-header-face-4 . 1.0)
+                    (markdown-header-face-5 . 1.0)))
+      (set-face-attribute (car face) nil :weight 'normal :height (cdr face))))
+
+  (defun dw/markdown-mode-hook ()
+    (dw/set-markdown-header-font-sizes))
+
+  (add-hook 'markdown-mode-hook 'halo/markdown-mode-hook))
+
+(use-package elcord
+  :straight t
+  :custom
+  (elcord-display-buffer-details nil)
+  :config
+  (elcord-mode))
 
 ;; Make gc pauses faster by decreasing the threshold.
 (setq gc-cons-threshold (* 2 1000 1000))
