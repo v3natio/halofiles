@@ -31,8 +31,8 @@ color article white default
 
 browser linkhandler
 macro , open-in-browser
-macro w set browser "mpv %u" ; open-in-browser ; set browser "linkhandler"
-macro e set browser "mpv --no-video %u" ; open-in-browser ; set browser "linkhandler"
+macro w set browser "mpv %u" ; open-in-browser ; set browser linkhandler
+macro e set browser "mpv --no-video %u" ; open-in-browser ; set browser linkhandler
 
 highlight all "---.*---" yellow
 highlight feedlist ".*(0/0))" black
