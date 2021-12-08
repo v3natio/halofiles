@@ -4,20 +4,20 @@
 
 unmountusb() {
 	[ -z "$drives" ] && exit
-	chosen="$(echo "$drives" | dmenu -i -p "Unmount which drive?")" || exit 1
+	chosen="$(echo "$drives" | dmenu -fn 'FiraCode NF-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "Unmount which drive?")" || exit 1
 	chosen="$(echo "$chosen" | awk '{print $1}')"
 	[ -z "$chosen" ] && exit
 	sudo -A umount "$chosen" && notify-send "💻 USB unmounting" "$chosen unmounted."
 	}
 
 unmountandroid() { \
-	chosen="$(awk '/simple-mtpfs/ {print $2}' /etc/mtab | dmenu -i -p "Unmount which device?")" || exit 1
+	chosen="$(awk '/simple-mtpfs/ {print $2}' /etc/mtab | dmenu -fn 'FiraCode NF-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "Unmount which device?")" || exit 1
 	[ -z "$chosen" ] && exit
 	sudo -A umount -l "$chosen" && notify-send "🤖 Android unmounting" "$chosen unmounted."
 	}
 
 asktype() { \
-	choice="$(printf "USB\\nAndroid" | dmenu -i -p "Unmount a USB drive or Android device?")" || exit 1
+	choice="$(printf "USB\\nAndroid" | dmenu -fn 'FiraCode NF-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "Unmount a USB drive or Android device?")" || exit 1
 	case "$choice" in
 		USB) unmountusb ;;
 		Android) unmountandroid ;;
