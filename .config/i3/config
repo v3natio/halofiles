@@ -18,9 +18,6 @@ bindsym $mod+q kill
 # start dmenu
 bindsym $mod+d exec --no-startup-id dmenu_recency
 
-# start emacs
-bindsym $mod+e exec emacsclient -c
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
@@ -33,14 +30,12 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id /usr/bin/xfce4-power-manager
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
+exec --no-startup-id setbg
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # screenshots
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
-bindsym Print --release exec --no-startup-id i3-scrot -sc
+bindsym Shift+Print --release exec --no-startup-id maimpick
 
 # volume
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -148,7 +143,10 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 # PROGRAMS ----------
 
 # move apps to specific workspaces
-for_window [class="gimp"] move to workspace $ws6
+for_window [title="GIMP Startup"] move workspace $ws6
+for_window [class="Gimp"] move workspace $ws6
+for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt
+for_window [window_role="gimp-toolbox"] floating disable; move right; resize grow width 30 px or 30ppt
 for_window [class="inkscape"] move to workspace $ws6
 for_window [class="kdenlive"] move to workspace $ws6
 for_window [class="obs"] move to workspace $ws7
@@ -170,7 +168,6 @@ for_window [class="Lxappearance"] floating enable sticky enable
 for_window [class="Manjaro-hello"] floating enable
 for_window [class="Manjaro Settings Manager"] floating enable
 for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
 for_window [class="Pamac-manager"] floating enable
@@ -179,8 +176,6 @@ for_window [class="qt5ct"] floating enable sticky enable
 for_window [class="Qtconfig-qt4"] floating enable sticky enable
 for_window [class="Simple-scan"] floating enable
 for_window [class="(?i)System-config-printer.py"] floating enable
-for_window [class="Timeset-gui"] floating enable
-for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -189,15 +184,15 @@ for_window [urgent=latest] focus
 
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+set $mode_system l(o)ck, (l)ogout, switch_(u)ser, (Shift+s)uspend, (h)ibernate, (r)eboot, (s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym o exec --no-startup-id i3exit lock, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit suspend, mode "default"
     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym l exec --no-startup-id i3exit logout, mode "default"
     bindsym h exec --no-startup-id i3exit hibernate, mode "default"
     bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym s exec --no-startup-id i3exit shutdown, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -275,7 +270,7 @@ default_border pixel
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
-# i3status bar (commented because i'm using polybar right now)
+# i3status bar
 bar {
         position top
         tray_output none
@@ -291,5 +286,4 @@ bar {
         urgent_workspace        #2f343f #ebcb8b #2f343f
         }
         status_command i3status
-        # | /home/hooregi/.local/share/i3status-spotify-master/target/release/i3status-spotify
 }
