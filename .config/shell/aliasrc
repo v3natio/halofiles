@@ -56,5 +56,3 @@ alias \
   halo_list_systemctl="systemctl list-unit-files --state=enabled" \
   mirror="pacman-mirrors --fasttrack && sudo pacman -Syyu" \
   zsh-update="find '$ZDOTDIR/plugins' -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q" \
-  dim="sct 2700" \
-  undim="sct" \

@@ -51,7 +51,8 @@ bindsym $mod+Ctrl+m exec pavucontrol
 
 # Display control:
 bindsym $mod+F8 --release exec --no-startup-id dmenudisplay
-#XF86Search
+bindsym $mod+F11 --release exec --no-startup-id sct 2700
+bindsym $mod+F12 --release exec --no-startup-id sct
 
 # BINDINGS ----------
 
