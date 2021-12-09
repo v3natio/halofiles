@@ -31,7 +31,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id /usr/bin/xfce4-power-manager
 exec --no-startup-id setbg; sleep 1; picom -b
-#exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # screenshots
@@ -48,6 +48,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
 bindsym $mod+Ctrl+m exec pavucontrol
+
+# Display control:
+bindsym $mod+F8 --release exec --no-startup-id dmenudisplay
+#XF86Search
 
 # BINDINGS ----------
 
@@ -98,15 +102,15 @@ bindsym $mod+space focus mode_toggle
 # WORKSPACE ----------
 
 # define names for default workspaces
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
+set $ws1 "1 "
+set $ws2 "2 "
+set $ws3 "3 "
+set $ws4 "4 "
+set $ws5 "5 "
+set $ws6 "6 "
+set $ws7 "7 "
+set $ws8 "8 "
+set $ws9 "9 "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -144,14 +148,14 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 # PROGRAMS ----------
 
 # move apps to specific workspaces
-for_window [title="GIMP Startup"] move workspace $ws6
-for_window [class="Gimp"] move workspace $ws6
+for_window [title="GIMP Startup"] move workspace $ws7
+for_window [class="Gimp"] move workspace $ws7
 for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt
 for_window [window_role="gimp-toolbox"] floating disable; move right; resize grow width 30 px or 30ppt
-for_window [class="inkscape"] move to workspace $ws6
-for_window [class="kdenlive"] move to workspace $ws6
-for_window [class="obs"] move to workspace $ws7
-for_window [class="zoom"] move to workspace $ws8
+for_window [class="inkscape"] move to workspace $ws7
+for_window [class="kdenlive"] move to workspace $ws7
+for_window [class="obs"] move to workspace $ws8 layout tabbed
+for_window [class="zoom"] move to workspace $ws8 layout tabbed
 for_window [class="mpv"] move to workspace $ws9 layout tabbed
 for_window [class="discord"] move to workspace $ws9 layout tabbed
 for_window [class="Spotify"] move to workspace $ws9 layout tabbed
