@@ -11,11 +11,11 @@ V=$(echo "$VO" | rev | cut -c 2- | rev)
 
 get_vol_icon() {
 	if [[ $VO -gt 50 ]]; then
-		echo "$HI$V"
+		echo "$HI$VOL"
 	elif [[ $VO -gt 25 ]]; then
-		echo "$MO$V"
+		echo "$MO$VOL"
 	else
-		echo "$LO$V"
+		echo "$LO$VOL"
 	fi
 }
 
