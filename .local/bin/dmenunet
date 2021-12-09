@@ -7,8 +7,8 @@ _path="$(cd "$(dirname "${BASH_SOURCE[0]}")" && cd "$(dirname "$(readlink "${BAS
 
 main() {
   # TODO: Fix cut line at some point
-  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -fn 'firacode nf-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "Select Wifi  :" | cut -d' ' -f1)
-  pass=$(echo "" | dmenu -fn 'firacode nf-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "Enter Password  :")
+  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -fn 'firacode nf-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "Select Wifi 直 :" | cut -d' ' -f1)
+  pass=$(echo "" | dmenu -fn 'firacode nf-13' -nb '#2e3440' -nf '#2e3440' -sb '#88c0d0' -sf '#eceff4' -p "Enter Password  :")
   # We are disabling a shellcheck warning about using && and || as it doesn't apply here.
   # shellcheck disable=SC2015
   [ -n "$pass" ] && nmcli device wifi connect "$bssid" password "$pass" || nmcli device wifi connect "$bssid"
