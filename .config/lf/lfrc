@@ -37,7 +37,7 @@ cmd extract ${{
 	[ $ans = "y" ] && aunpack $fx
 }}
 
-cmd trash %set -f; mv $fx ~/.local/trash
+cmd trash %set -f; mv $fx ~/.local/share/Trash/files
 
 cmd delete ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
