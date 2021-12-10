@@ -149,6 +149,15 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 # PROGRAMS ----------
 
 # move apps to specific workspaces
+for_window [class="Pcmanfm"] move workspace $ws3
+for_window [class="libreoffice"] move workspace $ws6
+#for_window [class="libreoffice-startcenter"] move workspace $ws6
+#for_window [class="libreoffice-base"] move workspace $ws6
+#for_window [class="libreoffice-calc"] move workspace $ws6
+#for_window [class="libreoffice-draw"] move workspace $ws6
+#for_window [class="libreoffice-impress"] move workspace $ws6
+#for_window [class="libreoffice-math"] move workspace $ws6
+#for_window [class="libreoffice-writer"] move workspace $ws6
 for_window [title="GIMP Startup"] move workspace $ws7
 for_window [class="Gimp"] move workspace $ws7
 for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt
@@ -158,6 +167,7 @@ for_window [class="kdenlive"] move to workspace $ws7
 for_window [class="obs"] move to workspace $ws8 layout tabbed
 for_window [class="zoom"] move to workspace $ws8 layout tabbed
 for_window [class="mpv"] move to workspace $ws9 layout tabbed
+for_window [class="telegram-desktop"] move to workspace $ws9 layout tabbed
 for_window [class="discord"] move to workspace $ws9 layout tabbed
 for_window [class="Spotify"] move to workspace $ws9 layout tabbed
 
