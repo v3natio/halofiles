@@ -35,7 +35,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 # screenshots
-bindsym Shift+Print --release exec --no-startup-id maimpick
+bindsym $mod+Print --release exec --no-startup-id maimpick
 
 # Media control
 bindsym XF86AudioPlay exec --no-startup-id playerctl -p spotify play-pause
@@ -105,7 +105,7 @@ bindsym $mod+space focus mode_toggle
 # define names for default workspaces
 set $ws1 "1 "
 set $ws2 "2 "
-set $ws3 "3 "
+set $ws3 "3 "
 set $ws4 "4 "
 set $ws5 "5 "
 set $ws6 "6 "
@@ -150,14 +150,9 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 
 # move apps to specific workspaces
 for_window [class="Pcmanfm"] move workspace $ws3
+for_window [class="Tor Browser"] move workspace $ws5
 for_window [class="libreoffice"] move workspace $ws6
-#for_window [class="libreoffice-startcenter"] move workspace $ws6
-#for_window [class="libreoffice-base"] move workspace $ws6
-#for_window [class="libreoffice-calc"] move workspace $ws6
-#for_window [class="libreoffice-draw"] move workspace $ws6
-#for_window [class="libreoffice-impress"] move workspace $ws6
-#for_window [class="libreoffice-math"] move workspace $ws6
-#for_window [class="libreoffice-writer"] move workspace $ws6
+for_window [class="soffice"] move workspace $ws6
 for_window [title="GIMP Startup"] move workspace $ws7
 for_window [class="Gimp"] move workspace $ws7
 for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt
