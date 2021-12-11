@@ -2,19 +2,19 @@
 
 # xdg-open will use these settings to determine how to open filetypes. These .desktop entries can also be seen and changed in /usr/share/applications/
 
-x-scheme-handler/http=brave.desktop;
-x-scheme-handler/https=brave.desktop;
-x-scheme-handler/ftp=brave.desktop;
-x-scheme-handler/chrome=brave.desktop;
-text/html=brave.desktop;
-application/x-extension-htm=brave.desktop;
-application/x-extension-html=brave.desktop;
-application/x-extension-shtml=brave.desktop;
-application/xhtml+xml=brave.desktop;
-application/x-extension-xhtml=brave.desktop;
-application/x-extension-xht=brave.desktop;
-x-scheme-handler/mailto=brave.desktop;
-message/rfc822=brave.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/ftp=firefox.desktop;
+x-scheme-handler/chrome=firefox.desktop;
+text/html=firefox.desktop;
+application/x-extension-htm=firefox.desktop;
+application/x-extension-html=firefox.desktop;
+application/x-extension-shtml=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+application/x-extension-xht=firefox.desktop;
+x-scheme-handler/mailto=firefox.desktop;
+message/rfc822=firefox.desktop;
 text/plain=nvim.desktop;
 text/x-shellscript=nvim.desktop;
 inode/directory=lf.desktop;
