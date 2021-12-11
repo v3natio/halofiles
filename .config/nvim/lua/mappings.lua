@@ -20,14 +20,11 @@ map("n", "<leader>.", "<cmd>Telescope find_files<cr>") -- find files
 map("n", "<leader>f", "<cmd>Telescope current_buffer_fuzzy_find<cr>") --find in current buffer
 map("n", "<leader>:", "<cmd>Telescope commands<cr>") -- find commands
 map("n", "<leader>bb", "<cmd>Telescope buffers<cr>") -- find buffers
-map("n", "<leader>op", "<cmd>NvimTreeToggle<cr>") -- toggle NvimTree
-map("n", "<leader>tw", "<cmd>set wrap!<cr>") -- toggle wrap text in NvimTree
 map("n", "<leader>]", ":BufferLineCycleNext<cr>") -- move to right buffer
 map("n", "<leader>[", ":BufferLineCyclePrev<cr>") -- move to left buffer
 
-map("n", "<leader>1", ":e ~/Documents/Notes/Dashboard.md<cr>", { silent = false }) -- go to my notes
+map("n", "<leader>1", ":e ~/Documents/Notes/Dashboard.md<cr>") -- go to my notes
 map("n", "<leader>2", ":e ~/.config/nvim/lua/", {silent = false }) -- go to the neovim settings
-
 map("n", "<leader>3", ":w! | !compiler '<c-r>%'<CR>") -- run compiler script for documents
 map("n", "<leader>4", ":!opout <c-r>%<CR><CR>") -- open compiled documents
 vim.api.nvim_command('autocmd VimLeave *.tex !texclear %')

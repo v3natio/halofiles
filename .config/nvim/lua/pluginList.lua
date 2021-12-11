@@ -28,13 +28,6 @@ return packer.startup(function()
       event = "VimEnter",
    }
    use {
-      "kyazdani42/nvim-tree.lua",
-      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-      config = function()
-         require "pluginSets.nvimtree"
-      end,
-   }
-   use {
       "nvim-treesitter/nvim-treesitter",
       branch = "0.5-compat",
       run = ":TSUpdate",
@@ -166,7 +159,6 @@ return packer.startup(function()
    }
    use {
       "NTBBloodbath/galaxyline.nvim",
-      after = "nvim-web-devicons",
       config = function()
          require "pluginSets.statusline"
       end,
