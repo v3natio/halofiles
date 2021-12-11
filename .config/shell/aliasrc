@@ -38,11 +38,10 @@ alias \
 # These common commands are just too long! Abbreviate them.
 alias \
   SS="sudo systemctl" \
-	ka="killall" \
-	g="git" \
 	sdn="shutdown -h now" \
   e="$EDITOR" \
 	v="$EDITOR" \
+	g="git" \
 	p="pacman" \
   y="yay" \
   vote="ssh aur@aur.archlinux.org vote" \
@@ -51,8 +50,6 @@ alias \
 alias \
 	magit="nvim -c MagitOnly" \
   nvst="nvim --startuptime /tmp/startup.log -c exit && tail -100 /tmp/startup.log" \
-  pscpu="ps auxf | sort -nr -k 3 | head -5" \
-  psmem="ps auxf | sort -nr -k 4 | head -5" \
   halo_list_systemctl="systemctl list-unit-files --state=enabled" \
-  mirror="pacman-mirrors --fasttrack && sudo pacman -Syyu" \
+  mirror="sudo pacman-mirrors --fasttrack && sudo pacman -Syyu" \
   zsh-update="find '$ZDOTDIR/plugins' -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q" \
