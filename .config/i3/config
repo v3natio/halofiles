@@ -149,7 +149,6 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 # PROGRAMS ----------
 
 # move apps to specific workspaces
-for_window [class="Pcmanfm"] move workspace $ws3
 for_window [class="Tor Browser"] move workspace $ws5
 for_window [class="libreoffice"] move workspace $ws6
 for_window [class="soffice"] move workspace $ws6
