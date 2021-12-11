@@ -1,0 +1,89 @@
+        _           
+       (_)          
+ __   ___ _ __ ___  
+ \ \ / / | '_ ` _ \ 
+  \ V /| | | | | | |
+   \_/ |_|_| |_| |_|
+                    
+Vim is a command-line text editor.
+  Cursor movement:
+    hjkl - arrow keys
+    w/b - next/previous word
+    W/B - next/previous word (space seperated)
+    e/ge - next/previous end of word
+    0/$ - start/end of line
+    Ctrl+d - move down half a page
+    Ctrl+u - move up half a page
+    } - go to the next blank line
+    { - go to the next blank line
+    gg - go to the top of the page
+    G - go the bottom of the page
+    % - jumps between matching () or {}
+
+  File tabs:
+    :vsp - vertically split windows
+    ctrl+ws - split windows horizontally
+    ctrl+wv - split windows vertically
+    ctrl+ww - switch between windows
+    ctrl+wq - quit a window
+
+  Marks:
+    m{a-z} - set mark {a-z} at cursor position
+    m(A-Z} - sets global mark (works between files)
+    '{a-z} - move the cursor to the start of the line where the mark was set
+    '' - go back to the previous jump location
+
+  Editing text:
+    i/a - start insert mode at/after cursor
+    I/A - start insert mode at the beginning/end of the line
+    o/O - add blank line below/above current line
+    d - delete
+    dd - delete line
+    c - delete, then start insert mode
+    cc - delete line, then start insert mode
+    J - join line below to the current one
+    gv - reselect (select last selected block of text, from visual mode)
+
+  Operators:
+    d - deletes from the cursor to the movement location
+    c - deletes from the cursor to the movement location, then starts insert mode
+    y - copy from the cursor to the movement location
+    > - indent one level
+    < - unindent one level
+    . - Repeat last command
+
+  Marking text:
+    v - start visual mode
+    V - start linewise visual mode
+    Ctrl+v - start visual block mode
+
+  Clipboard:
+    yy - yank a line
+    p - paste after cursor
+    P - paste before cursor
+    dd - delete a line
+    x - delete current character
+    X - delete previous character
+    d/c - copy the deleted text
+
+  Exiting:
+    :w - write the file, but don’t quit
+    :wq - write and quit
+    :q - quit (fails if anything has changed)
+    :q! - quit and throw away changes
+    u - undo
+    Ctrl+r - redo
+
+  Search/Replace:
+    /pattern - search for pattern
+    ?pattern - search backward for pattern
+    n - repeat search in same direction
+    N - repeat search in opposite direction
+    f [char] - move forward to the given char
+    F [char] - move backward to the given char
+    t [char] - move forward to before the given char
+    T [char] - move backward to before the given char
+    ;/, - repeat search forwards/backwards
+    :noh - remove search
+    :%s/old/new/g - replace all old with new throughout file (gn is better though)
+    :%s/old/new/gc - replace all old with new throughout file with confirmations

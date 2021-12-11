@@ -1,0 +1,139 @@
+              _               _      
+             (_)             | |     
+  _   _ _ __  _  ___ ___   __| | ___ 
+ | | | | '_ \| |/ __/ _ \ / _` |/ _ \
+ | |_| | | | | | (_| (_) | (_| |  __/
+  \__,_|_| |_|_|\___\___/ \__,_|\___|
+
+Unicode is the standard for representing special characters in text.
+  Diacritics:
+    Uppercase:
+      U+00C1 - Á (uppercase a with accent)
+      U+00C9 - É (uppercase e with accent)
+      U+00CD - Í (uppercase i with accent)
+      U+00D1 - Ñ (uppercase latin n)
+      U+00D3 - Ó (uppercase o with accent)
+      U+00DA - Ú (uppercase u with accent)
+      U+00DC - Ü (uppercase u with diaeresis)
+
+    Lowercase:
+      U+00E1 - á (lowercase a with accent)
+      U+00E9 - é (lowercase e with accent)
+      U+00ED - í (lowercase i with accent)
+      U+00F1 - ñ (lowercase latin n)
+      U+00F3 - ó (lowercase o with accent)
+      U+00FA - ú (lowercase u with accent)
+      U+00FC - ü (lowercase u with diaeresis)
+
+  Symbols:
+    Punctuation:
+      U+2013 - – (endash)[between numbers]
+      U+2014 - — (emdash)[punctuation]
+      U+00BF - ¿ (inverted interrogation)
+      U+00A1 - ¡ (inverted exclamation)
+      U+203C - ‼ (double exclamation)
+      U+00AB - « (left-pointing double quotes)
+      U+00BB - » (right-pointing double quotes)
+
+    Currency: 
+      U+00A4 - ¤ (currency)
+      U+00A2 - ¢ (cent)
+      U+00A3 - £ (pound)
+      U+00A5 - ¥ (yen)
+      U+20A3 - ₣ (franc)
+      U=20A9 - ₩ (won)
+      U+20B9 - ₹ (rupee)
+      U+20BA - ₺ (lira)
+      U+20AB - ₫ (dong)
+      U+20AC - € (euro)
+      U+20BD - ₽ (ruble)
+      U+20BF - ₿ (bitcoin)
+
+    Math:
+      U+00B0 - ° (degrees)
+      U+00B1 - ± (plus/minus)
+      U+00D7 - × (multiplication)
+      U+00F7 - ÷ (division)
+      U+00B2 - ² (super 2)
+      U+00B3 - ³ (super 3)
+      U+00BC - ¼ (fraction 1/4)
+      U+00BD - ½ (fraction 1/2)
+      U+00BE - ¾ (fraction 3/4)
+      U+2032 - ′ (prime)
+      U+2202 - ∂ (partial derivative)
+      U+2205 - ∅ (empty set)
+      U+2207 - ∇ (nabla)
+      U+2208 - ∈ (element)
+      U+2209 - ∉ (not an element)
+      U+221A - √ (square root)
+      U+221B - ∛ (cube root)
+      U+221D - ∝ (proportional)
+      U+221E - ∞ (infinity)
+      U+2220 - ∠ (angle)
+      U+2229 - ∩ (intersection)
+      U+222A - ∪ (union)
+      U+222B - ∫ (integral)
+      U+2234 - ∴ (therefore)
+      U+2248 - ≈ (approximately)
+      U+2260 - ≠ (unequal)
+      U+2261 - ≡ (equivalent)
+      U+2262 - ≢ (unequivalent)
+      U+2264 - ≤ (less than or equal to)
+      U+2265 - ≥ (more than or equal to)
+      U+2282 - ⊂ (subset)
+      U+2283 - ⊃ (superset)
+      U+22C5 - ⋅ (multiplication)
+      U+22EF - ⋯ (sequence)
+
+    Arrows:
+      U+2190 - ← (left arrow)
+      U+2191 - ↑ (up arrow)
+      U+2192 - → (right arrow)
+      U+2193 - ↓ (down arrow)
+      U+2194 - ↔ (left/right arrow)
+      U+21BA - ↺ (anticlockwise arrow)
+      U+21BB - ↻ (clockwise arrow)
+      U+21D0 - ⇐ (left math arrow)
+      U+21D1 - ⇑ (up math arrow)
+      U+21D2 - ⇒ (right math arrow)
+      U+21D3 - ⇓ (down math arrow)
+      U+21D4 - ⇔ (left/right math arrow)
+
+  Greeks:
+    Uppercase:
+      U+0393 - Γ (Gamma)
+      U+0394 - Δ (Delta)
+      U+0398 - Θ (Theta)
+      U+039B - Λ (Lambda)
+      U+039E - Ξ (Xi)
+      U+03A0 - Π (Pi)
+      U+03A3 - Σ (Sigma)
+      U+03A5 - Υ (Upsilon)
+      U+03A6 - Φ (Phi)
+      U+03A8 - Ψ (Psi)
+      U+03A9 - Ω (Omega)
+
+    Lowercase:
+      U+03B1 - α (alpha)
+      U+03B2 - β (beta)
+      U+03B3 - γ (gamma)
+      U+03B4 - δ (delta)
+      U+03B5 - ε (epsilon)
+      U+03B6 - ζ (zeta)
+      U+03B7 - η (eta)
+      U+03B8 - θ (theta)
+      U+03B9 - ι (iota)
+      U+03BA - κ (kappa)
+      U+03BB - λ (lambda)
+      U+03BC - μ (mu)
+      U+03BD - ν (nu)
+      U+03BE - ξ (xi)
+      U+03C0 - π (pi)
+      U+03C1 - ρ (rho)
+      U+03C3 - σ (sigma)
+      U+03C4 - τ (tau)
+      U+03C5 - υ (upsilon)
+      U+03C6 - φ (phi)
+      U+03C7 - χ (chi)
+      U+03C8 - ψ (psi)
+      U+03C9 - ω (omega)

@@ -1,0 +1,143 @@
+  _        _______  __   __
+ | |      |__   __| \ \ / /
+ | |     __ _| | ___ \ V / 
+ | |    / _` | |/ _ \ > <  
+ | |___| (_| | |  __// . \ 
+ |______\__,_|_|\___/_/ \_\
+                           
+LaTeX is a document format.
+  Document classes:
+    \{book} - default is two-sided
+    \{report} - no \part divisions
+    \{article} - no \part or \chapter divisions
+    \{letter} - letter (?)
+    \{slides} - large sans-serif font
+
+  Document structure:
+    \part
+    \chapter        \subsubsection
+    \section        \paragraph
+    \subsection     \subparagraph
+
+    Text environments:
+      \{comment} - comment, not printed
+      \{quote} - indented quotation block
+      \{quotation} - like \{quote} with indented paragraphs
+      \{verse} - quotation block for verse
+
+    Floating bodies:
+      \{table} - add numbered table
+      \{figure} - add numbered figure
+      \{equation} - add numbered equation
+      \caption - caption for the body
+
+  Text-mode symbols:
+    Symbols:
+      ... - \ldots
+      | - \textbar
+      • - \textbullet
+      \ - \textbackslash
+      § - \S
+      ¤ - \currency
+      $ - \$
+      ¥ - \textyen
+      £ - \textsterling
+      € - \texteuro
+      ¢ - \cent
+
+    Accents:
+      ó - \'o
+      Õ - \~o
+      ¡ - "'
+      ¿ - ?'
+
+    Dashes:
+      - - dash (in words)
+      -- - endash (between numbers)
+      --- - emdash (punctuation)
+
+    Line and page breaks:
+      \\ - begin new line without new paragraph
+      \\* - no pagebreak after linebreak
+      \kill - don't print current line
+      \pagebreak - start new page
+      \noindent - don't indent current line
+
+  Tabular environments:
+    Tabbing environment:
+      \= - set tab stop
+      \> - go to tab stop
+      \kill - 'invisible' tab stop
+
+    Tabular environment:
+      \{array}[pos]{cols}
+      \{tabular}[pos]{cols}
+      \{tabular*}{width}[pos]{cols}
+
+    Tabular column specification:
+      l - left-justified column
+      c - centered column
+      r - right-justified column
+      | - vertical line between columns
+
+    Tabular elements:
+      \hline - horizontal line between rows
+      \cline{x-y} - horizontal line across columns 'x' to 'y'
+
+  Math mode:
+    $...$, \(...\) - display math
+    $$...$$, \{equation} - inline math
+
+    ^{x} - superscript
+    _{x} - subscript
+    \frac{x}{y} - fraction
+    \sqrt[n]{x} - square root
+    \sum_{k=1}^{n} - sum
+    \prod_{k=1}^{n} - product
+
+    Math-mode symbols:
+      ≠ - \neq      ≤ - \leq    ≥ - \geq        ≈ - \approx
+      × - \times    ÷ - \div    ± - \pm         · - \cdot
+      ∘ - \circ     ʹ - \prime  ⋯ - /cdots      ∞ - \infty
+      ⊂ - \subset   ⊃ - \supset ∈ - \in         ∉ - \notin
+      ∩ - \cap      ∪ - \cup    ⇒ - \Rightarrow ⇔ - \Leftrightarrow
+      α - \alpha    β - \beta   γ - \gamma      δ - \delta
+      ε - \epsilon  ζ - \zeta   η - \eta        θ - \theta
+      ι - \iota     κ - \kappa  λ - \lambda     μ - \mu
+      ν - \nu       ξ - \xi     π - \pi         ρ - \rho
+      σ - \sigma    τ - \tau    υ - \upsilon    φ - \phi
+      χ - \chi      ψ - \psi    ω - \omega      Γ - \Gamma
+      Δ - \Delta    Θ - \Theta  Λ - \Lambda     Ξ - \Xi
+      Π - \Pi       Σ - \Sigma  Υ - \Upsilon    Φ - \Phi
+      Ψ - \Psi      Ω - \Omega  ≡ - \equiv      ≢ - \notequiv
+      ∠ - \angle    ∫ - \int    ∴ - \therefore  ∝ - \propto
+
+  Bibliography and citations:
+    \bibliographystyle{plain} - can be abbrev, apa, etc
+    \bibliography{bibfile} - .bib is the BibTeX file
+
+    BibTeX entry types:
+      @article - book with publisher
+      @booklet - book without publisher
+      @conference - article in conference proceedings
+      @inbook - a part of a book, range of pages
+      @misc - if nothing else fits
+      @phdthesis - PhD. thesis
+
+    BibTeX fields:
+      address - not necessary for major publishers
+      author - names of authors, of format...
+      booktitle - title of the book when part is cited
+      chapter - chapter or section number
+      journal - journal name
+      month - month published, use three letter key
+      pages - page range
+      school - name of school (for thesis)
+      type - type of report, tech, etc
+      year - year published
+
+  Miscellaneous:
+    \tableofcontents - adds a table of contents
+    \pagestyle{empty} - no header, footer, and page number
+    \linespread{x} - changes line spacing by x multiplier
+    \today - print current date
