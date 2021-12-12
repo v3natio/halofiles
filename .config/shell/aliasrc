@@ -37,7 +37,6 @@ alias \
 
 # These common commands are just too long! Abbreviate them.
 alias \
-  SS="sudo systemctl" \
 	sdn="shutdown -h now" \
   e="$EDITOR" \
 	v="$EDITOR" \
