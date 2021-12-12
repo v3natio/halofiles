@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+
+volumectl list-sinks | awk '{print $1" | "$2}' | dmenu -fn 'FiraCode NF-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -l 10 -i "$@" | xargs volumectl set-sink
