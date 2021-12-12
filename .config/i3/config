@@ -47,7 +47,6 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl -p spotify previous
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
-bindsym $mod+Ctrl+m exec pavucontrol
 
 # Display control:
 bindsym $mod+F8 --release exec --no-startup-id dmenudisplay
