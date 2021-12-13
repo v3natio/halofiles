@@ -37,6 +37,7 @@ alias \
 
 # These common commands are just too long! Abbreviate them.
 alias \
+  scan="hp-scan -i -r 400 --pdf=zathura -o" \
 	sdn="shutdown -h now" \
   e="$EDITOR" \
 	v="$EDITOR" \
