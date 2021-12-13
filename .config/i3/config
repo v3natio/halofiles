@@ -149,6 +149,7 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 
 # move apps to specific workspaces
 for_window [class="Tor Browser"] move workspace $ws5
+for_window [title=".*\(Private Browsing\).*"] move to workspace $ws5
 for_window [class="libreoffice"] move workspace $ws6
 for_window [class="soffice"] move workspace $ws6
 for_window [title="GIMP Startup"] move workspace $ws7
