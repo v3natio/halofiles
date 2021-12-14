@@ -38,6 +38,7 @@ alias \
 # These common commands are just too long! Abbreviate them.
 alias \
   scan="hp-scan -i -r 400 --pdf=zathura -o" \
+  sqlite="sqlite3 -init "$XDG_CONFIG_HOME"/sqlite3/sqliterc" \
 	sdn="shutdown -h now" \
   e="$EDITOR" \
 	v="$EDITOR" \
