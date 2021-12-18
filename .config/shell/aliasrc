@@ -37,7 +37,6 @@ alias \
 
 # These common commands are just too long! Abbreviate them.
 alias \
-  scan="hp-scan -i -r 400 --pdf=zathura -o" \
   sqlite="sqlite3 -init "$XDG_CONFIG_HOME"/sqlite3/sqliterc" \
 	sdn="shutdown -h now" \
   e="$EDITOR" \
@@ -54,3 +53,4 @@ alias \
   halo_list_systemctl="systemctl list-unit-files --state=enabled" \
   mirror="sudo pacman-mirrors --fasttrack && sudo pacman -Syyu" \
   zsh-update="find '$ZDOTDIR/plugins' -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q" \
+  scan="hp-scan -i -r 400 -m color --pdf=zathura -o" \
