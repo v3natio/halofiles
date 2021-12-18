@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup {
-   ensure_installed = { "bash", "cmake", "cpp", "json", "latex", "lua", "ocaml", "python", "regex", "toml" },
+   ensure_installed = { "bash", "bibtex", "cmake", "cpp", "dockerfile", "json", "latex", "lua", "markdown", "ocaml", "python", "r", "regex", "toml" },
    indent = { enable = true },
    highlight = {
       enable = true,

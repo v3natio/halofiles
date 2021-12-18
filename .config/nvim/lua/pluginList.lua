@@ -29,8 +29,6 @@ return packer.startup(function()
    }
    use {
       "nvim-treesitter/nvim-treesitter",
-      branch = "0.5-compat",
-      run = ":TSUpdate",
       after = "nord.nvim",
       config = function()
          require "pluginSets.treesitter"
