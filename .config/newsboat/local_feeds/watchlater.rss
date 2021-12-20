@@ -28,6 +28,10 @@
     <link>https://www.youtube.com/watch?v=uJjujRUCQdQ</link>
   </item>
   <item>
+    <title>Dbl Chocolate Nutella Crunch Cookies - Glen And Friends Cooking</title>
+    <link>https://www.youtube.com/watch?v=r4cBjsVYtuU</link>
+  </item>
+  <item>
     <title>Code a Discord Bot with Python - Host for Free in the Cloud</title>
     <link>https://www.youtube.com/watch?v=SPTfmiYiuok</link>
     <description>Learn how to code a Discord bot using Python and host it for free in the cloud using Repl.it.</description>
@@ -84,6 +88,11 @@
     <description>You will build a full-fledged API in Python using FastAPI. You will learn the fundamentals of API design including routes, serialization/deserialization, schema validation, and models. You will also learn about SQL, testing with pytest, and how to build out a CI/CD pipeline using GitHub actions.</description>
   </item>
   <item>
+    <title>Algorithmic Trading Using Python - Full Course</title>
+    <link>https://www.youtube.com/watch?v=xfzGZB4HhEE</link>
+    <description>Learn how to perform algorithmic trading using Python in this complete course. Algorithmic trading means using computers to make investment decisions. Computer algorithms can make trades at a speed and frequency that is not possible by a human.</description>
+  </item>
+  <item>
     <title>Solve Coding Interview Backtracking Problems - Crash Course</title>
     <link>https://www.youtube.com/watch?v=A80YzvNwqXA</link>
     <description>Master the backtracking problem and solve two LeetCode hard problems in this crash course.</description>
@@ -95,6 +104,10 @@
   <item>
     <title>Binary Tree Algorithms for Technical Interviews - Full Course</title>
     <link>https://www.youtube.com/watch?v=fAAZixBzIAI</link>
+  </item>
+  <item>
+    <title>Linked Lists for Technical Interviews - Full Course</title>
+    <link>https://www.youtube.com/watch?v=Hj_rA0dhr2I</link>
   </item>
   <item>
     <title>How The Economic Machine Works by Ray Dalio</title>

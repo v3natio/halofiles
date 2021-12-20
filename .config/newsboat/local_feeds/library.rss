@@ -43,6 +43,10 @@
     <link>https://www.youtube.com/playlist?list=PL6zzGYGhbWrPaI-op1UfNl0uDglxdkaOB</link>
   </item>
   <item>
+    <title>CWT x Quantopian: Workflow of professional quant traders</title>
+    <link>https://www.youtube.com/playlist?list=PLOs2nEkQ-Q5NS1uf-dqCmJWrwLY_H6QaU</link>
+  </item>
+  <item>
     <title>Quantitative Finance</title>
     <link>https://www.youtube.com/playlist?list=PL8DC1113ADB63358E</link>
     <description>All the videos I've made related to quantitative finance.  Most are based on the book "Paul Wilmott on Quantitative Finance, 2nd Edition".  Some are from "The Concepts and Practice of Mathematical Finance" by Mark Joshi.</description>
@@ -60,6 +64,10 @@
     <title>Python: Making a Discord Bot (Rewrite / v1.x)</title>
     <link>https://www.youtube.com/playlist?list=PLW3GfRiBCHOhfVoiDZpSz8SM_HybXRPzZ</link>
     <description>In this series, we make a discord bot in python using discord.py version 1.0 also known as the rewrite branch of discord.py.</description>
+  </item>
+  <item>
+    <title>Coding Interview Algorithms - Steven Qu</title>
+    <link>https://youtube.com/playlist?list=PLDHY0448mEzjClzgr3gC0zbaJaWOPFiNL</link>
   </item>
 </channel>
 
