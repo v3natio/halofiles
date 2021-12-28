@@ -1,5 +1,11 @@
 .config/alacritty/nord.yml
 
+.config/emacs/straight
+.config/emacs/elpa
+.config/emacs/auto-save-list
+
+.config/ncspot/userstate.cbor
+
 .config/nvim/lua/packer_compiled.lua
 .config/nvim/spell/
 
@@ -9,6 +15,4 @@
 
 .local/bin/fm6000
 
-.config/emacs/straight
-.config/emacs/elpa
-.config/emacs/auto-save-list
+
