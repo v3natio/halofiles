@@ -64,9 +64,4 @@ M.asyncrun = function()
    vim.g.asyncrun_rootmarks = { ".svn", ".git", ".root", "_darcs" }
 end
 
---M.vimwiki = function()
---  vim.g['vimwiki_ext2syntax'] = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
---  vim.g['vimwiki_list'] = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
---end
-
 return M

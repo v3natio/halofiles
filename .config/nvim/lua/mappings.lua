@@ -16,6 +16,9 @@ map("n", "<c-j>", "<cmd>wincmd j<cr>") -- ctrl j to navigate splits
 map("n", "<c-h>", "<cmd>wincmd h<cr>") -- ctrl h to navigate splits
 map("n", "<c-l>", "<cmd>wincmd l<cr>") -- ctrl l to navigate splits
 
+map("n", "<leader>n", "<cmd>NvimTreeToggle<cr>") -- toggle NvimTree
+map("n", "<leader>nw", "<cmd>set wrap!<cr>") -- toggle wrap text in NvimTree
+
 map("n", "<leader>l", ":BufferLineCycleNext<cr>") -- move to right buffer
 map("n", "<leader>h", ":BufferLineCyclePrev<cr>") -- move to left buffer
 
@@ -25,9 +28,9 @@ map("n", "<leader>f", "<cmd>Telescope current_buffer_fuzzy_find<cr>") --find in 
 map("n", "<leader>:", "<cmd>Telescope commands<cr>") -- find commands
 map("n", "<leader>bb", "<cmd>Telescope buffers<cr>") -- find buffers
 
-map("n", "<leader>o", ":setlocal spell! spelllang=en_us<CR>") -- toggle spellcheck
-map("n", "<leader>oc", "z=") -- toggle spellcheck menu
-map("n", "<leader>oa", "zg") -- add word to dictionary
+map("n", "<leader>s", ":setlocal spell! spelllang=en_us<CR>") -- toggle spellcheck
+map("n", "<leader>sc", "z=") -- toggle spellcheck menu
+map("n", "<leader>sa", "zg") -- add word to dictionary
 map("n", "<leader>]", "]s") -- next spelling error
 map("n", "<leader>[", "[s") -- previous spelling error
 

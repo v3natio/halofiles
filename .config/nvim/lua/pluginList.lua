@@ -28,6 +28,13 @@ return packer.startup(function()
       event = "VimEnter",
    }
    use {
+      "kyazdani42/nvim-tree.lua",
+      cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+      config = function()
+         require "pluginSets.nvimtree"
+      end,
+   }
+   use {
       "nvim-treesitter/nvim-treesitter",
       after = "nord.nvim",
       config = function()
@@ -71,11 +78,11 @@ return packer.startup(function()
    }
    use {
       "ray-x/cmp-treesitter",
-      after = "cmp-nvim-lsp",
+      after = "cmp-rg",
    }
    use {
       "hrsh7th/cmp-path",
-      after = "cmp-rg",
+      after = "cmp-treesitter",
    }
    use {
       "nvim-telescope/telescope.nvim",
