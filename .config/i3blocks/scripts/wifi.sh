@@ -18,7 +18,7 @@ get_bat() {
         2 | 3)	echo "$WS_1$SSIG% " ;;
         4 | 5) 	echo "$WS_2$SSIG% " ;;
         6 | 7) 	echo "$WS_3$SSIG% " ;;
-        *)		echo "$WS_4$SSIG% "
+        *)      echo "$WS_4$SSIG% "
     esac
 }
 

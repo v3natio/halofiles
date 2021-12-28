@@ -1,5 +1,5 @@
 #!/bin/bash
 
 DATE=$(date '+%a %d %b')
-LCAL="  "
+LCAL="  "
 echo "$LCAL$DATE "

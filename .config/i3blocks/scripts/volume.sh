@@ -1,27 +1,20 @@
 #!/bin/bash
 
-LO=" 奔 "
-HI=" 墳 "
-MO=" 墳 "
-MU=" 婢 "
+icon_vol=${1:-}
+icon_mute=${2:-}
+col=${3:-#fff}
 
-VOL=$(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))
-VO=$(echo "$VOL" | cut -d'%' -f1)
-V=$(echo "$VO" | rev | cut -c 2- | rev)
+# mouse actions for the block
+case $BLOCK_BUTTON in
+	1) pamixer -t ;;
+    2) alacritty --class wm-floating pulsemixer ;;
+    3) alacritty --class wm-floating pulsemixer ;;
+	4) pamixer -i 3 ;;
+	5) pamixer -d 3 ;;
+esac
+label=" <span color='$col'>$icon_vol</span>"
 
-get_vol_icon() {
-	if [[ $VO -gt 50 ]]; then
-		echo "$HI$VOL"
-	elif [[ $VO -gt 25 ]]; then
-		echo "$MO$VOL"
-	else
-		echo "$LO$VOL"
-	fi
-}
-
-if amixer get Master | grep -q '\[on\]'; then
-	get_vol_icon
-else
-	echo "$MU"
-fi
-
+#Toggle mute
+[[ $(pamixer --get-mute) = "true" ]] && echo "<span color='$col'>$icon_mute</span>  0%" && exit
+#Display volume
+echo "$label $(pamixer --get-volume-human)";

@@ -1,28 +1,33 @@
 #! /bin/bash
 
-BAT_00=" <span color='#bf616a'></span> "
-BAT_10=" <span color='#bf616a'></span> "
-BAT_20=" <span color='#ebcb8b'></span> "
-BAT_30=" <span color='#88c0d0'></span> "
-BAT_40=" <span color='#88c0d0'></span> "
-BAT_50=" <span color='#88c0d0'></span> "
-BAT_60=" <span color='#88c0d0'></span> "
-BAT_70=" <span color='#88c0d0'></span> "
-BAT_80=" <span color='#8fbcbb'></span> "
-BAT_90=" <span color='#a3be8c'></span> "
-BAT_100=" <span color='#a3be8c'></span> "
+# mouse actions for the block
+case $BLOCK_BUTTON in
+    1) notify-send "Battery" "$(acpi)"
+esac
 
-CHR_00=" <span color='#bf616a'></span> "
-CHR_10=" <span color='#bf616a'></span> "
-CHR_20=" <span color='#ebcb8b'></span> "
-CHR_30=" <span color='#88c0d0'></span> "
-CHR_40=" <span color='#88c0d0'></span> "
-CHR_50=" <span color='#88c0d0'></span> "
-CHR_60=" <span color='#88c0d0'></span> "
-CHR_70=" <span color='#88c0d0'></span> "
-CHR_80=" <span color='#8fbcbb'></span> "
-CHR_90=" <span color='#a3be8c'></span> "
-CHR_100=" <span color='#a3be8c'></span> "
+BAT_00=" <span color='#bf616a'> </span> "
+BAT_10=" <span color='#bf616a'> </span> "
+BAT_20=" <span color='#ebcb8b'> </span> "
+BAT_30=" <span color='#88c0d0'> </span> "
+BAT_40=" <span color='#88c0d0'> </span> "
+BAT_50=" <span color='#88c0d0'> </span> "
+BAT_60=" <span color='#88c0d0'> </span> "
+BAT_70=" <span color='#88c0d0'> </span> "
+BAT_80=" <span color='#8fbcbb'> </span> "
+BAT_90=" <span color='#a3be8c'> </span> "
+BAT_100=" <span color='#a3be8c'> </span> "
+
+CHR_00=" <span color='#bf616a'> </span> "
+CHR_10=" <span color='#bf616a'> </span> "
+CHR_20=" <span color='#ebcb8b'> </span> "
+CHR_30=" <span color='#88c0d0'> </span> "
+CHR_40=" <span color='#88c0d0'> </span> "
+CHR_50=" <span color='#88c0d0'> </span> "
+CHR_60=" <span color='#88c0d0'> </span> "
+CHR_70=" <span color='#88c0d0'> </span> "
+CHR_80=" <span color='#8fbcbb'> </span> "
+CHR_90=" <span color='#a3be8c'> </span> "
+CHR_100=" <span color='#a3be8c'> </span> "
 
 POW=$(cat /sys/class/power_supply/BAT0/capacity)
 PO=$(echo "$POW" | rev | cut -c 2- | rev)
@@ -45,17 +50,17 @@ get_bat() {
 
 get_chr() {
     case $PO in
-        1) echo "$CHR_10$POW% " ;;
-        2) echo "$CHR_20$POW% " ;;
-        3) echo "$CHR_30$POW% " ;;
-        4) echo "$CHR_40$POW% " ;;
-        5) echo "$CHR_50$POW% " ;;
-        6) echo "$CHR_60$POW% " ;;
-        7) echo "$CHR_70$POW% " ;;
-        8) echo "$CHR_80$POW% " ;;
-        9) echo "$CHR_90$POW% " ;;
-        10) echo "$CHR_100$POW% " ;;
-        *) echo "$CHR_00$POW% " ;;
+        1) echo "$CHR_10+$POW% " ;;
+        2) echo "$CHR_20+$POW% " ;;
+        3) echo "$CHR_30+$POW% " ;;
+        4) echo "$CHR_40+$POW% " ;;
+        5) echo "$CHR_50+$POW% " ;;
+        6) echo "$CHR_60+$POW% " ;;
+        7) echo "$CHR_70+$POW% " ;;
+        8) echo "$CHR_80+$POW% " ;;
+        9) echo "$CHR_90+$POW% " ;;
+        10) echo "$CHR_100+$POW% " ;;
+        *) echo "$CHR_00+$POW% " ;;
 esac
 }
 

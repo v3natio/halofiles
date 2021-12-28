@@ -1,9 +1,3 @@
-#	 _ _____ _     _            _        
-#	(_)___ /| |__ | | ___   ___| | _____ 
-#	| | |_ \| '_ \| |/ _ \ / __| |/ / __|
-#	| |___) | |_) | | (_) | (__|   <\__ \
-#	|_|____/|_.__/|_|\___/ \___|_|\_\___/
-#
 markup=pango
 full_text=
 align=center
@@ -22,7 +16,7 @@ border_bottom=2
 
 [mediaplayer]
 command=~/.config/i3blocks/scripts/media.sh
-interval=2
+interval=10
 signal=6
 color=#eceff4
 background=#4c566a
@@ -53,9 +47,9 @@ border_right=0
 border_top=2
 border_bottom=2
 
-[vpn]
-command=~/.config/i3blocks/scripts/vpn.sh
-interval=10
+[cpu]
+command=~/.config/i3blocks/scripts/cpu.sh
+interval=20
 color=#2e3440
 background=#81a1c1
 border=#2e3440
@@ -75,7 +69,7 @@ border_bottom=2
 
 [wifi]
 command=~/.config/i3blocks/scripts/wifi.sh
-interval=once
+interval=20
 signal=8
 color=#2e3440
 background=#88c0d0
@@ -188,4 +182,3 @@ border_bottom=2
 #border_right=0
 #border_top=2
 #border_bottom=2
-
