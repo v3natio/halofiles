@@ -1,10 +1,8 @@
-# i3 CONFIG ----------
-
 # set the mod key (win key)
 set $mod Mod4
 
 # set the font
-font pango:FiraCode NF 12
+font pango:FiraCode Nerd Font 12
 
 # drag floating window
 floating_modifier $mod
@@ -16,7 +14,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+q kill
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id dmenu_recency
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'FiraCode Nerd Font-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4'
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -27,19 +25,12 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
-# autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id /usr/bin/xfce4-power-manager
-exec --no-startup-id setbg; sleep 1; picom -b
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
-
-# screenshots
+# Screenshots
 bindsym $mod+Print --release exec --no-startup-id maimpick
 
 # Media control
-bindsym XF86AudioPlay exec --no-startup-id playerctl -p spotify play-pause
-bindsym XF86AudioPause exec --no-startup-id playerctl -p spotify play-pause
+bindsym XF86AudioPlay exec playerctl -p spotify play-pause
+bindsym XF86AudioPause exec playerctl -p spotify play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl -p spotify next
 bindsym XF86AudioPrev exec --no-startup-id playerctl -p spotify previous
 
@@ -47,6 +38,10 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl -p spotify previous
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
+
+# Brightness control
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +20 && notify-send "Increased brightness" "$(xbacklight -get)"
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -20 && notify-send "Decreased brightness" "$(xbacklight -get)"
 
 # Display control:
 bindsym $mod+F8 --release exec --no-startup-id dmenudisplay
@@ -102,15 +97,15 @@ bindsym $mod+space focus mode_toggle
 # WORKSPACE ----------
 
 # define names for default workspaces
-set $ws1 "1 "
-set $ws2 "2 "
-set $ws3 "3 "
-set $ws4 "4 "
-set $ws5 "5 "
-set $ws6 "6 "
-set $ws7 "7 "
-set $ws8 "8 "
-set $ws9 "9 "
+set $ws1 "1  "
+set $ws2 "2  "
+set $ws3 "3  "
+set $ws4 "4  "
+set $ws5 "5  "
+set $ws6 "6  "
+set $ws7 "7  "
+set $ws8 "8  "
+set $ws9 "9  "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -149,8 +144,6 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 
 # move apps to specific workspaces
 for_window [class="Tor Browser"] move to workspace $ws5
-for_window [title="Library"] move to workspace $ws5
-for_window [title=".*\(Private Browsing\).*"] move to workspace $ws5
 for_window [class="libreoffice"] move to workspace $ws6
 for_window [class="soffice"] move to workspace $ws6
 for_window [title="GIMP Startup"] move to workspace $ws7
@@ -158,11 +151,8 @@ for_window [class="Gimp"] move to workspace $ws7
 for_window [window_role="gimp-dock"] floating disable; move left; resize shrink width 50 px or 50ppt
 for_window [window_role="gimp-toolbox"] floating disable; move right; resize grow width 30 px or 30ppt
 for_window [class="inkscape"] move to workspace $ws7
-for_window [class="kdenlive"] move to workspace $ws7
-for_window [class="obs"] move to workspace $ws8 layout tabbed
 for_window [class="zoom"] move to workspace $ws8 layout tabbed
 for_window [class="mpv"] move to workspace $ws9 layout tabbed
-for_window [class="telegram-desktop"] move to workspace $ws9 layout tabbed
 for_window [class="discord"] move to workspace $ws9 layout tabbed
 for_window [class="Spotify"] move to workspace $ws9 layout tabbed
 
@@ -178,15 +168,12 @@ for_window [window_type="menu"] floating enable
 
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
-set $mode_system l(o)ck, (l)ogout, switch_(u)ser, (Shift+s)uspend, (h)ibernate, (r)eboot, (s)hutdown
+set $mode_system (l)ock, (h)ibernate, (r)eboot, (s)hutdown
 mode "$mode_system" {
-    bindsym o exec --no-startup-id i3exit lock, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym l exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id slock
+    bindsym h exec --no-startup-id systemctl hibernate
+    bindsym r exec --no-startup-id reboot
+    bindsym s exec --no-startup-id shutdown -h now
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -252,11 +239,9 @@ client.unfocused         $base01 $base00 $base05 $base01   $base01
 #client.background       $base0F
 
 # gaps and borders
-# smart_borders on
-# smart_gaps on
+smart_gaps on
+smart_borders on
 gaps inner 7
-# gaps outer 15
-# border_radius 4
 default_border pixel 
 
 # i3 STATUS ----------

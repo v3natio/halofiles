@@ -93,7 +93,15 @@ return packer.startup(function()
 
    -- Writing
    use {
-     "vimwiki/vimwiki",
+     "~/Documents/Projects/Neovim/vimling.lua",
+     event = "InsertEnter",
+   }
+   use {
+      "vimwiki/vimwiki",
+      after = "nvim-treesitter",
+      --config = function()
+      --   require("pluginSets.others").vimwiki()
+      --end,
     }
 
    -- Development

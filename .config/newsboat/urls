@@ -1,7 +1,6 @@
 # Miscellaneous
 https://archlinux.org/feeds/news/ "tech" "linux" "~Arch Linux (Blog)"
 file:///home/hooregi/.config/newsboat/local_feeds/library.rss "~Library - Playlist (Youtube)"
-https://forum.manjaro.org/c/announcements/11.rss "tech" "linux" "~Manjaro Linux (Blog)"
 file:///home/hooregi/.config/newsboat/local_feeds/watchlater.rss "~Watch Later - Playlist (Youtube)"
 
 # Entertainment
@@ -129,6 +128,10 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCpvyOqtEc86X8w8_Se0t4-w "ed
 https://www.youtube.com/feeds/videos.xml?channel_id=UCASM0cgfkJxQ1ICmRilfHLw "education" "finance" "yt" "~Patrick Boyle (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9C17-OMxa-7oRSaCtztObw "education" "finance" "yt" "~Rob Berger (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCw4_uGTBaFiVJ1VJtJabPAQ "education" "finance" "yt" "~Rob Bezdjian (Youtube)"
+
+## Health
+https://www.youtube.com/feeds/videos.xml?channel_id=UCykTiaMobl2EWW28zmjcznQ "education" "health" "yt" "~Dr. Carlos Jaramillo (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCF9IOB2TExg3QIBupFtBDxg "education" "health" "yt" "~Dr. John Campbell (Youtube)"
 
 ## History
 https://www.youtube.com/feeds/videos.xml?channel_id=UCeUJFQ0D9qs6aVNyUt9fkeQ "education" "history" "yt" "~Armchair Historian (Youtube)"

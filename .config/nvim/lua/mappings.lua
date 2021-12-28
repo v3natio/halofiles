@@ -16,8 +16,8 @@ map("n", "<c-j>", "<cmd>wincmd j<cr>") -- ctrl j to navigate splits
 map("n", "<c-h>", "<cmd>wincmd h<cr>") -- ctrl h to navigate splits
 map("n", "<c-l>", "<cmd>wincmd l<cr>") -- ctrl l to navigate splits
 
-map("n", "<leader>]", ":BufferLineCycleNext<cr>") -- move to right buffer
-map("n", "<leader>[", ":BufferLineCyclePrev<cr>") -- move to left buffer
+map("n", "<leader>l", ":BufferLineCycleNext<cr>") -- move to right buffer
+map("n", "<leader>h", ":BufferLineCyclePrev<cr>") -- move to left buffer
 
 map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>") -- find old files
 map("n", "<leader>.", "<cmd>Telescope find_files<cr>") -- find files
@@ -26,14 +26,14 @@ map("n", "<leader>:", "<cmd>Telescope commands<cr>") -- find commands
 map("n", "<leader>bb", "<cmd>Telescope buffers<cr>") -- find buffers
 
 map("n", "<leader>o", ":setlocal spell! spelllang=en_us<CR>") -- toggle spellcheck
-map("n", "<leader>op", "z=") -- toggle spellcheck menu
-map("n", "<leader>oi", "zg") -- add word to dictionary
-map("n", "<leader>o]", "]s") -- next spelling error
-map("n", "<leader>o[", "[s") -- previous spelling error
+map("n", "<leader>oc", "z=") -- toggle spellcheck menu
+map("n", "<leader>oa", "zg") -- add word to dictionary
+map("n", "<leader>]", "]s") -- next spelling error
+map("n", "<leader>[", "[s") -- previous spelling error
 
 map("n", "<leader>1", ":e ~/Documents/Notes/Dashboard.md<cr>") -- go to my notes
 map("n", "<leader>2", ":e ~/.config/nvim/lua/", {silent = false }) -- go to the neovim settings
-map("n", "<leader>3", ":AsyncRun compiler '<c-r>%'<CR>") -- compile file
+map("n", "<leader>3", ":w! | :AsyncRun compiler '<c-r>%'<CR>") -- compile file
 map("n", "<leader>4", ":!opout <c-r>%<CR><CR>") -- open compiled documents
 
 map("n", "<F9>", ':AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)"<cr>') -- compile file

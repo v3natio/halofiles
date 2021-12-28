@@ -1,13 +1,11 @@
 #!/bin/bash
 
 MUS=$(playerctl -p spotify metadata --format "{{ trunc(artist, 18)}} - {{ trunc(title, 15)}}" 2> /dev/null)
-#MPD=$(cat "$HOME/.config/ncmpcpp/current-status")
-#MPD_SONG=$(cat "$HOME/.config/ncmpcpp/current-song")
-S1=$(echo "$MPD" | sed -n '1p')
+MED=$(playerctl -p mpv metadata --format "{{ trunc(title, 33)}}" 2> /dev/null)
 if [[ $MUS ]]; then
     echo "  $MUS"
-elif [ "$S1" == 'playing' ]; then
-    echo "  $MPD_SONG"
+elif [[ $MED ]]; then
+    echo "  $MED"
 else
     echo " ﱙ "
 fi
