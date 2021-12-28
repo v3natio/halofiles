@@ -5,52 +5,52 @@
 
 # sudo not required for some system commands
 for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
-	alias $command="sudo $command"
+  alias $command="sudo $command"
 done; unset command
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
   l="ls -al" \
-	cp="cp -iv" \
-	mv="mv -iv" \
-	rm="rm -vI" \
-	bc="bc -ql" \
+  cp="cp -iv" \
+  mv="mv -iv" \
+  rm="rm -vI" \
+  bc="bc -ql" \
   df="df -h" \
   free="free -m" \
-	mkd="mkdir -pv"
+  mkd="mkdir -pv" \
+	ffmpeg="ffmpeg -hide_banner"
 
 # Media
 alias \
-  fm6000="fm6000 -r -c random" \
+  fm6000="fm6000 -f '/home/hooregi/.local/bin/fm6000_arch_logo.txt' -c random" \
   nw="newsboat" \
   yt="ytfzf -t" \
   ani="ani-cli" \
-  terraria="'/home/hooregi/Documents/Games/Terraria/start.sh' ''"
+  terraria="'/home/hooregi/Games/Terraria/start.sh' ''"
 
 # Colorize commands when possible.
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
-	grep="grep --color=auto" \
+  ls="ls -hN --color=auto --group-directories-first" \
+  grep="grep --color=auto" \
   egrep="egrep -Hn --color=auto" \
   pgrep="pgrep -Hn --color=auto" \
-	diff="diff --color=auto"
+  diff="diff --color=auto"
 
 # These common commands are just too long! Abbreviate them.
 alias \
   sqlite="sqlite3 -init "$XDG_CONFIG_HOME"/sqlite3/sqliterc" \
-	sdn="shutdown -h now" \
+  sdn="shutdown -h now" \
   e="$EDITOR" \
-	v="$EDITOR" \
-	g="git" \
-	p="pacman" \
-  y="yay" \
+  v="$EDITOR" \
+  g="git" \
+  p="pacman" \
+  y="paru" \
   vote="ssh aur@aur.archlinux.org vote" \
   z="zathura"
 
 alias \
-	magit="nvim -c MagitOnly" \
+  magit="nvim -c MagitOnly" \
   nvst="nvim --startuptime /tmp/startup.log -c exit && tail -100 /tmp/startup.log" \
   halo_list_systemctl="systemctl list-unit-files --state=enabled" \
-  mirror="sudo pacman-mirrors --fasttrack && sudo pacman -Syyu" \
   zsh-update="find '$ZDOTDIR/plugins' -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q" \
   scan="hp-scan -i -r 400 -m color --pdf=zathura -o" \

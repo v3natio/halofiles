@@ -1,9 +1,13 @@
-# set CAPSLOCK key to CTRL
-xmodmap ~/.config/x11/xmodmap
+#!/bin/zsh
+
+# Adds `~/.local/bin` to $PATH
+export PATH="$PATH:${$(find ~/.local/bin -type l -printf %p:)%%:}"
+
+unsetopt PROMPT_SP
 
 # default programs:
 export EDITOR=/usr/bin/nvim
-export BROWSER=/usr/bin/firefox
+export BROWSER=/usr/bin/brave
 export TERMINAL=/usr/bin/alacritty
 export READER=/usr/bin/zathura
 export FILE=/usr/bin/lf
@@ -12,26 +16,46 @@ export FILE=/usr/bin/lf
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
 export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
+export LESSHISTFILE="-"
+export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
+export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
-export OPAMROOT="${XDG_DATA_HOME:-$HOME/.local/share}/opam"
-export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
+#export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
+export DOCKER_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/docker"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
-export R_LIBS_USER="${XDG_DATA_HOME:-$HOME/.local/share}/R/library"
-export PATH="$HOME/.poetry/bin:$PATH"
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc"
+export NODE_REPL_HISTORY="${XDG_DATA_HOME:-$HOME/.local/share}/node_repl_history"
+export OPAMROOT="${XDG_DATA_HOME:-$HOME/.local/share}/opam"
 export PYENV_ROOT="${XDG_DATA_HOME:-$HOME/.local/share}/pyenv"
 export IPYTHONDIR="${XDG_CONFIG_HOME:-$HOME/.config}/jupyter"
 export JUPYTER_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/jupyter"
+export R_LIBS_USER="${XDG_DATA_HOME:-$HOME/.local/share}/R/library"
+export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export SQLITE_HISTORY="${XDG_DATA_HOME:-$HOME/.local/share}/sqlite_history"
-export NODE_REPL_HISTORY="${XDG_DATA_HOME:-$HOME/.local/share}/node_repl_history"
 export HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/history"
+export FFMPEG_DATADIR="${XDG_DATA_HOME:-$HOME/.local/share}/ffmpeg"
 export SSB_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zoom"
 
 # other program settings:
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
+export MANPAGER="nvim +Man!"
+export MANWIDTH="999"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
+export LESS="-R"
+export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
+export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
+export LESS_TERMCAP_me="$(printf '%b' '[0m')"
+export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
+export LESS_TERMCAP_se="$(printf '%b' '[0m')"
+export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
+export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
+export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
 export QT_QPA_PLATFORMTHEME="gtk2" # have QT use QTK2 theme
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCALE_FACTOR=1
 export MOZ_USE_XINPUT2="1" # mozilla smooth scrolling/touchpads.
 
 # This is the list for lf icons:
@@ -103,8 +127,8 @@ ex=:\
 *.nfo=:\
 *.info=:\
 *.log=:\
-*.iso=:\
-*.img=:\
+*.iso=:\
+*.img=:\
 *.bib=:\
 *.ged=:\
 *.part=:\
@@ -129,3 +153,13 @@ ex=:\
 *.sql=:\
 *.vim=:\
 "
+
+if pacman -Qs i3-gaps >/dev/null 2>&1; then
+	# Start graphical server on user's current tty if not already running.
+	[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+else
+  echo "\033[31mIMPORTANT\033[0m: Note that \033[32m\`i3-gaps\`\033[0m must be installed.
+Please run:
+	\033[32mpacman -S i3-gaps\033[0m
+Afterwards, you may start the graphical server by running \`startx\`."
+fi

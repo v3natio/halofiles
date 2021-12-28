@@ -2,7 +2,7 @@
 h   $HOME
 cac ${XDG_CACHE_HOME:-$HOME/.cache}
 cf  ${XDG_CONFIG_HOME:-$HOME/.config}
-dot $HOME/Halofiles/
+dot $HOME/Halofiles
 dt  ${XDG_DATA_HOME:-$HOME/.local/share}
 sc  $HOME/.local/bin
 D   ${XDG_DOWNLOAD_DIR:-$HOME/Downloads}

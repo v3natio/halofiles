@@ -2,22 +2,17 @@
 setopt autocd # auto cd into directory.
 setopt nomatch # output error if file doesn't match
 stty stop undef # disable ctrl-s to freeze terminal.
-setopt interactive_comments # comments in interactive shells
-zle_highlight=('paste:none') # don't highlight paste
-unsetopt BEEP # disable beep on error
+setopt interactive_comments
 
 # History in cache directory:
-setopt appendhistory
 HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 
-# Load aliases, prompt, functions, etc:
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
+# Load aliases, prompt, vi-mode, functions, etc:
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/promptrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/promptrc"
+[ -f "$ZDOTDIR/zsh-prompt" ] && source "$ZDOTDIR/zsh-prompt"
 [ -f "$ZDOTDIR/zsh-functions" ] && source "$ZDOTDIR/zsh-functions"
-
 # Load fzf:
 [ -f "/usr/share/fzf/completion.zsh" ] && source "/usr/share/fzf/completion.zsh"
 [ -f "/usr/share/fzf/key-bindings.zsh" ] && source "/usr/share/fzf/key-bindings.zsh"
@@ -25,11 +20,9 @@ HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
-#zstyle ':completion::complete:lsof:*' menu yes select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots) # include hidden files.
-setopt menucomplete # ambiguous completion will take the first one, and keep going
 
 # Vi mode:
 bindkey -v
@@ -80,8 +73,6 @@ bindkey '^e' edit-command-line
 
 # Plugins:
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
-zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
+zsh_add_plugin "z-shell/fast-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "darvid/zsh-poetry"
-
-export PATH="$HOME/.poetry/bin:$PATH"
