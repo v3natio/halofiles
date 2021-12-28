@@ -1,0 +1,16 @@
+#!/bin/sh
+
+xrandr --dpi 96
+xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!
+xmodmap ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xmodmap & xmodmappid=$!
+setbg &
+
+autostart="picom dunst unclutter"
+
+for program in $autostart; do
+	pidof -s "$program" || setsid -f "$program"
+done >/dev/null 2>&1
+
+# Ensure that xrdb and xmodmap finished running before moving on to start the WM.
+[ -n "$xrdbpid" ] && wait "$xrdbpid"
+[ -n "$xmodmappid" ] && wait "$xmodmappid"
