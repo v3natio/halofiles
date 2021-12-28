@@ -20,7 +20,7 @@ You will need GNU `stow`.
 Clone into your `$HOME` directory.
 
 ```bash
-git clone https://gitlab.com/Hooregi/Halofiles.git
+git clone https://github.com/Hooregi/Halofiles.git
 ```
 
 Run `stow` to symlink everything, or just select whatever you need.
@@ -35,4 +35,4 @@ stow .config/zsh # just the zsh config
 
 ## Credit
 
-Some of the scripts are from Luke Smith's [dotfiles](https://github.com/LukeSmithxyz/voidrice). Likewise, the `zsh` configuration borrows *some* lines from Chris Chiarulli's [dotfiles](https://github.com/ChristianChiarulli/Machfiles).
+Some of the scripts are from Luke Smith's [dotfiles](https://github.com/LukeSmithxyz/voidrice). Likewise, `zsh-functions` come from Chris Chiarulli's [dotfiles](https://github.com/ChristianChiarulli/Machfiles).
