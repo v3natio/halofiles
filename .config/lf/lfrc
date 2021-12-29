@@ -37,6 +37,15 @@ cmd extract ${{
 	[ $ans = "y" ] && aunpack $fx
 }}
 
+cmd zip ${{
+  clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "zip?[y/N]"
+	read ans
+  [ $ans = "y" ] && zip -r "$f.zip" "$(basename "$f")"
+}}
+
 cmd trash %set -f; mv $fx ~/.local/trash
 
 cmd delete ${{
@@ -70,6 +79,10 @@ cmd copyto ${{
 	notify-send " File(s) copied." "File(s) copies to $dest."
 }}
 
+cmd yank ${{
+echo -n $fx | xclip -selection clipboard
+}}
+
 cmd setbg "$1"
 cmd bulkrename $vidir
 
@@ -81,14 +94,14 @@ map g top
 map T trash
 map D delete
 map E extract
+map Z zip
+map Y yank
 map C copyto
 map M moveto
 map <c-n> push :mkdir<space>
 map <c-r> reload
 map <c-s> set hidden!
 map <enter> shell
-map x $$f
-map X !$f
 map o &mimeopen $f
 map O $mimeopen --ask $f
 
