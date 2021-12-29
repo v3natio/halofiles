@@ -31,9 +31,8 @@ vim.opt.shiftround = true
 vim.opt.shortmess:append "casI"
 vim.opt.whichwrap:append "<>hl"
 
---Remap for dealing with word wrap
-vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+-- Runs a script that cleans out tex build files whenever I close out of a .tex file.
+vim.api.nvim_command("autocmd VimLeave *.tex !vim_texclear %")
 
 -- Highlight on yank
 vim.cmd [[

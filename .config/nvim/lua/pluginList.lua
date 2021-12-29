@@ -183,20 +183,4 @@ return packer.startup(function()
          require "pluginSets.bufferline"
       end,
    }
-
-   -- Miscellaneous
-   use {
-      "andweeb/presence.nvim",
-      config = function()
-         require("presence"):setup {
-            main_text = "neovim",
-            neovim_image_text = "Neovim",
-            enable_line_number = true,
-            editing_text = "Editing a file",
-            file_explorer_text = "Browsing files",
-            reading_text = "Reading a file",
-            workspace_text = "Working on a project",
-         }
-      end,
-   }
 end)

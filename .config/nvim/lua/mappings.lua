@@ -9,6 +9,8 @@ end
 vim.g.mapleader = " " -- leaderkey
 
 map("n", ";", ":", { silent = false }) -- semicolon to enter command mode
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", {expr = true}) -- word wrap
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", {expr = true}) -- word wrap
 map("n", ",p", '"0p') -- paste last yanked
 map("n", ",P", '"0P') -- paste last yanked
 map("n", "<c-k>", "<cmd>wincmd k<cr>") -- ctrl k to navigate splits
@@ -36,8 +38,8 @@ map("n", "<leader>[", "[s") -- previous spelling error
 
 map("n", "<leader>1", ":e ~/Documents/Notes/Dashboard.md<cr>") -- go to my notes
 map("n", "<leader>2", ":e ~/.config/nvim/lua/", {silent = false }) -- go to the neovim settings
-map("n", "<leader>3", ":w! | :AsyncRun compiler '<c-r>%'<CR>") -- compile file
-map("n", "<leader>4", ":!opout <c-r>%<CR><CR>") -- open compiled documents
+map("n", "<leader>3", ":w! | :AsyncRun vim_compiler '<c-r>%'<CR>") -- compile file
+map("n", "<leader>4", ":!vim_opout <c-r>%<CR><CR>") -- open compiled documents
 
 map("n", "<F9>", ':AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)"<cr>') -- compile file
 map("n", "<F5>", ':AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>') -- run file
@@ -46,9 +48,6 @@ map("n", "<F8>", ":AsyncRun -cwd=<root> -raw make run <cr>") -- run project
 map("n", "<F6>", ":AsyncRun -cwd=<root> -raw make test <cr>") -- run project test
 map("n", "<F7>", ":AsyncRun -cwd=<root> cmake . <cr>") -- update makefile
 map("n", "<F10>", ":call asyncrun#quickfix_toggle(6)<cr>") -- toggle quickfix window
-
--- Runs a script that cleans out tex build files whenever I close out of a .tex file.
-vim.api.nvim_command("autocmd VimLeave *.tex !texclear %")
 
 -- Packer lazyloading and autorun
 vim.cmd "silent! command PackerCompile lua require 'pluginList' require('packer').compile()"

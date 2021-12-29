@@ -201,7 +201,7 @@ gls.right[1] = {
 gls.right[2] = {
    Logo = {
       provider = function()
-         return "  "
+         return "  "
       end,
       highlight = { colors.red, colors.section_bg2 },
       separator = "  ",
