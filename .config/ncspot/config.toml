@@ -1,6 +1,8 @@
+command_key = ";"
 use_nerdfont = true
-[saved_state]
-volume = 75
+flip_status_indicators = true
+volnorm = true
+notify = true
 repeat = "playlist"
 
 [theme]
@@ -22,14 +24,13 @@ cmdline_bg = "black"
 search_match = "light red"
 
 [keybindings]
-" " = "playpause"
-"n" = "next"
-"p" = "previous"
-"Esc" = "back"
-"=" = "volup"
+"1" = "focus queue"
+"2" = "focus library"
+"q" = "back"
 "gg" = "move top"
 "G" = "move bottom"
-"q" = "queue"
-";q" = "quit"
-"1" = "focus queue"
-"3" = "focus library"
+"Space" = "playpause"
+"n" = "next"
+"p" = "previous"
+"Q" = "queue"
+"s" = "shuffle"
