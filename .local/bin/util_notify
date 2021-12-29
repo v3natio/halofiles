@@ -1,0 +1,3 @@
+#!/bin/sh
+
+paplay ~/.config/dunst/sounds/F1_Radio_ringtone.ogg
