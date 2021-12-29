@@ -16,6 +16,7 @@ alias \
   rm="rm -vI" \
   bc="bc -ql" \
   df="df -h" \
+  du="du -h" \
   free="free -m" \
   mkd="mkdir -pv" \
 	ffmpeg="ffmpeg -hide_banner"
