@@ -22,7 +22,7 @@ alias \
 
 # Media
 alias \
-  fm6000="fm6000 -f '/home/hooregi/.local/bin/fm6000_arch_logo.txt' -c random" \
+  fm6000="fm6000 -f '/home/hooregi/.local/bin/art_arch' -c random" \
   nw="newsboat" \
   yt="ytfzf -t" \
   ani="ani-cli" \
