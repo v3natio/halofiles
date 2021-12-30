@@ -5,7 +5,7 @@
   \ V /| | | | | | |
    \_/ |_|_| |_| |_|
                     
-Vim is a command-line text editor.
+vim is the command-line text editor.
   Cursor movement:
     hjkl - arrow keys
     w/b - next/previous word

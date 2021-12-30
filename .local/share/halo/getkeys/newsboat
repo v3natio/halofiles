@@ -17,7 +17,6 @@ newsboat is the RSS reader.
 	A - Mark all as read
 	U - Show all URLs
 	,, - Open main link with linkhandler
-	,p - Pick which program to open link with
+  ,a - Open with no video
 	,v - Open video link in mpv
-	,w - Open link in w3m
 	,c - Copy link to clipboard
