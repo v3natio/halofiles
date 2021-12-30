@@ -1,0 +1,3 @@
+#!/bin/sh
+rsync -avz /home/hooregi/Documents/Notes /home/hooregi/Documents/Miscellaneous/Mounted
+rsync -avz /home/hooregi/Documents/Resources /home/hooregi/Documents/Miscellaneous/Mounted
