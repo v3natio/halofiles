@@ -1,3 +1,6 @@
+"query:Unread:unread = \"yes\"" "Queries"
+#"query:Motorsport:tags # \"motorsport\" and unread = \"yes\"" "Queries"
+" "
 # Miscellaneous
 https://archlinux.org/feeds/news/ "tech" "linux" "~Arch Linux (Blog)"
 file:///home/hooregi/.config/newsboat/local_feeds/library.rss "~Library - Playlist (Youtube)"
@@ -5,20 +8,10 @@ file:///home/hooregi/.config/newsboat/local_feeds/watchlater.rss "~Watch Later -
 
 # Entertainment
 
-## Animations
-https://www.youtube.com/feeds/videos.xml?channel_id=UCTH6s1SMIQicvyd8OLBYMtQ "entertainment" "animation" "yt" "~4096 (Youtube)"
-
-## Chess
-https://www.youtube.com/feeds/videos.xml?channel_id=UCL5YbN5WLFD8dLIegT5QAbA "entertainment" "chess" "yt" "~Agadmator (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCQHX6ViZmPsWiYSFAyS0a3Q "entertainment" "chess" "yt" "~GothamChess (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCaf4w3Dcmv3zABsbtpJtv2g "entertainment" "chess" "yt" "~PenguinChess (Youtube)"
-
 ## Cinematography
 https://www.youtube.com/feeds/videos.xml?channel_id=UCSJPFQdZwrOutnmSFYtbstA "entertainment" "cinematography" "yt" "~Critical Drinker (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCF3BPX4_7ZSuVVWlkH18WpA "entertainment" "cinematography" "yt" "~Flick Fanatics (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCWTFGPpNQ0Ms6afXhaWDiRw "entertainment" "cinematography" "yt" "~Now You See It (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUyvQV2JsICeLZP4c_h40kA "entertainment" "cinematography" "yt" "~Thomas Flight (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC4opl7vrgeDgxAkcxIOvi5A "entertainment" "cinematography" "yt" "~Thought Theater (Youtube)"
 
 ## Comedy
 https://www.youtube.com/feeds/videos.xml?channel_id=UCCzK4LJkDl73MQMbr8Lrcww "entertainment" "comedy" "yt" "~Joey B. Toonz (Youtube)"
@@ -39,7 +32,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "en
 
 ## Motorsport
 https://www.youtube.com/feeds/videos.xml?channel_id=UC7u-Dg0jb7g9s7XjmtJrtpg "entertainment" "motorsport" "yt" "~Chain Bear (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCmMbZ6KAczC4qtEAsJhb_7Q "entertainment" "motorsport" "yt" "~Christopher Ball (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCxdcaGkqr7UiNZi46f35yDw "entertainment" "motorsport" "yt" "~CYMotorsport (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCtbLA0YM6EpwUQhFUyPQU9Q "entertainment" "motorsport" "yt" "~Driver61 (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UClqhvGmHcvWL9w3R48t9QXQ "entertainment" "motorsport" "yt" "~EngineeringExplained (Youtube)"
@@ -67,7 +59,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCvgfXK4nTYKudb0rFR6noLA "en
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVYamHliCI9rw1tHR1xbkfw "entertainment" "tech" "yt" "~Dave2D (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCWFKCr40YwOZQx8FHU_ZqqQ "entertainment" "tech" "yt" "~JerryRigEverything (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCBJycsmduvYEL83R_U4JriQ "entertainment" "tech" "yt" "~Marques Brownlee (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "entertainment" "tech" "yt" "~Mental Outlaw (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVraU9wuIQr8H1B0kcUD7Tw "entertainment" "tech" "yt" "~Sumsub (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCs6KfncB4OV6Vug4o_bzijg "entertainment" "tech" "yt" "~Techlore (Youtube)"
 
@@ -93,11 +84,9 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCS97tchJDq17Qms3cux8wcA "ed
 https://www.youtube.com/feeds/videos.xml?channel_id=UC4S7Fm5x-WXRCWP6MjK6k2A "education" "coding" "yt" "~Code Smell (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA "education" "coding" "yt" "~Computerphile (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCX_WM2O-X96URC5n66G-hvw "education" "coding" "yt" "~EF | Linux Made Simple (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC8butISFwT-Wl7EV0hUK0BQ "education" "coding" "yt" "~FreeCodeCamp (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCxQKHvKbmSzGMvUrVtJYnUA "education" "coding" "yt" "~LearnLinuxTV (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC6NPLaq5poP-CoLo3DPCC8w "education" "coding" "yt" "~Jeff Zhao (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCaiL2GDNpLYH6Wokkk1VNcg "education" "coding" "yt" "~mCoding (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCBsTB02yO0QGwtlfiv5m25Q "education" "coding" "yt" "~Sigma Coding (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCd3dNckv1Za2coSaHGHl5aA "education" "coding" "yt" "~TJ DeVries (Youtube)"
 
 ## Finance
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-hKNOj4P-Y8hR9QEHpZPig "education" "finance" "yt" "~Bridgewater (Youtube)"

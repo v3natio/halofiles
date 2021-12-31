@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# 
+
+xclip -selection clipboard -o | qrencode -o - | display

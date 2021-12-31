@@ -4,7 +4,7 @@
 [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 
 # sudo not required for some system commands
-for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
+for command in mount umount pacman updatedb shutdown poweroff reboot; do
   alias $command="sudo $command"
 done; unset command
 
@@ -18,12 +18,10 @@ alias \
   df="df -h" \
   du="du -h" \
   free="free -m" \
-  mkd="mkdir -pv" \
-	ffmpeg="ffmpeg -hide_banner"
+  mkd="mkdir -pv"
 
 # Media
 alias \
-  fm6000="fm6000 -f '/home/hooregi/.local/bin/art_arch' -c random" \
   nw="newsboat" \
   yt="ytfzf -t" \
   ani="ani-cli" \

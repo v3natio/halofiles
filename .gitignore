@@ -9,7 +9,3 @@
 .config/zsh/plugins
 
 .local/bin/fm6000
-.local/bin/getpaper
-.local/bin/dmenu_record
-.local/bin/dmenu_netX
-.local/bin/util_webcam

@@ -1,0 +1,43 @@
+#!/bin/sh
+
+optimizejpg()
+{
+	convert \
+	-sampling-factor 4:2:0 \
+	-strip -quality 85 \
+	-interlace JPEG \
+	-colorspace RGB \
+	"$file" \
+	"$filename"-optimized.jpg
+	exiftool -all= "$filename"-optimized.jpg
+	rm "$filename"-optimized.jpg_original
+}
+
+optimizepng()
+{
+	if [ ! -x $(command -v optipng) ]; then
+		echo "Optimizing PNGs requires the optipng program."
+		exit 1
+	fi
+	optipng -out "$filename"-optimized.png "$file"
+	exiftool -all= "$filename"-optimized.png
+	rm "$filename"-optimized.png_original
+}
+
+for file in "$@"; do
+	if [ -f "$file" ]; then
+		case "$file" in
+			*.jpg) filename=$(basename "$file" .jpg); optimizejpg ;;
+			*.JPG) filename=$(basename "$file" .jpg); optimizejpg ;;
+			*.jpeg) filename=$(basename "$file" .jpeg); optimizejpg ;;
+			*.JPEG) filename=$(basename "$file" .jpeg); optimizejpg ;;
+			*.png) filename=$(basename "$file" .png); optimizepng ;;
+			*.PNG) filename=$(basename "$file" .png); optimizepng ;;
+			*)
+				filename=$(basename "$file" .png)
+				echo "The provided file is not a JPG or PNG, it will be converted to a PNG and optimized with optipng."
+				optimizepng
+				;;
+		esac
+	fi
+done

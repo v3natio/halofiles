@@ -1,7 +1,7 @@
 #!/bin/sh
 
 xrandr --dpi 102.196
-xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!
+xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
 xmodmap ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xmodmap & xmodmappid=$!
 setbg &
 
@@ -12,5 +12,4 @@ for program in $autostart; do
 done >/dev/null 2>&1
 
 # Ensure that xrdb and xmodmap finished running before moving on to start the WM.
-[ -n "$xrdbpid" ] && wait "$xrdbpid"
 [ -n "$xmodmappid" ] && wait "$xmodmappid"

@@ -26,7 +26,7 @@ git clone https://github.com/Hooregi/Halofiles.git
 Run `stow` to symlink everything, or just select whatever you need.
 
 ```bash
-stow ./ # everything (the '/' ignores the README)
+stow . # everything (.stow-ignore is in place to prevent pulling the LICENSE, README, etc)
 ```
 
 ```bash
