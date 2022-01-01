@@ -39,7 +39,7 @@
 	background = "#2E3440"
 	foreground = "#ECEFF4"
   frame_color = "#BF616A"
-  script = "~/.local/bin/util_notify"
+  script = "~/.local/bin/notify"
 	timeout = 5
 
 [Brave]
@@ -47,7 +47,7 @@
   format = "<b><span foreground='#D08770'></span> Brave</b>\n%s\n%b"
   frame_color="#D08770"
   timeout = 240
-  script = "~/.local/bin/util_notify"
+  script = "~/.local/bin/notify"
 
 [Discord]
   appname = Discord
