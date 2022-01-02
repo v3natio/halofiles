@@ -2,16 +2,21 @@
 
 ![halofiles image](./halopicture.png)
 
+- All purpose scripts are in `~/.local/bin`.
+
 - Settings for:
-  - i3/i3status
-  - vim/nvim (text editor)
-  - zsh (shell)
+  - i3/i3blocks (window manager)
   - lf (file manager)
   - mpv (video player)
-  - other stuff like newsboat, sc-im, etc.
+  - ncspot (music player)
+  - nvim (text editor)
+  - zsh (shell)
+  - other stuff like newsboat, sc-im, sxiv, etc.
 
 - I try to minimize what's directly in `~` so:
+  - Conforming to the [XDG specification](https://wiki.archlinux.org/title/XDG_Base_Directory) is key.
   - All configs that can be in `~/.config/` are.
+  - Environmental variables are set in `~/.zprofile` so programs conform to the XDG specification.
 
 ## Install
 

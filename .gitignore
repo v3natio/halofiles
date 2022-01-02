@@ -1,11 +1,13 @@
 .config/alacritty/nord.yml
 
+.config/mpv/watch_later/
+
 .config/ncspot/userstate.cbor
 
 .config/nvim/lua/packer_compiled.lua
 .config/nvim/spell/
 
 .config/zsh/.zcompdump
-.config/zsh/plugins
+.config/zsh/plugins/
 
 .local/bin/fm6000

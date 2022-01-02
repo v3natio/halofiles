@@ -48,8 +48,7 @@ alias \
   z="zathura"
 
 alias \
-  magit="nvim -c MagitOnly" \
   nvst="nvim --startuptime /tmp/startup.log -c exit && tail -100 /tmp/startup.log" \
   halo_list_systemctl="systemctl list-unit-files --state=enabled" \
   zsh-update="find '$ZDOTDIR/plugins' -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q" \
-  scan="hp-scan -i -r 400 -m color --pdf=zathura -o" \
+  scan="hp-scan -i -r 400 -m color --pdf=zathura -o"
