@@ -20,13 +20,6 @@ alias \
   free="free -m" \
   mkd="mkdir -pv"
 
-# Media
-alias \
-  nw="newsboat" \
-  yt="ytfzf -t" \
-  ani="ani-cli" \
-  terraria="'/home/hooregi/Games/Terraria/start.sh' ''"
-
 # Colorize commands when possible.
 alias \
   ls="ls -hN --color=auto --group-directories-first" \
@@ -38,6 +31,9 @@ alias \
 # These common commands are just too long! Abbreviate them.
 alias \
   sqlite="sqlite3 -init "$XDG_CONFIG_HOME"/sqlite3/sqliterc" \
+  trem="transmission-remote" \
+  nw="newsboat" \
+  yt="ytfzf -t" \
   sdn="shutdown -h now" \
   e="$EDITOR" \
   v="$EDITOR" \
@@ -51,4 +47,5 @@ alias \
   nvst="nvim --startuptime /tmp/startup.log -c exit && tail -100 /tmp/startup.log" \
   halo_list_systemctl="systemctl list-unit-files --state=enabled" \
   zsh-update="find '$ZDOTDIR/plugins' -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q" \
-  scan="hp-scan -i -r 400 -m color --pdf=zathura -o"
+  scan="hp-scan -i -r 400 -m color --pdf=zathura -o" \
+  terraria="'/home/hooregi/Media/Games/Terraria/start.sh' ''"

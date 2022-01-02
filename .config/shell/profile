@@ -1,9 +1,11 @@
 #!/bin/zsh
 
 # Adds `~/.local/bin` to $PATH recursively
-typeset -U path
-path+=(~/.local/bin{,/**/*(N/)})
-unsetopt PROMPT_SP
+#typeset -U path
+#path+=(~/.local/bin{,/**/*(N/)})
+#unsetopt PROMPT_SP
+
+export PATH="$PATH:$HOME/.local/bin"
 
 # default programs:
 export EDITOR=/usr/bin/nvim
@@ -24,6 +26,7 @@ export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wget/wgetrc"
 export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
+export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export DOCKER_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/docker"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/npmrc"
