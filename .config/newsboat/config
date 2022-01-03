@@ -1,5 +1,10 @@
-# show-read-feeds no
 auto-reload yes
+cleanup-on-quit yes
+notify-program notify-send
+reload-time 60
+reload-threads 12
+datetime-format "%Y %b %d"
+articlelist-format "%4i %f %D - %?T?|%-17T| ?%t"
 
 external-url-viewer "urlscan -dc -r 'linkhandler {}'"
 

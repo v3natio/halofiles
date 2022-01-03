@@ -2,7 +2,9 @@
 #"query:Motorsport:tags # \"motorsport\" and unread = \"yes\"" "Queries"
 " "
 # Miscellaneous
-https://archlinux.org/feeds/news/ "tech" "linux" "~Arch Linux (Blog)"
+https://archlinux.org/feeds/news/ "tech" "linux" "~Arch Linux (News)"
+https://artixlinux.org/feed.php "tech" "linux" "~Artix Linux (News)"
+https://alpinelinux.org/atom.xml "tech" "linux" "~Alpine Linux (News)"
 file:///home/hooregi/.config/newsboat/local_feeds/library.rss "~Library - Playlist (Youtube)"
 file:///home/hooregi/.config/newsboat/local_feeds/watchlater.rss "~Watch Later - Playlist (Youtube)"
 
@@ -86,6 +88,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA "ed
 https://www.youtube.com/feeds/videos.xml?channel_id=UCX_WM2O-X96URC5n66G-hvw "education" "coding" "yt" "~EF | Linux Made Simple (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC6NPLaq5poP-CoLo3DPCC8w "education" "coding" "yt" "~Jeff Zhao (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCaiL2GDNpLYH6Wokkk1VNcg "education" "coding" "yt" "~mCoding (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCtuXekfqj-paqsxtqVNCC2A "education" "coding" "yt" "~Network Direction (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCBsTB02yO0QGwtlfiv5m25Q "education" "coding" "yt" "~Sigma Coding (Youtube)"
 
 ## Finance
@@ -112,9 +115,11 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCWNx17Jt6eW4N4ayAEiXdEA "ed
 
 ## Miscellaneous
 https://www.youtube.com/feeds/videos.xml?channel_id=UCvQECJukTDE2i6aCoMnS-Vg "education" "miscellaneous" "yt" "~Big Think (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC6n8I1UDTKP1IWjQMg6_TwA "education" "miscellaneous" "yt" "~B1M (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC4QZ_LsYcvcq7qOsOhpAX4A "education" "miscellaneous" "yt" "~Cold Fusion (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-7nELDbJEPF3muAzSeT74g "education" "miscellaneous" "yt" "~Disrupt (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCRcgy6GzDeccI7dkbbBna3Q "education" "miscellaneous" "yt" "~LEMMiNO (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCMOqf8ab-42UUQIdVoKwjlQ "education" "miscellaneous" "yt" "~Practical Engineering (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsooa4yRKGN_zEE8iknghZA "education" "miscellaneous" "yt" "~TED-Ed (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9sXw4ZdPEIp6bYGvLW-_iA "education" "miscellaneous" "yt" "~VPRO Documetaries (Youtube)"
 

@@ -1,11 +1,9 @@
 #!/bin/zsh
 
 # Adds `~/.local/bin` to $PATH recursively
-#typeset -U path
-#path+=(~/.local/bin{,/**/*(N/)})
-#unsetopt PROMPT_SP
-
-export PATH="$PATH:$HOME/.local/bin"
+typeset -U path
+path+=(~/.local/bin{,/**/*(N/)})
+unsetopt PROMPT_SP
 
 # default programs:
 export EDITOR=/usr/bin/nvim

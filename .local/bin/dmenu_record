@@ -11,11 +11,18 @@
 #
 # If there is already a running instance, user will be prompted to end it.
 
+updateicon() { \
+	echo "$1" > /tmp/recordingicon
+  pkill -RTMIN+9 i3blocks
+	}
+
 killrecording() {
 	recpid="$(cat /tmp/recordingpid)"
 	# kill with SIGTERM, allowing finishing touches.
 	kill -15 "$recpid"
 	rm -f /tmp/recordingpid
+	updateicon " "
+  pkill -RTMIN+9 i3blocks
 	# even after SIGTERM, ffmpeg may still run, so SIGKILL it.
 	sleep 3
 	kill -9 "$recpid"
@@ -31,8 +38,9 @@ screengrab() { \
 	-f alsa -i default \
 	-r 30 \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
-	"$HOME/screengrab-$(date '+%y%m%d-%H%M-%S').mp4" &
+	"$HOME/Media/Videos/Recordings/screengrab-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
+  updateicon " <span color='#2e3440'></span> <span color='#bf616a'>雷</span> <span color='#2e3440'>REC</span> "
        	}
 
 screencast() { \
@@ -44,8 +52,9 @@ screencast() { \
 	-f pulse -i "alsa_input.pci-0000_00_1b.0.analog-stereo.monitor" \
 	-r 30 \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
-	"$HOME/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
+	"$HOME/Media/Videos/Recordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
+  updateicon " <span color='#2e3440'></span> <span color='#bf616a'>雷</span> <span color='#2e3440'>REC</span> "
        	}
 
 screenall() { \
@@ -59,8 +68,9 @@ screenall() { \
   -filter_complex amerge -ac 2 \
 	-r 30 \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
-	"$HOME/screenall-$(date '+%y%m%d-%H%M-%S').mp4" &
+	"$HOME/Media/Videos/Recordings/screenall-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
+  updateicon " <span color='#2e3440'></span> <span color='#bf616a'>雷</span> <span color='#2e3440'>REC</span> "
        	}
 
 video() { ffmpeg \
@@ -68,40 +78,43 @@ video() { ffmpeg \
 	-s "$(xdpyinfo | awk '/dimensions/ {print $2;}')" \
 	-i "$DISPLAY" \
  	-c:v libx264 -qp 0 -r 30 \
-	"$HOME/video-$(date '+%y%m%d-%H%M-%S').mkv" &
+	"$HOME/Media/Videos/Recordings/video-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
+  updateicon " <span color='#2e3440'></span> <span color='#bf616a'>雷</span> <span color='#2e3440'>REC</span> "
 	}
 
 webcamhidef() { ffmpeg \
 	-f v4l2 \
 	-i /dev/video0 \
 	-video_size 1920x1080 \
-	"$HOME/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
+	"$HOME/Media/Videos/Recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
+  updateicon " <span color='#2e3440'></span> <span color='#bf616a'></span> <span color='#2e3440'>REC</span> "
 	}
 
 webcam() { ffmpeg \
 	-f v4l2 \
 	-i /dev/video0 \
 	-video_size 640x480 \
-	"$HOME/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
+	"$HOME/Media/Videos/Recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
+  updateicon " <span color='#2e3440'></span> <span color='#bf616a'></span> <span color='#2e3440'>REC</span> "
 	}
-
 
 audio() { \
 	ffmpeg \
 	-f alsa -i default \
 	-c:a flac \
-	"$HOME/audio-$(date '+%y%m%d-%H%M-%S').flac" &
+	"$HOME/Media/Videos/Recordings/audio-$(date '+%y%m%d-%H%M-%S').flac" &
 	echo $! > /tmp/recordingpid
+  updateicon " <span color='#2e3440'></span> <span color='#bf616a'></span> <span color='#2e3440'>REC</span> "
 	}
 
 askrecording() { \
 	choice=$(printf "screengrab\\nscreencast\\nscreenall\\nvideo\\nvideo selected\\naudio\\nwebcam\\nwebcam (hi-def)" | dmenu -fn 'FiraCode Nerd Font-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "Select recording style:")
 	case "$choice" in
-		screencast) screengrab;;
-    screengrab) screencast;;
+		screengrab) screengrab;;
+    screencast) screencast;;
     screenall) screenall;;
 		audio) audio;;
 		video) video;;
@@ -128,13 +141,14 @@ videoselected()
 	-video_size "$W"x"$H" \
 	-i :0.0+"$X,$Y" \
 	-c:v libx264 -qp 0 -r 30 \
-	"$HOME/box-$(date '+%y%m%d-%H%M-%S').mkv" &
+	"$HOME/Media/Videos/Recordings/box-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
+  updateicon " <span color='#2e3440'></span> <span color='#bf616a'>雷</span> <span color='#2e3440'>REC</span> "
 }
 
 case "$1" in
-	screencast) screengrab;;
-  screengrab) screencast;;
+	screengrab) screengrab;;
+  screencast) screencast;;
   screenall) screenall;;
 	audio) audio;;
 	video) video;;

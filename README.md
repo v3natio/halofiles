@@ -14,9 +14,9 @@
   - other stuff like newsboat, sc-im, sxiv, etc.
 
 - I try to minimize what's directly in `~` so:
-  - Conforming to the [XDG specification](https://wiki.archlinux.org/title/XDG_Base_Directory) is key.
+  - Conforming to the [XDG specification](https://wiki.archlinux.org/title/XDG_Base_Directory) is crucial.
   - All configs that can be in `~/.config/` are.
-  - Environmental variables are set in `~/.zprofile` so programs conform to the XDG specification.
+  - Environment variables are set in `~/.zprofile`.
 
 ## Install
 
@@ -25,7 +25,7 @@ You will need GNU `stow`.
 Clone into your `$HOME` directory.
 
 ```bash
-git clone https://github.com/Hooregi/Halofiles.git
+git clone https://gitlab.com/Hooregi/Halofiles.git
 ```
 
 Run `stow` to symlink everything, or just select whatever you need.
