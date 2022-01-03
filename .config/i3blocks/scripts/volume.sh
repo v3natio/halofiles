@@ -7,8 +7,8 @@ col=${3:-#fff}
 # mouse actions for the block
 case $BLOCK_BUTTON in
 	1) pamixer -t ;;
-    2) alacritty --class wm-floating pulsemixer ;;
-    3) alacritty --class wm-floating pulsemixer ;;
+    2) st --class wm-floating pulsemixer ;;
+    3) st --class wm-floating pulsemixer ;;
 	4) pamixer -i 3 ;;
 	5) pamixer -d 3 ;;
 esac

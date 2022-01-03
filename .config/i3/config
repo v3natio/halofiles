@@ -8,7 +8,8 @@ font pango:FiraCode Nerd Font 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec $TERMINAL
+bindsym $mod+Shift+Return exec samedir
 
 # kill focused window
 bindsym $mod+q kill
@@ -23,10 +24,10 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Screenshots
-bindsym $mod+Print --release exec --no-startup-id dmenu_maim
+bindsym Print --release exec --no-startup-id dmenu_maim
 
 # Media control
 bindsym XF86AudioPlay exec --no-startup-id playerctl -p ncspot play-pause
@@ -40,8 +41,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
 
 # Brightness control
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +20 && notify-send "Increased brightness" "$(xbacklight -get)"
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -20 && notify-send "Decreased brightness" "$(xbacklight -get)"
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +20 && notify-send "Increased brightness" " $(xbacklight -get)"
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -20 && notify-send "Decreased brightness" " $(xbacklight -get)"
 
 # Display control:
 bindsym $mod+F8 --release exec --no-startup-id dmenu_display
@@ -155,6 +156,12 @@ for_window [class="zoom"] move to workspace $ws8 layout tabbed
 for_window [class="mpv"] move to workspace $ws9 layout tabbed
 for_window [class="discord"] move to workspace $ws9 layout tabbed
 
+# Bindings to make the webcam float and stick.
+for_window [title="mpvfloat"] floating enable
+for_window [title="mpvfloat"] sticky enable
+for_window [title="mpvfloat"] border pixel 0
+no_focus [title="mpvfloat"]
+
 # Open specific applications in floating mode
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable 
@@ -162,6 +169,12 @@ for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
 for_window [window_type="dialog"] floating enable 
 for_window [window_type="menu"] floating enable
+
+# Dropdown window traits
+for_window [instance="dropdown_*"] floating enable
+for_window [instance="dropdown_*"] move scratchpad
+for_window [instance="dropdown_*"] sticky enable
+for_window [instance="dropdown_*"] move position center
 
 # FUNCTIONS ----------
 
@@ -252,6 +265,7 @@ bindsym $mod+m bar mode toggle
 bar {
         position top
         tray_output none
+        strip_workspace_numbers yes
         colors {
         background #2f343f
         statusline #2f343f

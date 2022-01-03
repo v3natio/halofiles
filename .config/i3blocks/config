@@ -174,11 +174,14 @@ border_right=0
 border_top=2
 border_bottom=2
 
-#[separator]
-#color=#2e3440
-#background=#88c0d0
-#border=#2e3440
-#border_left=0
-#border_right=0
-#border_top=2
-#border_bottom=2
+[record]
+command=cat /tmp/recordingicon
+interval=5
+signal=6
+color=#88c0d0
+background=#88c0d0
+border=#2e3440
+border_left=0
+border_right=0
+border_top=2
+border_bottom=2
