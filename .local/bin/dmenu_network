@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# A script which creates a dmenu frontend for systemd-networkd's iwd interface.
+
 # Check for valid parameters
 if [[ ! -z $1 ]];
 then
@@ -65,7 +67,7 @@ then
 			notify-send "Network" "轢 No known networks"
 			exit 1
 		fi
-		WIFI_NETWORK=$( echo "$WIFI_KNOWN_LIST" | dmenu -fn 'FiraCode Nerd Font-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "Select Wifi 直:" -l 30 )
+		WIFI_NETWORK=$( echo "$WIFI_KNOWN_LIST" | dmenu -p "Select Wifi 直:" -l 30 )
 		# Exit if user presses 'ESC' in dmenu
 		if [[ -z $WIFI_NETWORK ]];
 		then
@@ -107,7 +109,7 @@ elif echo $WIFI_DEVICE_LIST | grep -q " "
 then
 	# Pipe list of devices to dmenu if there is more than one
 	WIFI_DEVICE=$(
-		echo "$WIFI_DEVICE_LIST" | dmenu -fn 'FiraCode Nerd Font-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "Select Wifi 直:" -l 30
+		echo "$WIFI_DEVICE_LIST" | dmenu -p "Select Wifi 直:" -l 30
 	)
 	# Exit if user presses 'ESC' in dmenu
 	if [[ -z $WIFI_DEVICE ]];
@@ -174,7 +176,7 @@ then
 	# Trim selected network for SSID
 	WIFI_NETWORK=$(
 		echo "$WIFI_NETWORK_LIST" |
-		dmenu -fn 'FiraCode Nerd Font-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "$WIFI_DEVICE: Select wifi network" -l 30 | 
+		dmenu -p "$WIFI_DEVICE: Select wifi network" -l 30 | 
 		sed 's/ *\(psk\|open\|8021x\) \+\*\+//g' | 
 		sed 's/^ *>\? *//g' | 
 		sed 's/ *$//g'
@@ -188,7 +190,7 @@ fi
 
 # Connect to wifi
 # This command will prompt for password first if required
-WIFI_PASSWORD=$(echo "" | dmenu -fn 'FiraCode Nerd Font-13' -nb '#2e3440' -nf '#2e3440' -sb '#88c0d0' -sf '#eceff4' -p "Enter Password  :")
+WIFI_PASSWORD=$(echo "" | dmenu -P -p "Enter Password  :")
 iwctl --passphrase="$WIFI_PASSWORD" station "$WIFI_DEVICE" connect "$WIFI_NETWORK" &&
 notify-send "Network" "直 Connected to $WIFI_NETWORK"  ||
 notify-send "Network" "睊 Could not connect to $WIFI_NETWORK"

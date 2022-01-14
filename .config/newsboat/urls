@@ -5,6 +5,7 @@
 https://archlinux.org/feeds/news/ "tech" "linux" "~Arch Linux (News)"
 https://artixlinux.org/feed.php "tech" "linux" "~Artix Linux (News)"
 https://alpinelinux.org/atom.xml "tech" "linux" "~Alpine Linux (News)"
+https://suckless.org/atom.xml "tech" "linux" "~Suckless Tools (News)"
 file:///home/hooregi/.config/newsboat/local_feeds/library.rss "~Library - Playlist (Youtube)"
 file:///home/hooregi/.config/newsboat/local_feeds/watchlater.rss "~Watch Later - Playlist (Youtube)"
 
@@ -16,7 +17,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCWTFGPpNQ0Ms6afXhaWDiRw "en
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUyvQV2JsICeLZP4c_h40kA "entertainment" "cinematography" "yt" "~Thomas Flight (Youtube)"
 
 ## Comedy
-https://www.youtube.com/feeds/videos.xml?channel_id=UCCzK4LJkDl73MQMbr8Lrcww "entertainment" "comedy" "yt" "~Joey B. Toonz (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqM1Yw5XfJ5rVwCntLy0KxA "entertainment" "comedy" "yt" "~Low Budget Stories (Youtube)"
 
 ## Finance

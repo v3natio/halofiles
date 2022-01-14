@@ -6,11 +6,11 @@ path+=(~/.local/bin{,/**/*(N/)})
 unsetopt PROMPT_SP
 
 # default programs:
-export EDITOR=/usr/bin/nvim
-export BROWSER=/usr/bin/brave
-export TERMINAL=/usr/local/bin/st
-export READER=/usr/bin/zathura
-export FILE=/usr/bin/lf
+export TERMINAL="st"
+export EDITOR="nvim"
+export BROWSER="brave"
+export READER="zathura"
+export FILE="lf"
 
 # ~/ clean-up:
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -155,12 +155,12 @@ ex=:\
 *.vim=:\
 "
 
-if pacman -Qs i3-gaps >/dev/null 2>&1; then
+if pacman -Qs libxft >/dev/null 2>&1; then
 	# Start graphical server on user's current tty if not already running.
 	[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
 else
-  echo "\033[31mIMPORTANT\033[0m: Note that \033[32m\`i3-gaps\`\033[0m must be installed.
+  echo "\033[31mIMPORTANT\033[0m: Note that \033[32m\`libxft\`\033[0m must be installed.
 Please run:
-	\033[32mpacman -S i3-gaps\033[0m
+	\033[32mpacman -S libxft\033[0m
 Afterwards, you may start the graphical server by running \`startx\`."
 fi

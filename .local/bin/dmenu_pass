@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# This script is the SUDO_ASKPASS variable, meaning that it will be used as a
-# password prompt if needed.
+# This script is the SUDO_ASKPASS variable, meaning that it will be used as a password prompt if needed.
 
-dmenu -p "$1" -fn 'FiraCode Nerd Font-13' -nb '#2e3440' -nf '#2e3440' -sb '#88c0d0' -sf '#eceff4' <&-
+dmenu -P -p "$1" <&- && echo

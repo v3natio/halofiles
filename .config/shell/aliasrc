@@ -32,12 +32,12 @@ alias \
 alias \
   sqlite="sqlite3 -init "$XDG_CONFIG_HOME"/sqlite3/sqliterc" \
   trem="transmission-remote" \
-  nw="newsboat" \
-  yt="ytfzf -t" \
+  yt="ytfzf" \
   sdn="shutdown -h now" \
   e="$EDITOR" \
   v="$EDITOR" \
   g="git" \
+  mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist" \
   p="pacman" \
   y="paru" \
   vote="ssh aur@aur.archlinux.org vote" \

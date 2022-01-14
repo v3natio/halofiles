@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# A script that generates a dmenu menu that uses bluetoothctl to connect to bluetooth devices and display status info.
+# A script that generates a menu that uses bluetoothctl to connect to bluetooth devices and display status info.
 
 # Constants
 divider="---------"
@@ -289,7 +289,7 @@ original_args=("$@")
 # dmenu command to pipe into. Extra arguments to dmenu-bluetooth are passed through to dmenu. This
 # allows the user to set fonts, sizes, colours, etc.
 run_dmenu() {
-    dmenu "${original_args[@]}" -fn 'FiraCode Nerd Font-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "$1"
+    dmenu "${original_args[@]}" -p "$1"
 }
 
 case "$1" in

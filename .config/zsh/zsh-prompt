@@ -27,8 +27,8 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 }
 
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats " %{$fg[cyan]%}(%{$fg[red]%}%m%u%c%{$fg[yellow]%}%{$fg[magenta]%} %b%{$fg[cyan]%})"
+zstyle ':vcs_info:git:*' formats " %{$fg[yellow]%}(%{$fg[red]%}%m%u%c%{$fg[green]%}%{$fg[white]%} %b%{$fg[yellow]%})"
 
 # format our main prompt for hostname current folder, and permissions.
-PROMPT="%B%{$fg[cyan]%}[%{$fg[white]%}%n%{$fg[yellow]%}@%{$fg[white]%}%m%{$fg[cyan]%}] %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} )%{$fg[magenta]%}%c%{$reset_color%}"
-PROMPT+="\$vcs_info_msg_0_ "
+PS1="%B%{$fg[yellow]%}[%{$fg[white]%}%n%{$fg[green]%}@%{$fg[white]%}%m%{$fg[yellow]%}] %(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} )%{$fg[magenta]%}%c%{$reset_color%}"
+PS1+="\$vcs_info_msg_0_ "

@@ -1,0 +1,12 @@
+#!/bin/sh 
+
+# A dmenu wrapper script for system functions.
+
+case "$(printf "lock\n hibernate\n sleep\n reboot\n shutdown" | dmenu -i -p 'Halo:')" in
+	'lock') slock ;;
+	'hibernate') slock systemctl hibernate ;;
+	'sleep') slock systemctl suspend ;;
+	'reboot') systemctl reboot ;;
+	'shutdown') systemctl poweroff ;;
+	*) exit 1 ;;
+esac

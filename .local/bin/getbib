@@ -1,4 +1,7 @@
 #!/bin/sh
+
+# A script that generates a bib entry from a DOI
+
 [ -z "$1" ] && echo "Give either a pdf file or a DOI as an argument." && exit
 
 if [ -f "$1" ]; then

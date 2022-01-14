@@ -13,7 +13,7 @@
 
 updateicon() { \
 	echo "$1" > /tmp/recordingicon
-  pkill -RTMIN+9 i3blocks
+  pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
 	}
 
 killrecording() {
@@ -21,8 +21,8 @@ killrecording() {
 	# kill with SIGTERM, allowing finishing touches.
 	kill -15 "$recpid"
 	rm -f /tmp/recordingpid
-	updateicon " "
-  pkill -RTMIN+9 i3blocks
+	updateicon ""
+  pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
 	# even after SIGTERM, ffmpeg may still run, so SIGKILL it.
 	sleep 3
 	kill -9 "$recpid"
@@ -40,7 +40,7 @@ screengrab() { \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
 	"$HOME/Media/Videos/Recordings/screengrab-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
-  updateicon " <span color='#2e3440'></span> <span color='#bf616a'>雷</span> <span color='#2e3440'>REC</span> "
+  updateicon "[ 雷 REC ]"
        	}
 
 screencast() { \
@@ -54,7 +54,7 @@ screencast() { \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
 	"$HOME/Media/Videos/Recordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
-  updateicon " <span color='#2e3440'></span> <span color='#bf616a'>雷</span> <span color='#2e3440'>REC</span> "
+  updateicon "[ 雷 REC ]"
        	}
 
 screenall() { \
@@ -70,7 +70,7 @@ screenall() { \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
 	"$HOME/Media/Videos/Recordings/screenall-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
-  updateicon " <span color='#2e3440'></span> <span color='#bf616a'>雷</span> <span color='#2e3440'>REC</span> "
+  updateicon "[ 雷 REC ]"
        	}
 
 video() { ffmpeg \
@@ -80,7 +80,7 @@ video() { ffmpeg \
  	-c:v libx264 -qp 0 -r 30 \
 	"$HOME/Media/Videos/Recordings/video-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
-  updateicon " <span color='#2e3440'></span> <span color='#bf616a'>雷</span> <span color='#2e3440'>REC</span> "
+  updateicon "[ 雷 REC ]"
 	}
 
 webcamhidef() { ffmpeg \
@@ -89,7 +89,7 @@ webcamhidef() { ffmpeg \
 	-video_size 1920x1080 \
 	"$HOME/Media/Videos/Recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
-  updateicon " <span color='#2e3440'></span> <span color='#bf616a'></span> <span color='#2e3440'>REC</span> "
+  updateicon "[  REC ]"
 	}
 
 webcam() { ffmpeg \
@@ -98,7 +98,7 @@ webcam() { ffmpeg \
 	-video_size 640x480 \
 	"$HOME/Media/Videos/Recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
-  updateicon " <span color='#2e3440'></span> <span color='#bf616a'></span> <span color='#2e3440'>REC</span> "
+  updateicon "[  REC ]"
 	}
 
 audio() { \
@@ -107,11 +107,11 @@ audio() { \
 	-c:a flac \
 	"$HOME/Media/Videos/Recordings/audio-$(date '+%y%m%d-%H%M-%S').flac" &
 	echo $! > /tmp/recordingpid
-  updateicon " <span color='#2e3440'></span> <span color='#bf616a'></span> <span color='#2e3440'>REC</span> "
+  updateicon "[  REC ]"
 	}
 
 askrecording() { \
-	choice=$(printf "screengrab\\nscreencast\\nscreenall\\nvideo\\nvideo selected\\naudio\\nwebcam\\nwebcam (hi-def)" | dmenu -fn 'FiraCode Nerd Font-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "Select recording style:")
+	choice=$(printf "screengrab\\nscreencast\\nscreenall\\nvideo\\nvideo selected\\naudio\\nwebcam\\nwebcam (hi-def)" | dmenu -p "Select recording style:")
 	case "$choice" in
 		screengrab) screengrab;;
     screencast) screencast;;
@@ -125,7 +125,7 @@ askrecording() { \
 	}
 
 asktoend() { \
-	response=$(printf "No\\nYes" | dmenu -fn 'FiraCode Nerd Font-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -p "Recording still active. End recording?") &&
+	response=$(printf "No\\nYes" | dmenu -p "Recording still active. End recording?") &&
 	[ "$response" = "Yes" ] &&  killrecording
 	}
 
@@ -143,7 +143,7 @@ videoselected()
 	-c:v libx264 -qp 0 -r 30 \
 	"$HOME/Media/Videos/Recordings/box-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
-  updateicon " <span color='#2e3440'></span> <span color='#bf616a'>雷</span> <span color='#2e3440'>REC</span> "
+  updateicon "[ 雷 REC ]"
 }
 
 case "$1" in

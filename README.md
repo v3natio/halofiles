@@ -14,7 +14,7 @@
   - other stuff like newsboat, sc-im, sxiv, etc.
 
 - I try to minimize what's directly in `~` so:
-  - Conforming to the [XDG specification](https://wiki.archlinux.org/title/XDG_Base_Directory) is crucial.
+  - Conforming to the [XDG](https://wiki.archlinux.org/title/XDG_Base_Directory) specification is crucial.
   - All configs that can be in `~/.config/` are.
   - Environment variables are set in `~/.zprofile`.
 

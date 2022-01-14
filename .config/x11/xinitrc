@@ -6,4 +6,4 @@ else
 	. "$HOME/.xprofile"
 fi
 
-exec i3
+exec dwm

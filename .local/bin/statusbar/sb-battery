@@ -1,0 +1,9 @@
+#! /bin/sh
+
+POW=$(cat /sys/class/power_supply/BAT0/capacity)
+
+if [[ "$(cut -c 1 < /sys/class/power_supply/BAT0/status)" = D ]]; then
+    echo "[ ${POW}% ]"
+else
+    echo "[ +${POW}% ]"
+fi

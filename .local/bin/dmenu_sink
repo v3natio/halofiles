@@ -1,4 +1,0 @@
-#!/bin/sh
-set -eu
-
-pactl list short sinks | awk '{print $2}' | dmenu -fn 'FiraCode Nerd Font-13' -nb '#2e3440' -nf '#eceff4' -sb '#88c0d0' -sf '#eceff4' -l 10 -i "$@" | xargs pactl set-default-sink

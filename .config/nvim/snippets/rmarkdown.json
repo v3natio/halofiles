@@ -1,0 +1,63 @@
+{
+  "YAML Header": {
+    "prefix": "---",
+    "body": [
+      "---",
+      "title: ${1:title}",
+      "author: ${2:author}",
+      "date: `r Sys.Date()`",
+      "output:",
+      " prettydoc::html_pretty:",
+      "   theme: architect",
+      "   highlight: github",
+      "   math: katex",
+      "---"
+    ]
+  },
+  "Python Environment": {
+    "prefix": "``env",
+    "body": [
+      "```{r setup, include=FALSE}",
+      "knitr::opts_chunk$set(engine.path = list(",
+      " python = '/home/hooregi/.cache/pypoetry/virtualenvs/notebooks--h9Clqrk-py3.10/bin/python'",
+      "))",
+      "```"
+    ]
+  },
+  "Insert Block Chunck": {
+    "prefix": "```",
+    "body": [
+      "```{r}",
+      "${1}",
+      "```"
+    ]
+  },
+  "Insert Inline Chunck": {
+    "prefix": "`",
+    "body": "`r ${0}`"
+  },
+  "Insert Python Language": {
+    "prefix": "``py",
+    "body": [
+      "```{python}",
+      "${0}",
+      "```"
+    ]
+  },
+  "Insert Code Language": {
+    "prefix": "```",
+    "body": [
+      "```{${1:lang}}",
+      "${0}",
+      "```"
+    ]
+  },
+  "Insert Block Equation": {
+    "prefix": "$$",
+    "body": [
+      "\\$$",
+      "${0}",
+      "\\$$"
+    ]
+  }
+}

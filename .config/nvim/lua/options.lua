@@ -1,8 +1,8 @@
+vim.opt.shortmess:append "casI"
+vim.opt.whichwrap:append "<>hl"
+require "pluginSets.statusline"
 vim.opt.fillchars = { eob = " " }
 vim.opt.termguicolors = true
-vim.g.nord_contrast = true
-vim.g.nord_disable_background = true
-vim.g.nord_enable_sidebar_background = true
 vim.opt.undofile = true
 vim.opt.swapfile = false
 vim.opt.ignorecase = true
@@ -19,7 +19,6 @@ vim.opt.maxmempattern = 2500
 vim.opt.scrolloff = 8
 vim.opt.breakindent = true
 vim.opt.lazyredraw = true
-vim.opt.linebreak = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.numberwidth = 2
@@ -28,16 +27,31 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
-vim.opt.shortmess:append "casI"
-vim.opt.whichwrap:append "<>hl"
+vim.opt.autoindent = true
+vim.opt.linebreak = true
 
--- Runs a script that cleans out tex build files whenever I close out of a .tex file.
-vim.api.nvim_command("autocmd VimLeave *.tex !vim_texclear %")
+-- clean .tex files when closing
+vim.api.nvim_command "autocmd VimLeave *.tex !vim_texclear %"
 
--- Highlight on yank
+-- enable zen-mode for neomutt by default
+vim.api.nvim_command "autocmd BufRead,BufNewFile /tmp/neomutt* :TZAtaraxis"
+
+-- highlight on yank
 vim.cmd [[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]]
+
+-- defer LSP and other packages
+local M = {}
+M.packer_lazy_load = function(plugin, timer)
+  if plugin then
+    timer = timer or 0
+    vim.defer_fn(function()
+      require("packer").loader(plugin)
+    end, timer)
+  end
+end
+return M

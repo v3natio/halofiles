@@ -77,4 +77,4 @@ bindkey '^e' edit-command-line
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "z-shell/fast-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
-zsh_add_plugin "darvid/zsh-poetry"
+#zsh_add_plugin "darvid/zsh-poetry"

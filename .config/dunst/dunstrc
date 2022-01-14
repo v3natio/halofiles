@@ -7,55 +7,56 @@
 	horizontal_padding = 2
   markup = full
   format = "%a\n%s\n%b"
-  font = FiraCode Nerd Font 10
+  font = FiraCode Nerd Font 11
   alignment = left
 	line_height = 4
 	separator_height = 1
   separator_color = frame
-	frame_color = "#3B4252"
+  frame_color = "#928374"
 	corner_radius = 10
 	icon_position = left
 	max_icon_size = 64
-	icon_path = /usr/share/icons/Papirus-Dark/16x16/status/:/usr/share/icons/Papirus-Dark/16x16/devices/:/usr/share/icons/Papirus-Dark/16x16/apps/
+	icon_path = /usr/share/icons/Gruvbox-Material-Dark/16x16/status/:/usr/share/icons/Gruvbox-Material-Dark/16x16/devices/:/usr/share/icons/Gruvbox-Material-Dark/16x16/apps/
+  icon_theme = "Gruvbox-Material-Dark"
   idle_threshold = 120
 	history_length = 20
   show_age_threshold = 60
-	browser = /usr/bin/brave --new-tab
+	browser = $BROWSER --new-tab
   mouse_left_click = do_action
   mouse_middle_click = close_all
   mouse_right_click = close_current
 
 [urgency_low]
-  background = "#2E3440"
-	foreground = "#ECEFF4"
-	timeout = 2
+  background = "#32302f"
+  foreground = "#ebdbb2"
+  timeout = 2
 
 [urgency_normal]
-	background = "#2E3440"
-	foreground = "#ECEFF4"
-	timeout = 3
+  background = "#32302f"
+  foreground = "#ebdbb2"
+  timeout = 3
 
 [urgency_critical]
-	background = "#2E3440"
-	foreground = "#ECEFF4"
-  frame_color = "#BF616A"
+  background = "#32302f"
+  foreground = "#ebdbb2"
+  frame_color = "#fb4934"
   script = "~/.local/bin/notify"
-	timeout = 5
+  timeout = 5
 
 [Brave]
   appname = Brave
-  format = "<b><span foreground='#D08770'></span> Brave</b>\n%s\n%b"
-  frame_color="#D08770"
+  format = "<b><span foreground='#fe8019'></span> Brave</b>\n%s\n%b"
+  frame_color="#fe8019"
   timeout = 240
   script = "~/.local/bin/notify"
 
 [Discord]
   appname = Discord
-  format = "<b><span foreground='#B48EAD'>ﭮ</span> Discord</b>\n%s\n%b"
-  frame_color="#B48EAD"
+  format = "<b><span foreground='#d3869b'>ﭮ</span> Discord</b>\n%s\n%b"
+  frame_color="#d3869b"
 
 [Spotify]
   appname = *ncspot*
-  format = "<b><span foreground='#A3BE8C'></span> Now Playing:</b>\n%s\n%b"
-  frame_color="#A3BE8C"
+  format = "<b><span foreground='#b8bb26'></span> Now Playing:</b>\n%s\n%b"
+  frame_color="#b8bb26"
   timeout = 10
