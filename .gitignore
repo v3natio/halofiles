@@ -11,7 +11,3 @@
 .config/zsh/plugins/
 
 .local/bin/fm6000
-
-.config/neomutt
-.local/bin/dmenu_movie
-.config/nvim/lua/ext
