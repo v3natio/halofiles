@@ -1,3 +1,0 @@
-[submodule "dwm"]
-  path = .local/src/dwm
-  url = https://gitlab.com/Hooregi/dwm
