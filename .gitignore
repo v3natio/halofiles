@@ -11,3 +11,8 @@
 .config/zsh/plugins/
 
 .local/bin/fm6000
+
+.config/neomutt/
+.config/nvim/lua/ext/
+.local/bin/dmenu_movie
+.local/bin/statusbar/sb-mailbox
