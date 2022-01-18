@@ -1,9 +1,15 @@
 #!/bin/sh
 
+[ $(pamixer --get-mute) = true ] && echo " ﱝ --%" && exit
+
 VOL="$(pamixer --get-volume)"
 
-if [ $(pamixer --get-mute) = true ]; then
-  echo "[ --% ]"
+if [ "$VOL" -gt "50" ]; then
+	echo " 墳 ${VOL}%"
+elif [ "$VOL" -gt "20" ]; then
+  echo " 奔 ${VOL}%"
+elif [ "$VOL" -gt "0" ]; then
+	echo " 奄 ${VOL}%"
 else
-  echo "[ ${VOL}% ]"
+        echo " 婢 --%" && exit
 fi

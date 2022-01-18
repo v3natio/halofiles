@@ -5,7 +5,6 @@
 - All purpose scripts are in `~/.local/bin`.
 
 - Settings for:
-  - i3/i3blocks (window manager)
   - lf (file manager)
   - mpv (video player)
   - ncspot (music player)

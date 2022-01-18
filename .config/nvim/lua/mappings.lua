@@ -42,8 +42,8 @@ map("n", "<leader>[", "[s") -- previous spelling error
 
 map("n", "<leader>1", "<cmd>e ~/Documents/Notes/Dashboard.md<cr>") -- go to my notes
 map("n", "<leader>2", ":e ~/.config/nvim/lua/", { silent = false }) -- go to the neovim settings
-map("n", "<leader>3", "<cmd>w! | :AsyncRun vim_compiler '<c-r>%'<CR>") -- compile file
-map("n", "<leader>4", "<cmd>!vim_opout <c-r>%<CR><CR>") -- open compiled documents
+map("n", "<leader>3", ":w! | :AsyncRun vim_compiler '<c-r>%'<CR>") -- compile file
+map("n", "<leader>4", ":!vim_opout <c-r>%<CR><CR>") -- open compiled documents
 
 map("n", "<F9>", '<cmd>AsyncRun g++ -Wall -O2 "$(VIM_FILEPATH)" -o "$(VIM_FILEDIR)/$(VIM_FILENOEXT)"<cr>') -- compile file
 map("n", "<F5>", '<cmd>AsyncRun -raw -cwd=$(VIM_FILEDIR) "$(VIM_FILEDIR)/$(VIM_FILENOEXT)" <cr>') -- run file

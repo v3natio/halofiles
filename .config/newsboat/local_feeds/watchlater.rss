@@ -88,6 +88,11 @@
     <description>You will build a full-fledged API in Python using FastAPI. You will learn the fundamentals of API design including routes, serialization/deserialization, schema validation, and models. You will also learn about SQL, testing with pytest, and how to build out a CI/CD pipeline using GitHub actions.</description>
   </item>
   <item>
+    <title>10 Common Coding Interview Problems - Solved!</title>
+    <link>https://youtube.com/watch?v=Peq4GCPNC5c</link>
+    <description>Preparing for coding interviews? Competitive programming? Learn to solve 10 common coding problems and improve your problem-solving skills.</description>
+  </item>
+  <item>
     <title>Algorithmic Trading Using Python - Full Course</title>
     <link>https://www.youtube.com/watch?v=xfzGZB4HhEE</link>
     <description>Learn how to perform algorithmic trading using Python in this complete course. Algorithmic trading means using computers to make investment decisions. Computer algorithms can make trades at a speed and frequency that is not possible by a human.</description>
@@ -258,6 +263,16 @@
     <title>Dr. Michael J. Burry at UCLA Economics Commencement 2012</title>
     <link>https://www.youtube.com/watch?v=1CLhqjOzoyE</link>
     <description>2012 UCLA Department of Economics Commencement featuring Dr. Michael J. Burry as keynote speaker.</description>
+  </item>
+  <item>
+    <title>Going Against The Consensus Profiting From The Global Financial Crisis: Michael J. Burry</title>
+    <link>https://youtube.com/watch?v=DgXns7rT4vI</link>
+    <description>Michael J Burry, the founder of Scion Asset Management shares his insight on the Global Financial Crisis during a lecture at the Vanderbilt University (2011).</description>
+  </item>
+  <item>
+    <title>Steve Eisman: “They mistook leverage for genius”</title>
+    <link>https://youtube.com/watch?v=NJodqhzqPKQ</link>
+    <description>Steve Eisman was one of the few who predicted the 2008 financial crisis, and he made his name by foreseeing the collapse of subprime mortgage market.</description>
   </item>
 </channel>
 

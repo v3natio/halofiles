@@ -10,9 +10,11 @@
 .config/zsh/.zcompdump
 .config/zsh/plugins/
 
-.local/bin/fm6000
-
 .config/neomutt/
 .config/nvim/lua/ext/
+.gitmodules
 .local/bin/dmenu_movie
 .local/bin/statusbar/sb-mailbox
+.config/luakit/rc.lua
+.config/luakit/theme.lua
+.config/luakit/userconf.lua

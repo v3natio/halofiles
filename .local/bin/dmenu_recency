@@ -12,7 +12,7 @@ recent_cache="$cache_dir/recent"
 rest_cache="$cache_dir/all"
 known_types=" background terminal terminal_hold "
 
-config_dir="${XDG_CACHE_HOME:-$HOME/.cache}/dmenu-recent"
+config_dir="${XDG_DATA_HOME:-$HOME/.local/share}/dmenu-recent"
 mkdir -p "$cache_dir"
 mkdir -p "$config_dir"
 touch "$recent_cache"
@@ -68,6 +68,6 @@ else
 fi
 
 [[ "$type" = "background" ]] && exec $cmd
-[[ "$type" = "terminal" ]] && exec $TERMINAL_CMD "$cmd"
+[[ "$type" = "terminal" ]] && exec $TERMINAL -e "$cmd"
 [[ "$type" = "terminal_hold" ]] &&
-    exec $TERMINAL_CMD sh -c "$cmd ; echo Press Enter to kill me... ; read line"
+    exec $TERMINAL -e sh -c "$cmd ; echo Press Enter to kill me... ; read line"

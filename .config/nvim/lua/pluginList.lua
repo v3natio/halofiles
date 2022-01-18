@@ -151,6 +151,9 @@ return packer.startup(function()
     --    vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
     --  end, 0)
     --end,
+    --config = function()
+    --  require "pluginSets.lspconfig"
+    --end,
   }
 
   use {

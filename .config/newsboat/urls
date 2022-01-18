@@ -1,15 +1,30 @@
 "query:Unread:unread = \"yes\"" "Queries"
-#"query:Motorsport:tags # \"motorsport\" and unread = \"yes\"" "Queries"
+"query:Coding:tags # \"coding\" and unread = \"yes\"" "Queries"
+"query:Motorsport:tags # \"motorsport\" and unread = \"yes\"" "Queries"
 " "
+# News
+https://www.ft.com/ft-view?format=rss "news" "~FT | The FT View (News)"
+https://feeds.npr.org/1001/rss.xml "~NP | Headlines (News)"
+https://www.prensa.com/arcio/rss/category/impresa/panorama/?query=display_date:%5Bnow-2d+TO+now%5D&sort=display_date:desc "news" "~LP | Panama (News)"
+https://www.economist.com/the-world-this-week/rss.xml "news" "~TE | The World This Week (News)"
+https://www.economist.com/economic-and-financial-indicators/rss.xml "news" "~TE | Economic Indicators (News)"
+" "
+
 # Miscellaneous
 https://archlinux.org/feeds/news/ "tech" "linux" "~Arch Linux (News)"
-https://artixlinux.org/feed.php "tech" "linux" "~Artix Linux (News)"
 https://alpinelinux.org/atom.xml "tech" "linux" "~Alpine Linux (News)"
 https://suckless.org/atom.xml "tech" "linux" "~Suckless Tools (News)"
 file:///home/hooregi/.config/newsboat/local_feeds/library.rss "~Library - Playlist (Youtube)"
 file:///home/hooregi/.config/newsboat/local_feeds/watchlater.rss "~Watch Later - Playlist (Youtube)"
 
 # Entertainment
+" "
+
+## Animations
+https://www.youtube.com/feeds/videos.xml?channel_id=UCTH6s1SMIQicvyd8OLBYMtQ "entertainment" "animation" "yt" "~4096 (Youtube)"
+
+## Chess
+https://www.youtube.com/feeds/videos.xml?channel_id=UCL5YbN5WLFD8dLIegT5QAbA "entertainment" "chess" "yt" "~Agadmator (Youtube)"
 
 ## Cinematography
 https://www.youtube.com/feeds/videos.xml?channel_id=UCSJPFQdZwrOutnmSFYtbstA "entertainment" "cinematography" "yt" "~Critical Drinker (Youtube)"
@@ -26,7 +41,9 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCGBoWe1mzCvbbqDNncmxm8A "en
 ## Lifestyle
 https://www.youtube.com/feeds/videos.xml?channel_id=UCtinbF-Q-fVthA0qrFQTgXQ "entertainment" "lifestyle" "yt" "~Casey Neistat (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCU_W0oE_ock8bWKjALiGs8Q "entertainment" "lifestyle" "yt" "~Charisma on Command (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCyL4hbmvGgSuk17wbB2Z4Mg "entertainment" "lifestyle" "yt" "~Passport Style (Youtube)"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLNE967m3_UeS3_p8RV77IgBqVhjOjO49Y "entertainment" "lifestyle" "yt" "~Sneaker Shopping - Playlist (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCnnSPut3diQI4BtrraKpsnA "entertainment" "lifestyle" "yt" "~The Casual (Youtube)"
 
 ## Miscellaneous
 https://www.youtube.com/feeds/videos.xml?channel_id=UCGBgbYd22Uu64_JO21L9bug "entertainment" "miscellaneous" "yt" "~CubeHub Compilations (Youtube)"
@@ -72,27 +89,26 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCoSwRgn1R8fPBNI-c4yjWUw "en
 
 ## Videogames
 https://www.youtube.com/feeds/videos.xml?channel_id=UC369-iFdOQjLKXE4v7sP6wQ "entertainment" "videogames" "yt" "~Khaios (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC-_1FH52GIOFGu4a8PzwRzQ "entertainment" "videogames" "yt" "~Peak (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC4wMbVg3Z_utEcNulRtwkyQ "entertainment" "videogames" "yt" "~Zombs (Youtube)"
 
 
 
 # Education
+" "
 
 ## Coding
 https://www.youtube.com/feeds/videos.xml?channel_id=UCngn7SVujlvskHRvRKc1cTw "education" "coding" "yt" "~Bugswriter (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCs6sf4iRhhE875T1QjG3wPQ "education" "coding" "yt" "~C++Nuts (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCS97tchJDq17Qms3cux8wcA "education" "coding" "yt" "~Chris@Machine (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC4S7Fm5x-WXRCWP6MjK6k2A "education" "coding" "yt" "~Code Smell (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCe2C8jlvtp_UGsQZExBSdZg "education" "coding" "yt" "~Codevion (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA "education" "coding" "yt" "~Computerphile (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCX_WM2O-X96URC5n66G-hvw "education" "coding" "yt" "~EF | Linux Made Simple (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC6NPLaq5poP-CoLo3DPCC8w "education" "coding" "yt" "~Jeff Zhao (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCaiL2GDNpLYH6Wokkk1VNcg "education" "coding" "yt" "~mCoding (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCtuXekfqj-paqsxtqVNCC2A "education" "coding" "yt" "~Network Direction (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCBsTB02yO0QGwtlfiv5m25Q "education" "coding" "yt" "~Sigma Coding (Youtube)"
 
 ## Finance
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-hKNOj4P-Y8hR9QEHpZPig "education" "finance" "yt" "~Bridgewater (Youtube)"
+https://www.ft.com/robin-wigglesworth?format=rss "education" "finance" "news" "~FT | Robin Wigglesworth (News)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCpvyOqtEc86X8w8_Se0t4-w "education" "finance" "yt" "~George Gammon (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCASM0cgfkJxQ1ICmRilfHLw "education" "finance" "yt" "~Patrick Boyle (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9C17-OMxa-7oRSaCtztObw "education" "finance" "yt" "~Rob Berger (Youtube)"
@@ -114,6 +130,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCHnj59g7jezwTy5GeL8EA_g "ed
 https://www.youtube.com/feeds/videos.xml?channel_id=UCWNx17Jt6eW4N4ayAEiXdEA "education" "mathematics" "yt" "~Quantpie (Youtube)"
 
 ## Miscellaneous
+https://www.youtube.com/feeds/videos.xml?channel_id=UCYCVm1aN33HYdLs66DHw_ow "education" "miscellaneous" "yt" "~Amit Sengupta (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCvQECJukTDE2i6aCoMnS-Vg "education" "miscellaneous" "yt" "~Big Think (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC6n8I1UDTKP1IWjQMg6_TwA "education" "miscellaneous" "yt" "~B1M (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC4QZ_LsYcvcq7qOsOhpAX4A "education" "miscellaneous" "yt" "~Cold Fusion (Youtube)"
@@ -135,6 +152,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCpuqYFKLkcEryEieomiAv3Q "ed
 ## Quantitative Finance
 https://www.youtube.com/feeds/videos.xml?channel_id=UCgUxdfi_5-m67UDbrgcAFBg "education" "quant" "yt" "~Coding Jesus (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLHvJ1KNGE1s-A3ODiSgplw "education" "quant" "yt" "~Dimitri Bianco (Youtube)"
+https://www.ft.com/ft-trading-room/high-frequency-trading?format=rss "education" "quant" "news" "~FT | HFT (News)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC8hI87gt0dmTAIEupEcsckA "education" "quant" "yt" "~Hudson & Thames (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCDsVC_ewpcEW_AQcO-H-RDQ "education" "quant" "yt" "~Jane Street (Youtube)"
 file:///home/hooregi/.config/newsboat/local_feeds/quantfinance.rss "education" "quant" "yt" "~Quant Finance - Playlist (Youtube)"

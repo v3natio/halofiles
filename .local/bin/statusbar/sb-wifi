@@ -3,7 +3,7 @@
 SSIG=$(grep wlan0 /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
 
 if [[ wlan0 ]]; then
-    echo "[ ${SSIG}% ]"
+    echo " 直 ${SSIG}%"
 else
-    echo "[ 0% ]"
+    echo " 睊 --%"
 fi
