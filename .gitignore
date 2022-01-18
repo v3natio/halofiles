@@ -14,6 +14,3 @@
 .config/nvim/lua/ext/
 .local/bin/dmenu_movie
 .local/bin/statusbar/sb-mailbox
-.config/luakit/rc.lua
-.config/luakit/theme.lua
-.config/luakit/userconf.lua
