@@ -12,7 +12,6 @@
 
 .config/neomutt/
 .config/nvim/lua/ext/
-.gitmodules
 .local/bin/dmenu_movie
 .local/bin/statusbar/sb-mailbox
 .config/luakit/rc.lua

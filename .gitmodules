@@ -1,0 +1,3 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = https://gitlab.com/Hooregi/dwm
