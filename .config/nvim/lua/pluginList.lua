@@ -16,14 +16,7 @@ return packer.startup(function()
 
   -- Startup
   use {
-    "nathom/filetype.nvim",
-    config = function()
-      vim.g.did_load_filetypes = 1
-    end,
-  }
-  use {
     "lewis6991/impatient.nvim",
-    after = "filetype.nvim",
   }
 
   -- General
@@ -136,25 +129,45 @@ return packer.startup(function()
   use {
     "neovim/nvim-lspconfig",
     after = "nvim-lsp-installer",
+  }
+  use {
+    "williamboman/nvim-lsp-installer",
+    opt = true,
+    setup = function()
+      require("options").packer_lazy_load "nvim-lsp-installer"
+      -- reload the file so lsp starts for it
+      vim.defer_fn(function ()
+        vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+      end, 0)
+    end,
     config = function()
       require "pluginSets.lspconfig"
     end,
   }
-  use {
-    "williamboman/nvim-lsp-installer",
-    event = "InsertEnter",
-    --opt = true,
-    --setup = function()
-    --  require("options").packer_lazy_load "nvim-lsp-installer"
-    --  -- reload the file so lsp starts for it
-    --  vim.defer_fn(function ()
-    --    vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-    --  end, 0)
-    --end,
-    --config = function()
-    --  require "pluginSets.lspconfig"
-    --end,
-  }
+
+  --use {
+  --  "mfussenegger/nvim-dap",
+  --  after = "DAPInstall.nvim",
+  --}
+  --use {
+  --  "Pocco81/DAPInstall.nvim",
+  --  opt = true,
+  --  setup = function()
+  --    require("options").packer_lazy_load "DAPInstall.nvim"
+  --    -- reload the file so dap starts for it
+  --    vim.defer_fn(function ()
+  --      vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+  --    end, 0)
+  --  end,
+  --  config = function()
+  --    require "pluginSets.dap"
+  --  end,
+  --}
+  --use {
+  --  "rcarriga/nvim-dap-ui",
+  --  after = "nvim-dap",
+  --}
+
 
   use {
     "ray-x/lsp_signature.nvim",
@@ -203,6 +216,13 @@ return packer.startup(function()
     end,
   }
   use {
+    "nvim-lualine/lualine.nvim",
+    after = "nvim-web-devicons",
+    config = function()
+      require "pluginSets.statusline"
+    end,
+  }
+  use {
     "akinsho/bufferline.nvim",
     after = "nvim-web-devicons",
     config = function()
@@ -213,11 +233,4 @@ return packer.startup(function()
     "kyazdani42/nvim-web-devicons",
     after = "gruvbox-flat.nvim",
   }
-  --use {
-  --  "./ext/nano-modeline",
-  --  after = "packer.nvim",
-  --  config = function()
-  --     require("nano-modeline").setup()
-  --  end,
-  --}
 end)

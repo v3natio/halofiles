@@ -4,11 +4,11 @@ M.colorizer = function()
   local present, colorizer = pcall(require, "colorizer")
   if present then
     colorizer.setup({ "*" }, {
-    RGB = true,
-    RRGGBB = true,
-    mode = "background",
-  })
-  vim.cmd "ColorizerReloadAllBuffers"
+      RGB = true,
+      RRGGBB = true,
+      mode = "background",
+    })
+    vim.cmd "ColorizerReloadAllBuffers"
   end
 end
 

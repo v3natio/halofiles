@@ -7,7 +7,7 @@ bufferline.setup {
   options = {
     show_buffer_close_icons = false,
     show_close_icon = false,
-    always_show_bufferline = true,
+    always_show_bufferline = false,
     separator_style = "thick",
     diagnostics = "nvim_lsp",
     buffer_close_icon = "",

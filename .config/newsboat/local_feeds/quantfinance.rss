@@ -20,7 +20,7 @@
     <description>What is quantitative research like at a hedge fund? How does it differ from other tech careers?</description>
   </item>
   <item>
-    <title>Andrew, Citadel Quant Finance Careers and Olympic Athlete- with Kaushik & Nick, Elevate Career Network</title>
+    <title>Andrew, Citadel Quant Finance Careers and Olympic Athlete- with Kaushik and Nick, Elevate Career Network</title>
     <link>https://www.youtube.com/watch?v=u3Q-k5LGvwA</title>
     <description>If you've ever been interested or curious about quant finance - which is the the next frontier of finance, one of the hottest and most competitive areas in investing, at the nexus of top finance and technology, this is the discussion for you. Even if you haven't thought about it yet, you will still find it fascinating.</description>
   </item>
@@ -210,7 +210,7 @@
       <description>This is my software engineering resume that got me internship offers from goldman sachs and amazon. Looking back now, this resume really isn't the best but despite how hard I roast it, it still is the resume that got me my internship offers :) Enjoy!</description>
     </item>
     <item>
-      <title>All C++ Interview Questions & Answers With Explanation For Freshers And Experienced</title>
+      <title>All C++ Interview Questions and Answers With Explanation For Freshers And Experienced</title>
       <link>https://www.youtube.com/watch?v=utTqQGojd6s</link>
     </item>
     <item>
@@ -268,7 +268,7 @@
     </item>
     <item>
       <title>Public Lecture 1 : James H. Simons - My Life in Mathematics</title>
-      <link>https://www.youtube.com/watch?v=RP1ltutTN_4<link>
+      <link>https://www.youtube.com/watch?v=RP1ltutTN_4</link>
       <description>Seoul ICM 2014 Public Lecture.</description>
     </item>
     <item>
@@ -321,7 +321,7 @@
       <link>https://www.youtube.com/watch?v=oNrquJKPrEU</link>
     </item>
     <item>
-      <title>HFT & Low Latency Code</title>
+      <title>HFT and Low Latency Code</title>
       <link>https://www.youtube.com/watch?v=6ALw1Gwqmts</link>
       <description>This talk presents the various challenges we face in the HFT world. We will cover the basic trading dynamics and mechanism and understand why latency matters. We will explore how we use the C++ language in order to achieve minimum latency.</description>
     </item>
@@ -344,6 +344,21 @@
       <title>Can he break into quant trading?</title>
       <link>https://www.youtube.com/watch?v=it--iupMk2M</link>
       <description>This is a video of a 1-on-1 private consulting session I had with an aspiring quantitative researcher. I start by introducing you to his background before giving him advice as to how to break into the industry. He comes from a physics background (masters in theoretical physics) and is looking to beef up his CV with quant research-related projects. Furthermore, he's looking for resources for more advances topics such as probability, data analysis, and option trading. Lastly, we talk about how he can level up his python skills so he can differentiate himself as a passionate candidate.</description>
+    </item>
+    <item>
+      <title>Into the Mind of a SWE Intern @ Jane Street | Interview with Omkar Kulkarni</title>
+      <link>https://www.youtube.com/watch?v=gUCAugJKtwY</link>
+      <description>In this video, I interview my roommate who interned at Jump Trading Summer 2020 and will be interning with Jane Street Summer 2021. He has received offers from Jump Trading, Jane Street, Two Sigma, and Akuna Capital for both SWE and Quant Trading internships. Throughout the interview, I ask him to talk about his computer science journey since high school and how his interests have changed to land him in the quant space.</description>
+    </item>
+    <item>
+      <title>Trading Secrets from a Jane Street Veteran - Craig Newbold Interview</title>
+      <link>https://www.youtube.com/watch?v=D3HXkHAksgE</link>
+      <description>We discuss what skills retail traders should be developing to compete in the 21st century markets, the pros and cons of different approaches, trading stories, the path to professional trading, and different sources of alpha that retail traders should explore.</description>
+    </item>
+    <item>
+      <title>The Wall Street Code | VPRO documentary | 2013</title>
+      <link>https://www.youtube.com/watch?v=kFQJNeQDDHA</link>
+      <description> thriller about a genius algorithm builder who dared to stand up against Wall Street. Haim Bodek, aka The Algo Arms Dealer. After Quants: the Alchemists of Wall Street and Money and Speed: Inside the Black Box. This is the final episode of a trilogy in search of the winners and losers of the tech revolution on Wall Street. Trading on the financial market is not longer dominated by humans, but by super fast computers and algorithms. The result of this digital revolution on Wall Street is a complex and fragmented financial system that is hard to understand and overseen. A system that we are all connected to. The only people who understand the system a bit, are the people who built it.</description>
     </item>
 </channel>
 

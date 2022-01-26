@@ -11,6 +11,5 @@
 .config/zsh/plugins/
 
 .config/neomutt/
-.config/nvim/lua/ext/
 .local/bin/dmenu_movie
 .local/bin/statusbar/sb-mailbox

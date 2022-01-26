@@ -4,7 +4,6 @@ setopt nomatch # output error if file doesn't match
 setopt interactive_comments # comments in interactive shells
 stty stop undef # disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none') # don't highlight paste
-setopt interactive_comments
 
 # History in cache directory:
 HISTSIZE=10000000

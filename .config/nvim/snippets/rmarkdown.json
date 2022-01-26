@@ -5,7 +5,7 @@
       "---",
       "title: ${1:title}",
       "author: ${2:author}",
-      "date: `r Sys.Date()`",
+      "date: ${3:M/D/Y}",
       "output:",
       " prettydoc::html_pretty:",
       "   theme: architect",

@@ -1,34 +1,38 @@
-vim.opt.shortmess:append "casI"
-vim.opt.whichwrap:append "<>hl"
-require "pluginSets.statusline"
-vim.opt.fillchars = { eob = " " }
-vim.opt.termguicolors = true
-vim.opt.undofile = true
-vim.opt.swapfile = false
-vim.opt.ignorecase = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.cursorline = true
-vim.opt.mouse = "n"
-vim.opt.signcolumn = "yes"
-vim.opt.updatetime = 500
-vim.opt.timeoutlen = 500
-vim.opt.clipboard = "unnamedplus"
-vim.opt.modelines = 0
-vim.opt.maxmempattern = 2500
-vim.opt.scrolloff = 8
-vim.opt.breakindent = true
-vim.opt.lazyredraw = true
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.numberwidth = 2
-vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.shiftround = true
-vim.opt.autoindent = true
-vim.opt.linebreak = true
+local options = {
+  completeopt = { "menu", "menuone", "noselect", "noinsert" },
+  undofile = true,
+  swapfile = false,
+  clipboard = "unnamedplus",
+  fillchars = { eob = " " },
+  termguicolors = true,
+  showmode = false,
+  expandtab = true,
+  tabstop = 2,
+  softtabstop = 2,
+  shiftwidth = 2,
+  shiftround = true,
+  autoindent = true,
+  linebreak = true,
+  ignorecase = true,
+  splitbelow = true,
+  splitright = true,
+  cursorline = true,
+  signcolumn = "yes",
+  updatetime = 500,
+  timeoutlen = 500,
+  modelines = 0,
+  maxmempattern = 2500,
+  scrolloff = 8,
+  breakindent = true,
+  lazyredraw = true,
+  number = true,
+  relativenumber = true,
+  numberwidth = 2,
+}
+
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
 
 -- clean .tex files when closing
 vim.api.nvim_command "autocmd VimLeave *.tex !vim_texclear %"
@@ -44,6 +48,14 @@ vim.cmd [[
   augroup end
 ]]
 
+-- set markdown filetypes
+vim.cmd [[
+  augroup SetMarkdownFt
+    autocmd!
+    autocmd BufNewFile,BufFilePre,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
+  augroup end
+]]
+
 -- defer LSP and other packages
 local M = {}
 M.packer_lazy_load = function(plugin, timer)
@@ -53,5 +65,19 @@ M.packer_lazy_load = function(plugin, timer)
       require("packer").loader(plugin)
     end, timer)
   end
+end
+
+-- toggle fold column
+local toBool = {
+  ["1"] = true,
+  ["0"] = false,
+}
+M.toggleFoldCol = function()
+  if toBool[vim.opt.foldcolumn:get()] then
+    vim.opt.foldcolumn = "0"
+  else
+    vim.opt.foldcolumn = "1"
+  end
+  vim.api.nvim_echo({ { "foldcolumn is set to " .. vim.opt.foldcolumn:get() } }, false, {})
 end
 return M

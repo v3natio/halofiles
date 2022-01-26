@@ -1,3 +1,12 @@
+-- enable spellcheck as default
+vim.opt_local.spell = true
+vim.opt_local.conceallevel = 2
+
+-- match and highlight hyperlinks
+vim.fn.matchadd("matchURL", [[http[s]\?:\/\/[[:alnum:]%\/_#.-]*]])
+vim.cmd "hi matchURL guifg=DodgerBlue"
+
+-- remove ghost_text from markdown files
 local present, cmp = pcall(require, "cmp")
 if not present then
   return
@@ -95,7 +104,6 @@ cmp.setup {
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "path" },
-    { name = "nvim_lua" },
     { name = "treesitter" },
   },
   confirm_opts = {
@@ -106,7 +114,7 @@ cmp.setup {
     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = false,
     native_menu = false,
   },
 }
