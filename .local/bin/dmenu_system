@@ -9,7 +9,7 @@ case "$(printf "lock\nhibernate\nsleep\nreboot\nshutdown" | dmenu -i -p 'Action:
 	'lock') slock ;;
 	'hibernate') slock $ctl hibernate ;;
 	'sleep') slock $ctl suspend ;;
-	'reboot') $ctl reboot ;;
-	'shutdown') $ctl poweroff ;;
+	'reboot') $ctl reboot -i ;;
+	'shutdown') $ctl poweroff -i ;;
 	*) exit 1 ;;
 esac

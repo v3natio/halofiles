@@ -88,11 +88,6 @@
     <description>You will build a full-fledged API in Python using FastAPI. You will learn the fundamentals of API design including routes, serialization/deserialization, schema validation, and models. You will also learn about SQL, testing with pytest, and how to build out a CI/CD pipeline using GitHub actions.</description>
   </item>
   <item>
-    <title>10 Common Coding Interview Problems - Solved!</title>
-    <link>https://youtube.com/watch?v=Peq4GCPNC5c</link>
-    <description>Preparing for coding interviews? Competitive programming? Learn to solve 10 common coding problems and improve your problem-solving skills.</description>
-  </item>
-  <item>
     <title>Algorithmic Trading Using Python - Full Course</title>
     <link>https://www.youtube.com/watch?v=xfzGZB4HhEE</link>
     <description>Learn how to perform algorithmic trading using Python in this complete course. Algorithmic trading means using computers to make investment decisions. Computer algorithms can make trades at a speed and frequency that is not possible by a human.</description>
@@ -113,6 +108,16 @@
   <item>
     <title>Linked Lists for Technical Interviews - Full Course</title>
     <link>https://www.youtube.com/watch?v=Hj_rA0dhr2I</link>
+  </item>
+  <item>
+    <title>10 Common Coding Interview Problems - Solved!</title>
+    <link>https://youtube.com/watch?v=Peq4GCPNC5c</link>
+    <description>Preparing for coding interviews? Competitive programming? Learn to solve 10 common coding problems and improve your problem-solving skills.</description>
+  </item>
+  <item>
+    <title>Dynamic Programming - Learn to Solve Algorithmic Problems and Coding Challenges</title>
+    <link>https://youtube.com/watch?v=oBt53YbR9Kk</link>
+    <description>Learn how to use Dynamic Programming in this course for beginners. It can help you solve complex programming problems, such as those often seen in programming interview questions about data structures and algorithms.</description>
   </item>
   <item>
     <title>How The Economic Machine Works by Ray Dalio</title>
