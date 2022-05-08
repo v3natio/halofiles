@@ -11,6 +11,7 @@ done; unset command
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
   l="ls -al" \
+  lf="lfub" \
   cp="cp -iv" \
   mv="mv -iv" \
   rm="rm -vI" \
@@ -26,7 +27,8 @@ alias \
   grep="grep --color=auto" \
   egrep="egrep -Hn --color=auto" \
   pgrep="pgrep -Hn --color=auto" \
-  diff="diff --color=auto"
+  diff="diff --color=auto" \
+  ip="ip -color=auto"
 
 # These common commands are just too long! Abbreviate them.
 alias \

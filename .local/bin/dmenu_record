@@ -38,7 +38,7 @@ screengrab() { \
 	-f alsa -i default \
 	-r 30 \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
-	"$HOME/Media/Videos/Recordings/screengrab-$(date '+%y%m%d-%H%M-%S').mp4" &
+	"$HOME/media/videos/recordings/screengrab-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
   updateicon "[ 雷 REC ]"
        	}
@@ -52,7 +52,7 @@ screencast() { \
 	-f pulse -i "alsa_input.pci-0000_00_1b.0.analog-stereo.monitor" \
 	-r 30 \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
-	"$HOME/Media/Videos/Recordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
+	"$HOME/media/videos/recordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
   updateicon "[ 雷 REC ]"
        	}
@@ -68,7 +68,7 @@ screenall() { \
   -filter_complex amerge -ac 2 \
 	-r 30 \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
-	"$HOME/Media/Videos/Recordings/screenall-$(date '+%y%m%d-%H%M-%S').mp4" &
+	"$HOME/media/videos/recordings/screenall-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
   updateicon "[ 雷 REC ]"
        	}
@@ -78,7 +78,7 @@ video() { ffmpeg \
 	-s "$(xdpyinfo | awk '/dimensions/ {print $2;}')" \
 	-i "$DISPLAY" \
  	-c:v libx264 -qp 0 -r 30 \
-	"$HOME/Media/Videos/Recordings/video-$(date '+%y%m%d-%H%M-%S').mkv" &
+	"$HOME/media/videos/recordings/video-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
   updateicon "[ 雷 REC ]"
 	}
@@ -87,7 +87,7 @@ webcamhidef() { ffmpeg \
 	-f v4l2 \
 	-i /dev/video0 \
 	-video_size 1920x1080 \
-	"$HOME/Media/Videos/Recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
+	"$HOME/media/videos/recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
   updateicon "[  REC ]"
 	}
@@ -96,7 +96,7 @@ webcam() { ffmpeg \
 	-f v4l2 \
 	-i /dev/video0 \
 	-video_size 640x480 \
-	"$HOME/Media/Videos/Recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
+	"$HOME/media/videos/recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
   updateicon "[  REC ]"
 	}
@@ -105,7 +105,7 @@ audio() { \
 	ffmpeg \
 	-f alsa -i default \
 	-c:a flac \
-	"$HOME/Media/Videos/Recordings/audio-$(date '+%y%m%d-%H%M-%S').flac" &
+	"$HOME/media/videos/recordings/audio-$(date '+%y%m%d-%H%M-%S').flac" &
 	echo $! > /tmp/recordingpid
   updateicon "[  REC ]"
 	}
@@ -141,7 +141,7 @@ videoselected()
 	-video_size "$W"x"$H" \
 	-i :0.0+"$X,$Y" \
 	-c:v libx264 -qp 0 -r 30 \
-	"$HOME/Media/Videos/Recordings/box-$(date '+%y%m%d-%H%M-%S').mkv" &
+	"$HOME/media/videos/recordings/box-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
   updateicon "[ 雷 REC ]"
 }

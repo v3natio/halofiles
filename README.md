@@ -24,7 +24,7 @@ You will need GNU `stow`.
 Clone into your `$HOME` directory.
 
 ```bash
-git clone https://gitlab.com/Hooregi/Halofiles.git
+git clone https://gitlab.com/hooregi/halofiles.git
 ```
 
 Run `stow` to symlink everything, or just select whatever you need.

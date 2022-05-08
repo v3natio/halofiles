@@ -7,9 +7,9 @@ doc $HOME/Halofiles/.config
 dol $HOME/Halofiles/.local
 dt  ${XDG_DATA_HOME:-$HOME/.local/share}
 sc  $HOME/.local/bin
-D   ${XDG_DOWNLOAD_DIR:-$HOME/Downloads}
-d   ${XDG_DOCUMENTS_DIR:-$HOME/Documents}
-m   ${XDG_MUSIC_DIR:-$HOME/Media/Music}
-pp  ${XDG_PICTURES_DIR:-$HOME/Pictures}
-vv  ${XDG_VIDEOS_DIR:-$HOME/Media/Videos}
-ww  ${XDG_PICTURES_DIR:_$HOME/Media/Pictures}/Wallpapers/
+D   ${XDG_DOWNLOAD_DIR:-$HOME/downloads}
+d   ${XDG_DOCUMENTS_DIR:-$HOME/documents}
+m   ${XDG_MUSIC_DIR:-$HOME/media/music}
+pp  ${XDG_PICTURES_DIR:-$HOME/media/pictures}
+vv  ${XDG_VIDEOS_DIR:-$HOME/media/videos}
+ww  ${XDG_PICTURES_DIR:_$HOME/media/pictures}/wallpapers/

@@ -93,6 +93,11 @@
     <description>Learn how to perform algorithmic trading using Python in this complete course. Algorithmic trading means using computers to make investment decisions. Computer algorithms can make trades at a speed and frequency that is not possible by a human.</description>
   </item>
   <item>
+    <title>Python Game Development Project Using OOP – Minesweeper Tutorial</title>
+    <link>https://www.youtube.com/watch?v=OqbGRZx4xUc</link>
+    <description>In this course, you will improve your Python skills by coding a Minesweeper game using the tkinter library. The game is fully implemented using Object Oriented Programming.</description>
+  </item>
+  <item>
     <title>Solve Coding Interview Backtracking Problems - Crash Course</title>
     <link>https://www.youtube.com/watch?v=A80YzvNwqXA</link>
     <description>Master the backtracking problem and solve two LeetCode hard problems in this crash course.</description>

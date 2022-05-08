@@ -47,7 +47,7 @@ map("n", "<leader>sa", "zg") -- add word to dictionary
 map("n", "<leader>]", "]s") -- next spelling error
 map("n", "<leader>[", "[s") -- previous spelling error
 
-map("n", "<leader>1", "<cmd>e ~/Documents/Notes/Dashboard.md<cr>") -- go to my notes
+map("n", "<leader>1", "<cmd>e ~/documents/notes/dashboard.md<cr>") -- go to my notes
 map("n", "<leader>2", ":e ~/.config/nvim/lua/", { silent = false }) -- go to the neovim settings
 map("n", "<leader>3", ":w! | :AsyncRun vim_compiler '<c-r>%'<CR>") -- compile file
 map("n", "<leader>4", ":!vim_opout <c-r>%<CR><CR>") -- open compiled documents

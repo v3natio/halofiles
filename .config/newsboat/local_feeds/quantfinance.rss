@@ -85,6 +85,26 @@
     <description>Favorite daily news publications.</description>
   </item>
   <item>
+    <title>Webinar | My Interview Experience at D.E. Shaw</title>
+    <link>https://www.youtube.com/watch?v=SVaauwBzNxM</link>
+    <description>Tune into this webinar to hear Prajjwal Jha talk about his SDE internship interview experience at D.E. Shaw, a multinational investment management firm.</description>
+  </item>
+  <item>
+    <title>D.E. Shaw and Co. Interview Preparation Strategies</title>
+    <link>https://www.youtube.com/watch?v=3_0quhGMFJs</link>
+    <description>Watch Atmadeep Chanda, an Associate Developer at D.E. Shaw and Co. discuss the tips and strategies required to ace the interview process.</description>
+  </item>
+  <item>
+    <title>Capacity to ship packages within D days | Recently asked in DE Shaw</title>
+    <link>https://www.youtube.com/watch?v=eeIWzt7ZvO4</link>
+    <description>Sometimes the interviewer wants to check that can you utilize the concepts you have learned and extend them to solve another problem. Such a concept is Binary Search and the problem we are discussing here  is a very good example of that. </description>
+  </item>
+  <item>
+    <title>Count of substrings with exactly K distinct characters | Recently asked in DE Shaw</title>
+    <link>https://www.youtube.com/watch?v=dA1j6ijdMWY</link>
+    <description>A hard question that can be asked to check your concepts and how do you manipulate string. Including a very famous and popular algorithm asked in interviews.</description>
+  </item>
+  <item>
     <title>Cold E-mailing (The Best Skill to Get a Job)</title>
     <link>https://www.youtube.com/watch?v=RAb3WttxM4o</link>
     <description>Cold e-mailing is by FAR the most important skill if you don't have a job. If you're at a non-target or have no finance experience, you NEED to play the numbers game and reach out to tons of people in order to get any interviews. I reached out to 300+ people to get my first paid internship as a sophomore.</description>
@@ -232,6 +252,11 @@
       <title>Is the world going quants mad? Dr Paul Wilmott</title>
       <link>https://www.youtube.com/watch?v=ZNqkyKNobLE</link>
       <description>Keynote Speaker Dr Paul Wilmott discusses:"Imagination is more important than knowledge: street smarts vs book learning in financial markets."</description>
+    </item>
+    <item>
+      <title>WECode 2016 Lightning Talk with Ellen Zhong (DE Shaw Research)</title>
+      <link>https://www.youtube.com/watch?v=W2tS2rs6DZ0</link>
+      <description>WECode (Women Engineers Code) is the largest student-run Women in Computer Science conference, held at Harvard University each February. Our mission is to expand the skills, network, and community of technical women worldwide. We bring together women over the course of two amazing days to share ideas and conversations on technology and innovation.</description>
     </item>
     <item>
       <title>5 ways quant developers speed up their code (without external hardware)</title>
