@@ -99,9 +99,8 @@ cmp.setup {
     { name = "treesitter" },
   },
   window = {
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    }
+    documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

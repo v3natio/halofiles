@@ -6,10 +6,8 @@
 
 # News
 https://feeds.npr.org/500005/podcast.xml "news" "~NP | Headlines (News)"
-https://www.prensa.com/arcio/rss/category/impresa/panorama/ "news" "~LP | Headlines (News)"
 " "
 https://archlinux.org/feeds/news/ "news" "~Arch Linux (News)"
-https://alpinelinux.org/atom.xml "news" "~Alpine Linux (News)"
 https://suckless.org/atom.xml "news" "~Suckless Tools (News)"
 file:///home/hooregi/.config/newsboat/local_feeds/library.rss "~Library - Playlist (Youtube)"
 file:///home/hooregi/.config/newsboat/local_feeds/watchlater.rss "~Watch Later - Playlist (Youtube)"
@@ -18,6 +16,7 @@ file:///home/hooregi/.config/newsboat/local_feeds/watchlater.rss "~Watch Later -
 # Lifestyle
 https://www.youtube.com/feeds/videos.xml?channel_id=UCU_W0oE_ock8bWKjALiGs8Q "entertainment" "lifestyle" "youtube" "~Charisma on Command (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "entertainment" "lifestyle" "youtube" "~Daily Dose of Internet (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCoEj4uRzynPXEEegNqMnJVw "entertainment" "lifestyle" "youtube" "~HauteLeMode (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqM1Yw5XfJ5rVwCntLy0KxA "entertainment" "lifestyle" "youtube" "~Low Budget Stories (Youtube)"
 https://oldschoolcalisthenics.com/feed/ "entertainment" "lifestyle" "blog" "~Old School Calisthenics (Blog)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdvNfCAZ3ZZ4WJNeQd-OY7A "entertainment" "lifestyle" "youtube" "~Old School Calisthenics (Youtube)"
@@ -27,7 +26,6 @@ https://www.youtube.com/feeds/videos.xml?playlist_id=PLNE967m3_UeS3_p8RV77IgBqVh
 # Motorsport
 https://www.youtube.com/feeds/videos.xml?channel_id=UC7u-Dg0jb7g9s7XjmtJrtpg "entertainment" "motorsport" "youtube" "~Chain Bear (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCxdcaGkqr7UiNZi46f35yDw "entertainment" "motorsport" "youtube" "~CYMotorsport (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCtbLA0YM6EpwUQhFUyPQU9Q "entertainment" "motorsport" "youtube" "~Driver61 (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCB_qr75-ydFVKSF9Dmo6izg "entertainment" "motorsport" "youtube" "~F1 (Youtube)"
 file:///home/hooregi/.config/newsboat/local_feeds/formulaone.rss "entertainment" "motorsport" "youtube" "~F1 - Playlist (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCh3tzzP6n5b1EWcMUpiEhXg "entertainment" "motorsport" "youtube" "~F1 Aereodynamics (Youtube)"
@@ -48,7 +46,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCvgfXK4nTYKudb0rFR6noLA "en
 # Tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA "entertainment" "tech" "youtube" "~Computerphile (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVYamHliCI9rw1tHR1xbkfw "entertainment" "tech" "youtube" "~Dave2D (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCVraU9wuIQr8H1B0kcUD7Tw "entertainment" "tech" "youtube" "~Sumsub (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCSh2ew90LSmi5_101c14JLQ "entertainment" "tech" "youtube" "~Sumsub for Experts (Youtube)"
 https://odysee.com/$/rss/@surveillancereport:2 "entertainment" "tech" "odysee" "~Surveillance Report (Odysee)"
 https://odysee.com/$/rss/@techlore:3 "entertainment" "tech" "odysee" "~Techlore (Odysee)"
@@ -72,13 +69,13 @@ https://trstringer.com/feed.xml "education" "coding" "blog" "~Thomas Stringer (B
 
 # Finance
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-hKNOj4P-Y8hR9QEHpZPig "education" "finance" "youtube" "~Bridgewater (Youtube)"
-https://www.ft.com/robin-wigglesworth?format=rss "education" "finance" "news" "~FT | Robin Wigglesworth (News)"
+https://www.ft.com/unhedged?format=rss "education" "finance" "news" "~FT | Robert Armstrong (News)"
 https://seekingalpha.com/author/jeffrey-snider.xml "education" "finance" "blog" "~Jeffrey Snider (Blog)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCASM0cgfkJxQ1ICmRilfHLw "education" "finance" "youtube" "~Patrick Boyle (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC0oNWf8yB_p1xl3J2tj75ww "education" "finance" "youtube" "~Peak Frameworks (Youtube)"
 
 # Health
 https://www.youtube.com/feeds/videos.xml?channel_id=UCykTiaMobl2EWW28zmjcznQ "education" "health" "youtube" "~Dr. Carlos Jaramillo (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCF9IOB2TExg3QIBupFtBDxg "education" "health" "youtube" "~Dr. John Campbell (Youtube)"
 
 # History
 https://www.youtube.com/feeds/videos.xml?channel_id=UCv_vLHiWVBh_FR9vbeuiY-A "education" "history" "youtube" "~Historia Civilis (Youtube)"
@@ -87,16 +84,12 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCNIuvl7V8zACPpTmmNIqP2A "ed
 
 # Miscellaneous
 https://www.youtube.com/feeds/videos.xml?channel_id=UCvmNY5Mce0mNCIEHVZb8Xow "education" "miscellaneous" "youtube" "~Attar (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC4QZ_LsYcvcq7qOsOhpAX4A "education" "miscellaneous" "youtube" "~Cold Fusion (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCvQECJukTDE2i6aCoMnS-Vg "education" "miscellaneous" "youtube" "~Big Think (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCGBoWe1mzCvbbqDNncmxm8A "education" "miscellaneous" "youtube" "~FINAiUS (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCRcgy6GzDeccI7dkbbBna3Q "education" "miscellaneous" "youtube" "~LEMMiNO (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCUHW94eEFW7hkUMVaZz4eDg "education" "miscellaneous" "youtube" "~Minute Physics (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC9sXw4ZdPEIp6bYGvLW-_iA "education" "miscellaneous" "youtube" "~VPRO Documetaries (Youtube)"
 
 # Psychology
 https://www.youtube.com/feeds/videos.xml?channel_id=UCYwVxWpjeKFWwu8TML-Te9A "education" "psychology" "youtube" "~Criminal Psychology (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UClHVl2N3jPEbkNJVx-ItQIQ "education" "psychology" "youtube" "~HealthyGamer (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCsvUzBAxu2t5e_qOEr6iczQ "education" "psychology" "youtube" "~Internet Impact (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCpuqYFKLkcEryEieomiAv3Q "education" "psychology" "youtube" "~Therapy in a Nutshell (Youtube)"
 
