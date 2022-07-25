@@ -11,7 +11,6 @@
 .config/neomutt/
 .local/bin/statusbar/sb-mailbox
 
-.local/src/
 .local/state/
 .local/share/*
 !.local/share/applications/
