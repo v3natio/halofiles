@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Sets the correct DPI for your monitor instead of the generic '100'
+# script that outputs the screens exact DPI
 
 info=$(xrandr | grep ' connected')
 
@@ -18,12 +18,12 @@ height_px=${px#*x}
 height_px=${height_px%%+*}
 
 diagonal_px=$(awk -v w="$width_px" -v h="$height_px" \
-   'BEGIN{print sqrt(w*w+h*h)}')
+  'BEGIN{print sqrt(w*w+h*h)}')
 
 diagonal_in=$(awk -v w="$width_in" -v h="$height_in" \
-   'BEGIN{print sqrt(w*w + h*h)}')
+  'BEGIN{print sqrt(w*w + h*h)}')
 
 dpi=$(awk -v dp="$diagonal_px" -v di="$diagonal_in" \
-   'BEGIN{print dp / di}')
+  'BEGIN{print dp / di}')
 
 echo "DPI: $dpi"

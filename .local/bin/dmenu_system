@@ -1,15 +1,12 @@
 #!/bin/sh
-# A dmenu wrapper script for system functions.
-case "$(readlink -f /sbin/init)" in
-	*systemd*) ctl='systemctl' ;;
-	*) ctl='loginctl' ;;
-esac
+
+# script that generates a front-end for systemctl
 
 case "$(printf "lock\nhibernate\nsleep\nreboot\nshutdown" | dmenu -i -p 'Action: ')" in
 	'lock') slock ;;
-	'hibernate') slock $ctl hibernate ;;
-	'sleep') slock $ctl suspend ;;
-	'reboot') $ctl reboot -i ;;
-	'shutdown') $ctl poweroff -i ;;
+	'hibernate') slock & sudo systemctl hibernate -i ;;
+	'sleep') slock & sudo systemctl suspend -i ;;
+	'reboot') sudo systemctl reboot -i ;;
+	'shutdown') sudo systemctl poweroff -i ;;
 	*) exit 1 ;;
 esac

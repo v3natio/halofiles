@@ -1,13 +1,11 @@
 #!/bin/sh
 
-# opout: "open output": A general handler for opening a file's intended output,
-# usually the pdf of a compiled document.  I find this useful especially
-# running from vim.
+# back-end script that outputs a compiled program
 
 basename="${1%.*}"
 
 case "${*}" in
-	*.tex|*.m[dse]|*.mom|*.[0-9]) setsid -f xdg-open "$basename".pdf >/dev/null 2>&1 ;;
-	*.html|*.[rR]md) setsid -f "$BROWSER" --new-window "$basename".html >/dev/null 2>&1 ;;
+  *.html|*.[rR]md) setsid -f "$BROWSER" --new-window "$basename".html >/dev/null 2>&1 ;;
 	*.sent) setsid -f sent "$1" >/dev/null 2>&1 ;;
+	*.tex|*.m[dse]|*.mom|*.[0-9]) setsid -f xdg-open "$basename".pdf >/dev/null 2>&1 ;;
 esac

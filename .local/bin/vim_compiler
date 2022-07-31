@@ -1,13 +1,6 @@
 #!/bin/sh
 
-# This script will compile or run another finishing operation on a document. I
-# have this script run via vim.
-#
-# Compiles .tex. groff (.mom, .ms), .rmd, .md, .org.  Opens .sent files as sent
-# presentations. Runs scripts based on extention or shebang.
-#
-# Note that .tex files which you wish to compile with XeLaTeX should have the
-# string "xelatex" somewhere in a comment/command in the first 5 lines.
+# back-end script that compiles different programming languages
 
 file=$(readlink -f "$1")
 dir=${file%/*}
@@ -17,9 +10,9 @@ ext="${file##*.}"
 cd "$dir" || exit 1
 
 textype() { \
-	command="pdflatex"
-	( head -n5 "$file" | grep -qi 'xelatex' ) && command="xelatex"
-	$command --output-directory="$dir" "$base" &&
+  command="pdflatex"
+  ( head -n5 "$file" | grep -qi 'xelatex' ) && command="xelatex"
+  $command --output-directory="$dir" "$base" &&
 	grep -qi addbibresource "$file" &&
 	biber --input-directory "$dir" "$base" &&
 	$command --output-directory="$dir" "$base" &&
@@ -37,12 +30,12 @@ case "$ext" in
 	java) javac -d classes "$file" && java -cp classes "${1%.*}" ;;
 	m) octave "$file" ;;
 	md)	if  [ -x "$(command -v lowdown)" ]; then
-			lowdown --parse-no-intraemph "$file" -Tms | groff -mpdfmark -ms -kept > "$base".pdf
-		elif [ -x "$(command -v groffdown)" ]; then
-			groffdown -i "$file" | groff > "$base.pdf"
-		else
-			pandoc -t ms --highlight-style=kate -s -o "$base".pdf "$file"
-		fi ; ;;
+    lowdown --parse-no-intraemph "$file" -Tms | groff -mpdfmark -ms -kept > "$base".pdf
+  elif [ -x "$(command -v groffdown)" ]; then
+    groffdown -i "$file" | groff > "$base.pdf"
+  else
+    pandoc -t ms --highlight-style=kate -s -o "$base".pdf "$file"
+      fi ; ;;
 	mom) preconv "$file" | refer -PS -e | groff -mom -kept -T pdf > "$base".pdf ;;
 	ms) preconv "$file" | refer -PS -e | groff -me -ms -kept -T pdf > "$base".pdf ;;
 	org) emacs "$file" --batch -u "$USER" -f org-latex-export-to-pdf ;;

@@ -1,3 +1,5 @@
 #!/bin/sh
 
+# back-end script that serves as a sudo -A (password) helper
+
 dmenu -P -p "$1" <&- && echo

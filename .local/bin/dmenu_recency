@@ -1,8 +1,6 @@
 #!/bin/bash
 
-# Originally based on code by Dieter Plaetinck.
-# Pretty much re-written by Mina Nagy (mnzaki)
-# Edited by Chrysostomus to create/source .dmenurc
+# back-end script that organizes dmenu output by recency
 
 dmenu_cmd="dmenu $DMENU_OPTIONS"
 max_recent=199 # Number of recent commands to track

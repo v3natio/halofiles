@@ -1,0 +1,115 @@
+#TAG,NAME IN REPO (or git url),DESCRIPTION
+,acpi,reads battery/power/thermal sensors
+,acpid,delivers ACPI power management events
+,alsa-utils,are utilities for the sound architecture
+,arandr,provides a front-end for XRandR
+,atool,manages file archives
+,autoconf,automatically configures source code
+,automake,automatically creates Makefiles
+,avahi,probes the network for services
+,bison,parses grammar into LR or GLR
+,bluez,provides daemons for bluetooth
+,bluez-utils,are utilities for the bluetooth architecture
+A,brave-bin,is a chromium web browser that blocks ads and trackers
+,chromium,is a web browser built for speed/simplicity/security
+,cups,provides daemons for printing
+,discord,is a voice and text chat
+G,https://gitlab.com/hooregi/dmenu.git,is the application selector
+,docker,packs/runs/ships any application as a container
+,dosfstools,are utilities for the DOS filesystem
+,dunst,provides customizable daemons for notifications
+G,https://gitlab.com/hooregi/dwm.git,is the window manager
+G,https://gitlab.com/hooregi/dwmblocks.git,is the statusbar
+,exfat-utils,are utilities for the exFAT filesystem
+,fakeroot,simulates superuser privileges
+,flex,generates text-scanning programs
+,fzf,is a fuzzy finder
+,gcc,is the GNU C and C++ compiler
+,gimp,is a GNU Image Manipulation Program
+,gnome-keyring,stores passwords and encryption keys
+A,gotop-bin,displays monitored activities
+,gparted,partitions disks
+,gruvbox-material-icon-theme-git,displays icons using the gruvbox color-scheme
+,gtk-theme-arc-gruvbox-git,displays GTK+ interfaces using the gruvbox color-scheme
+,highlight,highlights source code
+,hplip,provides the drivers for HP printers
+,iwd,provides daemons for internet
+,lame,encodes MP3 files as MPEG
+A,lf-bin,is a terminal file manager
+,libnotify,sends desktop notifications
+,libreoffice-still,is the libre office suite
+,libtool,manages the creation of static/dynamic libraries
+,maim,takes screenshots using imlib2
+,make,automatically builds executable programs and libraries from source code
+,man-db,is a tool for reading manual pages
+,mat2,removes metadata from files
+,mesa,is an implementation of OpenGL graphics
+,mlocate,finds files quickly by name
+,moreutils,is a collection of *nix tools
+,mpv-mpris,allows the media keys to control mpv
+A,ncspot-bin,is a spotify CLI player
+,neovim,is a fork of vim with useful features
+A,nerd-fonts-fira-code,are firefox's fonts
+,newsboat,is an RSS/Atom CLI feed reader
+,npm,is the package manager for javascript
+,nss-mdns,provides hostname resolution
+,ocaml,is a functional programming language
+A,ocrmypdf,adds an OCR text layer to scanned PDFs
+,openssh,enables remote login through SSH
+,optipng,compresses PNG files without quality loss
+,pamixer,is a command-line mixer
+A,pandoc-bin,converts most document formats
+,patch,applies patches to sources
+,perl-file-mimeinfo,determines filetypes
+,perl-image-exiftool,reads/rewrites EXIF info
+A,pfetch,displays system information
+,picom,is an X compositor
+,pipewire-alsa,routes/processes ALSA audio
+,pipewire-pulse,routes/processes PulseAudio
+,pkgconf,compiles packages and links metadata
+,playerctl,controls media players
+,pulsemixer,is a CLI audio mixer
+,pyenv,manages python versions
+,python-poetry,manages/installs python package dependencies
+,qrencode,encodes data in a QR symbol
+,r,is a language for statistical computing and graphics
+,reflector,retrieves/filters the latest pacman mirrors
+,rsync,syncs local/remote files
+A,sc-im,is a CLI spreadsheet editor
+A,sct,sets color temperatures
+G,https://gitlab.com/hooregi/slock.git,is the lockscreen
+A,spotify,is a music streaming service
+G,https://gitlab.com/hooregi/st.git,is the terminal emulator
+,stow,manages software installs in the same tree
+,stylua,formats Lua code
+,sxiv,is an image viewer
+A,task-spooler,queues up tasks from the shell
+,tesseract-data-eng,is the OCR (eng) data
+,texinfo,is a documentation system for printed output
+,texlive-core,is a TeX distribution
+,thermald,provides daemons for battery
+,tlp,manages battery power
+,transmission-cli,is a torrent client
+,ueberzug,allows image viewing on the terminal
+,unclutter,hides the mouse cursor when not in use
+,unrar,is a RAR compression program
+,unzip,is a ZIP compression program
+,urlscan,is a terminal URL selector
+,wget,retrieves files from the web
+,which,shows the full path of commands
+,wireplumber,manages pipewire sessions
+,xclip,is a CLI for the X11 clipboard
+,xdg-user-dirs,manages user directories
+,xdg-utils,are utilities for desktop integration
+,xf86-video-intel,provides the Xorg drivers for Intel video
+,xorg-server,is the graphical server
+,xorg-xbacklight,manages screen brightness
+,xorg-xclipboard,stores the clipboard
+,xorg-xdpyinfo,determines the screen resolution
+,xorg-xinit,starts the graphical server
+,xorg-xwininfo,queries info about windows
+,xwallpaper,sets the wallpaper
+,yt-dlp,downloads videos from Youtube and other sites
+A,ytfzf,finds Youtube videos on the terminal
+,zathura,is a minimalist document viewer
+,zathura-pdf-mupdf,adds PDF support to zathura

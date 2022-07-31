@@ -1,14 +1,13 @@
 #!/bin/bash
 
-# Function to pull the filename from the target
-# We use this for defining the saved filename
+# script that downloads a DOI using sci-hub
+
 extract_filename() {
   local start_pos
   start_pos=$(awk -F"/" '{print length($0)-length($NF)}' <<< "${1:?Null string}")
   printf -- '%s\n' "${1:start_pos}"
 }
 
-# Function to extract download target from sci-hub html
 get_target() {
   printf -- '%s' "https:"
   curl -s https://sci-hub.se/"${1:?No target specified}" | 
@@ -16,7 +15,7 @@ get_target() {
     grep -Eo '//[^ ]+pdf'
 }
 
-# Download our target via tor
+# download through tor
 get_url_via_tor() {
   # Ensure that Tor is running
   if ! systemctl is-active --quiet tor; then
@@ -35,7 +34,7 @@ get_url_via_tor() {
     "Once you are done do not forget to turn off Tor :)"
 }
 
-# Download our target
+# download target
 get_url() {
   target_url=$(get_target "${1}")
   printf -- '%s\n' "${target_url}"
@@ -43,29 +42,11 @@ get_url() {
   printf -- '%s\n' "Saved as $(extract_filename "${target_url}")"
 }
 
-# Usage function
-# This is exempt from our indentation rules as it's a heredoc
-print_usage() {
-cat <<USAGE
-Usage: scihub [-h|--help|-t|--tor] [url]
-
-Options:
-    -h | --help    This usage message.
-    -t | --tor     Attempt to fetch via tor network
-
-Examples:
-    scihub https://academic.oup.com/jn/article/130/4/1049S/4686675
-    scihub --tor https://academic.oup.com/jn/article/130/4/1049S/4686675
-USAGE
-  return 0
-}
-
-# Go interactive and get the url from the user if required
+# go interactive and get the url from the user if required
 read_url() {
   read -rp 'url: ' input_url
 }
 
-# Ensure that the given url actually works, fail out if it doesn't
 validate_url() {
   if ! curl --output /dev/null -s --head --fail "${1:?No URL supplied}"; then
     printf -- '%s\n' "url: '${1}' not accesible, aborting"
@@ -73,11 +54,10 @@ validate_url() {
   fi
 }
 
-# Do the things
 case "${1}" in
   (-t|--tor)
     shift
-    # If no url is given, go interactive
+    # if no url is given, go interactive
     [[ -z "${1}" ]] && read_url
     validate_url "${1:-$input_url}"
     printf -- '%s\n' "Getting resource via Tor service"

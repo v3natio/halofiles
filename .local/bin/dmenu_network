@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# A script which creates a dmenu frontend for systemd-networkd's iwd interface.
+# script that generates a front-end for iwctl
 
 # Check for valid parameters
 if [[ ! -z $1 ]];

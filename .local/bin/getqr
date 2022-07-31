@@ -1,3 +1,5 @@
 #!/bin/sh
 
+# script that generates a QR code from the clipboard
+
 xclip -selection clipboard -o | qrencode -o - | display

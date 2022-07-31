@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# A script that generates a menu that uses bluetoothctl to connect to bluetooth devices and display status info.
+# script that generates a dmenu front-end for bluetoothctl
 
-# Constants
+# constants
 divider="---------"
 goback="Back"
 

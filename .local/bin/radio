@@ -1,4 +1,6 @@
 #!/bin/sh
 
+# script that outputs classical music from museopen.org
+
 url="https://live.musopen.org:8085/streamvbr0"
 pkill -f $url || mpv --no-resume-playback "$url"

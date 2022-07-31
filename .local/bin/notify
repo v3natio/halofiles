@@ -1,3 +1,5 @@
 #!/bin/sh
 
+# script that serves as a ringtone
+
 paplay ~/.config/dunst/sounds/F1_Radio_ringtone.ogg
