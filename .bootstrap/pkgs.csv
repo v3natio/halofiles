@@ -1,4 +1,4 @@
-#TAG,NAME IN REPO (or git url),DESCRIPTION
+TAG,NAME,DESCRIPTION
 ,acpi,reads battery/power/thermal sensors
 ,acpid,delivers ACPI power management events
 ,alsa-utils,are utilities for the sound architecture

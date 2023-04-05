@@ -230,10 +230,6 @@
       <description>This is my software engineering resume that got me internship offers from goldman sachs and amazon. Looking back now, this resume really isn't the best but despite how hard I roast it, it still is the resume that got me my internship offers :) Enjoy!</description>
     </item>
     <item>
-      <title>All C++ Interview Questions and Answers With Explanation For Freshers And Experienced</title>
-      <link>https://www.youtube.com/watch?v=utTqQGojd6s</link>
-    </item>
-    <item>
       <title>Quantitative Trading: 7.5k Sell Wall of Bitcoin on Binance</title>
       <link>https://www.youtube.com/watch?v=KMZckrBPw38</link>
       <description>In this episode, the CEO of FTX and Alameda shows you his quantitative trading strategy and is focused on trading Bitcoin (BTC). During this quant trading interview, Sam Bankman-Fried admits their biggest trading obstacle for the day was not having enough Tether on Binance to buy up the Bitcoin (BTC). If you enjoyed this crypto quant live trading session, please subscribe to the FTX channel.</description>
@@ -259,19 +255,9 @@
       <description>WECode (Women Engineers Code) is the largest student-run Women in Computer Science conference, held at Harvard University each February. Our mission is to expand the skills, network, and community of technical women worldwide. We bring together women over the course of two amazing days to share ideas and conversations on technology and innovation.</description>
     </item>
     <item>
-      <title>5 ways quant developers speed up their code (without external hardware)</title>
-      <link>https://www.youtube.com/watch?v=TfoUy_HjxG4</link>
-      <description>5 ways that quant devs increase the speed of their code without relying on external hardware (also going above and beyond 'write clean code'). This mostly comes from understanding the inner workings of a computer, which is a mystery to most (and is still largely a mystery to me as I continue to learn). I'm sharing with you five best practices, essentially.</description>
-    </item>
-    <item>
       <title>Who are Quant Developers (and why they make so much)? | Quantitative Finance</title>
       <link>https://www.youtube.com/watch?v=jG0cpPRpM00</link>
       <description>In this video you will learn about the job profile of the quantitative developers.</description>
-    </item>
-    <item>
-      <title>Into the Mind of a SWE Intern @ Jane Street | Interview with Omkar Kulkarni (my roommate)</title>
-      <link>https://www.youtube.com/watch?v=gUCAugJKtwY</link>
-      <description>In this video, I interview my roommate who interned at Jump Trading Summer 2020 and will be interning with Jane Street Summer 2021. He has received offers from Jump Trading, Jane Street, Two Sigma, and Akuna Capital for both SWE and Quant Trading internships. Throughout the interview, I ask him to talk about his computer science journey since high school and how his interests have changed to land him in the quant space.</description>
     </item>
     <item>
       <title>Upcoming Quant Star - Ali Masoumnia Interview</title>
@@ -288,10 +274,6 @@
       <link>https://www.youtube.com/watch?v=VLT6ZNUONLU</link>
     </item>
     <item>
-      <title>Complete overview of practical C++ programming for quant financial and HFT</title>
-      <link>https://www.youtube.com/watch?v=V0Ob4Cup6eI</link>
-    </item>
-    <item>
       <title>Public Lecture 1 : James H. Simons - My Life in Mathematics</title>
       <link>https://www.youtube.com/watch?v=RP1ltutTN_4</link>
       <description>Seoul ICM 2014 Public Lecture.</description>
@@ -305,65 +287,6 @@
       <title>The mathematician who cracked Wall Street | Jim Simons</title>
       <link>https://www.youtube.com/watch?v=U5kIdtMJGc8</link>
       <description>Jim Simons was a mathematician and cryptographer who realized: the complex math he used to break codes could help explain patterns in the world of finance. Billions later, he’s working to support the next generation of math teachers and scholars. TED’s Chris Anderson sits down with Simons to talk about his extraordinary life in numbers.</description>
-    </item>
-    <item>
-      <title>CppCon 2017: Carl Cook “When a Microsecond Is an Eternity: High Performance Trading Systems in C++”</title>
-      <link>https://www.youtube.com/watch?v=NH1Tta7purM</link>
-      <description>This talk describes how successful low latency trading systems can be developed in C++, demonstrating common coding techniques used to reduce execution times. While automated trading is used as the motivation for this talk, the topics discussed are equally valid to other domains such as game development and soft real-time processing.</description>
-    </item>
-    <item>
-      <title>The Speed Game: Automated Trading Systems in C++ - Carl Cook - Meeting C++ 2016</title>
-      <link>https://www.youtube.com/watch?v=ulOLGX3HNCI</link>
-    </item>
-    <item>
-      <title>Richard Croucher - The Continued Evolution of High Frequency Trading Systems</title>
-      <link>https://www.youtube.com/watch?v=P8xAtogMOWc</link>
-      <description>High Frequency Trading systems are in an arms race with no prizes for coming second. Today's environment is very different from a few years ago. New hardware architectures present opportunities and challenges. Costs are increasingly important. Richard will describe a typical trading system and then discuss how they are evolving to embrace new technologies including noSQL, FPGA's, GPU's, kernel bypass, RDMA and many core. A HFT system designer now needs to understand when to use these and how best to program them.</description>
-    </item>
-    <item>
-      <title>Why C++ and Linux kernel is best for ultra lowest latency in quant trading and HFT</title>
-      <link>https://www.youtube.com/watch?v=WMqqYXqi1rk</link>
-    </item>
-    <item>
-      <title>FIAB HIGH TECH SANTIAGO 2011 - Part 06 - GLOBAL LOW LATENCY TRADING INFRASTRUCTURE SOLUTIONS</title>
-      <link>https://www.youtube.com/watch?v=aNRz7K1OADc</link>
-    </item>
-    <item>
-      <title>From visual trading idea to C or FPGA HFT in Matlab</title>
-      <link>https://www.youtube.com/watch?v=Kq7Q3PFIcWc</link>
-    </item>
-    <item>
-      <title>Pacific++ 2017: Carl Cook "Low Latency C++ for Fun and Profit"</title>
-      <link>https://www.youtube.com/watch?v=BxfT9fiUsZ4</link>
-      <description>This talk describes how low latency systems can be developed in C++, demonstrating common coding techniques used to reduce code execution times. While automated trading is used as the motivation for this talk, the topics discussed are equally valid to other domains such as game development and soft real-time processing.</description>
-    </item>
-    <item>
-      <title>High frequency trading architecture considerations with Fastflow in C++ HFT</title>
-      <link>https://www.youtube.com/watch?v=ziVjU9CeMQU</link>
-    </item>
-    <item>
-      <title>HFT demo of c++ and r with rinside and real world market historical and tick data from IQfeeds</title>
-      <link>https://www.youtube.com/watch?v=oNrquJKPrEU</link>
-    </item>
-    <item>
-      <title>HFT and Low Latency Code</title>
-      <link>https://www.youtube.com/watch?v=6ALw1Gwqmts</link>
-      <description>This talk presents the various challenges we face in the HFT world. We will cover the basic trading dynamics and mechanism and understand why latency matters. We will explore how we use the C++ language in order to achieve minimum latency.</description>
-    </item>
-    <item>
-      <title>Netmap: A Novel Framework for High Speed Packet I/O</title>
-      <link>https://www.youtube.com/watch?v=SPtoXNW9yEQ</link>
-      <description>In the talk we will present netmap and its internals, explain why it is efficient yet safe and easy to use, and report our experience in developing and porting applications to the new API -- a task made easy by the existence of a pcap compatibility library.</description>
-    </item>
-    <item>
-      <title>Writing and Testing High-Frequency Trading Engines</title>
-      <link>https://www.youtube.com/watch?v=iINk7x44MmM</link>
-      <description>In Java, writing microsecond low-latency systems requires disciplined use of a subset of Java’s features, and testing and persistence provide additional challenges. This presentation looks at some of the solutions possible in Java and where the session’s speaker sees the future of high-frequency trading and Java.</description>
-    </item>
-    <item>
-      <title>CppCon 2017: Olivier Giroux "Designing (New) C++ Hardware”</title>
-      <link>https://www.youtube.com/watch?v=86seb-iZCnI</link>
-      <description>In this talk we’ll walk through the adaptation of the most radical new architecture to run C++ in decades, NVIDIA Volta. The talk contents will be divided into four parts that align to these abstract machine semantics: execution agents, progress guarantees, the object model, and the consistency model.</description>
     </item>
     <item>
       <title>Can he break into quant trading?</title>

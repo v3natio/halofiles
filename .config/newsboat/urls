@@ -1,25 +1,24 @@
 # Unread Counters
 "query:Unread:unread = \"yes\"" "Queries"
-"query:Coding:tags # \"coding\" and unread = \"yes\"" "Queries"
-"query:Motorsport:tags # \"motorsport\" and unread = \"yes\"" "Queries"
+#"query:Quant:tags # \"quant\" and unread = \"yes\"" "Queries"
+#"query:Motorsport:tags # \"motorsport\" and unread = \"yes\"" "Queries"
 " "
 
 # News
-https://feeds.npr.org/500005/podcast.xml "news" "~NP | Headlines (News)"
+https://www.prensa.com/arcio/rss/category/economia/? "news" "~LP | Headlines (News)"
+https://www.ft.com/ft-trading-room/high-frequency-trading?format=rss "news" "~FT | High-Frequency Trading (News)"
 " "
 https://archlinux.org/feeds/news/ "news" "~Arch Linux (News)"
 https://suckless.org/atom.xml "news" "~Suckless Tools (News)"
-file:///home/hooregi/.config/newsboat/local_feeds/library.rss "~Library - Playlist (Youtube)"
-file:///home/hooregi/.config/newsboat/local_feeds/watchlater.rss "~Watch Later - Playlist (Youtube)"
+https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhore17D82eR-uMbAsxWAmn3 "~Library [Economics] - Playlist (Youtube)"
+https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhoWZ215vkv_oxmjbp1QluIy "~Library [Programming] - Playlist (Youtube)"
+https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhrbaoEYbDV9pcF4h4MrcVul "~Library [TV/Movies] - Playlist (Youtube)"
 " "
 
 # Lifestyle
-https://www.youtube.com/feeds/videos.xml?channel_id=UCU_W0oE_ock8bWKjALiGs8Q "entertainment" "lifestyle" "youtube" "~Charisma on Command (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "entertainment" "lifestyle" "youtube" "~Daily Dose of Internet (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCoEj4uRzynPXEEegNqMnJVw "entertainment" "lifestyle" "youtube" "~HauteLeMode (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqM1Yw5XfJ5rVwCntLy0KxA "entertainment" "lifestyle" "youtube" "~Low Budget Stories (Youtube)"
-https://oldschoolcalisthenics.com/feed/ "entertainment" "lifestyle" "blog" "~Old School Calisthenics (Blog)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCdvNfCAZ3ZZ4WJNeQd-OY7A "entertainment" "lifestyle" "youtube" "~Old School Calisthenics (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCyL4hbmvGgSuk17wbB2Z4Mg "entertainment" "lifestyle" "youtube" "~Passport Style (Youtube)"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLNE967m3_UeS3_p8RV77IgBqVhjOjO49Y "entertainment" "lifestyle" "youtube" "~Sneaker Shopping - Playlist (Youtube)"
 
@@ -27,59 +26,27 @@ https://www.youtube.com/feeds/videos.xml?playlist_id=PLNE967m3_UeS3_p8RV77IgBqVh
 https://www.youtube.com/feeds/videos.xml?channel_id=UC7u-Dg0jb7g9s7XjmtJrtpg "entertainment" "motorsport" "youtube" "~Chain Bear (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCxdcaGkqr7UiNZi46f35yDw "entertainment" "motorsport" "youtube" "~CYMotorsport (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCB_qr75-ydFVKSF9Dmo6izg "entertainment" "motorsport" "youtube" "~F1 (Youtube)"
-file:///home/hooregi/.config/newsboat/local_feeds/formulaone.rss "entertainment" "motorsport" "youtube" "~F1 - Playlist (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCh3tzzP6n5b1EWcMUpiEhXg "entertainment" "motorsport" "youtube" "~F1 Aereodynamics (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCkiD6ghorslQvuNfuzTI4TA "entertainment" "motorsport" "youtube" "~F1 Onboards (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCSa7VR2kpOParYlUD-btXtA "entertainment" "motorsport" "youtube" "~F1 Radios (Youtube)"
+https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhqjQUNxYQJZmpqG85Y-5FUf "entertainment" "motorsport" "youtube" "~F1 - Playlist (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCh3tzzP6n5b1EWcMUpiEhXg "entertainment" "motorsport" "youtube" "~F1 Engineering (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCQ97Xu0vHj6dYFcEw4hdDow "entertainment" "motorsport" "youtube" "~F1 Word (Youtube)"
-https://createfeed.fivefilters.org/extract.php?url=https%3A%2F%2Fwww.motorsport.com%2Finfo%2Fabout-us%2Fgiorgio_piola%2F3939%2F&feed_title=Giorgio+Piola&guid=url_title&url_contains%5B0%5D=%2Ff1%2Fnews%2F&text_contains%5B0%5D=F1 "entertainment" "motorsport" "blog" "~Giorgio Piola (Blog)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCZqNme_MY-jl_1ziSr2VMjA "entertainment" "motorsport" "youtube" "~Kym Illman (Youtube)"
-https://createfeed.fivefilters.org/extract.php?url=https%3A%2F%2Fwww.motorsport.com%2Finfo%2Fabout-us%2Fmatt_somerfield%2F4511%2F&feed_title=Matt+Somerfield&guid=url_title&url_contains%5B0%5D=%2Ff1%2Fnews%2F&text_contains%5B0%5D=F1 "entertainment" "motorsport" "blog" "~Matt Somerfield (Blog)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCPwy2q7BNjdLYu1kM_OEJVw "entertainment" "motorsport" "youtube" "~Peter Windsor (Youtube)"
-
-# Sports
-https://www.youtube.com/feeds/videos.xml?channel_id=UCvo8BitSExXgP-eYjXwJvgw "entertainment" "sports" "youtube" "~Chase Tag (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCklie6BM0fhFvzWYqQVoCTA "entertainment" "sports" "youtube" "~PSA Squash TV (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC7-b9l1H44Hj4bMr--O-s1g "entertainment" "sports" "youtube" "~Rhythm Boxing (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCvgfXK4nTYKudb0rFR6noLA "entertainment" "sports" "youtube" "~UFC (Youtube)"
+https://twitchrss.appspot.com/vod/peterwindsor "entertainment" "motorsport" "twitch" "~Peter Windsor (Twitch)"
 
 # Tech
-https://www.youtube.com/feeds/videos.xml?channel_id=UC9-y-6csu5WGm29I7JiwpnA "entertainment" "tech" "youtube" "~Computerphile (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCVYamHliCI9rw1tHR1xbkfw "entertainment" "tech" "youtube" "~Dave2D (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCSh2ew90LSmi5_101c14JLQ "entertainment" "tech" "youtube" "~Sumsub for Experts (Youtube)"
-https://odysee.com/$/rss/@surveillancereport:2 "entertainment" "tech" "odysee" "~Surveillance Report (Odysee)"
-https://odysee.com/$/rss/@techlore:3 "entertainment" "tech" "odysee" "~Techlore (Odysee)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCngn7SVujlvskHRvRKc1cTw "education" "tech" "youtube" "~Bugswriter (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCOi2wszcfvs0j9Pcom3z9VA "education" "tech" "youtube" "~Ben Mckie (Youtube)"
+https://www.paritybit.ca/feed.xml "education" "tech" "blog" "~Jake Bauer (Blog)"
 
-# TV Shows
-https://www.youtube.com/feeds/videos.xml?channel_id=UCwTkM6CvIsYFaFiMKIKCqHw "entertainment" "tv shows" "youtube" "~007 (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCv-HoLYg3j53JgVC30P0mRg "entertainment" "tv shows" "youtube" "~Mr. Robot (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCoSwRgn1R8fPBNI-c4yjWUw "entertainment" "tv shows" "youtube" "~Suits (Youtube)"
 " "
-
-# Coding
-https://www.youtube.com/feeds/videos.xml?channel_id=UCngn7SVujlvskHRvRKc1cTw "education" "coding" "youtube" "~Bugswriter (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC4S7Fm5x-WXRCWP6MjK6k2A "education" "coding" "youtube" "~Code Smell (Youtube)"
-https://easyperf.net/feed.xml "education" "coding" "blog" "~Denis Bakhvalov (Blog)"
-https://phaazon.net/blog/feed "education" "coding" "blog" "~Dimitri Sabadie (Blog)"
-https://www.paritybit.ca/feed.xml "education" "coding" "blog" "~Jake Bauer (Blog)"
-https://nitter.net/BPyfinance/rss "education" "coding" "twitter" "~PyFin Repositories (Twitter)"
-https://oneraynyday.github.io/atom.xml "education" "coding" "blog" "~Ray Zhang (Blog)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCK8XIGR5kRidIw2fWqwyHRA "education" "coding" "youtube" "~Reducible (Youtube)"
-https://trstringer.com/feed.xml "education" "coding" "blog" "~Thomas Stringer (Blog)"
 
 # Finance
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-hKNOj4P-Y8hR9QEHpZPig "education" "finance" "youtube" "~Bridgewater (Youtube)"
-https://www.ft.com/unhedged?format=rss "education" "finance" "news" "~FT | Robert Armstrong (News)"
-https://seekingalpha.com/author/jeffrey-snider.xml "education" "finance" "blog" "~Jeffrey Snider (Blog)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCASM0cgfkJxQ1ICmRilfHLw "education" "finance" "youtube" "~Patrick Boyle (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC0oNWf8yB_p1xl3J2tj75ww "education" "finance" "youtube" "~Peak Frameworks (Youtube)"
 
-# Health
-https://www.youtube.com/feeds/videos.xml?channel_id=UCykTiaMobl2EWW28zmjcznQ "education" "health" "youtube" "~Dr. Carlos Jaramillo (Youtube)"
-
 # History
 https://www.youtube.com/feeds/videos.xml?channel_id=UCv_vLHiWVBh_FR9vbeuiY-A "education" "history" "youtube" "~Historia Civilis (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCR1D15p_vdP3HkrH8wgjQRw "education" "history" "youtube" "~Internet Historian (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCNIuvl7V8zACPpTmmNIqP2A "education" "history" "youtube" "~OverSimplified (Youtube)"
 
 # Miscellaneous
@@ -90,26 +57,21 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC9sXw4ZdPEIp6bYGvLW-_iA "ed
 
 # Psychology
 https://www.youtube.com/feeds/videos.xml?channel_id=UCYwVxWpjeKFWwu8TML-Te9A "education" "psychology" "youtube" "~Criminal Psychology (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCsvUzBAxu2t5e_qOEr6iczQ "education" "psychology" "youtube" "~Internet Impact (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCpuqYFKLkcEryEieomiAv3Q "education" "psychology" "youtube" "~Therapy in a Nutshell (Youtube)"
 
 # Quantitative Finance
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLHvJ1KNGE1s-A3ODiSgplw "education" "quant" "youtube" "~Dimitri Bianco (Youtube)"
-https://www.ft.com/ft-trading-room/high-frequency-trading?format=rss "education" "quant" "news" "~FT | High-Frequency Trading (News)"
 https://hudsonthames.org/feed/ "education" "quant" "blog" "~Hudson & Thames (Blog)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC8hI87gt0dmTAIEupEcsckA "education" "quant" "youtube" "~Hudson & Thames (Youtube)"
 https://blog.janestreet.com/feed.xml "education" "quant" "blog" "~Jane Street (Blog)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCDsVC_ewpcEW_AQcO-H-RDQ "education" "quant" "youtube" "~Jane Street (Youtube)"
-file:///home/hooregi/.config/newsboat/local_feeds/quantfinance.rss "education" "quant" "youtube" "~Quant Finance - Playlist (Youtube)"
+https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhr_mOXarOorXQgaKowwz6v7 "education" "quant" "youtube" "~Quant Finance - Playlist (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCWNx17Jt6eW4N4ayAEiXdEA "education" "quant" "youtube" "~Quantpie (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC0YjnxNjofkoHC6N7in0Rvg "education" "quant" "youtube" "~Quants Hub (Youtube)"
+https://oneraynyday.github.io/atom.xml "education" "quant" "blog" "~Ray Zhang (Blog)"
 https://reasonabledeviations.com/atom.xml "education" "quant" "blog" "~Robert Martin (Blog)"
-https://nitter.net/robertmartin88/rss "education" "quant" "twitter" "~Robert Martin (Twitter)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCWn4ZIeFO8x74Ik6SyKN6_Q "education" "quant" "youtube" "~Sergei Perfiliev (Youtube)"
 
 # Thought
 https://odysee.com/$/rss/@academyofideas:3 "education" "thought" "odysee" "~Academy Of Ideas (Odysee)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC3TUCGI-7rSjvHsE4ONXRww "education" "thought" "youtube" "~MilleniaThinker (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCo0dClJ22RkVtNgdhB75wFg "education" "thought" "youtube" "~MilleniaThinker RAW (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-tLyAaPbRZiYrOJxAGB7dQ "education" "thought" "youtube" "~Pursuit of Wonder (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCocP40a_UvRkUAPLD5ezLIQ "education" "thought" "youtube" "~Street Epistemologist (Youtube)"

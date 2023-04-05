@@ -5,50 +5,9 @@
   <title>Watch Later - Playlist (Youtube)</title>
   <description>Playlist filled with miscellaneous videos that have caught my eye.</description>
   <item>
-    <title>PANCAKES: RICETTA PERFETTA, morbidi e soffici!</title>
-    <link>https://www.youtube.com/watch?v=tWjhDAys5hc</link>
-    <description>Ok, sei sempre di corsa.... Ma come si fa a dire di no a questi PANCAKES PERFETTI? Pronti in 10 minuti, soffici e buonissimi!</description>
-  </item>
-  <item>
-    <title>Fall Apple Coffee Cake Recipe - Glen And Friends Cooking - Apple Streusel Cake Recipe</title>
-    <link>https://www.youtube.com/watch?v=If-sO4Mkkhw</link>
-    <description>Fall Apple Coffee Cake Recipe - Glen And Friends Cooking - Apple Streusel Cake.</description>
-  </item>
-  <item>
-    <title>TORTA ALLO YOGURT: RICETTA FACILISSIMA!</title>
-    <link>https://www.youtube.com/watch?v=jYW8o4Jb7OA</link>
-    <description>Èuna torta facile che renderà felici i più piccoli soprattutto se la farcirete con della Nutella o con la loro marmellata preferita!</description>
-  </item>
-  <item>
-    <title>Chicken Sheet Pan Recipe - Glen And Friends Cooking</title>
-    <link>https://www.youtube.com/watch?v=ubtRXtP0_lo</link>
-  </item>
-  <item>
-    <title>BISCOTTI AL COCCO FACILI - Perfetti da inzuppare!</title>
-    <link>https://www.youtube.com/watch?v=uJjujRUCQdQ</link>
-  </item>
-  <item>
-    <title>Dbl Chocolate Nutella Crunch Cookies - Glen And Friends Cooking</title>
-    <link>https://www.youtube.com/watch?v=r4cBjsVYtuU</link>
-  </item>
-  <item>
-    <title>Code a Discord Bot with Python - Host for Free in the Cloud</title>
-    <link>https://www.youtube.com/watch?v=SPTfmiYiuok</link>
-    <description>Learn how to code a Discord bot using Python and host it for free in the cloud using Repl.it.</description>
-  </item>
-  <item>
-    <title>Make Your Discord Bot Run 24/7 (Very Important Line of Code in the Video!!)</title>
-    <link>https://www.youtube.com/watch?v=L029p9HnkJY</link>
-  </item>
-  <item>
     <title>UML Diagrams Full Course (Unified Modeling Language)</title>
     <link>https://www.youtube.com/watch?v=WnMQ8HlmeXc</link>
     <description>Learn about how to use UML diagrams to visualize the design of databases or systems. You will learn the most widely used Unified Modeling Language diagrams, their basic notation, and applications. UML diagrams are frequently used in software development.</description>
-  </item>
-  <item>
-    <title>Data Structures - Full Course Using C and C++</title>
-    <link>https://www.youtube.com/watch?v=B31LgI4Y4DQ</link>
-    <description>Learn about data structures in this comprehensive course. We will be implementing these data structures in C or C++.</description>
   </item>
   <item>
     <title>An Overview of Financial Data Structures</title>
@@ -56,27 +15,9 @@
     <description>This video covers the various financial data structures available in the field. In this lecture, we also discuss the importance of the initial data for financial machine learning as well as different financial data types that exist, their advantages and disadvantages.</description>
   </item>
   <item>
-    <title>CppCon 2019: Daniel Hanson “Leveraging Modern C++ in Quantitative Finance”</title>
-    <link>https://www.youtube.com/watch?v=NeGO8lWDgyo</link>
-  </item>
-  <item>
     <title>MySQL Database - Full Course</title>
     <link>https://www.youtube.com/watch?v=ER8oKX5myE0</link>
     <description>Learn about MySQL Database in this full tutorial course for beginners. This course teaches you not just SQL basics, but it also goes into key database concepts such as Data Modeling, Locks, Indexes, Data Modeling, SQL Explain, and more.</description>
-  </item>
-  <item>
-    <title>What is Binary Search?</title>
-    <link>https://www.youtube.com/watch?v=KsoUiNv1SZA</link>
-    <description>In this tutorial, you will learn about binary search. This will include what it is, as well as how to use it to solve problems. You will learn how to implement binary search using C++.</description>
-  </item>
-  <item>
-    <title>Recursion in Programming - Full Course</title>
-    <link>https://www.youtube.com/watch?v=IJDJ0kBx2LM</link>
-    <description>Recursion is a powerful technique that helps us bridge the gap between complex problems being solved with elegant code. Within this course, we will break down what recursion is, why you would and wouldn’t want to use it and look at a variety of examples for how it can be used.</description>
-  </item>
-  <item>
-    <title>Unreal Engine and C++ Tutorial - Endless Runner Game</title>
-    <link>https://www.youtube.com/watch?v=SOjZTmOMGcY</link>
   </item>
   <item>
     <title>Django Tutorial - Create a Digital Resume with a Python Backend</title>
@@ -152,11 +93,6 @@
     <link>https://www.youtube.com/watch?v=GCBrb5h8knA</link>
   </item>
   <item>
-    <title>How To Solve The 6s Challenge</title>
-    <link>https://www.youtube.com/watch?v=h2vkrxvh76c</link>
-    <description>Can you make 6 from 3 copies of the same number, where the number ranges from 0 to 10? You can use common mathematical operations, but you cannot introduce any new digits (so the cube root is not allowed), and you must have an equality (this is not a trick question with the "not equal" sign). This is a great exercise for building mathematical number sense! See the video for the many solutions.</description>
-  </item>
-  <item>
     <title>Louis Gets Paranoid About Harvey Handling Esther's Divorce | Suits</title>
     <link>https://www.youtube.com/watch?v=PBgs6rfSeDY</link>
     <description>Although Louis doesn't like the idea of Harvey representing his sister, he asks for the favour anyway on Donna's advice that Harvey's respect for family is everything. Surprisingly, Harvey agrees to represent Esther in her divorce but under one condition: Louis stays completely out of the case.</description>
@@ -223,20 +159,6 @@
     <title>Linux users explaining</title>
     <link>https://www.youtube.com/watch?v=hbhoAr8GV98</link>
     <description>made with f r e e fonts on shotcut in true linux fashion.</description>
-  </item>
-  <item>
-    <title>Mio Honda habla sobre el aborto</title>
-    <link>https://www.youtube.com/watch?v=DxKqAVkEU4M</link>
-    <description>Mio Honda basada.</description>
-  </item>
-  <item>
-    <title>Mio Honda lgbt facts</title>
-    <link>https://www.youtube.com/watch?v=MJnCnE9xWD8</link>
-  </item>
-  <item>
-    <title>Pornography Facts by Mio Honda</title>
-    <link>https://www.youtube.com/watch?v=n01zo94Fl9Y</link>
-    <description>It isn't too late: quit pornography use and change your life. It's free. https://easypeasymethod.org/</description>
   </item>
   <item>
     <title>extremely hydrated man reads easypeasymethod.org audiobook</title>
