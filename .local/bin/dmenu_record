@@ -31,7 +31,7 @@ screengrab() { \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
 	"$HOME/media/videos/recordings/screengrab-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
-  updateicon "[ 雷 REC ]"
+  updateicon "[ 󰻂 REC ]"
        	}
 
 screencast() { \
@@ -45,7 +45,7 @@ screencast() { \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
 	"$HOME/media/videos/recordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
-  updateicon "[ 雷 REC ]"
+  updateicon "[ 󰻂 REC ]"
        	}
 
 screenall() { \
@@ -61,7 +61,7 @@ screenall() { \
  	-c:v h264 -crf 0 -preset ultrafast -c:a aac \
 	"$HOME/media/videos/recordings/screenall-$(date '+%y%m%d-%H%M-%S').mp4" &
 	echo $! > /tmp/recordingpid
-  updateicon "[ 雷 REC ]"
+  updateicon "[ 󰻂 REC ]"
        	}
 
 video() { ffmpeg \
@@ -71,7 +71,7 @@ video() { ffmpeg \
  	-c:v libx264 -qp 0 -r 30 \
 	"$HOME/media/videos/recordings/video-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
-  updateicon "[ 雷 REC ]"
+  updateicon "[ 󰻂 REC ]"
 	}
 
 webcamhidef() { ffmpeg \
@@ -80,7 +80,7 @@ webcamhidef() { ffmpeg \
 	-video_size 1920x1080 \
 	"$HOME/media/videos/recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
-  updateicon "[  REC ]"
+  updateicon "[ 󰻂 REC ]"
 	}
 
 webcam() { ffmpeg \
@@ -89,7 +89,7 @@ webcam() { ffmpeg \
 	-video_size 640x480 \
 	"$HOME/media/videos/recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
-  updateicon "[  REC ]"
+  updateicon "[ 󰻂 REC ]"
 	}
 
 audio() { \
@@ -98,7 +98,7 @@ audio() { \
 	-c:a flac \
 	"$HOME/media/videos/recordings/audio-$(date '+%y%m%d-%H%M-%S').flac" &
 	echo $! > /tmp/recordingpid
-  updateicon "[  REC ]"
+  updateicon "[ 󰻂 REC ]"
 	}
 
 askrecording() { \
@@ -134,7 +134,7 @@ videoselected()
 	-c:v libx264 -qp 0 -r 30 \
 	"$HOME/media/videos/recordings/box-$(date '+%y%m%d-%H%M-%S').mkv" &
 	echo $! > /tmp/recordingpid
-  updateicon "[ 雷 REC ]"
+  updateicon "[ 󰻂 REC ]"
 }
 
 case "$1" in

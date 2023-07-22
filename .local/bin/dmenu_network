@@ -36,14 +36,14 @@ fi
 # Check if iwd is installed first
 if ! command -v iwctl &> /dev/null
 then
-	notify-send "Network" " Could not find command 'iwctl'"
+	notify-send "Network" "󰀦 Could not find command 'iwctl'"
 	exit 1
 fi
 
 # Check if iwd service is running
 if [[ "inactive" == $(systemctl is-active iwd.service) ]]
 then
-	notify-send "Network" "ﯳ Attempting to start 'iwd.service'..."
+	notify-send "Network" "󰲝 Attempting to start 'iwd.service'..."
 	$(sudo -A systemctl start iwd.service) || exit 1
 fi
 
@@ -64,10 +64,10 @@ then
 		)
 		if [[ -z $WIFI_KNOWN_LIST ]];
 		then
-			notify-send "Network" "轢 No known networks"
+			notify-send "Network" "󰛵 No known networks"
 			exit 1
 		fi
-		WIFI_NETWORK=$( echo "$WIFI_KNOWN_LIST" | dmenu -p "Select Wifi 直:" -l 30 )
+		WIFI_NETWORK=$( echo "$WIFI_KNOWN_LIST" | dmenu -p "Select Wifi 󰛳:" -l 30 )
 		# Exit if user presses 'ESC' in dmenu
 		if [[ -z $WIFI_NETWORK ]];
 		then
@@ -77,7 +77,7 @@ then
 		WIFI_NETWORK=$2
 	fi
 	iwctl known-networks "$WIFI_NETWORK" forget &&
-	notify-send "Network" "轢 Forgot $WIFI_NETWORK"
+	notify-send "Network" "󰍸 Forgot $WIFI_NETWORK"
 	exit 0
 fi
 
@@ -103,13 +103,13 @@ fi
 
 if [ -z "$WIFI_DEVICE_LIST" ]
 then
-	notify-send "Network" " No available wifi devices. Use 'ip link' to check status"
+	notify-send "Network" "󰛵 No available wifi devices. Use 'ip link' to check status"
 	exit 1
 elif echo $WIFI_DEVICE_LIST | grep -q " "
 then
 	# Pipe list of devices to dmenu if there is more than one
 	WIFI_DEVICE=$(
-		echo "$WIFI_DEVICE_LIST" | dmenu -p "Select Wifi 直:" -l 30
+		echo "$WIFI_DEVICE_LIST" | dmenu -p "Select Wifi 󰛳:" -l 30
 	)
 	# Exit if user presses 'ESC' in dmenu
 	if [[ -z $WIFI_DEVICE ]];
@@ -125,7 +125,7 @@ fi
 if [[ $1 == disconnect ]];
 then
 	iwctl station "$WIFI_DEVICE" disconnect &&
-	notify-send "Network" "睊 Disconnected from wifi"
+	notify-send "Network" "󰲜 Disconnected from wifi"
 	exit 0
 fi
 
@@ -135,7 +135,7 @@ if [[ $1 == reset ]];
 then
 	sudo -A ip link set "$WIFI_DEVICE" down &&
 	sudo -A ip link set "$WIFI_DEVICE" up &&
-	notify-send "Network" "ﯱ $WIFI_DEVICE has been reset"
+	notify-send "Network" "󰱓 $WIFI_DEVICE has been reset"
 	exit 0
 fi
 
@@ -143,10 +143,10 @@ fi
 # Requires sudo
 if [[ $WIFI_DEVICE_DOWN ]];
 then
-	notify-send "Network" "ﯳ Device $WIFI_DEVICE is down. Attempting to bring it up..."
+	notify-send "Network" "󰅛 Device $WIFI_DEVICE is down. Attempting to bring it up..."
 	sudo -A ip link set "$WIFI_DEVICE" up &&
-	notify-send "Network" " Success" ||
-	notify-send "Network" "酪 Could not bring device up"
+	notify-send "Network" "Success" ||
+	notify-send "Network" "󰲜 Could not bring device up"
 fi
 
 # Select wifi network to connect to
@@ -170,7 +170,7 @@ then
 	)
 	if [[ -z $WIFI_NETWORK_LIST ]];
 	then
-		notify-send "Network" "睊 No wifi networks found"
+		notify-send "Network" "󰲜 No wifi networks found"
 		exit 1
 	fi
 	# Trim selected network for SSID
@@ -192,5 +192,5 @@ fi
 # This command will prompt for password first if required
 WIFI_PASSWORD=$(echo "" | dmenu -P -p "Enter Password  :")
 iwctl --passphrase="$WIFI_PASSWORD" station "$WIFI_DEVICE" connect "$WIFI_NETWORK" &&
-notify-send "Network" "直 Connected to $WIFI_NETWORK"  ||
-notify-send "Network" "睊 Could not connect to $WIFI_NETWORK"
+notify-send "Network" "󰱓 Connected to $WIFI_NETWORK"  ||
+notify-send "Network" "󰲜 Could not connect to $WIFI_NETWORK"

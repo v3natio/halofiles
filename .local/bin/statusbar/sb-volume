@@ -1,15 +1,15 @@
 #!/bin/sh
 
-[ $(pamixer --get-mute) = true ] && echo " ﱝ --%" && exit
+[ $(pamixer --get-mute) = true ] && echo " 󰝟 --%" && exit
 
 VOL="$(pamixer --get-volume)"
 
 if [ "$VOL" -gt "50" ]; then
-	echo " 墳 ${VOL}%"
+	echo " 󰕾 ${VOL}%"
 elif [ "$VOL" -gt "20" ]; then
-  echo " 奔 ${VOL}%"
+  echo " 󰖀 ${VOL}%"
 elif [ "$VOL" -gt "0" ]; then
-	echo " 奄 ${VOL}%"
+	echo " 󰕿 ${VOL}%"
 else
-        echo " 婢 --%" && exit
+        echo " 󰝟 --%" && exit
 fi

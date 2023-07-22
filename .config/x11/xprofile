@@ -1,6 +1,6 @@
 #!/bin/sh
 
-xrandr --dpi 102.196
+xrandr --dpi 141.68
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!
 xmodmap ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xmodmap
 setbg &

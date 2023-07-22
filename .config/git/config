@@ -1,0 +1,13 @@
+[user]
+  name = Hooregi
+  email = azerpa586@gmail.com
+
+[core]
+  editor = nvim
+  autocrlf = input
+
+[color]
+  ui = auto
+
+[credential]
+  helper = cache --timeout=3600

@@ -7,13 +7,14 @@ TAG,NAME,DESCRIPTION
 ,autoconf,automatically configures source code
 ,automake,automatically creates Makefiles
 ,avahi,probes the network for services
+,bc,command-line calculator
 ,bison,parses grammar into LR or GLR
 ,bluez,provides daemons for bluetooth
 ,bluez-utils,are utilities for the bluetooth architecture
 A,brave-bin,is a chromium web browser that blocks ads and trackers
+,brightnessctl,manages screen brightness
 ,chromium,is a web browser built for speed/simplicity/security
 ,cups,provides daemons for printing
-,discord,is a voice and text chat
 G,https://gitlab.com/hooregi/dmenu.git,is the application selector
 ,docker,packs/runs/ships any application as a container
 ,dosfstools,are utilities for the DOS filesystem
@@ -29,10 +30,11 @@ G,https://gitlab.com/hooregi/dwmblocks.git,is the statusbar
 ,gnome-keyring,stores passwords and encryption keys
 A,gotop-bin,displays monitored activities
 ,gparted,partitions disks
-,gruvbox-material-icon-theme-git,displays icons using the gruvbox color-scheme
-,gtk-theme-arc-gruvbox-git,displays GTK+ interfaces using the gruvbox color-scheme
+A,gruvbox-material-icon-theme-git,displays icons using the gruvbox color-scheme
+A,gtk-theme-arc-gruvbox-git,displays GTK+ interfaces using the gruvbox color-scheme
 ,highlight,highlights source code
 ,hplip,provides the drivers for HP printers
+,imagemagick,provides utilities to manipulate images
 ,iwd,provides daemons for internet
 ,lame,encodes MP3 files as MPEG
 A,lf-bin,is a terminal file manager
@@ -49,11 +51,10 @@ A,lf-bin,is a terminal file manager
 ,mpv-mpris,allows the media keys to control mpv
 A,ncspot-bin,is a spotify CLI player
 ,neovim,is a fork of vim with useful features
-A,nerd-fonts-fira-code,are firefox's fonts
+,ttf-firacode-nerd,is firefoxs' firacode font
 ,newsboat,is an RSS/Atom CLI feed reader
 ,npm,is the package manager for javascript
 ,nss-mdns,provides hostname resolution
-,ocaml,is a functional programming language
 A,ocrmypdf,adds an OCR text layer to scanned PDFs
 ,openssh,enables remote login through SSH
 ,optipng,compresses PNG files without quality loss
@@ -72,7 +73,6 @@ A,pfetch,displays system information
 ,pyenv,manages python versions
 ,python-poetry,manages/installs python package dependencies
 ,qrencode,encodes data in a QR symbol
-,r,is a language for statistical computing and graphics
 ,reflector,retrieves/filters the latest pacman mirrors
 ,rsync,syncs local/remote files
 A,sc-im,is a CLI spreadsheet editor
@@ -101,9 +101,8 @@ A,task-spooler,queues up tasks from the shell
 ,xclip,is a CLI for the X11 clipboard
 ,xdg-user-dirs,manages user directories
 ,xdg-utils,are utilities for desktop integration
-,xf86-video-intel,provides the Xorg drivers for Intel video
+,xf86-video-amdgpu,provides the Xorg drivers for Amd video
 ,xorg-server,is the graphical server
-,xorg-xbacklight,manages screen brightness
 ,xorg-xclipboard,stores the clipboard
 ,xorg-xdpyinfo,determines the screen resolution
 ,xorg-xinit,starts the graphical server
