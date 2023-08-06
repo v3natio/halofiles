@@ -41,6 +41,7 @@ alias \
   p="pacman" \
   y="paru" \
   vote="ssh aur@aur.archlinux.org vote" \
+  vpn="nordvpn" \
   z="zathura"
 
 alias \

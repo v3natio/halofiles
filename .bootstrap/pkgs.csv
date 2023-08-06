@@ -51,7 +51,8 @@ A,lf-bin,is a terminal file manager
 ,mpv-mpris,allows the media keys to control mpv
 A,ncspot-bin,is a spotify CLI player
 ,neovim,is a fork of vim with useful features
-,ttf-firacode-nerd,is firefoxs' firacode font
+,noto-fonts,is Google's noto font
+,ttf-firacode-nerd,is Firefox' firacode font
 ,newsboat,is an RSS/Atom CLI feed reader
 ,npm,is the package manager for javascript
 ,nss-mdns,provides hostname resolution

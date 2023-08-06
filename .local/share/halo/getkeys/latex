@@ -33,6 +33,7 @@ LaTeX is a document format.
 
   Text-mode symbols:
     Symbols:
+      ~ - \sim
       ... - \ldots
       | - \textbar
       • - \textbullet

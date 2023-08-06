@@ -190,7 +190,7 @@ fi
 
 # Connect to wifi
 # This command will prompt for password first if required
-WIFI_PASSWORD=$(echo "" | dmenu -P -p "Enter Password  :")
+WIFI_PASSWORD=$(echo "" | dmenu -P -p "Enter Password 󰟵 :")
 iwctl --passphrase="$WIFI_PASSWORD" station "$WIFI_DEVICE" connect "$WIFI_NETWORK" &&
 notify-send "Network" "󰱓 Connected to $WIFI_NETWORK"  ||
 notify-send "Network" "󰲜 Could not connect to $WIFI_NETWORK"

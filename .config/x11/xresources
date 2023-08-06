@@ -1,5 +1,5 @@
 !! Font:
-*.font:FiraCode Nerd Font:size=16:antialias=true:autohint=true
+*.font:FiraCode Nerd Font:size=14:antialias=true:autohint=true
 
 !! Transparency (0-1):
 *.alpha: 0.9

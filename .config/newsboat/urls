@@ -5,10 +5,14 @@
 " "
 
 # News
-https://www.prensa.com/arcio/rss/category/economia/? "news" "~LP | Headlines (News)"
+https://www.prensa.com/arcio/rss/category/economia/? "news" "~LP | Panama (News)"
+https://www.abc.es/rss/2.0/espana/madrid/ "news" "~AB | Spain (News)"
+https://www.ft.com/eurozone-economy?format=rss "news" "~FT | Eurozone (News)"
+https://www.ft.com/financial-markets-regulation?format=rss "news" "~FT | Financial Markets Regulation (News)"
 https://www.ft.com/ft-trading-room/high-frequency-trading?format=rss "news" "~FT | High-Frequency Trading (News)"
 " "
 https://archlinux.org/feeds/news/ "news" "~Arch Linux (News)"
+https://blog.linuxmint.com/?feed=rss2 "news" "~Linux Mint (News)"
 https://suckless.org/atom.xml "news" "~Suckless Tools (News)"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhore17D82eR-uMbAsxWAmn3 "~Library [Economics] - Playlist (Youtube)"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhoWZ215vkv_oxmjbp1QluIy "~Library [Programming] - Playlist (Youtube)"
@@ -18,7 +22,6 @@ https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhrbaoEYbDV9pcF4h
 # Lifestyle
 https://www.youtube.com/feeds/videos.xml?channel_id=UC_Z4iQnnTphiuypqe_qY4_Q "entertainment" "lifestyle" "youtube" "~Bee Rescue (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "entertainment" "lifestyle" "youtube" "~Daily Dose of Internet (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCoEj4uRzynPXEEegNqMnJVw "entertainment" "lifestyle" "youtube" "~HauteLeMode (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqM1Yw5XfJ5rVwCntLy0KxA "entertainment" "lifestyle" "youtube" "~Low Budget Stories (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCyL4hbmvGgSuk17wbB2Z4Mg "entertainment" "lifestyle" "youtube" "~Passport Style (Youtube)"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLNE967m3_UeS3_p8RV77IgBqVhjOjO49Y "entertainment" "lifestyle" "youtube" "~Sneaker Shopping - Playlist (Youtube)"
