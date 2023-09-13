@@ -2,49 +2,55 @@
 
 # script that generates a front-end for iwctl
 
+# Display help
+display_help() {
+  cat << EOF
+
+Usage: dmenu_network [options] <SSID>
+
+Description:
+  A front-end for iwctl using dmenu.
+
+Commands:
+  --help                   Display this help page.
+  --connect <SSID>         Connect to a specified or chosen Wi-Fi network.
+  --disconnect             Disconnect from the current Wi-Fi network.
+  --forget <SSID>          Forget a specified network.
+  --reset                  Bring Wi-Fi interface down, then up again (requires sudo permissions).
+
+EOF
+  exit 0
+}
+
 # Check for valid parameters
 if [[ ! -z $1 ]];
 then
-	case $1 in 
-		help | connect | disconnect | forget | reset )
-		;;
-		*)
-			echo "Invalid parameter $1"
-			echo "Use 'wifi help' for more info"
-			exit 1
-		;;
-	esac
+  case $1 in 
+    --help | --connect | --disconnect | --forget | --reset )
+    ;;
+      *)
+        echo "Invalid command $1"
+        echo "Use 'dmenu_network --help' for more info."
+        exit 1
+    ;;
+  esac
 fi
 
-# Display help
-if [[ $1 == "help" ]];
-then
-	printf "\n"
-	printf " wifi parameters\n"
-	printf "=================\n\n"
-	printf "wifi [connect] [SSID]\n"
-	printf "    Default parameter. Select and connect to a wifi network.\n\n"
-	printf "wifi disconnect\n"
-	printf "    Disconnect the current wifi connection.\n\n"
-	printf "wifi forget [SSID]\n"
-	printf "    Forget name and password of known network.\n\n"
-	printf "wifi reset\n"
-	printf "    Bring wifi interface down, then up again. User requires 'sudo' permissions.\n\n"
-	exit 0
-fi
-	
+# Check help parameter and display help
+[[ $1 == "--help" ]] && display_help	
+
 # Check if iwd is installed first
 if ! command -v iwctl &> /dev/null
 then
-	notify-send "Network" "󰀦 Could not find command 'iwctl'"
-	exit 1
+  notify-send "Network" "󰀦 Could not find command 'iwctl'"
+  exit 1
 fi
 
 # Check if iwd service is running
 if [[ "inactive" == $(systemctl is-active iwd.service) ]]
 then
-	notify-send "Network" "󰲝 Attempting to start 'iwd.service'..."
-	$(sudo -A systemctl start iwd.service) || exit 1
+  notify-send "Network" "󰲝 Attempting to start 'iwd.service'..."
+  $(sudo -A systemctl start iwd.service) || exit 1
 fi
 
 # Forget selected wifi network
@@ -176,7 +182,7 @@ then
 	# Trim selected network for SSID
 	WIFI_NETWORK=$(
 		echo "$WIFI_NETWORK_LIST" |
-		dmenu -p "$WIFI_DEVICE: Select wifi network" -l 30 | 
+		dmenu -p "Select Wi-Fi network:" -l 30 | 
 		sed 's/ *\(psk\|open\|8021x\) \+\*\+//g' | 
 		sed 's/^ *>\? *//g' | 
 		sed 's/ *$//g'
@@ -190,7 +196,7 @@ fi
 
 # Connect to wifi
 # This command will prompt for password first if required
-WIFI_PASSWORD=$(echo "" | dmenu -P -p "Enter Password 󰟵 :")
+WIFI_PASSWORD=$(echo "" | dmenu -P -p "Enter password 󰟵 :")
 iwctl --passphrase="$WIFI_PASSWORD" station "$WIFI_DEVICE" connect "$WIFI_NETWORK" &&
 notify-send "Network" "󰱓 Connected to $WIFI_NETWORK"  ||
 notify-send "Network" "󰲜 Could not connect to $WIFI_NETWORK"

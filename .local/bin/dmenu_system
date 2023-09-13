@@ -3,10 +3,10 @@
 # script that generates a front-end for systemctl
 
 case "$(printf "lock\nhibernate\nsleep\nreboot\nshutdown" | dmenu -i -p 'Action: ')" in
-	'lock') slock ;;
-	'hibernate') slock & sudo systemctl hibernate -i ;;
-	'sleep') slock & sudo systemctl suspend -i ;;
-	'reboot') sudo systemctl reboot -i ;;
-	'shutdown') sudo systemctl poweroff -i ;;
+	"lock") slock ;;
+	"hibernate") slock & sudo systemctl hibernate -i ;;
+	"sleep") slock & sudo systemctl suspend -i ;;
+	"reboot") sudo systemctl reboot -i ;;
+	"shutdown") sudo systemctl poweroff -i ;;
 	*) exit 1 ;;
 esac

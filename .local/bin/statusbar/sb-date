@@ -1,4 +1,4 @@
 #!/bin/sh
 
-DATE=$(date '+%a %d %b')
+DATE=$(date "+%a %d %b")
 echo " 󰃭 $DATE"

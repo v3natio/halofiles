@@ -2,10 +2,9 @@
 
 xrandr --dpi 141.68
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!
-xmodmap ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xmodmap
 setbg &
 
-autostart="picom dunst dwmblocks unclutter"
+autostart="picom dunst dwmblocks remapd rescrd unclutter"
 
 for program in $autostart; do
 	pidof -s "$program" || setsid -f "$program"

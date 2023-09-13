@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# back-end script to select files using lf
-
-while read -r file; do
-  [ -z "$file" ] && continue
-  lf -remote "send select \"$file\""
-  lf -remote "send toggle"
-done

@@ -12,7 +12,6 @@ optimizejpg()
 	"$file" \
 	"$filename"-optimized.jpg
 	exiftool -all= "$filename"-optimized.jpg
-	rm "$filename"-optimized.jpg_original
 }
 
 optimizepng()
@@ -23,7 +22,6 @@ optimizepng()
 	fi
 	optipng -out "$filename"-optimized.png "$file"
 	exiftool -all= "$filename"-optimized.png
-	rm "$filename"-optimized.png_original
 }
 
 for file in "$@"; do

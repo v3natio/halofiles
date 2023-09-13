@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# back-end script that autostarts a searx instance in docker
-
-sudo -A systemctl start docker
-export PORT=80
-sudo docker run --rm -d -v ${XDG_DATA_HOME:-$HOME/.local/share}/searx:/etc/searx -p $PORT:8080 -e BASE_URL=http://localhost:$PORT/ searx/searx

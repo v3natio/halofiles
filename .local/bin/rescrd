@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# back-end script to run rescrs when a new device is detected
+
+# Create a temporary file to store events
+tempfile=$(mktemp)
+
+# Start udevadm monitor in the background, writing to the temp file
+udevadm monitor --property -s drm > "$tempfile" &
+
+# Store the PID of the background process so we can clean up later
+monitor_pid=$!
+
+# Main loop to check for events
+while :; do
+  # Check the temp file for relevant events
+  if grep -qP 'change.+\/[^:]+\(drm\)' "$tempfile"; then
+    rescrs
+    > "$tempfile"  # Clear the temp file
+  fi
+  sleep 1  # Wait before checking again to reduce CPU usage
+done
+
+# Cleanup: kill the udevadm monitor process and remove the temp file
+trap "kill $monitor_pid; rm -f $tempfile" EXIT

@@ -6,11 +6,6 @@ end
 treesitter.setup {
   ensure_installed = {
     "bash",
-    "bibtex",
-    "cmake",
-    "cpp",
-    "dockerfile",
-    "json",
     "latex",
     "lua",
     "markdown",

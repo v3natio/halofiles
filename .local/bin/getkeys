@@ -2,6 +2,6 @@
 
 # back-end script that looks up the keybindings for any given application
 
-cat "${XDG_DATA_HOME:-$HOME/.local/share}"/halo/getkeys/"$1" 2>/dev/null && exit
+cat "${XDG_DATA_HOME:-$HOME/.local/share}"/halo/getkeys/"$1" 2>/dev/null | less && exit
 echo "Run command with one of the following arguments for info about that program:"
 ls "${XDG_DATA_HOME:-$HOME/.local/share}"/halo/getkeys

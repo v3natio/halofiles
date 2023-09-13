@@ -57,6 +57,7 @@ A,ncspot-bin,is a spotify CLI player
 ,npm,is the package manager for javascript
 ,nss-mdns,provides hostname resolution
 A,ocrmypdf,adds an OCR text layer to scanned PDFs
+,okular,is a PDF annotation tool
 ,openssh,enables remote login through SSH
 ,optipng,compresses PNG files without quality loss
 ,pamixer,is a command-line mixer

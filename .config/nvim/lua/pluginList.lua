@@ -44,6 +44,10 @@ return packer.startup(function()
   }
 
   use {
+    "lervag/vimtex",
+  }
+
+  use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
     event = "BufRead",
@@ -56,7 +60,7 @@ return packer.startup(function()
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     config = function()
-      require "pluginSets.cmp"
+      require "pluginSets._cmp"
     end,
   }
   use {
@@ -144,31 +148,6 @@ return packer.startup(function()
       require "pluginSets.lspconfig"
     end,
   }
-
-  --use {
-  --  "mfussenegger/nvim-dap",
-  --  after = "DAPInstall.nvim",
-  --}
-  --use {
-  --  "Pocco81/DAPInstall.nvim",
-  --  opt = true,
-  --  setup = function()
-  --    require("options").packer_lazy_load "DAPInstall.nvim"
-  --    -- reload the file so dap starts for it
-  --    vim.defer_fn(function ()
-  --      vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-  --    end, 0)
-  --  end,
-  --  config = function()
-  --    require "pluginSets.dap"
-  --  end,
-  --}
-  --use {
-  --  "rcarriga/nvim-dap-ui",
-  --  after = "nvim-dap",
-  --}
-
-
   use {
     "ray-x/lsp_signature.nvim",
     after = "nvim-lspconfig",

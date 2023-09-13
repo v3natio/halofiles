@@ -7,7 +7,6 @@
 # News
 https://www.prensa.com/arcio/rss/category/economia/? "news" "~LP | Panama (News)"
 https://www.abc.es/rss/2.0/espana/madrid/ "news" "~AB | Spain (News)"
-https://www.ft.com/eurozone-economy?format=rss "news" "~FT | Eurozone (News)"
 https://www.ft.com/financial-markets-regulation?format=rss "news" "~FT | Financial Markets Regulation (News)"
 https://www.ft.com/ft-trading-room/high-frequency-trading?format=rss "news" "~FT | High-Frequency Trading (News)"
 " "
@@ -35,13 +34,11 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCQ97Xu0vHj6dYFcEw4hdDow "en
 https://createfeed.fivefilters.org/extract.php?url=https%3A%2F%2Fwww.motorsport.com%2Finfo%2Fabout-us%2Fgiorgio_piola%2F3939%2F&feed_title=Giorgio+Piola+%28Blog%29&max=10&order=document&guid=0&url_contains%5B0%5D=%2Ff1%2Fnews%2F&strip_if_text%5B0%5D=News "entertainment" "motorsport" "blog" "~Giorgio Piola (Blog)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCZqNme_MY-jl_1ziSr2VMjA "entertainment" "motorsport" "youtube" "~Kym Illman (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCPwy2q7BNjdLYu1kM_OEJVw "entertainment" "motorsport" "youtube" "~Peter Windsor (Youtube)"
-https://twitchrss.appspot.com/vod/peterwindsor "entertainment" "motorsport" "twitch" "~Peter Windsor (Twitch)"
 
 # Tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCngn7SVujlvskHRvRKc1cTw "education" "tech" "youtube" "~Bugswriter (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCOi2wszcfvs0j9Pcom3z9VA "education" "tech" "youtube" "~Ben Mckie (Youtube)"
 https://www.paritybit.ca/feed.xml "education" "tech" "blog" "~Jake Bauer (Blog)"
-
 " "
 
 # Finance
@@ -63,7 +60,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC9sXw4ZdPEIp6bYGvLW-_iA "ed
 
 # Quantitative Finance
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLHvJ1KNGE1s-A3ODiSgplw "education" "quant" "youtube" "~Dimitri Bianco (Youtube)"
-https://hudsonthames.org/feed/ "education" "quant" "blog" "~Hudson & Thames (Blog)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC8hI87gt0dmTAIEupEcsckA "education" "quant" "youtube" "~Hudson & Thames (Youtube)"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhr_mOXarOorXQgaKowwz6v7 "education" "quant" "youtube" "~Quant Finance - Playlist (Youtube)"
 https://oneraynyday.github.io/atom.xml "education" "quant" "blog" "~Ray Zhang (Blog)"
