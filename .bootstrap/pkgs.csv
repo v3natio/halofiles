@@ -1,116 +1,128 @@
 TAG,NAME,DESCRIPTION
-,acpi,reads battery/power/thermal sensors
-,acpid,delivers ACPI power management events
-,alsa-utils,are utilities for the sound architecture
-,arandr,provides a front-end for XRandR
-,atool,manages file archives
-,autoconf,automatically configures source code
-,automake,automatically creates Makefiles
-,avahi,probes the network for services
-,bc,command-line calculator
-,bison,parses grammar into LR or GLR
-,bluez,provides daemons for bluetooth
-,bluez-utils,are utilities for the bluetooth architecture
-A,brave-bin,is a chromium web browser that blocks ads and trackers
-,brightnessctl,manages screen brightness
-,chromium,is a web browser built for speed/simplicity/security
-,cups,provides daemons for printing
-G,https://gitlab.com/hooregi/dmenu.git,is the application selector
-,docker,packs/runs/ships any application as a container
-,dosfstools,are utilities for the DOS filesystem
-,dunst,provides customizable daemons for notifications
-G,https://gitlab.com/hooregi/dwm.git,is the window manager
-G,https://gitlab.com/hooregi/dwmblocks.git,is the statusbar
-,exfat-utils,are utilities for the exFAT filesystem
-,fakeroot,simulates superuser privileges
-,flex,generates text-scanning programs
-,fzf,is a fuzzy finder
-,gcc,is the GNU C and C++ compiler
-,gimp,is a GNU Image Manipulation Program
-,gnome-keyring,stores passwords and encryption keys
-A,gotop-bin,displays monitored activities
-,gparted,partitions disks
-A,gruvbox-material-icon-theme-git,displays icons using the gruvbox color-scheme
-A,gtk-theme-arc-gruvbox-git,displays GTK+ interfaces using the gruvbox color-scheme
-,highlight,highlights source code
-,hplip,provides the drivers for HP printers
-,imagemagick,provides utilities to manipulate images
-,iwd,provides daemons for internet
-,lame,encodes MP3 files as MPEG
-A,lf-bin,is a terminal file manager
-,libnotify,sends desktop notifications
-,libreoffice-still,is the libre office suite
-,libtool,manages the creation of static/dynamic libraries
-,maim,takes screenshots using imlib2
-,make,automatically builds executable programs and libraries from source code
-,man-db,is a tool for reading manual pages
-,mat2,removes metadata from files
-,mesa,is an implementation of OpenGL graphics
-,mlocate,finds files quickly by name
-,moreutils,is a collection of *nix tools
-,mpv-mpris,allows the media keys to control mpv
-A,ncspot-bin,is a spotify CLI player
-,neovim,is a fork of vim with useful features
-,noto-fonts,is Google's noto font
-,ttf-firacode-nerd,is Firefox' firacode font
-,newsboat,is an RSS/Atom CLI feed reader
-,npm,is the package manager for javascript
-,nss-mdns,provides hostname resolution
-A,ocrmypdf,adds an OCR text layer to scanned PDFs
-,okular,is a PDF annotation tool
-,openssh,enables remote login through SSH
-,optipng,compresses PNG files without quality loss
-,pamixer,is a command-line mixer
-A,pandoc-bin,converts most document formats
-,patch,applies patches to sources
-,perl-file-mimeinfo,determines filetypes
-,perl-image-exiftool,reads/rewrites EXIF info
-A,pfetch,displays system information
-,picom,is an X compositor
-,pipewire-alsa,routes/processes ALSA audio
-,pipewire-pulse,routes/processes PulseAudio
-,pkgconf,compiles packages and links metadata
-,playerctl,controls media players
-,pulsemixer,is a CLI audio mixer
-,pyenv,manages python versions
-,python-poetry,manages/installs python package dependencies
-,qrencode,encodes data in a QR symbol
-,reflector,retrieves/filters the latest pacman mirrors
-,rsync,syncs local/remote files
-A,sc-im,is a CLI spreadsheet editor
-A,sct,sets color temperatures
-G,https://gitlab.com/hooregi/slock.git,is the lockscreen
-A,spotify,is a music streaming service
-G,https://gitlab.com/hooregi/st.git,is the terminal emulator
-,stow,manages software installs in the same tree
-,stylua,formats Lua code
-,sxiv,is an image viewer
-A,task-spooler,queues up tasks from the shell
-,tesseract-data-eng,is the OCR (eng) data
-,texinfo,is a documentation system for printed output
-,texlive-core,is a TeX distribution
-,thermald,provides daemons for battery
-,tlp,manages battery power
-,transmission-cli,is a torrent client
-,ueberzug,allows image viewing on the terminal
-,unclutter,hides the mouse cursor when not in use
-,unrar,is a RAR compression program
-,unzip,is a ZIP compression program
-,urlscan,is a terminal URL selector
-,wget,retrieves files from the web
-,which,shows the full path of commands
-,wireplumber,manages pipewire sessions
-,xclip,is a CLI for the X11 clipboard
-,xdg-user-dirs,manages user directories
-,xdg-utils,are utilities for desktop integration
-,xf86-video-amdgpu,provides the Xorg drivers for Amd video
-,xorg-server,is the graphical server
-,xorg-xclipboard,stores the clipboard
-,xorg-xdpyinfo,determines the screen resolution
-,xorg-xinit,starts the graphical server
-,xorg-xwininfo,queries info about windows
-,xwallpaper,sets the wallpaper
-,yt-dlp,downloads videos from Youtube and other sites
-A,ytfzf,finds Youtube videos on the terminal
-,zathura,is a minimalist document viewer
-,zathura-pdf-mupdf,adds PDF support to zathura
+,acpi,Reads battery power and thermal sensors
+,acpid,Delivers ACPI power management events
+,alsa-utils,Provides utilities for sound architecture
+,amd-ucode,
+,arandr,Provides front-end for XRandR
+,atool,Manages file archives
+,autoconf,Configures source code automatically
+,automake,Creates Makefiles automatically
+,avahi,Probes network for services
+,base,
+,bc,Acts as command-line calculator
+,bison,Parses grammar into LR or GLR parsers
+,bluez,Provides daemons for Bluetooth
+,bluez-utils,Provides utilities for Bluetooth architecture
+A,brave-bin,Chromium-based web browser that blocks ads and trackers
+,brightnessctl,Manages screen brightness
+,chromium,Web browser built for speed simplicity and security
+,cups,Provides daemons for printing
+A,dataspell,JetBrains Python IDE for data scientists
+G,https://github.com/hooregi/dmenu.git,Acts as the application selector
+,docker,Packs runs and ships applications as containers
+,dosfstools,Provides utilities for DOS filesystem
+,dunst,Provides customizable daemons for notifications
+G,https://github.com/hooregi/dwm.git,Acts as the window manager
+G,https://github.com/hooregi/dwmblocks.git,Acts as the status bar
+,exfat-utils,Provides utilities for exFAT filesystem
+,fakeroot,Simulates superuser privileges
+,flex,Generates text-scanning programs
+,fzf,Acts as fuzzy finder
+,gcc,GNU C and C++ compiler
+,gimp,Open-source image editor
+,git,
+,gnome-keyring,Stores passwords and encryption keys
+A,gotop-bin,Displays monitored activities
+A,gruvbox-material-icon-theme-git,Displays icons using gruvbox color-scheme
+A,gtk-theme-arc-gruvbox-git,Displays GTK+ interfaces using gruvbox color-scheme
+,highlight,Highlights source code
+,imagemagick,Provides utilities to manipulate images
+,inkscape,Open-source drawing utility
+,iwd,Provides daemons for internet
+,lame,Encodes MP3 files as MPEG
+A,lf-bin,Terminal file manager
+,libnotify,Sends desktop notifications
+,libreoffice-still,LibreOffice suite
+,libtool,Manages creation of static and dynamic libraries
+,linux,
+,linux-firmware,
+,linux-headers,
+,maim,Takes screenshots using imlib2
+,make,Builds executable programs and libraries from source code
+,man-db,Tool for reading manual pages
+,mat2,Removes metadata from files
+,mesa,Implementation of OpenGL graphics
+,mlocate,Finds files quickly by name
+,moreutils,Collection of Unix tools
+,mpv-mpris,Allows media keys to control mpv
+,ncspot,Spotify CLI player
+,neovim,Fork of vim with useful features
+,newsboat,RSS/Atom CLI feed reader
+,noto-fonts,Google's noto font
+A,nordvpn-bin,CLI utility to enable Nord's VPN service
+,npm,Package manager for javascript
+,nsxiv,Image viewer
+A,ocrmypdf,Adds OCR text layer to scanned PDFs
+,okular,PDF annotation tool
+,openssh,Enables remote login through SSH
+,optipng,Compresses PNG files without quality loss
+,pamixer,Command-line mixer
+A,pandoc-bin,Converts most document formats
+,perl-file-mimeinfo,Determines filetypes
+,perl-image-exiftool,Reads and rewrites EXIF info
+A,pfetch,Displays system information
+,picom,X compositor
+,pipewire-alsa,Routes and processes ALSA audio
+,pipewire-pulse,Routes and processes PulseAudio
+,pkgconf,Compiles packages and links metadata
+,playerctl,Controls media players
+,pulsemixer,CLI audio mixer
+,pyenv,Manages python versions
+,python-poetry,Manages and installs python package dependencies
+,qrencode,Encodes data in QR symbol
+,reflector,Retrieves and filters latest pacman mirrors
+A,sc-im,CLI spreadsheet editor
+A,sct,Sets color temperatures
+G,https://github.com/hooregi/slock.git,Acts as the lockscreen
+A,spotify,Music streaming service
+G,https://github.com/hooregi/st.git,Acts as the terminal emulator
+,stow,Manages software installs in same tree
+,stylua,Formats Lua code
+,sudo,
+A,task-spooler,Queues up tasks from shell
+,tesseract-data-eng,OCR data for English language
+,texinfo,Documentation system for printed output
+,texlive-basic,
+,texlive-latex,
+,texlive-mathscience,
+,texlive-pictures,
+,thermald,Provides daemons for battery monitoring
+,tlp,Manages battery power
+,transmission-cli,Torrent client
+,ttf-firacode-nerd,Firefox's Fira Code fonts
+,ueberzug,Allows image viewing on terminal
+,unclutter,Hides mouse cursor when not in use
+,unrar,RAR compression program
+,unzip,ZIP compression program
+,urlscan,Terminal URL selector
+,virtualbox,Virtualization software
+,virtualbox-guest-iso,Holds ISO images for Guest Additions
+,wget,Retrieves files from web
+,which,Shows full path of commands
+,wireplumber,Manages pipewire sessions
+,xclip,CLI for X11 clipboard
+,xdg-user-dirs,Manages user directories
+,xdg-utils,Provides utilities for desktop integration
+,xf86-video-amdgpu,Provides Xorg drivers for AMD video
+,xorg-server,Graphical server
+,xorg-xclipboard,Stores clipboard
+,xorg-xdpyinfo,Determines screen resolution
+,xorg-xinit,Starts graphical server
+,xorg-xwininfo,Queries info about windows
+,xwallpaper,Sets wallpaper
+,yt-dlp,Downloads videos from Youtube and other sites
+,ytfzf,Finds Youtube videos on terminal
+,zathura,Minimalist document viewer
+,zathura-pdf-mupdf,Adds PDF support to zathura
+A,paru,
+A,upd72020x-fw,Firmware for Renesas USB 3.0 chipsets

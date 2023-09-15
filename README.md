@@ -10,7 +10,7 @@
   - ncspot (music player)
   - nvim (text editor)
   - zsh (shell)
-  - other stuff like newsboat, sc-im, sxiv, etc.
+  - other stuff like newsboat, nsxiv, sc-im, etc.
 
 - I try to minimize what's directly in `~` so:
   - Conforming to the [XDG](https://wiki.archlinux.org/title/XDG_Base_Directory) specification is crucial.
