@@ -1,106 +1,86 @@
-local present1, lspconfig = pcall(require, "lspconfig")
-local present2, lsp_installer = pcall(require, "nvim-lsp-installer")
+local present1, lspconfig = pcall(require, 'lspconfig')
+local present2, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not (present1 or present2) then
   return
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
-  },
-}
+-- passes autocompletion to cmp
+local capabilities = cmp_nvim_lsp.default_capabilities()
 
--- lazy load servers
-lsp_installer.on_server_ready(function(server)
-  local opts = {}
-  if server.name == "jsonls" then
-    local jsonls_opts = require "pluginSets.lsp-server.jsonls"
-    opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-  end
-  if server.name == "pyright" then
-    local pyright_opts = require "pluginSets.lsp-server.pyright"
-    opts = vim.tbl_deep_extend("force", pyright_opts, opts)
-  end
-  if server.name == "remark_ls" then
-    local remark_opts = require "pluginSets.lsp-server.remark_ls"
-    opts = vim.tbl_deep_extend("force", remark_opts, opts)
-  end
-  if server.name == "sumneko_lua" then
-    local sumneko_opts = require "pluginSets.lsp-server.sumneko_lua"
-    opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
-  end
-  server:setup(opts)
-  vim.cmd [[ do User LspAttachBuffers ]]
-end)
-
--- replace the default lsp diagnostic symbols
-local function lspSymbol(name, icon)
-  vim.fn.sign_define(name, { texthl = name, text = icon, numhl = "" })
-end
-lspSymbol("DiagnosticSignError", "")
-lspSymbol("DiagnosticSignWarn", "")
-lspSymbol("DiagnosticSignHint", "")
-lspSymbol("DiagnosticSignInfo", "")
-
--- add an icon before diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = {
-    prefix = "",
-    spacing = 0,
-  },
-  signs = true,
-  update_in_insert = false,
-  underline = true,
-  severity_sort = true,
-  float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
-  },
-})
-
--- see `:help vim.lsp.*` for documentation on any of the functions below
+-- set the keymaps for LSP
 local function map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
-    options = vim.tbl_extend("force", options, opts)
+    options = vim.tbl_extend('force', options, opts)
   end
   vim.api.nvim_buf_set_keymap(0, mode, lhs, rhs, options)
 end
 
-map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>")
-map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
-map("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>")
-map("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-map("n", "gk", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-map("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
-map("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
-map("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
-map("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-map("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-map("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-map("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-map("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>")
-map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-map("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>")
-map("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>")
-map("v", "<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
+local on_attach = function(client, bufnr)
+  map('n', 'gR', '<cmd>Telescope lsp_references<CR>') -- show all references
+  map('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>') -- jump to declaration
+  map('n', 'gd', '<cmd>Telescope lsp_definitions<CR>') -- show all definitions
+  map('n', 'gi', '<cmd>Telescope lsp_implementations<CR>') -- show LSP implementations
+  map('n', 'gt', '<cmd>Telescope lsp_type_definitions<CR>') -- show LSP type definitions
+  map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>') -- see available code actions
+  map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>') -- smart rename
+  map('n', '<leader>D', '<cmd>Telescope diagnostics bufnr=0<CR>') -- show diagnistics for current file
+  map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>') -- jump to previous diagnostic in buffer
+  map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>') -- jump to next diagnostic in buffer
+  map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>') -- show documentation
+  map('n', '<leader>rs', ':LspRestart<CR>') -- restart LSP server
+end
 
--- rounded borders
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+-- configure LSP servers
+-- bash server
+lspconfig['bashls'].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+-- lua server
+lspconfig['lua_ls'].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      -- make the language server recognize 'vim' global
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        -- make language server aware of runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.stdpath('config') .. '/lua'] = true,
+        },
+      },
+    },
+  },
+})
+-- markdown server
+lspconfig['marksman'].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+-- python server
+lspconfig['pyright'].setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    python = {
+      analysis = {
+        diagnosticMode = 'workspace',
+      },
+    },
+  },
+})
+
+-- replace the default LSP diagnostic symbols
+local function lspSymbol(name, icon)
+  vim.fn.sign_define(name, { texthl = name, text = icon, numhl = '' })
+end
+lspSymbol('DiagnosticSignError', '')
+lspSymbol('DiagnosticSignWarn', '')
+lspSymbol('DiagnosticSignHint', '')
+lspSymbol('DiagnosticSignInfo', '')

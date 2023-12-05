@@ -1,215 +1,149 @@
-local present, packer = pcall(require, "pluginInit")
-if present then
-  packer = require "packer"
-else
-  return false
-end
-
-local use = packer.use
-
-return packer.startup(function()
-  -- Package manager
-  use {
-    "wbthomason/packer.nvim",
-    event = "VimEnter",
-  }
-
-  -- Startup
-  use {
-    "lewis6991/impatient.nvim",
-  }
-
+return {
   -- General
-  use {
-    "phaazon/hop.nvim",
-    cmd = {
-      "HopWord",
-      "HopLine",
-      "HopChar1",
-      "HopChar2",
-      "HopPattern",
-    },
-    as = "hop",
+  {
+    'nvim-treesitter/nvim-treesitter', -- neovim parser
+    build = ':TSUpdate',
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = {},
     config = function()
-      require("hop").setup()
+      require('pluginSets.treesitter')
     end,
-  }
-
-  use {
-    "kyazdani42/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-    config = function()
-      require "pluginSets.nvimtree"
-    end,
-  }
-
-  use {
-    "lervag/vimtex",
-  }
-
-  use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    event = "BufRead",
-    config = function()
-      require "pluginSets.treesitter"
-    end,
-  }
-
-  use {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    config = function()
-      require "pluginSets._cmp"
-    end,
-  }
-  use {
-    "L3MON4D3/LuaSnip",
-    after = "nvim-cmp",
-    config = function()
-      require("pluginSets.others").luasnip()
-    end,
-  }
-  use {
-    "saadparwaiz1/cmp_luasnip",
-    after = "LuaSnip",
-  }
-  use {
-    "hrsh7th/cmp-nvim-lua",
-    after = "cmp_luasnip",
-  }
-  use {
-    "hrsh7th/cmp-nvim-lsp",
-    after = "cmp-nvim-lua",
-  }
-  use {
-    "ray-x/cmp-treesitter",
-    after = "cmp-nvim-lsp",
-  }
-  use {
-    "hrsh7th/cmp-path",
-    after = "cmp-treesitter",
-  }
-
-  use {
-    "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
-    requires = {
+  },
+  {
+    'hrsh7th/nvim-cmp', -- completion engine
+    event = 'InsertEnter',
+    dependencies = {
       {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        "nvim-lua/plenary.nvim",
-        run = "make",
+        'L3MON4D3/LuaSnip', -- snippet engine
+        version = 'v2.*',
+        build = 'make install_jsregexp',
+        config = function()
+          require('pluginSets.others').luasnip()
+        end,
       },
+      'saadparwaiz1/cmp_luasnip', -- snippet completion
+      'hrsh7th/cmp-nvim-lua', -- lua completion
+      'hrsh7th/cmp-nvim-lsp', -- LSP completion
+      'hrsh7th/cmp-path', -- path completion
     },
     config = function()
-      require "pluginSets.telescope"
+      require('pluginSets.cmp')
     end,
-  }
-
-  -- Writing
-  use {
-    "Pocco81/TrueZen.nvim",
-    cmd = {
-      "TZAtaraxis",
-      "TZMinimalist",
-      "TZFocus",
-    },
-    config = function()
-      require "pluginSets.zenmode"
-    end,
-  }
+  },
 
   -- Development
-  use {
-    "skywind3000/asyncrun.vim",
-    event = "InsertEnter",
+  {
+    'skywind3000/asyncrun.vim', -- asyncronous command runner
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      vim.g.asyncrun_open = 6
-      vim.g.asyncrun_bell = 1
-      vim.g.asyncrun_rootmarks = { ".svn", ".git", ".root", "_darcs" }
+      vim.g.asyncrun_open = 3
+      vim.g.asyncrun_rootmarks = { '.svn', '.git', '.root', '_darcs' }
     end,
-  }
-
-  use {
-    "neovim/nvim-lspconfig",
-    after = "nvim-lsp-installer",
-  }
-  use {
-    "williamboman/nvim-lsp-installer",
-    opt = true,
-    setup = function()
-      require("options").packer_lazy_load "nvim-lsp-installer"
-      -- reload the file so lsp starts for it
-      vim.defer_fn(function ()
-        vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
-      end, 0)
-    end,
+  },
+  {
+    'williamboman/mason.nvim', -- utilities installer
+    lazy = true,
+    dependencies = 'williamboman/mason-lspconfig.nvim', -- LSP setup
     config = function()
-      require "pluginSets.lspconfig"
+      require('pluginSets.lspinstall')
     end,
-  }
-  use {
-    "ray-x/lsp_signature.nvim",
-    after = "nvim-lspconfig",
+  },
+  {
+    'neovim/nvim-lspconfig', -- LSP
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = 'mason.nvim',
     config = function()
-      require("pluginSets.others").signature()
+      require('pluginSets.lspconfig')
     end,
-  }
-  use {
-    "lewis6991/gitsigns.nvim",
-    after = "gruvbox-flat.nvim",
+  },
+  {
+    'stevearc/conform.nvim', -- formatter setup
+    lazy = true,
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      require "pluginSets.gitsigns"
+      require('pluginSets.formatter')
     end,
-  }
-  use {
-    "TimUntersberger/neogit",
+  },
+  {
+    'mfussenegger/nvim-lint', -- linter setup
+    lazy = true,
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      require('pluginSets.linter')
+    end,
+  },
+  {
+    'lewis6991/gitsigns.nvim', -- diff highligher
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      require('pluginSets.gitsigns')
+    end,
+  },
+  {
+    'TimUntersberger/neogit', -- git UI
     cmd = {
-      "Neogit",
-      "Neogit commit",
+      'Neogit',
+    },
+    dependencies = 'sindrets/diffview.nvim', -- diff handler
+    config = function()
+      require('pluginSets.others').neogit()
+    end,
+  },
+  {
+    'norcalli/nvim-colorizer.lua', -- HEX color highlighter
+    cmd = 'ColorizerToggle',
+    config = function()
+      require('pluginSets.others').colorizer()
+    end,
+  },
+  {
+    'nvim-telescope/telescope.nvim', -- fuzzy finder
+    branch = '0.1.x',
+    cmd = 'Telescope',
+    dependencies = {
+      { 'nvim-telescope/telescope-fzf-native.nvim' },
+      { 'nvim-lua/plenary.nvim', build = 'make' },
     },
     config = function()
-      require("pluginSets.others").neogit()
+      require('pluginSets.telescope')
     end,
-  }
-  use {
-    "sindrets/diffview.nvim",
-    after = "neogit",
-  }
+  },
 
-  use {
-    "norcalli/nvim-colorizer.lua",
-    cmd = "ColorizerToggle",
+  -- Writting
+  {
+    'bamonroe/rnoweb-nvim', -- LaTeX symbol folding
+    event = 'VeryLazy',
+    dependencies = 'nvim-lua/plenary.nvim',
     config = function()
-      require("pluginSets.others").colorizer()
+      require('pluginSets.others').rnoweb()
     end,
-  }
+  },
 
-  -- Eyecandy
-  use {
-    "eddyekofo94/gruvbox-flat.nvim",
-    after = "packer.nvim",
+  -- Eye-candy
+  {
+    'eddyekofo94/gruvbox-flat.nvim', -- colorscheme
+    priority = 1000,
     config = function()
       vim.g.gruvbox_transparent = true
-      vim.cmd "colorscheme gruvbox-flat"
+      vim.cmd('colorscheme gruvbox-flat')
     end,
-  }
-  use {
-    "nvim-lualine/lualine.nvim",
-    after = "nvim-web-devicons",
+  },
+  {
+    'nvim-lualine/lualine.nvim', -- status bar
     config = function()
-      require "pluginSets.statusline"
+      require('pluginSets.statusline')
     end,
-  }
-  use {
-    "akinsho/bufferline.nvim",
-    after = "nvim-web-devicons",
+  },
+  {
+    'stevearc/dressing.nvim', -- prettier code action menu
+    lazy = true,
+    event = 'InsertEnter',
+  },
+  {
+    'lukas-reineke/indent-blankline.nvim', -- indent indicator
+    event = 'VeryLazy',
     config = function()
-      require "pluginSets.bufferline"
+      require('pluginSets.others').indent()
     end,
-  }
-  use {
-    "kyazdani42/nvim-web-devicons",
-    after = "gruvbox-flat.nvim",
-  }
-end)
+  },
+}

@@ -1,9 +1,9 @@
 local options = {
-  completeopt = { "menu", "menuone", "noselect", "noinsert" },
+  completeopt = { 'menu', 'menuone', 'preview', 'noselect', 'noinsert' },
   undofile = true,
   swapfile = false,
-  clipboard = "unnamedplus",
-  fillchars = { eob = " " },
+  clipboard = 'unnamedplus',
+  fillchars = { eob = ' ' },
   termguicolors = true,
   showmode = false,
   expandtab = true,
@@ -17,7 +17,7 @@ local options = {
   splitbelow = true,
   splitright = true,
   cursorline = true,
-  signcolumn = "yes",
+  signcolumn = 'yes',
   updatetime = 500,
   timeoutlen = 500,
   modelines = 0,
@@ -35,49 +35,59 @@ for k, v in pairs(options) do
 end
 
 -- clean .tex files when closing
-vim.api.nvim_command "autocmd VimLeave *.tex !vim_texclear %"
+vim.api.nvim_create_autocmd('VimLeavePre', {
+  pattern = '*.tex',
+  command = 'silent !vim_texclear %',
+})
 
--- enable zen-mode for neomutt by default
-vim.api.nvim_command "autocmd BufRead,BufNewFile /tmp/neomutt* :TZAtaraxis"
+-- set latex filetype
+vim.api.nvim_create_augroup('latex_filetype', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  group = 'latex_filetype',
+  pattern = '*.tex',
+  callback = function()
+    vim.bo.filetype = 'latex'
+    vim.wo.spell = true
+  end,
+})
 
 -- highlight on yank
-vim.cmd [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]]
+vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = 'YankHighlight',
+  callback = function()
+    vim.highlight.on_yank({ higroup = 'IncSearch', timeout = 150 })
+  end,
+})
 
--- set markdown filetypes
-vim.cmd [[
-  augroup SetMarkdownFt
-    autocmd!
-    autocmd BufNewFile,BufFilePre,BufRead *.markdown,*.mdown,*.mkd,*.mkdn,*.mdwn,*.md,*.MD  set ft=markdown
-  augroup end
-]]
-
--- defer LSP and other packages
 local M = {}
-M.packer_lazy_load = function(plugin, timer)
-  if plugin then
-    timer = timer or 0
-    vim.defer_fn(function()
-      require("packer").loader(plugin)
-    end, timer)
-  end
-end
-
 -- toggle fold column
 local toBool = {
-  ["1"] = true,
-  ["0"] = false,
+  ['1'] = true,
+  ['0'] = false,
 }
 M.toggleFoldCol = function()
   if toBool[vim.opt.foldcolumn:get()] then
-    vim.opt.foldcolumn = "0"
+    vim.opt.foldcolumn = '0'
   else
-    vim.opt.foldcolumn = "1"
+    vim.opt.foldcolumn = '1'
   end
-  vim.api.nvim_echo({ { "foldcolumn is set to " .. vim.opt.foldcolumn:get() } }, false, {})
+  vim.api.nvim_echo({ { 'foldcolumn is set to ' .. vim.opt.foldcolumn:get() } }, false, {})
+end
+
+-- Function to open markdown links
+M.openMarkdownLink = function()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.api.nvim_win_get_cursor(0)[2] + 1
+  -- matches the markdown link syntax
+  local pattern = '%[(.-)%]%((.-)%)'
+  for text, link in line:gmatch(pattern) do
+    local startText, endText = line:find('%[' .. text .. '%]')
+    local startLink, endLink = line:find('%(' .. link .. '%)')
+    if col >= startText and col <= endLink then
+      vim.fn.system('vim_links ' .. link)
+      return
+    end
+  end
 end
 return M
