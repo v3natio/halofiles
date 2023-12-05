@@ -5,12 +5,13 @@
 - All purpose scripts are in `~/.local/bin`.
 
 - Settings for:
+
   - lf (file manager)
   - mpv (video player)
   - ncspot (music player)
   - nvim (text editor)
   - zsh (shell)
-  - other stuff like newsboat, nsxiv, sc-im, etc.
+  - other stuff like newsboat, nsxiv, etc.
 
 - I try to minimize what's directly in `~` so:
   - Conforming to the [XDG](https://wiki.archlinux.org/title/XDG_Base_Directory) specification is crucial.

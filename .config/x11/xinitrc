@@ -6,4 +6,5 @@ else
 	. "$HOME/.xprofile"
 fi
 
-exec dbus-launch --exit-with-session dwm
+dbus-update-activation-environment --all
+ssh-agent dwm

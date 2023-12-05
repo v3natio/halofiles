@@ -44,17 +44,17 @@
 
 [Brave]
   appname = Brave
-  format = "<b><span foreground='#fe8019'></span> Brave</b>\n%s\n%b"
+  format = "<b><span foreground='#fe8019'>󰊯</span> Brave</b>\n%s\n%b"
   frame_color="#fe8019"
   timeout = 240
 
 [Discord]
   appname = Discord
-  format = "<b><span foreground='#d3869b'>ﭮ</span> Discord</b>\n%s\n%b"
+  format = "<b><span foreground='#d3869b'>󰙯</span> Discord</b>\n%s\n%b"
   frame_color="#d3869b"
 
 [Spotify]
   appname = *ncspot*
-  format = "<b><span foreground='#b8bb26'></span> Now Playing:</b>\n%s\n%b"
+  format = "<b><span foreground='#b8bb26'>󰓇</span> Now Playing:</b>\n%s\n%b"
   frame_color="#b8bb26"
   timeout = 10

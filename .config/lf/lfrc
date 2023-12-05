@@ -7,6 +7,7 @@ set period 1
 set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
 set cleaner '~/.config/lf/cleaner'
 set previewer '~/.config/lf/scope'
+set autoquit true
 set cursorpreviewfmt ""
 
 # cmds/functions
@@ -24,7 +25,7 @@ cmd open ${{
   esac
 }}
 
-cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
+cmd mkdir $mkdir -p "$@"
 
 cmd extract ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
@@ -32,7 +33,22 @@ cmd extract ${{
 	printf "%s\n\t" "$fx"
 	printf "extract?[y/N]"
 	read ans
-	[ $ans = "y" ] && aunpack $fx
+  [ $ans = "y" ] && {
+    case $fx in
+      *.tar.bz2) tar xjf $fx ;;
+			*.tar.gz) tar xzf $fx ;;
+			*.bz2) bunzip2 $fx ;;
+			*.rar) unrar e $fx ;;
+			*.gz) gunzip $fx ;;
+			*.tar) tar xf $fx ;;
+			*.tbz2) tar xjf $fx ;;
+			*.tgz) tar xzf $fx ;;
+			*.zip) unzip $fx ;;
+			*.Z) uncompress $fx ;;
+			*.7z) 7z x $fx ;;
+			*.tar.xz) tar xf $fx ;;
+		esac
+  }
 }}
 
 cmd zip ${{
@@ -44,7 +60,7 @@ cmd zip ${{
   [ $ans = "y" ] && zip -r "$f.zip" "$(basename "$f")"
 }}
 
-cmd trash %set -f; mv $fx ~/.local/trash
+cmd trash %set -f; mv $fx ~/.cache/trash
 
 cmd delete ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
@@ -95,7 +111,7 @@ map E extract
 map C copyto
 map Y yank
 map M moveto
-map <c-n> push :mkdir<space>
+map <c-n> push :mkdir<space>""<left>
 map <c-r> reload
 map <c-s> set hidden!
 map <enter> shell

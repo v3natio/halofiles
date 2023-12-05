@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# A wrapper for the arkenfox-updater that runs it on all pre-existing Arkenfox user.js files on the machine.
+
+# Search for all Firefox profiles using Arkenfox.
+profiles="$(grep -sH "arkenfox user.js" \
+	/home/*/.mozilla/firefox/*.*/user.js)"
+
+IFS='
+'
+
+# Update each found profile.
+for profile in $profiles; do
+	userjs=${profile%%/user.js*}
+	user=$(stat -c '%U' "$userjs") || continue
+
+	su -l "$user" -c "arkenfox-updater -c -p $userjs -s"
+done

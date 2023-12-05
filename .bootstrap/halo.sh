@@ -1,30 +1,48 @@
 #!/bin/sh
 
 # variables
-dotfilesrepo="https://gitlab.com/hooregi/halofiles.git"
-progsfile="https://gitlab.com/hooregi/halofiles/-/raw/main/.bootstrap/pkgs.csv"
+dotfilesrepo="https://github.com/hooregi/halofiles.git"
+progsfile="https://github.com/hooregi/halofiles/raw/main/.bootstrap/pkgs.csv"
 aurhelper="paru"
 repobranch="main"
 
-# set up the bootloader
-bootctl --path=/boot/ install
+installationloop() {
+    # Check if the CSV file exists locally, if not fetch it
+    if [ -f "$progsfile" ]; then
+        cp "$progsfile" /tmp/progs.csv
+    else
+        echo "CSV file not found!"
+        return 1
+    fi
 
-uuid=$(blkid -s UUID -o value /dev/sda2)
-swap=$(filefrag -v /swapfile | awk '$1=="0:" {print substr($4, 1, length($4)-2)}')
+    total=$(wc -l </tmp/progs.csv)
+    
+    # Loop through the CSV and install based on tag
+    while IFS=, read -r tag program comment; do
+        # Remove quotes around the comment if they exist
+        echo "$comment" | grep -q "^\".*\"$" && comment="$(echo "$comment" | sed -E "s/(^\"|\"$)//g")"
 
-[ ! -f /boot/loader/entries/halo.conf ] printf 'title   Halo Linux LTS
-linux   /vmlinuz-linux-lts
-initrd  /intel-ucode.img
-initrd  /initramfs-linux-lts.img
-options cryptdevice=UUID={$uuid}:cryptroot root=/dev/mapper/cryptroot rw resume=/dev/mapper/cryptroot resume_offset={$swap}' > /boot/loader/entries/halo.conf
-
-[ ! -f /boot/loader/loader.conf ] && printf 'default       halo.conf
-timeout       3
-console-mode  max
-editor        no' > /boot/loader/loader.conf
+        case "$tag" in
+            "A") 
+                # Command to install AUR packages
+                echo "Installing AUR package: $program"
+                paru -S "$program" --noconfirm
+                ;;
+            "G") 
+                # Command to git clone and then make clean install
+                echo "Cloning and installing git package: $program"
+                git clone "$program" && cd "$(basename "$program" .git)" && make clean install && cd ..
+                ;;
+            *) 
+                # Command for packages without a tag (using pacman)
+                echo "Installing package using pacman: $program"
+                pacman -S "$program" --noconfirm
+                ;;
+        esac
+    done </tmp/progs.csv
+}
 
 # set up trackpad
-
 [ ! -f /etc/x11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
   Identifier "libinput touchpad catchall"
   Driver "libinput"

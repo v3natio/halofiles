@@ -2,21 +2,29 @@
 
 # script that swaps screens depending on whether the HDMI is plugged in, or not
 
-intern="eDP"  # Internal display name
-extern="HDMI-A-0"  # HDMI display name
+intern="eDP"
+extern="HDMI-A-0"
 intern_audio="alsa_output.pci-0000_04_00.6.analog-stereo"
 extern_audio="alsa_output.pci-0000_04_00.1.hdmi-stereo"
 
+function is_bluetooth_audio() {
+  [[ $(pactl info | grep "Default Sink" | cut -d' ' -f3) == bluez_output* ]]
+}
+
 function connect() {
   xrandr --output "$intern" --off --output "$extern" --auto
-  pactl set-default-sink "$extern_audio"
+  if ! is_bluetooth_audio; then
+    pactl set-default-sink "$extern_audio"
+  fi
   setbg
   remaps
 }
 
 function disconnect() {
   xrandr --output "$extern" --off --output "$intern" --auto
-  pactl set-default-sink "$intern_audio"
+  if ! is_bluetooth_audio; then
+    pactl set-default-sink "$intern_audio"
+  fi
   setbg
   remaps
 }

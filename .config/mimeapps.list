@@ -13,6 +13,5 @@ application/pdf=pdf.desktop;
 image/png=img.desktop;
 image/jpeg=img.desktop;
 image/gif=img.desktop;
-application/rss+xml=rss.desktop
 video/x-matroska=video.desktop
 inode/directory=file.desktop

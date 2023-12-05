@@ -10,8 +10,8 @@ ext="${file##*.}"
 cd "$dir" || exit 1
 
 textype() { \
-  command="pdflatex"
-  ( head -n5 "$file" | grep -qi 'xelatex' ) && command="xelatex"
+  command="pdflatex -shell-escape"
+  ( head -n5 "$file" | grep -qi 'xelatex' ) && command="xelatex -shell-escape"
   $command --output-directory="$dir" "$base" &&
   grep -qi addbibresource "$file" &&
   biber --input-directory "$dir" "$base" &&

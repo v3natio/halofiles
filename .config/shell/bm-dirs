@@ -1,15 +1,16 @@
-# You can add comments to these files with #
+# folder bookmarks
+
 h   $HOME
 cac ${XDG_CACHE_HOME:-$HOME/.cache}
 cf  ${XDG_CONFIG_HOME:-$HOME/.config}
-dot $HOME/Halofiles
-doc $HOME/Halofiles/.config 
-dol $HOME/Halofiles/.local
+dot $HOME/halofiles
+doc $HOME/halofiles/.config 
+dol $HOME/halofiles/.local
 dt  ${XDG_DATA_HOME:-$HOME/.local/share}
-sc  $HOME/.local/bin
+mt  ${XDG_DESKTOP_DIR:-$HOME/desktop}/mounted
 D   ${XDG_DOWNLOAD_DIR:-$HOME/downloads}
 d   ${XDG_DOCUMENTS_DIR:-$HOME/documents}
 m   ${XDG_MUSIC_DIR:-$HOME/media/music}
 pp  ${XDG_PICTURES_DIR:-$HOME/media/pictures}
 vv  ${XDG_VIDEOS_DIR:-$HOME/media/videos}
-ww  ${XDG_PICTURES_DIR:_$HOME/media/pictures}/wallpapers/
+ww  ${XDG_PICTURES_DIR:_$HOME/media/pictures}/wallpapers

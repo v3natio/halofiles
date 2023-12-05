@@ -1,8 +1,9 @@
 #!/bin/sh
 
-[ $(pamixer --get-mute) = true ] && echo " 󰝟 --%" && exit
+MUTE=$(amixer sget Master | awk -F'[][]' '/Front Left:/ { print $4 }' | head -n 1)
+[ "$MUTE" = "off" ] && echo " 󰝟 --%" && exit
 
-VOL="$(pamixer --get-volume)"
+VOL=$(amixer sget Master | awk -F'[][]' '/%]/ { if ($2 == "off") { print "0" } else { gsub(/%/, "", $2); print $2 } }' | head -n 1)
 
 if [ "$VOL" -gt "50" ]; then
 	echo " 󰕾 ${VOL}%"
@@ -11,5 +12,5 @@ elif [ "$VOL" -gt "20" ]; then
 elif [ "$VOL" -gt "0" ]; then
 	echo " 󰕿 ${VOL}%"
 else
-        echo " 󰝟 --%" && exit
+    echo " 󰝟 --%" && exit
 fi

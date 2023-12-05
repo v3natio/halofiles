@@ -39,3 +39,5 @@ map g goto top
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
+unmap <space>
+map <Space> toggle_index

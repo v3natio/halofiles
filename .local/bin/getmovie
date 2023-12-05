@@ -49,7 +49,7 @@ LINE=$(paste -d\   $cachedir/size.bw $cachedir/seedleech.bw $cachedir/titles.bw 
 
 # Check if fzf was interrupted or no selection was made
 if [ $? -ne 0 ] || [ -z "$LINE" ]; then
-  notify-send "󰙦 Operation interrupted."
+  notify-send " Operation interrupted."
   exit 1
 fi
 
@@ -62,6 +62,6 @@ curl -s $fullURL > $cachedir/tmp.html
 magnet=$(grep -Po "magnet:\?xt=urn:btih:[a-zA-Z0-9]*" $cachedir/tmp.html | head -n 1) 
 
 # Simple notification
-notify-send "󰇚 Torrenting..."
+notify-send "󰱦 Torrenting..."
 
-transadd $magnet
+getfile $magnet

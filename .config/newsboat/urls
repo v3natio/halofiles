@@ -13,16 +13,18 @@ https://www.ft.com/ft-trading-room/high-frequency-trading?format=rss "news" "~FT
 https://archlinux.org/feeds/news/ "news" "~Arch Linux (News)"
 https://blog.linuxmint.com/?feed=rss2 "news" "~Linux Mint (News)"
 https://suckless.org/atom.xml "news" "~Suckless Tools (News)"
+https://github.com/LukeSmithxyz/voidrice/commits/master.atom "news" "~Luke Smith's dotfiles (Git)"
+https://github.com/iurimateus/luasnip-latex-snippets.nvim/commits/main.atom "news" "~Luasnip Latex Snippets (Git)"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhore17D82eR-uMbAsxWAmn3 "~Library [Economics] - Playlist (Youtube)"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhoWZ215vkv_oxmjbp1QluIy "~Library [Programming] - Playlist (Youtube)"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLpXVfAa5WRhrbaoEYbDV9pcF4h4MrcVul "~Library [TV/Movies] - Playlist (Youtube)"
 " "
 
 # Lifestyle
-https://www.youtube.com/feeds/videos.xml?channel_id=UC_Z4iQnnTphiuypqe_qY4_Q "entertainment" "lifestyle" "youtube" "~Bee Rescue (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCkcnYVAVZQOB-nXHechtXDg "entertainment" "lifestyle" "youtube" "~Benjamin (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "entertainment" "lifestyle" "youtube" "~Daily Dose of Internet (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCUGdcdtyDnC-vdAVgA-2zXw "entertainment" "lifestyle" "youtube" "~Lite Gaming [CoC] (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqM1Yw5XfJ5rVwCntLy0KxA "entertainment" "lifestyle" "youtube" "~Low Budget Stories (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCyL4hbmvGgSuk17wbB2Z4Mg "entertainment" "lifestyle" "youtube" "~Passport Style (Youtube)"
 https://www.youtube.com/feeds/videos.xml?playlist_id=PLNE967m3_UeS3_p8RV77IgBqVhjOjO49Y "entertainment" "lifestyle" "youtube" "~Sneaker Shopping - Playlist (Youtube)"
 
 # Motorsport
@@ -37,7 +39,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCPwy2q7BNjdLYu1kM_OEJVw "en
 
 # Tech
 https://www.youtube.com/feeds/videos.xml?channel_id=UCngn7SVujlvskHRvRKc1cTw "education" "tech" "youtube" "~Bugswriter (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCOi2wszcfvs0j9Pcom3z9VA "education" "tech" "youtube" "~Ben Mckie (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCX_WM2O-X96URC5n66G-hvw "education" "tech" "youtube" "~EF Linux (Youtube)"
 https://www.paritybit.ca/feed.xml "education" "tech" "blog" "~Jake Bauer (Blog)"
 " "
 
@@ -50,6 +52,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCv_vLHiWVBh_FR9vbeuiY-A "ed
 https://www.youtube.com/feeds/videos.xml?channel_id=UCNIuvl7V8zACPpTmmNIqP2A "education" "history" "youtube" "~OverSimplified (Youtube)"
 
 # Mathematics
+https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw "education" "math" "youtube" "~3B1B (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCWNx17Jt6eW4N4ayAEiXdEA "education" "math" "youtube" "~Quantpie (Youtube)"
 
 # Miscellaneous

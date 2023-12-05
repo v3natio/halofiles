@@ -65,7 +65,7 @@ lfcd () {
 
 bindkey -s '^o' '^ulfcd\n'
 bindkey -s '^a' '^usamedir\n'
-bindkey -s '^f' '^ucd "$(dirname "$(fzf)")"\n'
+bindkey -s '^f' '^ucd "$(dirname "$(find . | fzf)")"\n'
 bindkey '^[[P' delete-char
 
 # Edit line in vim with ctrl-e:

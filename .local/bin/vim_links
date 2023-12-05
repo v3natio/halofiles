@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# back-end script to follow links
+
+url="$1"
+
+case "$url" in
+  http://*|https://*|www.*)
+    setsid -f "$BROWSER" "$url" >/dev/null 2>&1 ;;
+  *.mkv|*.webm|*.mp4)
+    setsid -f mpv --quiet "$url" >/dev/null 2>&1 ;;
+  *.png|*.jpg|*.jpeg|*.gif|*.webp)
+    setsid -f nsxiv "$url" >/dev/null 2>&1 ;;
+  *.pdf|*.cbz|*.cbr)
+    setsid -f zathura "$url" >/dev/null 2>&1 ;;
+  *.mp3|*.flac|*.opus)
+    setsid -f mpv --quiet --no-video "$url" >/dev/null 2>&1 ;;
+  *)
+    setsid -f "$TERMINAL" -e "$EDITOR" "$url" >/dev/null 2>&1
+esac
