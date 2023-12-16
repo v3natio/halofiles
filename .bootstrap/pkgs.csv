@@ -2,12 +2,10 @@ TAG,NAME,DESCRIPTION
 ,acpi,Reads battery power and thermal sensors
 ,acpid,Delivers ACPI power management events
 ,alsa-utils,Provides utilities for sound architecture
-,amd-ucode,
 ,arandr,Provides front-end for XRandR
 ,autoconf,Configures source code automatically
 ,automake,Creates Makefiles automatically
 ,avahi,Probes network for services
-,base,
 ,bc,Acts as command-line calculator
 ,bison,Parses grammar into LR or GLR parsers
 ,bluez,Provides daemons for Bluetooth
@@ -27,7 +25,6 @@ G,https://github.com/hooregi/dwmblocks.git,Acts as the status bar
 ,fzf,Acts as fuzzy finder
 ,gcc,GNU C and C++ compiler
 ,gimp,Open-source image editor
-,git,
 ,gnome-keyring,Stores passwords and encryption keys
 A,gotop-bin,Displays monitored activities
 A,gruvbox-material-icon-theme-git,Displays icons using gruvbox color-scheme
@@ -41,9 +38,6 @@ A,lf-bin,Terminal file manager
 ,libnotify,Sends desktop notifications
 ,libreoffice-still,LibreOffice suite
 ,libtool,Manages creation of static and dynamic libraries
-,linux,
-,linux-firmware,
-,linux-headers,
 ,maim,Takes screenshots using imlib2
 ,make,Builds executable programs and libraries from source code
 ,man-db,Tool for reading manual pages
@@ -59,6 +53,7 @@ A,nordvpn-bin,CLI utility to enable Nord's VPN service
 ,noto-fonts,Google's Noto font
 ,npm,Package manager for javascript
 ,nsxiv,Image viewer
+,ntfs-3g,Provides utilities for NTFS filesystem
 A,ocrmypdf,Adds OCR text layer to scanned PDFs
 ,okular,PDF annotation tool
 ,openssh,Enables remote login through SSH
@@ -82,11 +77,11 @@ A,sct,Sets color temperatures
 G,https://github.com/hooregi/slock.git,Acts as the lockscreen
 G,https://github.com/hooregi/st.git,Acts as the terminal emulator
 ,stow,Manages software installs in same tree
-,sudo,
 A,task-spooler,Queues up tasks from shell
 ,tesseract-data-eng,OCR data for English language
 ,texinfo,Documentation system for printed output
 ,texlive-basic,Provides the essential binaries for TeX
+,texlive-bibtexextra,Provides bibliography management for LaTeX
 ,texlive-latex,Provides the fundamental packages for LaTeX
 ,texlive-latexrecommended,Provides recommended packages for LaTeX
 ,texlive-latexextra,Provides extra packages for LaTeX
@@ -123,4 +118,3 @@ A,upd72020x-fw,Firmware for Renesas USB 3.0 chipsets
 ,zathura,Minimalist document viewer
 ,zathura-pdf-mupdf,Adds PDF support to zathura
 ,zip,ZIP compression program
-,zsh,
