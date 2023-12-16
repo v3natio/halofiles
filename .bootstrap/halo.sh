@@ -52,62 +52,21 @@ userconf() {
   chsh -s /bin/zsh "hooregi" >/dev/null 2>&1
 }
 
+
 installconf() {
-  pkgsfile="https://raw.githubusercontent.com/hooregi/halofiles/main/.bootstrap/pkgs.csv"
+  progsfile="https://raw.githubusercontent.com/hooregi/halofiles/main/.bootstrap/pkgs.csv"
 
-  ([ -f "$pkgsfile" ] && cp "$pkgsfile" "/tmp/pkgs.csv") ||
-    curl -Ls "$pkgsfile" | sed '/^#/d' > "/tmp/pkgs.csv"
+  ([ -f "$progsfile" ] && cp "$progsfile" /tmp/pkgs.csv) ||
+    curl -Ls "$progsfile" | sed '/^#/d' > /tmp/pkgs.csv
 
-  pacman_packages=()
-  aur_packages=()
-  git_packages=()
-
-  while IFS=, read -r tag name description
-  do
-    if [ "$tag" != "TAG" ]; then
+    while IFS=, read -r tag program comment; do
+      n=$((n + 1))
       case "$tag" in
-        "")
-          pacman_packages+=("$name")
-          ;;
-        G)
-          git_packages+=("$name")
-          ;;
-        A)
-          aur_packages+=("$name")
-          ;;
+        "A") sudo paru -S "$program" --noconfirm >/dev/null 2>&1 ;;
+        "G") git clone "$program" && cd "$(basename "$program" .git)" && make clean install && cd .. ;;
+        *) pacman --noconfirm --needed -S "$program" >/dev/null 2>&1 ;;
       esac
-    fi
-  done < "/tmp/pkgs.csv"
-
-  install_packages() {
-    local tag="$1"
-    shift
-    local packages=("$@")
-
-    for package in "${packages[@]}"
-    do
-      if [ -z "$package" ]; then
-        continue
-      fi
-      echo "Installing $package with tag $tag..."
-
-      case "$tag" in
-        "")
-          pacman --noconfirm --needed -S "$package" >/dev/null 2>&1
-          ;;
-        G)
-          git clone "$package" && cd "$(basename "$package" .git)" && make clean install && cd ..
-          ;;
-        A)
-          paru -S "$package" --noconfirm
-          ;;
-      esac
-    done
-  }
-
-  install_packages "${pacman_packages[@]}"
-  install_packages "${aur_packages[@]}"
-  install_packages "${git_packages[@]}"
+    done < /tmp/pkgs.csv
 }
 
 servicesconf() {
@@ -196,6 +155,7 @@ bootconf
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
+cd ..
 installconf
 servicesconf
 miscconf
