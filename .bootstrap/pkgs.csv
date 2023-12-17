@@ -3,6 +3,7 @@ TAG,NAME,DESCRIPTION
 ,acpid,Delivers ACPI power management events
 ,alsa-utils,Provides utilities for sound architecture
 ,arandr,Provides front-end for XRandR
+A,arkenfox-user.js,Provides settings for Firefox
 ,autoconf,Configures source code automatically
 ,automake,Creates Makefiles automatically
 ,avahi,Probes network for services
@@ -20,7 +21,6 @@ G,https://github.com/hooregi/dwmblocks.git,Acts as the status bar
 ,exfat-utils,Provides utilities for exFAT filesystem
 ,fakeroot,Simulates superuser privileges
 ,ffmpegthumbnailer,Generates video thumbnails for the file manager
-,firefox,Gecko based open-source browser
 ,flex,Generates text-scanning programs
 ,fzf,Acts as fuzzy finder
 ,gcc,GNU C and C++ compiler
@@ -37,6 +37,7 @@ A,gtk-theme-arc-gruvbox-git,Displays GTK+ interfaces using gruvbox color-scheme
 A,lf-bin,Terminal file manager
 ,libnotify,Sends desktop notifications
 ,libreoffice-still,LibreOffice suite
+A,librewolf-bin,Firefox based open-source browser
 ,libtool,Manages creation of static and dynamic libraries
 ,maim,Takes screenshots using imlib2
 ,make,Builds executable programs and libraries from source code
@@ -73,6 +74,7 @@ A,pfetch,Displays system information
 ,qrencode,Encodes data in QR symbol
 ,reflector,Retrieves and filters latest pacman mirrors
 A,sct,Sets color temperatures
+A,simple-mtpfs,Provides utilities for MTP filesystems
 G,https://github.com/hooregi/slock.git,Acts as the lockscreen
 G,https://github.com/hooregi/st.git,Acts as the terminal emulator
 ,stow,Manages software installs in same tree

@@ -74,15 +74,15 @@ bootconf() {
   swap=$(filefrag -v /swapfile | awk '$1=="0:" {print substr($4, 1, length($4)-2)}')
 
   [ ! -f /boot/loader/entries/halo.conf ] && printf "title Halo Linux
-  linux /vmlinuz-linux
-  initrd /amd-ucode.img
-  initrd /initramfs-linux.img
-  options cryptdevice=UUID=${uuid}:cryptroot root=/dev/mapper/cryptroot resume=/dev/mapper/cryptroot resume_offset=${swap} rw mem_sleep_default=s2idle" > /boot/loader/entries/halo.conf
+linux /vmlinuz-linux
+initrd /amd-ucode.img
+initrd /initramfs-linux.img
+options cryptdevice=UUID=${uuid}:cryptroot root=/dev/mapper/cryptroot resume=/dev/mapper/cryptroot resume_offset=${swap} rw mem_sleep_default=s2idle" > /boot/loader/entries/halo.conf
 
   [ ! -f /boot/loader/loader.conf ] && printf 'default halo.conf
-  timeout 3
-  console-mode max
-  editor no' > /boot/loader/loader.conf
+timeout 3
+console-mode max
+editor no' > /boot/loader/loader.conf
 }
 
 servicesconf() {
@@ -94,12 +94,12 @@ servicesconf() {
 miscconf() {
   # set up trackpad
   [ ! -f /etc/X11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
-Identifier "libinput touchpad catchall"
-Driver "libinput"
-MatchIsTouchpad "on"
-MatchDevicePath "/dev/input/event*"
-Option "Tapping" "on"
-Option "NaturalScrolling" "true"
+  Identifier "libinput touchpad catchall"
+  Driver "libinput"
+  MatchIsTouchpad "on"
+  MatchDevicePath "/dev/input/event*"
+  Option "Tapping" "on"
+  Option "NaturalScrolling" "true"
 EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
 
   # disable bluetooth autostart
@@ -121,22 +121,11 @@ Description = Updating systemd-boot
 When = PostTransaction
 Exec = /usr/bin/bootctl update' > /etc/pacman.d/hooks/95-systemd-boot.hook
 
-  # pacman user.js hook
-  [ ! -f /etc/pacman.d/hooks/10-arkenfox-update.hook ] && printf '[Trigger]
-Type = Package
-Operation = Upgrade
-Target = firefox
-
-[Action]
-Description = Updating user.js
-When = PostTransaction
-Exec = /home/hooregi/.local/bin/arkenfox_updater' > /etc/pacman.d/hooks/10-arkenfox-update.hook
-
   # pacman conf
   sed -i "/^#Color/s/^#//" /etc/pacman.conf
-  sed -i "/^#VerbosePkgLists/s/^#//" /etc/pacman.conf
+  sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
+  sed -i "/^#VerbosePkgLists/s/^#//" /etc/pacman.conf 
   sed -i "/^#ParallelDownloads =/c\ParallelDownloads = 15" /etc/pacman.conf
-  echo "ILoveCandy" >> /etc/pacman.conf
 
   # wired interface configuration
   [ ! -f /etc/systemd/network/20-wired.network ] && printf '[Match]
@@ -163,6 +152,80 @@ ExecStart=-/sbin/agetty -o "-p -f -- \\u" --noclear --autologin hooregi %%I $TER
   gpasswd -a hooregi nordvpn
 }
 
+homeconf() {
+  cd /home/hooregi
+  git clone https://github.com/hooregi/halofiles.git
+  cd /home/hooregi/halofiles/
+  stow .
+  rm -rf /halofiles
+  mkdir -p desktop/{public,mounted} downloads documents/{templates} media/{games,music,pictures/{screenshots},videos/{recordings}}
+  mkdir .cache/zsh
+  touch .cache/zsh/history 
+}
+
+userjsconf() {
+	arkenfox="$pdir/arkenfox.js"
+	overrides="$pdir/user-overrides.js"
+	userjs="$pdir/user.js"
+	ln -fs /home/hooregi/.config/firefox/halo.js "$overrides"
+	[ ! -f "$arkenfox" ] && curl -sL "https://raw.githubusercontent.com/arkenfox/user.js/master/user.js" > "$arkenfox"
+	cat "$arkenfox" "$overrides" > "$userjs"
+	chown hooregi:wheel "$arkenfox" "$userjs"
+	# Install the updating script.
+	mkdir -p /usr/local/lib /etc/pacman.d/hooks
+	cp /home/hooregi/.local/bin/arkenfox_updater /usr/local/lib/
+	chown root:root /usr/local/lib/arkenfox_updater
+	chmod 755 /usr/local/lib/arkenfox_updater
+	
+  # pacman user.js hook
+  [ ! -f /etc/pacman.d/hooks/10-arkenfox-update.hook ] && printf '[Trigger]
+Type = Package
+Operation = Upgrade
+Target = librewolf-bin
+
+[Action]
+Description = Updating user.js
+When = PostTransaction
+Depends = arkenfox-user.js
+Exec = /usr/local/lib/arkenfox_updater' > /etc/pacman.d/hooks/10-arkenfox-update.hook
+}
+
+addonsconf() {
+	addonlist="ublock-origin bitwarden-password-manager darkreader bypass-paywalls-clean-d"
+	addontmp="$(mktemp -d)"
+	trap "rm -fr $addontmp" HUP INT QUIT TERM PWR EXIT
+	IFS=' '
+	sudo -u hooregi mkdir -p "$pdir/extensions/"
+	for addon in $addonlist; do
+		addonurl="$(curl --silent "https://addons.mozilla.org/en-US/firefox/addon/${addon}/" | grep -o 'https://addons.mozilla.org/firefox/downloads/file/[^"]*')"
+		file="${addonurl##*/}"
+		sudo -u hooregi curl -LOs "$addonurl" > "$addontmp/$file"
+		id="$(unzip -p "$file" manifest.json | grep "\"id\"")"
+		id="${id%\"*}"
+		id="${id##*\"}"
+		mv "$file" "$pdir/extensions/$id.xpi"
+	done
+	chown -R hooregi:hooregi "$pdir/extensions"
+}
+
+browserconf() {
+  browserdir="/home/hooregi/.librewolf"
+  profilesini="$browserdir/profiles.ini"
+
+  # generate a librewolf profile
+  sudo -u hooregi librewolf --headless >/dev/null 2>&1 &
+  sleep 1
+  profile="$(sed -n "/Default=.*.default-default/ s/.*=//p" "$profilesini")"
+  pdir="$browserdir/$profile"
+
+  [ -d "$pdir" ] && userjsconf
+
+  [ -d "$pdir" ] && addonsconf
+
+  # kill the instance
+  pkill -u hooregi librewolf
+}
+
 # actual script
 localeconf
 hostsconf
@@ -174,10 +237,8 @@ mkinitcpioconf
 bootconf
 servicesconf
 miscconf
-cd /home/hooregi
-git clone https://github.com/hooregi/halofiles.git
-cd /home/hooregi/halofiles/
-stow .
-rm -rf /halofiles
+homeconf
+browserconf
+sudo chown -R hooregi:hooregi /home/
 
 printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
