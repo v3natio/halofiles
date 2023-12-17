@@ -17,31 +17,6 @@ hostsconf() {
   echo "127.0.1.1 halo.localdomain halo" >> /etc/hosts
 }
 
-mkinitcpioconf() {
-  sed -i '/^MODULES=/c\MODULES=(vboxdrv)' /etc/mkinitcpio.conf
-  sed -i '/^FILES=/c\FILES=(/etc/modprobe.d/nobeep.conf)' /etc/mkinitcpio.conf
-  sed -i '/^HOOKS=/c\HOOKS=(base udev autodetect modconf kms keyboard keymap block encrypt resume filesystems fsck)' /etc/mkinitcpio.conf
-  echo "blacklist pcspkr" >> /etc/modprobe.d/nobeep.conf
-  mkinitcpio -P
-}
-
-bootconf() {
-  bootctl --path=/boot/ install
-  uuid=$(blkid -s UUID -o value /dev/nvme0n1p2)
-  swap=$(filefrag -v /swapfile | awk '$1=="0:" {print substr($4, 1, length($4)-2)}')
-
-  [ ! -f /boot/loader/entries/halo.conf ] && printf "title Halo Linux
-  linux /vmlinuz-linux
-  initrd /amd-ucode.img
-  initrd /initramfs-linux.img
-  options cryptdevice=UUID=${uuid}:cryptroot root=/dev/mapper/cryptroot resume=/dev/mapper/cryptroot resume_offset=${swap} rw mem_sleep_default=s2idle" > /boot/loader/entries/halo.conf
-
-  [ ! -f /boot/loader/loader.conf ] && printf 'default halo.conf
-  timeout 3
-  console-mode max
-  editor no' > /boot/loader/loader.conf
-}
-
 userconf() {
   passwd
   useradd -m hooregi
@@ -67,6 +42,31 @@ installconf() {
         *) pacman --noconfirm --needed -S "$program" >/dev/null 2>&1 ;;
       esac
     done < /tmp/pkgs.csv
+}
+
+mkinitcpioconf() {
+  sed -i '/^MODULES=/c\MODULES=(vboxdrv)' /etc/mkinitcpio.conf
+  sed -i '/^FILES=/c\FILES=(/etc/modprobe.d/nobeep.conf)' /etc/mkinitcpio.conf
+  sed -i '/^HOOKS=/c\HOOKS=(base udev autodetect modconf kms keyboard keymap block encrypt resume filesystems fsck)' /etc/mkinitcpio.conf
+  echo "blacklist pcspkr" >> /etc/modprobe.d/nobeep.conf
+  mkinitcpio -P
+}
+
+bootconf() {
+  bootctl --path=/boot/ install
+  uuid=$(blkid -s UUID -o value /dev/nvme0n1p2)
+  swap=$(filefrag -v /swapfile | awk '$1=="0:" {print substr($4, 1, length($4)-2)}')
+
+  [ ! -f /boot/loader/entries/halo.conf ] && printf "title Halo Linux
+  linux /vmlinuz-linux
+  initrd /amd-ucode.img
+  initrd /initramfs-linux.img
+  options cryptdevice=UUID=${uuid}:cryptroot root=/dev/mapper/cryptroot resume=/dev/mapper/cryptroot resume_offset=${swap} rw mem_sleep_default=s2idle" > /boot/loader/entries/halo.conf
+
+  [ ! -f /boot/loader/loader.conf ] && printf 'default halo.conf
+  timeout 3
+  console-mode max
+  editor no' > /boot/loader/loader.conf
 }
 
 servicesconf() {
@@ -150,21 +150,22 @@ ExecStart=-/sbin/agetty -o "-p -f -- \\u" --noclear --autologin hooregi %I $TERM
 # actual script
 localeconf
 hostsconf
-mkinitcpioconf
 pacman --noconfirm -Sy archlinux-keyring
 userconf
-bootconf
 git clone https://aur.archlinux.org/paru.git
 cd paru
 sudo -u hooregi makepkg --no-confirm -si
 mkdir ~/home/hooregi/.local/src
 cd ~/home/hooregi/.local/src
 installconf
+mkinitcpioconf
+bootconf
 servicesconf
 miscconf
 cd ~
 git clone https://github.com/hooregi/halofiles.git
 cd ~/halofiles/
 stow .
+rm -rf /halofiles
 
 printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
