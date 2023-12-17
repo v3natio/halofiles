@@ -59,7 +59,6 @@ A,ocrmypdf,Adds OCR text layer to scanned PDFs
 ,openssh,Enables remote login through SSH
 ,optipng,Compresses PNG files without quality loss
 A,pandoc-bin,Converts most document formats
-G,https://github.com/Morganamilo/paru,The AUR package manager
 ,perl-file-mimeinfo,Determines filetypes
 ,perl-image-exiftool,Reads and rewrites EXIF info
 A,pfetch,Displays system information
