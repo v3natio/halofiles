@@ -46,7 +46,7 @@ userconf() {
   passwd
   useradd -m hooregi
   passwd hooregi
-  usemod -aG wheel hooregi 
+  usermod -aG wheel hooregi 
   echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers.d/hooregi
   echo "Defaults editor=/usr/bin/nvim" >> /etc/sudoers.d/hooregi
   chsh -s /bin/zsh "hooregi" >/dev/null 2>&1
@@ -78,13 +78,13 @@ servicesconf() {
 miscconf() {
   # set up trackpad
   [ ! -f /etc/X11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
-  Identifier "libinput touchpad catchall"
-  Driver "libinput"
-  MatchIsTouchpad "on"
-  MatchDevicePath "/dev/input/event*"
-  Option "Tapping" "on"
-  Option "NaturalScrolling" "true"
-  EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
+Identifier "libinput touchpad catchall"
+Driver "libinput"
+MatchIsTouchpad "on"
+MatchDevicePath "/dev/input/event*"
+Option "Tapping" "on"
+Option "NaturalScrolling" "true"
+EndSection' > /etc/X11/xorg.conf.d/40-libinput.conf
 
   # disable bluetooth autostart
   sed -i 's/^#AutoEnable=true/AutoEnable=false/' /etc/bluetooth/main.conf
@@ -94,52 +94,54 @@ miscconf() {
   ln -s /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
   # pacman bootctl hook
+  mkdir /etc/pacman.d/hooks
   [ ! -f /etc/pacman.d/hooks/95-systemd-boot.hook ] && printf '[Trigger]
-  Type = Package
-  Operation = Upgrade
-  Target = systemd
+Type = Package
+Operation = Upgrade
+Target = systemd
 
-  [Action]
-  Description = Updating systemd-boot
-  When = PostTransaction
-  Exec = /usr/bin/bootctl update' > /etc/pacman.d/hooks/95-systemd-boot.hook
+[Action]
+Description = Updating systemd-boot
+When = PostTransaction
+Exec = /usr/bin/bootctl update' > /etc/pacman.d/hooks/95-systemd-boot.hook
 
   # pacman user.js hook
   [ ! -f /etc/pacman.d/hooks/10-arkenfox-update.hook ] && printf '[Trigger]
-  Type = Package
-  Operation = Upgrade
-  Target = firefox
+Type = Package
+Operation = Upgrade
+Target = firefox
 
-  [Action]
-  Description = Updating user.js
-  When = PostTransaction
-  Exec = /home/hooregi/.local/bin/arkenfox_updater' > /etc/pacman.d/hooks/10-arkenfox-update.hook
+[Action]
+Description = Updating user.js
+When = PostTransaction
+Exec = /home/hooregi/.local/bin/arkenfox_updater' > /etc/pacman.d/hooks/10-arkenfox-update.hook
 
   # pacman conf
   sed -i "/^#Color/s/^#//" /etc/pacman.conf
   sed -i "/^#VerbosePkgLists/s/^#//" /etc/pacman.conf
   sed -i "/^#ParallelDownloads =/c\ParallelDownloads = 15" /etc/pacman.conf
-  echo "ILoveCandy" /etc/pacman.conf
+  echo "ILoveCandy" >> /etc/pacman.conf
 
   # wired interface configuration
   [ ! -f /etc/systemd/network/20-wired.network ] && printf '[Match]
-  Name=enp4s0f3u1u4
+Name=enp4s0f3u1u4
 
-  [Network]
-  DHCP=yes' > /etc/systemd/network/20-wired.network
+[Network]
+DHCP=yes' > /etc/systemd/network/20-wired.network
 
   # wireless interface configuration
   [ ! -f /etc/systemd/network/25-wireless.network ] && printf '[Match]
-  Name=wlan0
+Name=wlan0
 
-  [Network]
-  DHCP=yes
-  IPv6PrivacyExtensions=True' > /etc/systemd/network/25-wireless.network
+[Network]
+DHCP=yes
+IPv6PrivacyExtensions=True' > /etc/systemd/network/25-wireless.network
 
   # startx autologin
+  mkdir /etc/systemd/system/getty@tty1.service.d
   [ ! -f /etc/systemd/system/getty@tty1.service.d/autologin.conf ] && printf '[Service]
-  ExecStart=
-  ExecStart=-/sbin/agetty -o "-p -f -- \\u" --noclear --autologin hooregi %I $TERM' > /etc/systemd/system/getty@tty1.service.d/autologin.conf
+ExecStart=
+ExecStart=-/sbin/agetty -o "-p -f -- \\u" --noclear --autologin hooregi %I $TERM' > /etc/systemd/system/getty@tty1.service.d/autologin.conf
 
   # setting up nordvpn
   gpasswd -a hooregi nordvpn
@@ -154,10 +156,15 @@ userconf
 bootconf
 git clone https://aur.archlinux.org/paru.git
 cd paru
-makepkg -si
-cd ..
+sudo -u hooregi makepkg --no-confirm -si
+mkdir ~/home/hooregi/.local/src
+cd ~/home/hooregi/.local/src
 installconf
 servicesconf
 miscconf
+cd ~
+git clone https://github.com/hooregi/halofiles.git
+cd ~/halofiles/
+stow .
 
 printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
