@@ -203,10 +203,8 @@ addonsconf() {
 		addonurl="$(curl --silent "https://addons.mozilla.org/en-US/firefox/addon/${addon}/" | grep -o 'https://addons.mozilla.org/firefox/downloads/file/[^"]*')"
 		file="${addonurl##*/}"
 		sudo -u hooregi curl -Ls "$addonurl" -o "$addontmp/$file"
-		id="$(unzip -p "$file" manifest.json | grep "\"id\"")"
-		id="${id%\"*}"
-		id="${id##*\"}"
-		mv "$file" "$pdir/extensions/$id.xpi"
+    id="$(unzip -p "$addontmp/$file" manifest.json | grep "\"id\"" | sed -e 's/^.*"id": "\(.*\)",$/\1/')"
+    mv "$addontmp/$file" "$pdir/extensions/$id.xpi"
 	done
 	chown -R hooregi:hooregi "$pdir/extensions"
 }
