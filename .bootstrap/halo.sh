@@ -141,7 +141,7 @@ IPv6PrivacyExtensions=True' > /etc/systemd/network/25-wireless.network
   mkdir /etc/systemd/system/getty@tty1.service.d
   [ ! -f /etc/systemd/system/getty@tty1.service.d/autologin.conf ] && printf '[Service]
 ExecStart=
-ExecStart=-/sbin/agetty -o "-p -f -- \\u" --noclear --autologin hooregi %I $TERM' > /etc/systemd/system/getty@tty1.service.d/autologin.conf
+ExecStart=-/sbin/agetty -o "-p -f -- \\u" --noclear --autologin hooregi \%I $TERM' > /etc/systemd/system/getty@tty1.service.d/autologin.conf
 
   # setting up nordvpn
   gpasswd -a hooregi nordvpn
@@ -152,11 +152,13 @@ localeconf
 hostsconf
 pacman --noconfirm -Sy archlinux-keyring
 userconf
+mkdir -p /home/hooregi/.local/src
+chown -R hooregi:wheel "$(dirname /home/hooregi/.local/src)"
+cd /home/hooregi/.local/src
 git clone https://aur.archlinux.org/paru.git
 cd paru
-sudo -u hooregi makepkg --no-confirm -si
-mkdir /home/hooregi/.local/src
-cd /home/hooregi/.local/src
+sudo -u hooregi makepkg --noconfirm -si
+cd ..
 installconf
 mkinitcpioconf
 bootconf
