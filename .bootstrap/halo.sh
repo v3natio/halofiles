@@ -201,7 +201,7 @@ addonsconf() {
   for addon in $addonlist; do
     addonurl=$(curl --silent "https://addons.mozilla.org/en-US/firefox/addon/${addon}/" | grep -o 'https://addons.mozilla.org/firefox/downloads/file/[^"]*')
     file=$(basename "$addonurl")
-    sudo -u hooregi curl -Ls "$addonurl" -o "$addontmp/$file"
+    curl -Ls "$addonurl" -o "$addontmp/$file"
     id=$(unzip -p "$addontmp/$file" manifest.json | grep "\"id\"" | sed -e 's/^.*"id": "\(.*\)",$/\1/')
     mv "$addontmp/$file" "$pdir/extensions/$id.xpi"
   done
@@ -215,11 +215,10 @@ browserconf() {
   # generate a firefox profile
   sudo -u hooregi firefox --headless >/dev/null 2>&1 &
   sleep 1
-  profile="$(sed -n "/Default=.*.default-default/ s/.*=//p" "$profilesini")"
+  profile=$(grep -E '^Path=' "$profilesini" | sed -n 's/^Path=//p' | head -n 1)
   pdir="$browserdir/$profile"
 
   [ -d "$pdir" ] && userjsconf
-
   [ -d "$pdir" ] && addonsconf
 
   # kill the instance
