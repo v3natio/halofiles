@@ -155,16 +155,16 @@ userconf
 git clone https://aur.archlinux.org/paru.git
 cd paru
 sudo -u hooregi makepkg --no-confirm -si
-mkdir ~/home/hooregi/.local/src
-cd ~/home/hooregi/.local/src
+mkdir /home/hooregi/.local/src
+cd /home/hooregi/.local/src
 installconf
 mkinitcpioconf
 bootconf
 servicesconf
 miscconf
-cd ~
+cd /home/hooregi
 git clone https://github.com/hooregi/halofiles.git
-cd ~/halofiles/
+cd /home/hooregi/halofiles/
 stow .
 rm -rf /halofiles
 
