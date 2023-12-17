@@ -215,7 +215,7 @@ browserconf() {
   # generate a firefox profile
   sudo -u hooregi firefox --headless >/dev/null 2>&1 &
   sleep 1
-  profile=$(grep -E '^Path=' "$profilesini" | sed -n 's/^Path=//p' | head -n 1)
+  profile=$(grep -E 'Path=.*\.default-release$' "$profilesini" | sed -e 's/^Path=//')
   pdir="$browserdir/$profile"
 
   [ -d "$pdir" ] && userjsconf
