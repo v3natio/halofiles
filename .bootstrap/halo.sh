@@ -194,19 +194,18 @@ Exec = /usr/local/lib/arkenfox_updater' > /etc/pacman.d/hooks/10-arkenfox-update
 }
 
 addonsconf() {
-	addonlist="ublock-origin bitwarden-password-manager darkreader bypass-paywalls-clean-d"
-	addontmp="$(mktemp -d)"
-	trap "rm -fr $addontmp" HUP INT QUIT TERM PWR EXIT
-	IFS=' '
-	sudo -u hooregi mkdir -p "$pdir/extensions/"
-	for addon in $addonlist; do
-		addonurl="$(curl --silent "https://addons.mozilla.org/en-US/firefox/addon/${addon}/" | grep -o 'https://addons.mozilla.org/firefox/downloads/file/[^"]*')"
-		file="${addonurl##*/}"
-		sudo -u hooregi curl -Ls "$addonurl" -o "$addontmp/$file"
-    id="$(unzip -p "$addontmp/$file" manifest.json | grep "\"id\"" | sed -e 's/^.*"id": "\(.*\)",$/\1/')"
+  addonlist="ublock-origin bitwarden-password-manager darkreader bypass-paywalls-clean-d"
+  addontmp=$(mktemp -d)
+  trap 'rm -rf "$addontmp"' EXIT
+  sudo -u hooregi mkdir -p "$pdir/extensions/"
+  for addon in $addonlist; do
+    addonurl=$(curl --silent "https://addons.mozilla.org/en-US/firefox/addon/${addon}/" | grep -o 'https://addons.mozilla.org/firefox/downloads/file/[^"]*')
+    file=$(basename "$addonurl")
+    sudo -u hooregi curl -Ls "$addonurl" -o "$addontmp/$file"
+    id=$(unzip -p "$addontmp/$file" manifest.json | grep "\"id\"" | sed -e 's/^.*"id": "\(.*\)",$/\1/')
     mv "$addontmp/$file" "$pdir/extensions/$id.xpi"
-	done
-	chown -R hooregi:hooregi "$pdir/extensions"
+  done
+  chown -R hooregi:hooregi "$pdir/extensions"
 }
 
 browserconf() {
