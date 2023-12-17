@@ -27,6 +27,15 @@ userconf() {
   chsh -s /bin/zsh "hooregi" >/dev/null 2>&1
 }
 
+paruconf() {
+  sudo -u hooregi mkdir -p /home/hooregi/.local/src
+  chown -R hooregi:wheel "$(dirname /home/hooregi/.local/src)"
+  cd /home/hooregi/.local/src
+  sudo -u hooregi git clone https://aur.archlinux.org/paru.git
+  cd paru
+  sudo -u hooregi makepkg --noconfirm -si
+  cd ..
+}
 
 installconf() {
   progsfile="https://raw.githubusercontent.com/hooregi/halofiles/main/.bootstrap/pkgs.csv"
@@ -152,13 +161,7 @@ localeconf
 hostsconf
 pacman --noconfirm -Sy archlinux-keyring
 userconf
-mkdir -p /home/hooregi/.local/src
-chown -R hooregi:wheel "$(dirname /home/hooregi/.local/src)"
-cd /home/hooregi/.local/src
-git clone https://aur.archlinux.org/paru.git
-cd paru
-sudo -u hooregi makepkg --noconfirm -si
-cd ..
+paruconf
 installconf
 mkinitcpioconf
 bootconf
