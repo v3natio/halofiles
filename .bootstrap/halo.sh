@@ -44,18 +44,17 @@ installconf() {
     curl -Ls "$progsfile" | sed '/^#/d' > /tmp/pkgs.csv
 
   while IFS=, read -r tag program comment; do
-    n=$((n + 1))
     case "$tag" in
       "A")
-        echo "Installing $program from the AUR."
+        echo "Installing $program from the AUR. $comment"
         sudo -u hooregi paru -S "$program" --noconfirm >/dev/null 2>&1
         ;;
       "G")
-        echo "Installing $program from Git."
+        echo "Installing $program from Git. $comment"
         git clone "$program" && cd "$(basename "$program" .git)" && make clean install && cd ..
         ;;
       *)
-        echo "Installing $program."
+        echo "Installing $program from Arch repos. $comment"
         pacman --noconfirm --needed -S "$program" >/dev/null 2>&1 ;;
     esac
   done < /tmp/pkgs.csv
