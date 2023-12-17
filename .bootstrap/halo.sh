@@ -79,6 +79,7 @@ initrd /amd-ucode.img
 initrd /initramfs-linux.img
 options cryptdevice=UUID=${uuid}:cryptroot root=/dev/mapper/cryptroot resume=/dev/mapper/cryptroot resume_offset=${swap} rw mem_sleep_default=s2idle" > /boot/loader/entries/halo.conf
 
+  rm -rf /boot/loader/loader.conf
   [ ! -f /boot/loader/loader.conf ] && printf 'default halo.conf
 timeout 3
 console-mode max
@@ -161,6 +162,7 @@ homeconf() {
   mkdir -p desktop/{public,mounted} downloads documents/{templates} media/{games,music,pictures/{screenshots},videos/{recordings}}
   mkdir .cache/zsh
   touch .cache/zsh/history 
+  mkdir .local/share/gnupg
 }
 
 userjsconf() {
