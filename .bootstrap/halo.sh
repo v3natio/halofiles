@@ -43,22 +43,22 @@ installconf() {
   ([ -f "$progsfile" ] && cp "$progsfile" /tmp/pkgs.csv) ||
     curl -Ls "$progsfile" | sed '/^#/d' > /tmp/pkgs.csv
 
-    while IFS=, read -r tag program comment; do
-      n=$((n + 1))
-      case "$tag" in
-        "A")
-          echo "Installing $program from the AUR."
-          sudo -u hooregi paru -S "$program" --noconfirm >/dev/null 2>&1
-          ;;
-        "G")
-          echo "Installing $program from Git."
-          git clone "$program" && cd "$(basename "$program" .git)" && make clean install && cd ..
-          ;;
-        *)
-          echo "Installing $program."
-          pacman --noconfirm --needed -S "$program" >/dev/null 2>&1 ;;
-      esac
-    done < /tmp/pkgs.csv
+  while IFS=, read -r tag program comment; do
+    n=$((n + 1))
+    case "$tag" in
+      "A")
+        echo "Installing $program from the AUR."
+        sudo -u hooregi paru -S "$program" --noconfirm >/dev/null 2>&1
+        ;;
+      "G")
+        echo "Installing $program from Git."
+        git clone "$program" && cd "$(basename "$program" .git)" && make clean install && cd ..
+        ;;
+      *)
+        echo "Installing $program."
+        pacman --noconfirm --needed -S "$program" >/dev/null 2>&1 ;;
+    esac
+  done < /tmp/pkgs.csv
 }
 
 mkinitcpioconf() {
