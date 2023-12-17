@@ -46,9 +46,17 @@ installconf() {
     while IFS=, read -r tag program comment; do
       n=$((n + 1))
       case "$tag" in
-        "A") sudo paru -S "$program" --noconfirm >/dev/null 2>&1 ;;
-        "G") git clone "$program" && cd "$(basename "$program" .git)" && make clean install && cd .. ;;
-        *) pacman --noconfirm --needed -S "$program" >/dev/null 2>&1 ;;
+        "A")
+          echo "Installing $program from the AUR."
+          sudo -u hooregi paru -S "$program" --noconfirm >/dev/null 2>&1
+          ;;
+        "G")
+          echo "Installing $program from Git."
+          git clone "$program" && cd "$(basename "$program" .git)" && make clean install && cd ..
+          ;;
+        *)
+          echo "Installing $program."
+          pacman --noconfirm --needed -S "$program" >/dev/null 2>&1 ;;
       esac
     done < /tmp/pkgs.csv
 }
@@ -150,7 +158,7 @@ IPv6PrivacyExtensions=True' > /etc/systemd/network/25-wireless.network
   mkdir /etc/systemd/system/getty@tty1.service.d
   [ ! -f /etc/systemd/system/getty@tty1.service.d/autologin.conf ] && printf '[Service]
 ExecStart=
-ExecStart=-/sbin/agetty -o "-p -f -- \\u" --noclear --autologin hooregi \%I $TERM' > /etc/systemd/system/getty@tty1.service.d/autologin.conf
+ExecStart=-/sbin/agetty -o "-p -f -- \\u" --noclear --autologin hooregi %%I $TERM' > /etc/systemd/system/getty@tty1.service.d/autologin.conf
 
   # setting up nordvpn
   gpasswd -a hooregi nordvpn
