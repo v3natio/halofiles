@@ -3,7 +3,7 @@
 # wrapper script for the arkenfox-updater
 
 profiles="$(grep -sH "arkenfox user.js" \
-	/home/*/.librewolf/*.default-release/user.js)"
+	/home/*/.mozilla/firefox/*.default-release/user.js)"
 
 IFS='
 '

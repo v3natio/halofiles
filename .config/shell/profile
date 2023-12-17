@@ -9,7 +9,7 @@ unsetopt PROMPT_SP
 export TERMINAL="st"
 export TERMINAL_PROG="st"
 export EDITOR="nvim"
-export BROWSER="librewolf"
+export BROWSER="firefox"
 export READER="zathura"
 export FILE="lf"
 

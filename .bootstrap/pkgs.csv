@@ -21,6 +21,7 @@ G,https://github.com/hooregi/dwmblocks.git,Acts as the status bar
 ,exfat-utils,Provides utilities for exFAT filesystem
 ,fakeroot,Simulates superuser privileges
 ,ffmpegthumbnailer,Generates video thumbnails for the file manager
+,firefox,Gecko based open-source browser
 ,flex,Generates text-scanning programs
 ,fzf,Acts as fuzzy finder
 ,gcc,GNU C and C++ compiler
@@ -37,7 +38,6 @@ A,gtk-theme-arc-gruvbox-git,Displays GTK+ interfaces using gruvbox color-scheme
 A,lf-bin,Terminal file manager
 ,libnotify,Sends desktop notifications
 ,libreoffice-still,LibreOffice suite
-A,librewolf-bin,Firefox based open-source browser
 ,libtool,Manages creation of static and dynamic libraries
 ,maim,Takes screenshots using imlib2
 ,make,Builds executable programs and libraries from source code

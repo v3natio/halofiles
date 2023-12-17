@@ -159,10 +159,11 @@ homeconf() {
   cd /home/hooregi/halofiles/
   stow .
   rm -rf /halofiles
-  mkdir -p desktop/{public,mounted} downloads documents/{templates} media/{games,music,pictures/{screenshots},videos/{recordings}}
-  mkdir .cache/zsh
-  touch .cache/zsh/history 
-  mkdir .local/share/gnupg
+  cd /home/hooregi/
+  mkdir -p desktop/{public,mounted} downloads documents/templates media/{games,music,pictures/screenshots,videos/recordings}
+  mkdir /home/hooregi/.cache/zsh
+  touch /home/hooregi/.cache/zsh/history 
+  mkdir /home/hooregi/.local/share/gnupg
 }
 
 userjsconf() {
@@ -173,7 +174,7 @@ userjsconf() {
 	[ ! -f "$arkenfox" ] && curl -sL "https://raw.githubusercontent.com/arkenfox/user.js/master/user.js" > "$arkenfox"
 	cat "$arkenfox" "$overrides" > "$userjs"
 	chown hooregi:wheel "$arkenfox" "$userjs"
-	# Install the updating script.
+	# updating script.
 	mkdir -p /usr/local/lib /etc/pacman.d/hooks
 	cp /home/hooregi/.local/bin/arkenfox_updater /usr/local/lib/
 	chown root:root /usr/local/lib/arkenfox_updater
@@ -183,7 +184,7 @@ userjsconf() {
   [ ! -f /etc/pacman.d/hooks/10-arkenfox-update.hook ] && printf '[Trigger]
 Type = Package
 Operation = Upgrade
-Target = librewolf-bin
+Target = firefox
 
 [Action]
 Description = Updating user.js
@@ -201,7 +202,7 @@ addonsconf() {
 	for addon in $addonlist; do
 		addonurl="$(curl --silent "https://addons.mozilla.org/en-US/firefox/addon/${addon}/" | grep -o 'https://addons.mozilla.org/firefox/downloads/file/[^"]*')"
 		file="${addonurl##*/}"
-		sudo -u hooregi curl -LOs "$addonurl" > "$addontmp/$file"
+		sudo -u hooregi curl -Ls "$addonurl" -o "$addontmp/$file"
 		id="$(unzip -p "$file" manifest.json | grep "\"id\"")"
 		id="${id%\"*}"
 		id="${id##*\"}"
@@ -211,11 +212,11 @@ addonsconf() {
 }
 
 browserconf() {
-  browserdir="/home/hooregi/.librewolf"
+  browserdir="/home/hooregi/.mozilla/firefox"
   profilesini="$browserdir/profiles.ini"
 
-  # generate a librewolf profile
-  sudo -u hooregi librewolf --headless >/dev/null 2>&1 &
+  # generate a firefox profile
+  sudo -u hooregi firefox --headless >/dev/null 2>&1 &
   sleep 1
   profile="$(sed -n "/Default=.*.default-default/ s/.*=//p" "$profilesini")"
   pdir="$browserdir/$profile"
@@ -225,7 +226,7 @@ browserconf() {
   [ -d "$pdir" ] && addonsconf
 
   # kill the instance
-  pkill -u hooregi librewolf
+  pkill -u hooregi firefox
 }
 
 # actual script
