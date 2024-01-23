@@ -61,7 +61,7 @@ installconf() {
 }
 
 mkinitcpioconf() {
-  sed -i '/^MODULES=/c\MODULES=(vboxdrv)' /etc/mkinitcpio.conf
+  sed -i '/^MODULES=/c\MODULES=(amdgpu vboxdrv)' /etc/mkinitcpio.conf
   sed -i '/^FILES=/c\FILES=(/etc/modprobe.d/nobeep.conf)' /etc/mkinitcpio.conf
   sed -i '/^HOOKS=/c\HOOKS=(base udev autodetect modconf kms keyboard keymap block encrypt resume filesystems fsck)' /etc/mkinitcpio.conf
   echo "blacklist pcspkr" >> /etc/modprobe.d/nobeep.conf
@@ -160,7 +160,7 @@ homeconf() {
   stow .
   rm -rf /halofiles
   cd /home/hooregi/
-  mkdir -p desktop/{public,mounted} downloads documents/templates media/{games,music,pictures/screenshots,videos/recordings}
+  mkdir -p desktop/{public,mounted} downloads/torrents/pending documents/templates media/{games,music,pictures/screenshots,videos/recordings}
   mkdir /home/hooregi/.cache/zsh
   touch /home/hooregi/.cache/zsh/history 
   mkdir /home/hooregi/.local/share/gnupg
@@ -189,7 +189,6 @@ Target = firefox
 [Action]
 Description = Updating user.js
 When = PostTransaction
-Depends = arkenfox-user.js
 Exec = /usr/local/lib/arkenfox_updater' > /etc/pacman.d/hooks/10-arkenfox-update.hook
 }
 

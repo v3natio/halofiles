@@ -3,7 +3,6 @@ TAG,NAME,DESCRIPTION
 ,acpid,Delivers ACPI power management events
 ,alsa-utils,Provides utilities for sound architecture
 ,arandr,Provides front-end for XRandR
-A,arkenfox-user.js,Provides settings for Firefox
 ,autoconf,Configures source code automatically
 ,automake,Creates Makefiles automatically
 ,avahi,Probes network for services
@@ -74,7 +73,6 @@ A,pfetch,Displays system information
 ,qrencode,Encodes data in QR symbol
 ,reflector,Retrieves and filters latest pacman mirrors
 A,sct,Sets color temperatures
-A,simple-mtpfs,Provides utilities for MTP filesystems
 G,https://github.com/hooregi/slock.git,Acts as the lockscreen
 G,https://github.com/hooregi/st.git,Acts as the terminal emulator
 ,stow,Manages software installs in same tree

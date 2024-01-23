@@ -1,16 +1,11 @@
 #!/bin/sh
 
-# wrapper script for the arkenfox-updater
+# back-end script that updates arkenfox user.js
 
-profiles="$(grep -sH "arkenfox user.js" \
-	/home/*/.mozilla/firefox/*.default-release/user.js)"
-
-IFS='
-'
-
-for profile in $profiles; do
-	userjs=${profile%%/user.js*}
-	user=$(stat -c '%U' "$userjs") || continue
-
-	su -l "$user" -c "arkenfox-updater -c -p $userjs -s"
+for profile in /home/*/.mozilla/firefox/*.default-release; do
+	arkenfox="$profile/arkenfox.js"
+	overrides="$profile/user-overrides.js"
+	userjs="$profile/user.js"
+	curl -sL "https://raw.githubusercontent.com/arkenfox/user.js/master/user.js" > "$arkenfox"
+	cat "$arkenfox" "$overrides" > "$userjs"
 done
