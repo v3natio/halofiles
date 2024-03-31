@@ -3,27 +3,21 @@ TAG,NAME,DESCRIPTION
 ,acpid,Delivers ACPI power management events
 ,alsa-utils,Provides utilities for sound architecture
 ,arandr,Provides front-end for XRandR
-,autoconf,Configures source code automatically
-,automake,Creates Makefiles automatically
-,avahi,Probes network for services
 ,bc,Acts as command-line calculator
-,bison,Parses grammar into LR or GLR parsers
 ,bluez,Provides daemons for Bluetooth
 ,bluez-utils,Provides utilities for Bluetooth architecture
 ,brightnessctl,Manages screen brightness
 A,dataspell,JetBrains Python IDE for data scientists
+A,dataspell-jre,JetBrains Runtime for DataSpell
 G,https://github.com/hooregi/dmenu.git,Acts as the application selector
 ,dosfstools,Provides utilities for DOS filesystem
 ,dunst,Provides customizable daemons for notifications
 G,https://github.com/hooregi/dwm.git,Acts as the window manager
 G,https://github.com/hooregi/dwmblocks.git,Acts as the status bar
 ,exfat-utils,Provides utilities for exFAT filesystem
-,fakeroot,Simulates superuser privileges
 ,ffmpegthumbnailer,Generates video thumbnails for the file manager
 ,firefox,Gecko based open-source browser
-,flex,Generates text-scanning programs
 ,fzf,Acts as fuzzy finder
-,gcc,GNU C and C++ compiler
 ,gimp,Open-source image editor
 ,gnome-keyring,Stores passwords and encryption keys
 A,gotop-bin,Displays monitored activities
@@ -33,20 +27,15 @@ A,gtk-theme-arc-gruvbox-git,Displays GTK+ interfaces using gruvbox color-scheme
 ,imagemagick,Provides utilities to manipulate images
 ,inkscape,Open-source vector graphics editor
 ,iwd,Provides daemons for internet
-,lame,Encodes MP3 files as MPEG
 A,lf-bin,Terminal file manager
 ,libnotify,Sends desktop notifications
 ,libreoffice-still,LibreOffice suite
-,libtool,Manages creation of static and dynamic libraries
 ,maim,Takes screenshots using imlib2
-,make,Builds executable programs and libraries from source code
 ,man-db,Tool for reading manual pages
 ,mat2,Removes metadata from files
-,mesa,Implementation of OpenGL graphics
 ,mlocate,Finds files quickly by name
 ,moreutils,Collection of Unix tools
 ,mpv-mpris,Allows media keys to control mpv
-,ncspot,Spotify CLI player
 ,neovim,Fork of vim with useful features
 ,newsboat,RSS/Atom CLI feed reader
 A,nordvpn-bin,CLI utility to enable Nord's VPN service
@@ -56,16 +45,13 @@ A,nordvpn-bin,CLI utility to enable Nord's VPN service
 ,ntfs-3g,Provides utilities for NTFS filesystem
 A,ocrmypdf,Adds OCR text layer to scanned PDFs
 ,okular,PDF annotation tool
-,openssh,Enables remote login through SSH
 ,optipng,Compresses PNG files without quality loss
 A,pandoc-bin,Converts most document formats
 ,perl-file-mimeinfo,Determines filetypes
-,perl-image-exiftool,Reads and rewrites EXIF info
 A,pfetch,Displays system information
 ,picom,X compositor
 ,pipewire-alsa,Routes and processes ALSA audio
 ,pipewire-pulse,Routes and processes PulseAudio
-,pkgconf,Compiles packages and links metadata
 ,playerctl,Controls media players
 ,pulsemixer,CLI audio mixer
 ,pyenv,Manages python versions
@@ -78,15 +64,14 @@ G,https://github.com/hooregi/st.git,Acts as the terminal emulator
 ,stow,Manages software installs in same tree
 A,task-spooler,Queues up tasks from shell
 ,tesseract-data-eng,OCR data for English language
-,texinfo,Documentation system for printed output
 ,texlive-basic,Provides the essential binaries for TeX
 ,texlive-bibtexextra,Provides bibliography management for LaTeX
-,texlive-latex,Provides the fundamental packages for LaTeX
 ,texlive-latexrecommended,Provides recommended packages for LaTeX
 ,texlive-latexextra,Provides extra packages for LaTeX
 ,texlive-mathscience,Provides mathematical packages for LaTeX
 ,texlive-plaingeneric,Provides more packages for LaTeX
 ,thermald,Provides daemons for battery monitoring
+A,ticktick,Todo list and productivity app
 ,tlp,Manages battery power
 ,transmission-cli,Torrent client
 ,ttf-firacode-nerd,Firefox's Fira Code font
@@ -100,12 +85,9 @@ A,upd72020x-fw,Firmware for Renesas USB 3.0 chipsets
 ,virtualbox,Virtualization software
 ,virtualbox-guest-iso,Holds ISO images for Guest Additions
 ,wget,Retrieves files from web
-,which,Shows full path of commands
-,wireplumber,Manages pipewire sessions
 ,xcape,Manages keymaps to act as other keys depending on pressure
 ,xclip,CLI for X11 clipboard
 ,xdg-user-dirs,Manages user directories
-,xdg-utils,Provides utilities for desktop integration
 ,xf86-video-amdgpu,Provides Xorg drivers for AMD video
 ,xorg-server,Graphical server
 ,xorg-xclipboard,Stores clipboard
