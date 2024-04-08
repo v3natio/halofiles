@@ -78,7 +78,7 @@ return {
   ),
   -- over rightarrow
   s(
-    { trig = '(%a+)ora', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    { trig = '(%a+)orr', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('\\overrightarrow{<>}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -88,7 +88,7 @@ return {
   ),
   -- over leftarrrow
   s(
-    { trig = '(%a+)ola', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    { trig = '(%a+)olr', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('\\overleftarrow{<>}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -345,7 +345,7 @@ return {
   -- integral (positive/negative inf)
   s(
     { trig = '([^%a])intf', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
-    fmta('<>\\int_{\\infty}^{\\infty}', {
+    fmta('<>\\int_{-\\infty}^{\\infty}', {
       f(function(_, snip)
         return snip.captures[1]
       end),

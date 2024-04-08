@@ -74,7 +74,7 @@ ex 
 *.torrent 
 *.config 
 *.cpp 
-*.bak 
+*.bak 󰁯
 *.db 
 *.diff 
 *.dockerfile 

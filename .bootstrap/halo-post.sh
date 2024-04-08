@@ -35,3 +35,6 @@ AutoConnect=true
 EOF
 }
 rm -rf /home/hooregi/.config/cat_installer
+
+# configure tlp
+sudo sed -i '/#START_CHARGE_THRESH_BAT0=75/s/^#//;/#STOP_CHARGE_THRESH_BAT0=80/s/^#//' /etc/tlp.conf

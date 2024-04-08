@@ -1,7 +1,7 @@
 #!/bin/sh
 
 xrandr --dpi 141.68
-xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!
+xrdb "$XDG_CONFIG_HOME/x11/xresources" & xrdbpid=$!
 rescrs &
 
 autostart="picom dunst dwmblocks rescrd remapd unclutter"

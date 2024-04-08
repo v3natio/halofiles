@@ -6,6 +6,7 @@ TAG,NAME,DESCRIPTION
 ,bc,Acts as command-line calculator
 ,bluez,Provides daemons for Bluetooth
 ,bluez-utils,Provides utilities for Bluetooth architecture
+A,brave-bin,Chromium based open-source browser
 ,brightnessctl,Manages screen brightness
 A,dataspell,JetBrains Python IDE for data scientists
 A,dataspell-jre,JetBrains Runtime for DataSpell
@@ -16,7 +17,6 @@ G,https://github.com/hooregi/dwm.git,Acts as the window manager
 G,https://github.com/hooregi/dwmblocks.git,Acts as the status bar
 ,exfat-utils,Provides utilities for exFAT filesystem
 ,ffmpegthumbnailer,Generates video thumbnails for the file manager
-,firefox,Gecko based open-source browser
 ,fzf,Acts as fuzzy finder
 ,gimp,Open-source image editor
 ,gnome-keyring,Stores passwords and encryption keys
@@ -44,7 +44,6 @@ A,nordvpn-bin,CLI utility to enable Nord's VPN service
 ,nsxiv,Image viewer
 ,ntfs-3g,Provides utilities for NTFS filesystem
 A,ocrmypdf,Adds OCR text layer to scanned PDFs
-,okular,PDF annotation tool
 ,optipng,Compresses PNG files without quality loss
 A,pandoc-bin,Converts most document formats
 ,perl-file-mimeinfo,Determines filetypes

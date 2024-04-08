@@ -161,64 +161,6 @@ homeconf() {
   mkdir /home/hooregi/.local/share/gnupg
 }
 
-userjsconf() {
-	arkenfox="$pdir/arkenfox.js"
-	overrides="$pdir/user-overrides.js"
-	userjs="$pdir/user.js"
-	ln -fs /home/hooregi/.config/firefox/halo.js "$overrides"
-	[ ! -f "$arkenfox" ] && curl -sL "https://raw.githubusercontent.com/arkenfox/user.js/master/user.js" > "$arkenfox"
-	cat "$arkenfox" "$overrides" > "$userjs"
-	chown hooregi:wheel "$arkenfox" "$userjs"
-	# updating script.
-	mkdir -p /usr/local/lib /etc/pacman.d/hooks
-	cp /home/hooregi/.local/bin/arkenfox_updater /usr/local/lib/
-	chown root:root /usr/local/lib/arkenfox_updater
-	chmod 755 /usr/local/lib/arkenfox_updater
-	
-  # pacman user.js hook
-  [ ! -f /etc/pacman.d/hooks/10-arkenfox-update.hook ] && printf '[Trigger]
-Type = Package
-Operation = Upgrade
-Target = firefox
-
-[Action]
-Description = Updating user.js
-When = PostTransaction
-Exec = /usr/local/lib/arkenfox_updater' > /etc/pacman.d/hooks/10-arkenfox-update.hook
-}
-
-addonsconf() {
-  addonlist="ublock-origin bitwarden-password-manager darkreader bypass-paywalls-clean-d"
-  addontmp=$(mktemp -d)
-  trap 'rm -rf "$addontmp"' EXIT
-  sudo -u hooregi mkdir -p "$pdir/extensions/"
-  for addon in $addonlist; do
-    addonurl=$(curl --silent "https://addons.mozilla.org/en-US/firefox/addon/${addon}/" | grep -o 'https://addons.mozilla.org/firefox/downloads/file/[^"]*')
-    file=$(basename "$addonurl")
-    curl -Ls "$addonurl" -o "$addontmp/$file"
-    id=$(unzip -p "$addontmp/$file" manifest.json | grep "\"id\"" | sed -e 's/^.*"id": "\(.*\)",$/\1/')
-    mv "$addontmp/$file" "$pdir/extensions/$id.xpi"
-  done
-  chown -R hooregi:hooregi "$pdir/extensions"
-}
-
-browserconf() {
-  browserdir="/home/hooregi/.mozilla/firefox"
-  profilesini="$browserdir/profiles.ini"
-
-  # generate a firefox profile
-  sudo -u hooregi firefox --headless >/dev/null 2>&1 &
-  sleep 1
-  profile=$(grep -E 'Path=.*\.default-release$' "$profilesini" | sed -e 's/^Path=//')
-  pdir="$browserdir/$profile"
-
-  [ -d "$pdir" ] && userjsconf
-  [ -d "$pdir" ] && addonsconf
-
-  # kill the instance
-  pkill -u hooregi firefox
-}
-
 # actual script
 localeconf
 hostsconf
@@ -231,7 +173,6 @@ bootconf
 servicesconf
 miscconf
 homeconf
-browserconf
 sudo chown -R hooregi:hooregi /home/
 
 printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"

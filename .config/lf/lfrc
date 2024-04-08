@@ -60,8 +60,6 @@ cmd zip ${{
   [ $ans = "y" ] && zip -r "$f.zip" "$(basename "$f")"
 }}
 
-cmd trash %set -f; mv $fx ~/.cache/trash
-
 cmd delete ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
@@ -79,7 +77,7 @@ cmd moveto ${{
 	for x in $fx; do
 		eval mv -iv \"$x\" \"$dest\"
 	done &&
-	notify-send "🚚 File(s) moved." "File(s) moved to $dest."
+	notify-send "󰪹 File(s) moved." "File(s) moved to $dest."
 }}
 
 cmd copyto ${{
@@ -90,7 +88,7 @@ cmd copyto ${{
 	for x in $fx; do
 		eval cp -ivr \"$x\" \"$dest\"
 	done &&
-	notify-send "📋 File(s) copied." "File(s) copies to $dest."
+	notify-send " File(s) copied." "File(s) copies to $dest."
 }}
 
 cmd yank ${{
@@ -98,13 +96,40 @@ echo -n $fx | xclip -selection clipboard
 }}
 
 cmd setbg "$1"
-cmd bulkrename $vidir
+
+cmd bulkrename ${{
+  tmpfile_old="$(mktemp)"
+  tmpfile_new="$(mktemp)"
+  tmpfile_ext="$(mktemp)"
+
+  [ -n "$fs" ] && fs=$(basename -a $fs | sort -fV) || fs=$(find . -maxdepth 1 -type f | cut -c 3- | sort -fV)
+
+  for f in $fs; do
+      echo "${f%.*}" >> "$tmpfile_old"
+      echo "${f##*.}" >> "$tmpfile_ext"
+  done
+
+  cp "$tmpfile_old" "$tmpfile_new"
+  $EDITOR "$tmpfile_new"
+
+  [ "$(wc -l < "$tmpfile_old")" -eq "$(wc -l < "$tmpfile_new")" ] || { rm -f "$tmpfile_old" "$tmpfile_new" "$tmpfile_ext"; exit 1; }
+
+  exec 3<"$tmpfile_old"
+  exec 4<"$tmpfile_ext"
+  exec 5<"$tmpfile_new"
+
+  while IFS= read -r old_name <&3 && IFS= read -r ext <&4 && IFS= read -r new_name <&5; do
+      [ "$old_name" = "$new_name" ] || [ -e "$new_name.$ext" ] || mv -- "$old_name.$ext" "$new_name.$ext"
+  done
+
+  rm -f "$tmpfile_old" "$tmpfile_new" "$tmpfile_ext"
+  lf -remote "send $id unselect"
+}}
 
 # Bindings
 map <c-f> $lf -remote "send $id select \"$(fzf)\""
 map gh
 map g top
-map T trash
 map D delete
 map Z zip
 map E extract
@@ -115,23 +140,14 @@ map <c-n> push :mkdir<space>""<left>
 map <c-r> reload
 map <c-s> set hidden!
 map <enter> shell
-map x $$f
-map X !$f
 map o &mimeopen $f
 map O $mimeopen --ask $f
 
-map A :rename; cmd-end # at the very end
-map c push A<c-u> # new rename
-map I :rename; cmd-home # at the very beginning
-map i :rename # before extension
-map a :rename; cmd-right # after extension
+map R push A<c-u> # new rename
+map r :rename # before extension
 map B bulkrename
 map b $setbg $f
 
-map <c-e> down
-map <c-y> up
 map V push :!nvim<space>
 
 map W $setsid -f $TERMINAL >/dev/null 2>&1
-
-map Y $printf "%s" "$fx" | xclip -selection clipboard

@@ -169,7 +169,7 @@ return {
   ),
   -- figure
   s(
-    { trig = 'fig' },
+    { trig = 'img' },
     fmta(
       [[
         \begin{figure}[H]
