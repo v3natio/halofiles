@@ -19,26 +19,26 @@ hostsconf() {
 
 userconf() {
   echo root:password | chpasswd
-  useradd -m hooregi
-  echo hooregi:password | chpasswd
-  usermod -aG wheel hooregi
-  echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >>/etc/sudoers.d/hooregi
-  echo "Defaults editor=/usr/bin/nvim" >>/etc/sudoers.d/hooregi
-  chsh -s /bin/zsh "hooregi" >/dev/null 2>&1
+  useradd -m venatio
+  echo venatio:password | chpasswd
+  usermod -aG wheel venatio
+  echo "%wheel ALL=(ALL:ALL) NOPASSWD: ALL" >>/etc/sudoers.d/venatio
+  echo "Defaults editor=/usr/bin/nvim" >>/etc/sudoers.d/venatio
+  chsh -s /bin/zsh "venatio" >/dev/null 2>&1
 }
 
 paruconf() {
-  sudo -u hooregi mkdir -p /home/hooregi/.local/src
-  chown -R hooregi:wheel "$(dirname /home/hooregi/.local/src)"
-  cd /home/hooregi/.local/src
-  sudo -u hooregi git clone https://aur.archlinux.org/paru.git
+  sudo -u venatio mkdir -p /home/venatio/.local/src
+  chown -R venatio:wheel "$(dirname /home/venatio/.local/src)"
+  cd /home/venatio/.local/src
+  sudo -u venatio git clone https://aur.archlinux.org/paru.git
   cd paru
-  sudo -u hooregi makepkg --noconfirm -si
+  sudo -u venatio makepkg --noconfirm -si
   cd ..
 }
 
 installconf() {
-  progsfile="https://raw.githubusercontent.com/hooregi/halofiles/main/.bootstrap/pkgs.csv"
+  progsfile="https://raw.githubusercontent.com/v3natio/halofiles/main/.bootstrap/pkgs.csv"
 
   ([ -f "$progsfile" ] && cp "$progsfile" /tmp/pkgs.csv) ||
     curl -Ls "$progsfile" | sed '/^#/d' >/tmp/pkgs.csv
@@ -47,7 +47,7 @@ installconf() {
     case "$tag" in
     "A")
       echo "Installing $program from the AUR. $comment"
-      sudo -u hooregi paru -S "$program" --noconfirm >/dev/null 2>&1
+      sudo -u venatio paru -S "$program" --noconfirm >/dev/null 2>&1
       ;;
     "G")
       echo "Installing $program from Git. $comment"
@@ -144,23 +144,26 @@ IPv6PrivacyExtensions=True' >/etc/systemd/network/25-wireless.network
   mkdir /etc/systemd/system/getty@tty1.service.d
   [ ! -f /etc/systemd/system/getty@tty1.service.d/autologin.conf ] && printf '[Service]
 ExecStart=
-ExecStart=-/sbin/agetty -o "-p -f -- \\u" --noclear --autologin hooregi %%I $TERM' >/etc/systemd/system/getty@tty1.service.d/autologin.conf
+ExecStart=-/sbin/agetty -o "-p -f -- \\u" --noclear --autologin venatio %%I $TERM' >/etc/systemd/system/getty@tty1.service.d/autologin.conf
 
   # setting up nordvpn
-  gpasswd -a hooregi nordvpn
+  gpasswd -a venatio nordvpn
 }
 
 homeconf() {
-  cd /home/hooregi
-  git clone https://github.com/hooregi/halofiles.git
-  cd /home/hooregi/halofiles/
+  cd /home/venatio
+  mkdir -p .config
+  touch .config/placeholder.txt
+  git clone https://github.com/v3natio/halofiles.git
+  cd /home/venatio/halofiles/
   stow .
   rm -rf /halofiles
-  cd /home/hooregi/
+  cd /home/venatio/
+  rm .config/placeholder.txt
   mkdir -p desktop/{public,mounted} downloads/torrents/pending documents/templates media/{games,music,pictures/screenshots,videos/recordings}
-  mkdir /home/hooregi/.cache/zsh
-  touch /home/hooregi/.cache/zsh/history
-  mkdir /home/hooregi/.local/share/gnupg
+  mkdir /home/venatio/.cache/zsh
+  touch /home/venatio/.cache/zsh/history
+  mkdir /home/venatio/.local/share/gnupg
 }
 
 # actual script
@@ -175,6 +178,6 @@ bootconf
 servicesconf
 miscconf
 homeconf
-sudo chown -R hooregi:hooregi /home/
+sudo chown -R venatio:venatio /home/
 
 printf "\e[1;32mDone! Type exit, umount -a and reboot.\e[0m"
