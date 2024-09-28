@@ -3,8 +3,8 @@
 if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]; then
   . "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
 else
-	. "$HOME/.xprofile"
+  . "$HOME/.xprofile"
 fi
 
-dbus-update-activation-environment --all
-dbus-launch ssh-agent dwm
+eval $(ssh-agent)
+exec dwm

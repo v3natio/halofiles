@@ -1,14 +1,20 @@
 #!/bin/sh
 
-xrandr --dpi 141.68
-xrdb "$XDG_CONFIG_HOME/x11/xresources" & xrdbpid=$!
+xrandr --dpi 141.856
+xrdb "$XDG_CONFIG_HOME/x11/xresources" &
+xrdbpid=$!
 rescrs &
 
-autostart="picom dunst dwmblocks rescrd remapd unclutter"
+autostart="picom
+dunst
+dwmblocks
+unclutter
+solaar -w hide
+pactl load-module module-switch-on-connect"
 
-for program in $autostart; do
-	pidof -s "$program" || setsid -f "$program"
+echo "$autostart" | while IFS= read -r program; do
+  pidof -sx "$program" || $program &
 done >/dev/null 2>&1
 
-# Ensure that xrdb finished running before moving on to start the WM.
+# ensure that xrdb finished running before starting the WM
 [ -n "$xrdbpid" ] && wait "$xrdbpid"
