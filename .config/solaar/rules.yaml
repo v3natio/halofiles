@@ -1,0 +1,85 @@
+%YAML 1.3
+---
+- And:
+  - Key: [Left Shift, pressed]
+  - Key: [Voice Dictation, pressed]
+- KeyPress:
+  - [Super_L, F11]
+  - click
+...
+---
+- Key: [Voice Dictation, pressed]
+- KeyPress:
+  - [Super_L, F11]
+  - click
+...
+---
+- Key: [Open Emoji Panel, pressed]
+- KeyPress:
+  - [Super_L, F8]
+  - click
+...
+---
+- Key: [Snipping Tool, pressed]
+- KeyPress:
+  - Print
+  - click
+...
+---
+- Key: [Smart Shift, released]
+- KeyPress:
+  - [Alt_L, leftarrow]
+  - click
+...
+---
+- Key: [Back Button, released]
+- KeyPress:
+  - [Control_R, z]
+  - click
+...
+---
+- Key: [Forward Button, released]
+- KeyPress:
+  - [Shift_R, Control_R, z]
+  - click
+...
+---
+- And:
+  - Key: [Mouse Gesture Button, released]
+  - MouseGesture: []
+- KeyPress:
+  - Print
+  - click
+...
+---
+- MouseGesture: Mouse Up
+- KeyPress:
+  - [Control_L, plus]
+  - click
+...
+---
+- MouseGesture: Mouse Down
+- KeyPress:
+  - [Control_L, minus]
+  - click
+...
+---
+- MouseGesture: Mouse Left
+- KeyPress:
+  - [Control_L, Shift_L, Tab]
+  - click
+...
+---
+- MouseGesture: Mouse Right
+- KeyPress:
+  - [Control_L, Tab]
+  - click
+...
+---
+- Test: [thumb_wheel_up, 10]
+- MouseScroll: [1, 0]
+...
+---
+- Test: [thumb_wheel_down, 10]
+- MouseScroll: [-1, 0]
+...
