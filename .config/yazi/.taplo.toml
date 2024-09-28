@@ -1,0 +1,3 @@
+[[rule]]
+[rule.formatting]
+inline_table_expand = false

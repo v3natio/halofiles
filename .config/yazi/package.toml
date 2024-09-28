@@ -1,0 +1,9 @@
+[plugin]
+deps = [
+  { use = "Tyarel8/video-ffmpeg", rev = "fe26a18" },
+  { use = "Sonico98/exifaudio", rev = "6205460" },
+  { use = "kirasok/torrent-preview", rev = "76970b6" },
+]
+
+[flavor]
+deps = []

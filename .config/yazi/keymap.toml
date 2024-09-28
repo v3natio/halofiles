@@ -1,0 +1,13 @@
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+
+[manager]
+prepend_keymap = [
+  { on = "f", run = "search rg", desc = "Search files by content via ripgrep." },
+  { on = "/", run = "filter --smart", desc = "Filter files." },
+  { on = ["<C-s>"], run = ["hidden toggle"], desc = "Toggle the visibility of hidden files." },
+  { on = ["l"], run = ["plugin smart-enter --sync", "escape --visual --select"], desc = "Enter the child directory, or open file." },
+  { on = ["L"], run = ["plugin smart-enter --sync --args='detatch'"], desc = "Open in new window." },
+  { on = ["="], run = """shell 'printf "Permissions (in mode-bits): "; read ans; chmod $ans "$@"' --block --confirm""", desc = "chmod wrapper." },
+  { on = ["S"], run = """shell $command --block --confirm""", desc = "chmod wrapper." },
+  { on = ["Z"], run = "plugin compress", desc = "Archive selected files." },
+]

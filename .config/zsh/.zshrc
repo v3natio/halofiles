@@ -1,81 +1,81 @@
-# Saner defaults:
+# better defaults:
 setopt autocd # auto cd into directory.
 setopt nomatch # output error if file doesn't match
 setopt interactive_comments # comments in interactive shells
 stty stop undef # disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none') # don't highlight paste
 
-# History in cache directory:
-HISTSIZE=10000000
-SAVEHIST=10000000
-HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
+# history in cache directory:
+HISTSIZE=5000
+SAVEHIST=$HISTSIZE
+HISTFILE="${XDG_CACHE_HOME}/zsh/history"
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_all_dups
+setopt hist_find_no_dups
 
-# Load aliases, prompt, vi-mode, functions, etc:
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+# load aliases, prompt, functions, etc:
+[ -f "${XDG_CONFIG_HOME}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME}/shell/aliasrc"
 [ -f "$ZDOTDIR/zsh-prompt" ] && source "$ZDOTDIR/zsh-prompt"
 [ -f "$ZDOTDIR/zsh-functions" ] && source "$ZDOTDIR/zsh-functions"
-# Load fzf:
 [ -f "/usr/share/fzf/completion.zsh" ] && source "/usr/share/fzf/completion.zsh"
 [ -f "/usr/share/fzf/key-bindings.zsh" ] && source "/usr/share/fzf/key-bindings.zsh"
 
-# Basic auto/tab complete:
-autoload -U compinit
-zstyle ':completion:*' menu select
+# basic auto/tab complete:
+autoload -U compinit && compinit
+zstyle ':completion:*' menu no
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color=auto $realpath'
 zmodload zsh/complist
-compinit
 _comp_options+=(globdots) # include hidden files.
 
-# Vi mode:
+# vim mode:
 bindkey -v
 export KEYTIMEOUT=1
-
-# Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -v '^?' backward-delete-char
 
-# Change cursor shape for different vi modes:
-function zle-keymap-select () {
-    case $KEYMAP in
-        vicmd) echo -ne '\e[1 q';;      # block
-        viins|main) echo -ne '\e[5 q';; # beam
-    esac
+# change cursor shape for different vi modes:
+zle-keymap-select () {
+  case $KEYMAP in
+    vicmd) echo -ne '\e[1 q';; # block in command mode
+    viins|main) echo -ne '\e[5 q';; # beam in insert mode
+  esac
+}
+zle-line-init() {
+  echo -ne '\e[5 q'
 }
 zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
-}
 zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+zle-line-init # beam shape on startup
+preexec() { echo -ne '\e[5 q' } # beam shape on new prompt
 
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-  tmp="$(mktemp -uq)"
-  trap 'rm -f $tmp >/dev/null 2>&1' HUP INT QUIT TERM PWR EXIT
-  lf -last-dir-path="$tmp" "$@"
-  if [ -f "$tmp" ]; then
-    dir="$(cat "$tmp")"
-    [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-  fi
+# move between directories using yazi with ctrl-g:
+lfcd() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp" >/dev/null 2>&1
 }
-
 bindkey -s '^g' '^ulfcd\n'
-bindkey -s '^f' '^ucd "$(dirname "$(find . | fzf)")"\n'
+bindkey -s '^f' '^ucd "$(dirname "$(rg --files | fzf)")"\n' # fuzzy find with ctrl-f
 bindkey '^[[P' delete-char
 
-# Edit line in vim with ctrl-e:
+# edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
-# Plugins:
+# plugins
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zdharma-continuum/fast-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "Aloxaf/fzf-tab"
 #zsh_add_plugin "darvid/zsh-poetry"

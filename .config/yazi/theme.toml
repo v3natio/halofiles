@@ -1,0 +1,285 @@
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
+[manager]
+cwd = { fg = "#83a598" }
+border_symbol = " "
+# third pane item
+preview_hovered = { underline = false }
+# find
+find_keyword = { fg = "#fe8019", italic = true }
+# marker
+marker_selected = { fg = "#928374", bg = "#928374" }
+marker_copied = { fg = "#83a598", bg = "#83a598" }
+marker_cut = { fg = "#cc241d", bg = "#cc241d" }
+
+[status]
+separator_open = ""
+separator_close = ""
+separator_style = { fg = "#3c3836", bg = "#3c3836" }
+# mode
+mode_normal = { fg = "#282828", bg = "#a89984" }
+mode_select = { fg = "#282828", bg = "#fe8019" }
+# progress
+progress_label = { fg = "#ebdbb2" }
+progress_normal = { fg = "#a89984", bg = "#3c3836" }
+progress_error = { fg = "#cc241d", bg = "#3c3836" }
+# permissions
+permissions_t = { fg = "#ebdbb2" }
+permissions_r = { fg = "#b8bb26" }
+permissions_w = { fg = "#cc241d" }
+permissions_x = { fg = "#b8bb26" }
+permissions_s = { fg = "#ebdbb2" }
+
+[input]
+border = { fg = "#928374" }
+
+[select]
+border = { fg = "#928374" }
+active = { fg = "#fe8019" }
+
+[tasks]
+border = { fg = "#928374" }
+
+[filetype]
+rules = [
+  # fallback
+  { name = "*", fg = "#8ec07c", is = "link" },
+  { name = "*/", fg = "#8ec07c", is = "link" },
+  { name = "*", fg = "#ebdbb2" },
+  { name = "*/", fg = "#b8bb26" },
+]
+
+[icon]
+exts = [
+  # code
+  { name = "cpp", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "css", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "c", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "db", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "diff", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "go", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "h", text = "󰬏", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "htm", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "html", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "java", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "js", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "lua", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "nix", text = "󱄅", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "o", text = "󰬖", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "php", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "rs", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "sh", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "sql", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "ts", text = "󰛦", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "tsx", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "vim", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "vue", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "py", text = "", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "pyc", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "ipynb", text = "󰺿", fg_dark = "#b16286", fg_light = "#b16286" },
+  { name = "r", text = "󰟔", fg_dark = "#b16286", fg_light = "#b16286" },
+  # text
+  { name = "txt", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "csv", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "json", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "conf", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "ini", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "yaml", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "yml", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "toml", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "tex", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "bib", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "md", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mdx", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "qmd", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "rmd", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xml", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  # archives
+  { name = "7z", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "ace", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "alz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "arc", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "arj", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "bz2", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "bz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "cab", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "cpio", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "deb", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "dwm", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "dz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "ear", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "esd", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "gz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "jar", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "lha", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "lrz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "lz4", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "lzh", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "lzma", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "lzo", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "lz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "rar", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "rpm", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "rz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "sar", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "swm", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "t7z", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "tar", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "taz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "tbz2", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "tbz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "tgz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "tlz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "torrent", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "txz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "tzo", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "tzst", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "tz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "war", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "wim", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "xz", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "zip", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "zoo", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "zst", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  { name = "z", text = "", fg_dark = "#fabd2f", fg_light = "#fabd2f" },
+  # images
+  { name = "bmp", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "gif", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "png", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "tiff", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "webp", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "jpeg", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "jpg", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mjpeg", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mjpg", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mng", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "pbm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "pcx", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "pgm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ppm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "svg", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "svgz", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "tga", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "tif", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xbm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xcf", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xpm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  # video
+  { name = "asf", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "avi", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "cgm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "dl", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "emf", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "flc", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "fli", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "flv", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "gl", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "m2v", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "m4v", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mkv", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mov", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mp4", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mp4v", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mpeg", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mpg", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "nuv", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ogm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ogv", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ogx", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "qt", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "rm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "rmvb", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "vob", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "webm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "wmv", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xwd", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "yuv", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  # audio
+  { name = "aac", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "au", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "flac", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "m4a", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mid", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "midi", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mka", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mp3", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "mpc", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "oga", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ogg", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "opus", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ra", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "spx", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "wav", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xspf", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  # document
+  { name = "pdf", text = "", fg_dark = "#cc241d", fg_light = "#cc241d" },
+  { name = "doc", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "doct", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "docx", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "dot", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "odg", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "odt", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ods", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ots", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "pom", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "pot", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "potx", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ppm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ppmx", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "pps", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ppsx", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "ppt", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "pptx", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xlc", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xlm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xls", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xlsm", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xlsx", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "xlt", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  # misc
+  { name = "bak", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "bin", text = "", fg_dark = "#458588", fg_light = "#458588" },
+  { name = "gpg", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "iso", text = "", fg_dark = "#458588", fg_light = "#458588" },
+  { name = "img", text = "", fg_dark = "#458588", fg_light = "#458588" },
+  { name = "info", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "kbx", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "lock", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "log", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "pkg", text = "", fg_dark = "#458588", fg_light = "#458588" },
+]
+dirs = [
+  { name = ".config", text = "󱁿" },
+  { name = ".git", text = "󰊢" },
+  { name = ".local", text = "󰣞" },
+  { name = "desktop", text = "󱂵" },
+  { name = "documents", text = "󰲂" },
+  { name = "downloads", text = "󰉍" },
+  { name = "halofiles", text = "󰚝" },
+  { name = "media", text = "󰉏" },
+  { name = "Trash", text = "󰩺" },
+]
+files = [
+  # dotfiles
+  { name = ".gitattributes", text = "", fg_dark = "#458588", fg_light = "#458588" },
+  { name = ".gitignore", text = "", fg_dark = "#458588", fg_light = "#458588" },
+  { name = ".gitmodules", text = "", fg_dark = "#458588", fg_light = "#458588" },
+  { name = ".zprofile", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = ".zshenv", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = ".zshrc", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = ".xprofile", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  # misc
+  { name = "config", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "Containerfile", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "Dockerfile", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "LICENSE", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+  { name = "Makefile", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "PKGBUILD", text = "", fg_dark = "#928374", fg_light = "#928374" },
+  { name = "README", text = "", fg_dark = "#83a598", fg_light = "#83a598" },
+]
+conds = [
+  # default
+  { if = "dir", text = "󰉋" },
+  { if = "exec", text = "", fg_dark = "#fe8019", fg_light = "#fe8019" },
+  { if = "!dir", text = "" },
+]
