@@ -2,49 +2,54 @@ TAG,NAME,DESCRIPTION
 ,acpi,Reads battery power and thermal sensors
 ,acpid,Delivers ACPI power management events
 ,alsa-utils,Provides utilities for sound architecture
-,arandr,Provides front-end for XRandR
+,arandr,Provides a front-end for XRandR
+A,autofirma-bin,Provides a front-end for Spain e-signature
 ,bc,Acts as command-line calculator
 ,bluez,Provides daemons for Bluetooth
 ,bluez-utils,Provides utilities for Bluetooth architecture
+,bottom,Displays monitored activities
 A,brave-bin,Chromium based open-source browser
 ,brightnessctl,Manages screen brightness
+A,ca-certificates-fnmt,Provides certificates for Spanish gov websites
 A,dataspell,JetBrains Python IDE for data scientists
 A,dataspell-jre,JetBrains Runtime for DataSpell
+A,devour,Provides swallowing feature for the terminal emulator
 G,https://github.com/hooregi/dmenu.git,Acts as the application selector
 ,dosfstools,Provides utilities for DOS filesystem
 ,dunst,Provides customizable daemons for notifications
 G,https://github.com/hooregi/dwm.git,Acts as the window manager
 G,https://github.com/hooregi/dwmblocks.git,Acts as the status bar
 ,exfat-utils,Provides utilities for exFAT filesystem
-,ffmpegthumbnailer,Generates video thumbnails for the file manager
 ,fzf,Acts as fuzzy finder
 ,gimp,Open-source image editor
 ,gnome-keyring,Stores passwords and encryption keys
-A,gotop-bin,Displays monitored activities
 A,gruvbox-material-icon-theme-git,Displays icons using gruvbox color-scheme
 A,gtk-theme-arc-gruvbox-git,Displays GTK+ interfaces using gruvbox color-scheme
 ,highlight,Highlights source code
 ,imagemagick,Provides utilities to manipulate images
 ,inkscape,Open-source vector graphics editor
 ,iwd,Provides daemons for internet
-A,lf-bin,Terminal file manager
+,lf,Terminal file manager
 ,libnotify,Sends desktop notifications
 ,libreoffice-still,LibreOffice suite
+,libva-mesa-driver,Driver for amdgpu and vaapi
 ,maim,Takes screenshots using imlib2
 ,man-db,Tool for reading manual pages
 ,mat2,Removes metadata from files
-,mlocate,Finds files quickly by name
+,mesa-vdpau,Driver for amdgpu and mesa
 ,moreutils,Collection of Unix tools
 ,mpv-mpris,Allows media keys to control mpv
 ,neovim,Fork of vim with useful features
 ,newsboat,RSS/Atom CLI feed reader
 A,nordvpn-bin,CLI utility to enable Nord's VPN service
-,noto-fonts,Google's Noto font
 ,npm,Package manager for javascript
 ,nsxiv,Image viewer
 ,ntfs-3g,Provides utilities for NTFS filesystem
+,obsidian,Private note-taking system
 A,ocrmypdf,Adds OCR text layer to scanned PDFs
 ,optipng,Compresses PNG files without quality loss
+,p7zip,Provides (de)compression for archives
+,pacman-contrib,Provides scripts and tools for pacman
 A,pandoc-bin,Converts most document formats
 ,perl-file-mimeinfo,Determines filetypes
 A,pfetch,Displays system information
@@ -52,13 +57,16 @@ A,pfetch,Displays system information
 ,pipewire-alsa,Routes and processes ALSA audio
 ,pipewire-pulse,Routes and processes PulseAudio
 ,playerctl,Controls media players
+,plocate,Finds files quickly by name
 ,pulsemixer,CLI audio mixer
 ,pyenv,Manages python versions
 ,python-poetry,Manages and installs python package dependencies
 ,qrencode,Encodes data in QR symbol
 ,reflector,Retrieves and filters latest pacman mirrors
+,ripgrep,Finds text quickly
 A,sct,Sets color temperatures
 G,https://github.com/hooregi/slock.git,Acts as the lockscreen
+,solaar,Manages Logitech devices
 G,https://github.com/hooregi/st.git,Acts as the terminal emulator
 ,stow,Manages software installs in same tree
 A,task-spooler,Queues up tasks from shell
@@ -70,15 +78,13 @@ A,task-spooler,Queues up tasks from shell
 ,texlive-mathscience,Provides mathematical packages for LaTeX
 ,texlive-plaingeneric,Provides more packages for LaTeX
 ,thermald,Provides daemons for battery monitoring
-A,ticktick,Todo list and productivity app
 ,tlp,Manages battery power
 ,transmission-cli,Torrent client
-,ttf-firacode-nerd,Firefox's Fira Code font
+,ttf-jetbrains-mono-nerd,JetBrains's patched Mono font
 A,ttf-ms-fonts,Microsoft's fonts
-,ueberzug,Allows image viewing on terminal
+,tree-sitter-cli,Provides build environment for latex-treesitter
+A,ueberzugpp,Allows image viewing on terminal
 ,unclutter,Hides mouse cursor when not in use
-,unrar,RAR compression program
-,unzip,ZIP decompression program
 A,upd72020x-fw,Firmware for Renesas USB 3.0 chipsets
 ,urlscan,Terminal URL selector
 ,virtualbox,Virtualization software
@@ -94,7 +100,7 @@ A,upd72020x-fw,Firmware for Renesas USB 3.0 chipsets
 ,xorg-xinit,Starts graphical server
 ,xorg-xwininfo,Queries info about windows
 ,xwallpaper,Sets wallpaper
+,yazi,Terminal file manager
 ,yt-dlp,Downloads videos from Youtube and other sites
 ,zathura,Minimalist document viewer
 ,zathura-pdf-mupdf,Adds PDF support to zathura
-,zip,ZIP compression program

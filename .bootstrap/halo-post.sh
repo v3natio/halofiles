@@ -36,5 +36,23 @@ EOF
 }
 rm -rf /home/hooregi/.config/cat_installer
 
+# enable logitech udev rules
+sudo curl -o /etc/udev/rules.d/42-logitech-unify-permissions.rules "https://raw.githubusercontent.com/pwr-Solaar/Solaar/master/rules.d-uinput/42-logitech-unify-permissions.rules"
+
+# enable monitor/keyboard hotplug watchdogs
+if [ ! -f /etc/udev/rules.d/90-keyboard-hotplug.rules ]; then
+  sudo sh -c 'printf "ACTION==\"add|remove\", SUBSYSTEM==\"input\", KERNEL==\"event*\", ENV{ID_INPUT_KEYBOARD}==\"1\", TAG+=\"systemd\", ENV{SYSTEMD_USER_WANTS}+=\"switch-keymaps.service\"\n" > /etc/udev/rules.d/90-keyboard-hotplug.rules'
+fi
+
+if [ ! -f /etc/udev/rules.d/90-monitor-hotplug.rules ]; then
+  sudo sh -c 'printf "ACTION==\"change\", SUBSYSTEM==\"drm\", ENV{HOTPLUG}==\"1\", TAG+=\"systemd\", ENV{SYSTEMD_USER_WANTS}+=\"switch-screen.service\"\n" > /etc/udev/rules.d/90-monitor-hotplug.rules'
+fi
+
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+command systemctl --user daemon-reload
+command systemctl --user start notify-battery.timer
+command systemctl --user enable notify-battery.timer
+
 # configure tlp
-sudo sed -i '/#START_CHARGE_THRESH_BAT0=75/s/^#//;/#STOP_CHARGE_THRESH_BAT0=80/s/^#//' /etc/tlp.conf
+sudo sed -i '/#START_CHARGE_THRESH_BAT0=0/s/^#//;/#STOP_CHARGE_THRESH_BAT0=1/s/^#//' /etc/tlp.conf

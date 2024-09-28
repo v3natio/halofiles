@@ -2,6 +2,9 @@
 
 .config/mpv/watch_later/
 
+.config/transmission-daemon/*
+!.config/transmission-daemon/settings.json
+
 .config/zsh/.zcompdump
 .config/zsh/plugins/
 
