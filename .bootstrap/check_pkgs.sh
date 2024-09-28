@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CSV_FILE="/home/hooregi/halofiles/.bootstrap/pkgs.csv"
+CSV_FILE="/home/$USER/halofiles/.bootstrap/pkgs.csv"
 CSV_PACKAGES=$(tail -n +2 "$CSV_FILE" | cut -d, -f2)
 INSTALLED_PACKAGES=$(pacman -Qe | awk '{print $1}')
 

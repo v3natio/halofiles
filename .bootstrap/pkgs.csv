@@ -14,11 +14,11 @@ A,ca-certificates-fnmt,Provides certificates for Spanish gov websites
 A,dataspell,JetBrains Python IDE for data scientists
 A,dataspell-jre,JetBrains Runtime for DataSpell
 A,devour,Provides swallowing feature for the terminal emulator
-G,https://github.com/hooregi/dmenu.git,Acts as the application selector
+G,https://github.com/v3natio/dmenu.git,Acts as the application selector
 ,dosfstools,Provides utilities for DOS filesystem
 ,dunst,Provides customizable daemons for notifications
-G,https://github.com/hooregi/dwm.git,Acts as the window manager
-G,https://github.com/hooregi/dwmblocks.git,Acts as the status bar
+G,https://github.com/v3natio/dwm.git,Acts as the window manager
+G,https://github.com/v3natio/dwmblocks.git,Acts as the status bar
 ,exfat-utils,Provides utilities for exFAT filesystem
 ,fzf,Acts as fuzzy finder
 ,gimp,Open-source image editor
@@ -65,9 +65,9 @@ A,pfetch,Displays system information
 ,reflector,Retrieves and filters latest pacman mirrors
 ,ripgrep,Finds text quickly
 A,sct,Sets color temperatures
-G,https://github.com/hooregi/slock.git,Acts as the lockscreen
+G,https://github.com/v3natio/slock.git,Acts as the lockscreen
 ,solaar,Manages Logitech devices
-G,https://github.com/hooregi/st.git,Acts as the terminal emulator
+G,https://github.com/v3natio/st.git,Acts as the terminal emulator
 ,stow,Manages software installs in same tree
 A,task-spooler,Queues up tasks from shell
 ,tesseract-data-eng,OCR data for English language

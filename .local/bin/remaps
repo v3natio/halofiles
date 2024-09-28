@@ -2,9 +2,6 @@
 
 # script that swaps CapsLock for CTRL
 
-export XAUTHORITY="/run/user/1000/Xauthority"
-export DISPLAY=:0.0
-
 # decreases key repeat delay to 300ms, and increases rate to 50ps
 xset r rate 300 50
 # map CapsLock to CTRL

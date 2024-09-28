@@ -4,7 +4,7 @@ Wants=notify-battery.timer
 
 [Service]
 Type=oneshot
-ExecStart=/home/hooregi/.local/bin/rebats
+ExecStart=%h/.local/bin/rebats
 
 [Install]
 WantedBy=graphical.target

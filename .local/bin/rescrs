@@ -2,8 +2,6 @@
 
 # script that manages screens depending on whether the HDMI is plugged in or not
 
-export XAUTHORITY="/run/user/1000/Xauthority"
-export DISPLAY=:0.0
 intern="eDP"
 extern="HDMI-A-0"
 intern_audio="alsa_output.pci-0000_04_00.6.analog-stereo"
@@ -18,8 +16,8 @@ function connect() {
   if ! is_bluetooth_audio; then
     pactl set-default-sink "$extern_audio"
   fi
-  setbg
-  remaps
+  $HOME/.local/bin/setbg
+  $HOME/.local/bin/remaps
 }
 
 function disconnect() {
@@ -27,8 +25,8 @@ function disconnect() {
   if ! is_bluetooth_audio; then
     pactl set-default-sink "$intern_audio"
   fi
-  setbg
-  remaps
+  $HOME/.local/bin/setbg
+  $HOME/.local/bin/remaps
 }
 
 if [ "$(cat /sys/class/drm/card1-HDMI-A-1/status)" == "connected" ]; then

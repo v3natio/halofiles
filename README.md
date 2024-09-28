@@ -6,9 +6,8 @@
 
 - Settings for:
 
-  - lf (file manager)
+  - yazi (file manager)
   - mpv (video player)
-  - ncspot (music player)
   - nvim (text editor)
   - zsh (shell)
   - other stuff like newsboat, nsxiv, etc.
@@ -25,7 +24,7 @@ You will need GNU `stow`.
 Clone into your `$HOME` directory.
 
 ```bash
-git clone https://github.com/hooregi/halofiles.git
+git clone https://github.com/v3natio/halofiles.git
 ```
 
 Run `stow` to symlink everything, or just select whatever you need.
@@ -37,7 +36,3 @@ stow . # everything (.stow-ignore is in place to prevent pulling the LICENSE, RE
 ```bash
 stow .config/zsh # just the zsh config
 ```
-
-## Credit
-
-Some of the scripts are from Luke Smith's [dotfiles](https://github.com/LukeSmithxyz/voidrice). Likewise, the `zsh-functions` come from Chris Chiarulli's [dotfiles](https://github.com/ChristianChiarulli/Machfiles).

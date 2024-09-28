@@ -3,4 +3,4 @@ Description=Watchdog service for display events
 
 [Service]
 Type=oneshot
-ExecStart=/home/hooregi/.local/bin/rescrs
+ExecStart=%h/.local/bin/rescrs

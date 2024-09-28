@@ -12,7 +12,7 @@ notify_low() {
 }
 
 notify_full() {
-  if [ "${POW}" -gt 80 ]; then
+  if [ "${POW}" -gt 75 ]; then
     notify-send -u critical -a Battery "󰂄 Charged - ${POW}%"
   fi
 }
