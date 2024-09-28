@@ -21,7 +21,7 @@ set recolor-lightcolor "#282828"
 #set recolor-keephue "true"
 
 # general
-set sandbox none
+set database sqlite
 set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
@@ -39,5 +39,5 @@ map g goto top
 unmap f
 map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
-unmap <space>
+unmap <Space>
 map <Space> toggle_index

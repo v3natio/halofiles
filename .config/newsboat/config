@@ -1,6 +1,8 @@
 auto-reload yes
 cleanup-on-quit yes
-notify-program notify-send
+#notify-program notify-send
+notify-program "refeds"
+notify-format "New articles: %d\nTotal unread: %n article(s), %f feed(s)"
 reload-time 60
 reload-threads 12
 datetime-format "%Y %b %d"

@@ -3,25 +3,25 @@
   width = 300
   height = 400
   offset = 0x19
-	padding = 2
-	horizontal_padding = 2
+  padding = 2
+  horizontal_padding = 2
   markup = full
   format = "%a\n%s\n%b"
-  font = FiraCode Nerd Font 11
+  font = JetBrainsMono Nerd Font 11
   alignment = left
-	line_height = 4
-	separator_height = 1
+  line_height = 4
+  separator_height = 1
   separator_color = frame
   frame_color = "#928374"
-	corner_radius = 10
-	icon_position = left
-	max_icon_size = 64
-	icon_path = /usr/share/icons/Gruvbox-Material-Dark/16x16/status/:/usr/share/icons/Gruvbox-Material-Dark/16x16/devices/:/usr/share/icons/Gruvbox-Material-Dark/16x16/apps/
+  corner_radius = 10
+  icon_position = left
+  max_icon_size = 64
+  icon_path = /usr/share/icons/Gruvbox-Material-Dark/16x16/status/:/usr/share/icons/Gruvbox-Material-Dark/16x16/devices/:/usr/share/icons/Gruvbox-Material-Dark/16x16/apps/
   icon_theme = "Gruvbox-Material-Dark"
   idle_threshold = 120
-	history_length = 20
+  history_length = 20
   show_age_threshold = 60
-	browser = $BROWSER --new-tab
+  browser = $BROWSER --new-tab
   mouse_left_click = do_action
   mouse_middle_click = close_all
   mouse_right_click = close_current
@@ -39,22 +39,23 @@
 [urgency_critical]
   background = "#32302f"
   foreground = "#ebdbb2"
-  frame_color = "#fb4934"
+  frame_color = "#d65d0e"
+  timeout = 10
+
+[Newsboat]
+  appname = *newsboat*
+  format = "<b><span foreground='#689d6a'></span> Newsboat</b>\n%s\n%b"
+  frame_color="#689d6a"
   timeout = 5
 
-[Brave]
-  appname = Brave
-  format = "<b><span foreground='#fe8019'>󰊯</span> Brave</b>\n%s\n%b"
-  frame_color="#fe8019"
-  timeout = 240
-
-[Discord]
-  appname = Discord
-  format = "<b><span foreground='#d3869b'>󰙯</span> Discord</b>\n%s\n%b"
-  frame_color="#d3869b"
+[NordVPN]
+  appname = "*NordVPN*"
+  format = "<b><span foreground='#458588'></span> NordVPN</b>\n%s\n%b"
+  frame_color="#458588"
+  timeout = 5
 
 [Spotify]
   appname = *ncspot*
-  format = "<b><span foreground='#b8bb26'>󰓇</span> Now Playing:</b>\n%s\n%b"
+  format = "<b><span foreground='#b8bb26'></span> Spotify</b>\n%s\n%b"
   frame_color="#b8bb26"
-  timeout = 10
+  timeout = 5

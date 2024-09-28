@@ -5,41 +5,43 @@
 " "
 
 # News
-https://www.prensa.com/arcio/rss/category/economia/? "news" "~LP | Panama (News)"
-https://rss-bridge.org/bridge01/?action=display&bridge=EconomistWorldInBriefBridge&limit=100&format=Atom "news" "~TE | Daily Brief (News)"
-https://www.ft.com/financial-markets-regulation?format=rss "news" "~FT | Financial Markets Regulation (News)"
+https://elcapitalfinanciero.com/category/economia/feed/ "news" "~CF | Panama (News)"
+#https://rss-bridge.org/bridge01/?action=display&bridge=EconomistWorldInBriefBridge&limit=100&format=Atom "news" "~TE | Daily Brief (News)"
+https://www.ft.com/unhedged?format=rss "news" "~FT | Unhedged (News)"
 https://www.ft.com/ft-trading-room/high-frequency-trading?format=rss "news" "~FT | High-Frequency Trading (News)"
 " "
 https://archlinux.org/feeds/news/ "news" "~Arch Linux (News)"
 https://suckless.org/atom.xml "news" "~Suckless Tools (News)"
 https://github.com/LukeSmithxyz/voidrice/commits/master.atom "news" "~Luke Smith's dotfiles (Git)"
-https://github.com/iurimateus/luasnip-latex-snippets.nvim/commits/main.atom "news" "~Luasnip Latex Snippets (Git)"
 " "
 
 # Lifestyle
 https://www.youtube.com/feeds/videos.xml?channel_id=UCifHRKwB20dm4dJgxMC48dw "entertainment" "lifestyle" "youtube" "~AshJer (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCkcnYVAVZQOB-nXHechtXDg "entertainment" "lifestyle" "youtube" "~Benjamin (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "entertainment" "lifestyle" "youtube" "~Daily Dose of Internet (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCmBXw_RVt1cDz9VeRqU6IKA "entertainment" "lifestyle" "youtube" "~SirClaz (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqM1Yw5XfJ5rVwCntLy0KxA "entertainment" "lifestyle" "youtube" "~Low Budget Stories (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCoSwRgn1R8fPBNI-c4yjWUw "entertainment" "lifestyle" "youtube" "~Suits (Youtube)"
 
 # Motorsport
-https://www.youtube.com/feeds/videos.xml?channel_id=UCB_qr75-ydFVKSF9Dmo6izg "entertainment" "motorsport" "youtube" "~F1 (Youtube)"
+filter:~/.config/newsboat/scripts/nbytf:https://www.youtube.com/feeds/videos.xml?channel_id=UCB_qr75-ydFVKSF9Dmo6izg "entertainment" "motorsport" "youtube" "~F1 (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCh3tzzP6n5b1EWcMUpiEhXg "entertainment" "motorsport" "youtube" "~F1 Engineering (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCQ97Xu0vHj6dYFcEw4hdDow "entertainment" "motorsport" "youtube" "~F1 Word (Youtube)"
 https://createfeed.fivefilters.org/extract.php?url=https%3A%2F%2Fwww.motorsport.com%2Finfo%2Fabout-us%2Fgiorgio_piola%2F3939%2F&feed_title=Giorgio+Piola+%28Blog%29&max=10&order=document&guid=0&url_contains%5B0%5D=%2Ff1%2Fnews%2F&strip_if_text%5B0%5D=News "entertainment" "motorsport" "blog" "~Giorgio Piola (Blog)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCZqNme_MY-jl_1ziSr2VMjA "entertainment" "motorsport" "youtube" "~Kym Illman (Youtube)"
+https://createfeed.fivefilters.org/extract.php?url=https%3A%2F%2Fwww.motorsport.com%2Finfo%2Fabout-us%2Fmatt_somerfield%2F4511%2F&feed_title=Matt+Somerfield+%28Blog%29&max=10&order=document&guid=0&url_contains%5B0%5D=%2Ff1%2Fnews%2F&strip_if_text%5B0%5D=News&strip=&keep_qs_params= "entertainment" "motorsport" "blog" "~Matt Somerfield (Blog)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCPwy2q7BNjdLYu1kM_OEJVw "entertainment" "motorsport" "youtube" "~Peter Windsor (Youtube)"
-
-# Tech
-https://www.youtube.com/feeds/videos.xml?channel_id=UCngn7SVujlvskHRvRKc1cTw "education" "tech" "youtube" "~Bugswriter (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC6biysICWOJ-C3P4Tyeggzg "education" "tech" "youtube" "~Low Level Learning (Youtube)"
-https://www.paritybit.ca/feed.xml "education" "tech" "blog" "~Jake Bauer (Blog)"
 " "
 
+# Coding
+#https://www.defconq.tech/blog/rss.xml "education" "coding" "blog" "~Alex Unterr (Blog)"
+https://codekabinett.com/rss.php?Lang=2 "education" "coding" "blog" "~Codekabinett (Blog)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCLsnK4MPVaqiVx3DSEqbb1A "education" "coding" "youtube" "~Excel Macro Mastery (Youtube)"
+https://www.paritybit.ca/feed.xml "education" "coding" "blog" "~Jake Bauer (Blog)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC6biysICWOJ-C3P4Tyeggzg "education" "coding" "youtube" "~Low Level Learning (Youtube)"
+https://trstringer.com/feed.xml "education" "coding" "blog" "~Thomas Stringer (Blog)"
+
 # Finance
+https://www.youtube.com/feeds/videos.xml?channel_id=UCkcnYVAVZQOB-nXHechtXDg "education" "finance" "youtube" "~Benjamin (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-hKNOj4P-Y8hR9QEHpZPig "education" "finance" "youtube" "~Bridgewater (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC0oNWf8yB_p1xl3J2tj75ww "education" "finance" "youtube" "~Peak Frameworks (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCGBoWe1mzCvbbqDNncmxm8A "education" "finance" "youtube" "~FINAiUS (Youtube)"
+
 
 # History
 https://www.youtube.com/feeds/videos.xml?channel_id=UCv_vLHiWVBh_FR9vbeuiY-A "education" "history" "youtube" "~Historia Civilis (Youtube)"
@@ -47,18 +49,16 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCNIuvl7V8zACPpTmmNIqP2A "ed
 
 # Mathematics
 https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw "education" "math" "youtube" "~3B1B (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCWNx17Jt6eW4N4ayAEiXdEA "education" "math" "youtube" "~Quantpie (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCrlZs71h3mTR45FgQNINfrg "education" "math" "youtube" "~Mathemaniac (Youtube)"
 
 # Miscellaneous
 https://www.youtube.com/feeds/videos.xml?channel_id=UCvmNY5Mce0mNCIEHVZb8Xow "education" "miscellaneous" "youtube" "~Attar (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCGBoWe1mzCvbbqDNncmxm8A "education" "miscellaneous" "youtube" "~FINAiUS (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCRcgy6GzDeccI7dkbbBna3Q "education" "miscellaneous" "youtube" "~LEMMiNO (Youtube)"
 
 # Quantitative Finance
 https://www.youtube.com/feeds/videos.xml?channel_id=UCgUxdfi_5-m67UDbrgcAFBg "education" "quant" "youtube" "~Coding Jesus (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCLHvJ1KNGE1s-A3ODiSgplw "education" "quant" "youtube" "~Dimitri Bianco (Youtube)"
+filter:~/.config/newsboat/scripts/nbytf:https://www.youtube.com/feeds/videos.xml?channel_id=UCLHvJ1KNGE1s-A3ODiSgplw "education" "quant" "youtube" "~Dimitri Bianco (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC8hI87gt0dmTAIEupEcsckA "education" "quant" "youtube" "~Hudson & Thames (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UClT4BTqePQDxFHsnrSWQ8Wg "education" "quant" "youtube" "~QuantPy (Youtube)"
 https://oneraynyday.github.io/atom.xml "education" "quant" "blog" "~Ray Zhang (Blog)"
 https://reasonabledeviations.com/atom.xml "education" "quant" "blog" "~Robert Martin (Blog)"
 
