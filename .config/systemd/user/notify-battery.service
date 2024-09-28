@@ -1,0 +1,10 @@
+[Unit]
+Description=Notification service for battery events
+Wants=notify-battery.timer
+
+[Service]
+Type=oneshot
+ExecStart=/home/hooregi/.local/bin/rebats
+
+[Install]
+WantedBy=graphical.target

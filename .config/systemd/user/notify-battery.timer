@@ -1,0 +1,10 @@
+[Unit]
+Description=Notification timer for battery events
+Requires=notify-battery.service
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=2m
+
+[Install]
+WantedBy=timers.target
