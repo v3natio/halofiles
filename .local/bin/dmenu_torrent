@@ -5,10 +5,10 @@
 toggle_daemon() {
   if pidof transmission-daemon >/dev/null; then
     killall transmission-daemon
-    notify-send "󰱟 Disabled transmission daemon."
+    notify-send -a Torrent "󰱟 Disabled transmission daemon."
   else
     transmission-daemon
-    notify-send "󰱔 Enabled transmission daemon."
+    notify-send -a Torrent "󰱔 Enabled transmission daemon."
   fi
 }
 
@@ -17,16 +17,16 @@ list_torrents() {
 
   for id in $torrent_ids; do
     torrent_info=$(transmission-remote -t "$id" -i)
-    
+
     name=$(echo "$torrent_info" | grep "Name:" | cut -d ':' -f2- | xargs)
     percent_done=$(echo "$torrent_info" | grep "Percent Done:" | awk '{print $3}')
     status=$(echo "$torrent_info" | grep "State:" | cut -d ':' -f2- | xargs)
     download_speed=$(echo "$torrent_info" | grep "Download Speed:" | awk '{print $3 $4}')
     upload_speed=$(echo "$torrent_info" | grep "Upload Speed:" | awk '{print $3 $4}')
-    
+
     download_speed_formatted=$(echo "$download_speed" | sed 's/kB\/s/K/g; s/MB\/s/M/g')
     upload_speed_formatted=$(echo "$upload_speed" | sed 's/kB\/s/K/g; s/MB\/s/M/g')
-    
+
     printf "%3s %-6s %-40s %-20s %s/%s\n" "$id" "$percent_done" "$name" "$status" "$upload_speed_formatted" "$download_speed_formatted"
   done
 }
@@ -35,37 +35,43 @@ torrent_action() {
   id="$1"
   action="$2"
   case "$action" in
-    "Resume")
-      transmission-remote -t "$id" --start ;;
-    "Pause")
-      transmission-remote -t "$id" --stop ;;
-    "Reannounce")
-      transmission-remote -t "$id" --reannounce ;;
-    "Rename")
-      current_path=$(transmission-remote -t "$id" -i | grep "Name:" | cut -d ':' -f2- | xargs)
-      new_name=$(echo | dmenu -p "Enter new name:")
-      transmission-remote -t "$id" --path "$current_path" --rename "$new_name" ;;
-    "Trash")
-      transmission-remote -t "$id" --remove-and-delete ;;
-    *)
-      echo "Invalid action" ;;
+  "Resume")
+    transmission-remote -t "$id" --start
+    ;;
+  "Pause")
+    transmission-remote -t "$id" --stop
+    ;;
+  "Reannounce")
+    transmission-remote -t "$id" --reannounce
+    ;;
+  "Rename")
+    current_path=$(transmission-remote -t "$id" -i | grep "Name:" | cut -d ':' -f2- | xargs)
+    new_name=$(echo | dmenu -p "Enter new name:")
+    transmission-remote -t "$id" --path "$current_path" --rename "$new_name"
+    ;;
+  "Trash")
+    transmission-remote -t "$id" --remove-and-delete
+    ;;
+  *)
+    echo "Invalid action"
+    ;;
   esac
 }
 
 select_torrent() {
   torrents=$(list_torrents)
   selected=$(echo "$torrents" | dmenu -i -l 10 -p "Select torrent:" | awk '{print $1}')
-  
+
   # exit when pressing esc
   [ -z "$selected" ] && return
 
   actions="Resume\nPause\nReannounce\nRename\nTrash"
-  
+
   action=$(echo -e "$actions" | dmenu -i -p "Torrent $selected:")
 
   # exit when pressing esc
   [ -z "$action" ] && return
-  
+
   torrent_action "$selected" "$action"
 }
 
@@ -73,16 +79,19 @@ initial_menu() {
   while true; do
     daemon_status=$(pidof transmission-daemon >/dev/null && echo "Daemon: On" || echo "Daemon: Off")
     manage_torrents="Torrents"
-    
+
     selected_option=$(echo -e "$manage_torrents\n$daemon_status" | dmenu -i -p "Transmission:")
-    
+
     case "$selected_option" in
-      "Daemon: On"|"Daemon: Off")
-        toggle_daemon && sleep 1 ;;
-      "Torrents")
-        select_torrent ;;
-      *)
-        break ;;
+    "Daemon: On" | "Daemon: Off")
+      toggle_daemon && sleep 1
+      ;;
+    "Torrents")
+      select_torrent
+      ;;
+    *)
+      break
+      ;;
     esac
   done
 }

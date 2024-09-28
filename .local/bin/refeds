@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# back-end script to customize notify-send for newsboat
+
+notify-send -a newsboat "$1"

@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# Check if Wi-Fi (wlan0) is present and get its signal strength percentage
+# check if Wi-Fi (wlan0) is present and get its signal strength percentage
 WIFI_SSIG=$(grep wlan0 /proc/net/wireless | awk '{ print int($3 * 100 / 70) }')
 
-# Check if Ethernet (enp4s0f3u1u4) is up and connected
+# check if Ethernet (enp4s0f3u1u4) is up and connected
 ETHERNET_CONNECTED=$(ip link show enp4s0f3u1u4 | grep 'state UP' | wc -l)
 
 if [ "$ETHERNET_CONNECTED" -gt 0 ]; then

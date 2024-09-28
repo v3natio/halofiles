@@ -3,9 +3,11 @@
 # back-end script that outputs a compiled program
 
 basename="${1%.*}"
+textarget="main.tex"
+[ -f "${textarget}" ] || textarget="${basename}"
 
 case "${*}" in
-  *.html|*.[rR]md) setsid -f "$BROWSER" --new-window "$basename".html >/dev/null 2>&1 ;;
-  *.sent) setsid -f sent "$1" >/dev/null 2>&1 ;;
-  *.tex|*.m[dse]|*.mom|*.[0-9]) setsid -f xdg-open "$basename".pdf >/dev/null 2>&1 ;;
+*.html | *.[rR]md) setsid -f "$BROWSER" --new-window "${basename}".html >/dev/null 2>&1 ;;
+*.md) setsid -f xdg-open "${basename}".pdf >/dev/null 2>&1 ;;
+*.tex) setsid -f xdg-open "${textarget%.*}".pdf >/dev/null 2>&1 ;;
 esac

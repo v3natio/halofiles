@@ -1,0 +1,80 @@
+#!/bin/sh
+
+# script to manage Obsidian notes
+
+GREEN="\033[0;32m"
+YELLOW="\033[0;33m"
+RED="\033[0;31m"
+RESET="\033[0m"
+
+VAULT_DIR="$HOME/documents/notes"
+INBOX_DIR="$VAULT_DIR/zt/inbox"
+ZT_DIR="$VAULT_DIR/zt"
+
+create_note() {
+  if [ -z "$1" ]; then
+    echo -e "${RED}Error: A file name must be set.${RESET}"
+    exit 1
+  fi
+
+  formatted_file_name=$(date "+%Y-%m-%d")_$(echo "$1" | tr ' ' '-').md
+  nvim "$INBOX_DIR/$formatted_file_name"
+}
+
+index_notes() {
+  count=1
+  find "$INBOX_DIR" -maxdepth 1 -type f -name "*.md" | while read -r file; do
+    short_file=$(basename "$file")
+    echo -e "${count}. Processing: ${YELLOW}$short_file${RESET}"
+    # extract hub from file
+    hub=$(awk '/hubs:/{getline; print}' "$file" | sed 's/^[[:space:]]*-[[:space:]]*"\[\[\(.*\)\]\]"/\1/')
+    if [ -n "$hub" ]; then
+      echo -e "${GREEN}==>${RESET} Found hub: ${YELLOW}\"$hub\"${RESET}"
+      # find target directory
+      target_dir=$(find "$ZT_DIR" -type d -name "$hub" | head -n 1)
+      if [ -n "$target_dir" ]; then
+        mv "$file" "$target_dir/"
+        echo -e "==> Moved ${YELLOW}$short_file${RESET} to ${YELLOW}.../${target_dir#$HOME/}${RESET}"
+      else
+        echo -e "${RED}==>${RESET} Error: no directory found for ${YELLOW}\"$hub\"${RESET}"
+      fi
+    else
+      echo -e "${RED}==>${RESET} Error: no hub found for ${YELLOW}$short_file${RESET}"
+    fi
+    count=$((count + 1))
+  done
+}
+
+vault() {
+  echo "$VAULT_DIR" || exit
+}
+
+review_notes() {
+  nvim $(ls "$INBOX_DIR"/*.md)
+}
+
+# Parse arguments
+case "$1" in
+--note)
+  shift
+  create_note "$@"
+  ;;
+--vault)
+  vault
+  ;;
+--index)
+  index_notes
+  ;;
+--review)
+  review_notes
+  ;;
+*)
+  echo -e "Usage: vim_obsidian <options> [args]"
+  echo -e "Options:"
+  echo -e "  --note <filename>    Create new note"
+  echo -e "  --vault              Go to vault directory"
+  echo -e "  --index              Index orphan notes"
+  echo -e "  --review             Open orphan notes"
+  exit 1
+  ;;
+esac

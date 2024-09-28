@@ -2,13 +2,17 @@
 
 # script that swaps CapsLock for CTRL
 
-# Decreases key repeat delay to 300ms, and increases rate to 50ps
+export XAUTHORITY="/run/user/1000/Xauthority"
+export DISPLAY=:0.0
+
+# decreases key repeat delay to 300ms, and increases rate to 50ps
 xset r rate 300 50
-# Map CapsLock to CTRL
+# map CapsLock to CTRL
 setxkbmap -option ctrl:swapcaps
-# When caps lock is pressed only once, treat it as escape
-killall xcape 2>/dev/null ; xcape -e "Control_L=Escape"
-# Turn off caps lock if on since there is no longer a key for it
-if xset q | grep "Caps Lock:   on" > /dev/null; then
+# treat CapsLock as ESC when quickly pressed
+killall xcape 2>/dev/null
+xcape -e "Control_L=Escape"
+# toggle CapsLock off since there is no longer a key for it
+if xset -q | grep -q "Caps Lock:\s*on" >/dev/null; then
   xset -led named "Caps Lock"
 fi

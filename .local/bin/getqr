@@ -1,5 +1,10 @@
 #!/bin/sh
 
-# script that generates a QR code from the clipboard
+# script that generates a QR code from the clipboard and sends a notification
 
-xclip -selection clipboard -o | qrencode -o - | display
+QR_IMAGE="/tmp/qrcode.png"
+
+xclip -selection clipboard -o | qrencode -o "$QR_IMAGE"
+notify-send -a "QR" -t 0 -i "$QR_IMAGE" "Clipboard contents piped to the QR code."
+sleep 1
+rm -f "$QR_IMAGE"

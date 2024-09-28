@@ -1,0 +1,88 @@
+#!/bin/sh
+
+# back-end script to open files depending on their mimetype
+
+# arg to open in a new window
+detatch=0
+[ "$1" = "detatch" ] && detatch=1 && shift 1
+# arg must be a file
+[ ! -f "$1" ] && echo "Not a file: '$1'" && exit 1
+
+function launch_gui() {
+  if [ "$detatch" -eq 0 ]; then
+    precmd="devour"
+  else
+    precmd="setsid -f"
+  fi
+  $precmd "$@" >/dev/null 2>&1
+}
+
+function launch_term() {
+  if [ "$detatch" -eq 1 ]; then
+    setsid -f "$TERMINAL" -e "$SHELL" -c "$(printf '%q ' "$@"); exec $SHELL" >/dev/null 2>&1
+  else
+    clear
+    "$@"
+  fi
+}
+
+function launch_images() {
+  program=$1
+  file=$2
+  dir=$(dirname "$file")
+  selected_file=$(basename "$file")
+  # collect image files and alpha sort them
+  sorted_images=($(find "$dir" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.webp" -o -iname "*.bmp" -o -iname "*.tiff" -o -iname "*.tif" -o -iname "*.raw" -o -iname "*.ico" -o -iname "*.exif" -o -iname "*.heic" -o -iname "*.heif" -o -iname "*.gif" -o -iname "*.avif" -o -iname "*.jxl" \) | sort -fV))
+  # index of selected image
+  for i in "${!sorted_images[@]}"; do
+    if [ "${sorted_images[i]}" = "$dir/$selected_file" ]; then
+      launch_gui "$program" -aon "$((i + 1))" "${sorted_images[@]}"
+      break
+    fi
+  done
+}
+
+case $(file --mime-type "$1" -bL) in
+  application/x-shellscript|\
+  application/toml|\
+  application/yaml|\
+  application/javascript|\
+  application/json|\
+  application/x-subrip|\
+  text/*)
+    launch_term nvim "$1"
+  ;;
+  image/x-xcf)
+    launch_gui gimp "$1"
+  ;;
+  image/svg+xml)
+    launch_gui inkscape "$1"
+  ;;
+  image/*)
+    launch_images nsxiv "$1"
+  ;;
+  video/x-ms-asf|\
+  video/*)
+    launch_gui mpv -quiet "$1"
+  ;;
+  application/epub*|\
+  application/pdf|\
+  application/postscript|\
+  application/vnd.djvu|\
+  image/vnd.djvu)
+    launch_gui zathura "$1"
+  ;;
+  audio/*)
+    launch_term mpv --audio-display=no "$1"
+  ;;
+  application/msword|\
+  *officedocument*|\
+  *opendocument*)
+    launch_gui libreoffice "$1"
+  ;;
+  *)
+    launch_term nvim "$1"
+  ;;
+esac
+
+exit 0

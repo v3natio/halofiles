@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# back-end script that notifies the user when the battery is low, or fully charged
+
+STATUS=$(cat /sys/class/power_supply/BAT0/status)
+POW=$(cat /sys/class/power_supply/BAT0/capacity)
+
+notify_low() {
+  if [ "${POW}" -lt 15 ]; then
+    notify-send -u critical -a Battery "󱉞 Low - ${POW}% remaining!"
+  fi
+}
+
+notify_full() {
+  if [ "${POW}" -gt 80 ]; then
+    notify-send -u critical -a Battery "󰂄 Charged - ${POW}%"
+  fi
+}
+
+if [ "${STATUS}" = "Discharging" ]; then
+  notify_low
+else
+  notify_full
+fi

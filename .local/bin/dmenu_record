@@ -2,148 +2,142 @@
 
 # script that generates a front-end for ffmpeg recordings
 
-updateicon() { \
-  echo "$1" > /tmp/recordingicon
+updateicon() {
+  echo "$1" >/tmp/recordingicon
   pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
-  }
+}
 
 killrecording() {
   recpid="$(cat /tmp/recordingpid)"
-  # kill with SIGTERM, allowing finishing touches.
   kill -15 "$recpid"
   rm -f /tmp/recordingpid
   updateicon ""
   pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
-  # even after SIGTERM, ffmpeg may still run, so SIGKILL it.
   sleep 3
   kill -9 "$recpid"
   exit
-  }
+}
 
-screengrab() { \
+select_display() {
+  displays=$(xrandr --query | grep " connected" | cut -d" " -f1)
+  display_count=$(echo "$displays" | wc -l)
+  # if there's more than one screen, ask which to record
+  if [ "$display_count" -eq 1 ]; then
+    selected=$displays
+  else
+    selected=$(echo "$displays" | dmenu -i -p "Select display to record:")
+    # exit if no screen was selected
+    if [ -z "$selected" ]; then
+      exit 1
+    fi
+  fi
+
+  info=$(xrandr --query | grep "$selected" | grep -oP '\d+x\d+\+\d+\+\d+')
+  resolution=$(echo $info | cut -d'+' -f1)
+  offset=$(echo $info | cut -d'+' -f2,3 | sed 's/+/,/')
+
+  echo "$resolution $offset"
+}
+
+# records screen, and system audio
+screengrab() {
+  if ! read resolution offset < <(select_display); then
+    exit 1
+  fi
   ffmpeg -y \
-  -f x11grab \
-  -framerate 30 \
-  -s "$(xdpyinfo | awk '/dimensions/ {print $2;}')" \
-  -i "$DISPLAY" \
-  -f alsa -i default \
-  -r 30 \
-  -c:v h264 -crf 0 -preset ultrafast -c:a aac \
-  "$HOME/media/videos/recordings/screengrab-$(date '+%y%m%d-%H%M-%S').mp4" &
-  echo $! > /tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
-  }
-
-screencast() { \
-  ffmpeg -y \
-  -f x11grab \
-  -framerate 30 \
-  -s "$(xdpyinfo | awk '/dimensions/ {print $2;}')" \
-  -i "$DISPLAY" \
-  -f pulse -i "alsa_input.pci-0000_00_1b.0.analog-stereo.monitor" \
-  -r 30 \
-  -c:v h264 -crf 0 -preset ultrafast -c:a aac \
-  "$HOME/media/videos/recordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
-  echo $! > /tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
-  }
-
-screenall() { \
-  ffmpeg -y \
-  -f x11grab \
-  -framerate 30 \
-  -s "$(xdpyinfo | awk '/dimensions/ {print $2;}')" \
-  -i "$DISPLAY" \
-  -f alsa -i default \
-  -f pulse -i "alsa_input.pci-0000_00_1b.0.analog-stereo.monitor" \
-  -filter_complex amerge -ac 2 \
-  -r 30 \
-  -c:v h264 -crf 0 -preset ultrafast -c:a aac \
-  "$HOME/media/videos/recordings/screenall-$(date '+%y%m%d-%H%M-%S').mp4" &
-  echo $! > /tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
-  }
-
-video() { ffmpeg \
-  -f x11grab \
-  -s "$(xdpyinfo | awk '/dimensions/ {print $2;}')" \
-  -i "$DISPLAY" \
-  -c:v libx264 -qp 0 -r 30 \
-  "$HOME/media/videos/recordings/video-$(date '+%y%m%d-%H%M-%S').mkv" &
-  echo $! > /tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
-  }
-
-webcamhidef() { ffmpeg \
-  -f v4l2 \
-  -i /dev/video0 \
-  -video_size 1920x1080 \
-  "$HOME/media/videos/recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
-  echo $! > /tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
-  }
-
-webcam() { ffmpeg \
-  -f v4l2 \
-  -i /dev/video0 \
-  -video_size 640x480 \
-  "$HOME/media/videos/recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
-  echo $! > /tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
-  }
-
-audio() { \
-  ffmpeg \
-  -f alsa -i default \
-  -c:a flac \
-  "$HOME/media/videos/recordings/audio-$(date '+%y%m%d-%H%M-%S').flac" &
-  echo $! > /tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
-  }
-
-askrecording() { \
-  choice=$(printf "screengrab\\nscreencast\\nscreenall\\nvideo\\nvideo selected\\naudio\\nwebcam\\nwebcam (hi-def)" | dmenu -p "Select recording style:")
-  case "$choice" in
-    screengrab) screengrab;;
-    screencast) screencast;;
-    screenall) screenall;;
-    audio) audio;;
-    video) video;;
-    *selected) videoselected;;
-		webcam) webcam;;
-    "webcam (HD)") webcamhidef;;
-  esac
-  }
-
-asktoend() { \
-  response=$(printf "No\\nYes" | dmenu -p "Recording still active. End recording?") &&
-  [ "$response" = "Yes" ] &&  killrecording
-  }
-
-videoselected()
-{
-  slop -f "%x %y %w %h" > /tmp/slop
-  read -r X Y W H < /tmp/slop
-  rm /tmp/slop
-  
-  ffmpeg \
-  -f x11grab \
-  -framerate 60 \
-  -video_size "$W"x"$H" \
-  -i :0.0+"$X,$Y" \
-  -c:v libx264 -qp 0 -r 30 \
-  "$HOME/media/videos/recordings/box-$(date '+%y%m%d-%H%M-%S').mkv" &
-  echo $! > /tmp/recordingpid
+    -f x11grab \
+    -framerate 30 \
+    -video_size "$resolution" \
+    -i "$DISPLAY+$offset" \
+    -f pulse -i default \
+    -vaapi_device /dev/dri/renderD128 \
+    -vf 'format=nv12,hwupload' \
+    -c:v h264_vaapi -qp 23 \
+    -c:a aac \
+    "$HOME/media/videos/recordings/screengrab-$(date '+%y%m%d-%H%M-%S').mp4" &
+  echo $! >/tmp/recordingpid
   updateicon "[ 󰻂 REC ]"
 }
 
+# records a selected area
+windowgrab() {
+  eval $(slop -f "X=%x Y=%y W=%w H=%h")
+  ffmpeg \
+    -f x11grab \
+    -framerate 30 \
+    -video_size "${W}x${H}" \
+    -i :0.0+"$X,$Y" \
+    -vaapi_device /dev/dri/renderD128 \
+    -vf 'format=nv12,hwupload' \
+    -c:v h264_vaapi -qp 23 -r 30 \
+    "$HOME/media/videos/recordings/windowgrab-$(date '+%y%m%d-%H%M-%S').mkv" &
+  echo $! >/tmp/recordingpid
+  updateicon "[ 󰻂 REC ]"
+}
+
+# records screen, and microphone
+screencast() {
+  if ! read resolution offset < <(select_display); then
+    exit 1
+  fi
+  ffmpeg -y \
+    -f x11grab \
+    -framerate 30 \
+    -video_size "$resolution" \
+    -i "$DISPLAY+$offset" \
+    -f pulse -i "alsa_input.pci-0000_00_1b.0.analog-stereo.monitor" \
+    -vaapi_device /dev/dri/renderD128 \
+    -vf 'format=nv12,hwupload' \
+    -c:v h264_vaapi -qp 23 \
+    -c:a aac \
+    "$HOME/media/videos/recordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
+  echo $! >/tmp/recordingpid
+  updateicon "[ 󰻂 REC ]"
+}
+
+# records audio
+audio() {
+  ffmpeg \
+    -f alsa -i default \
+    -c:a flac \
+    "$HOME/media/videos/recordings/audio-$(date '+%y%m%d-%H%M-%S').flac" &
+  echo $! >/tmp/recordingpid
+  updateicon "[ 󰻂 REC ]"
+}
+
+# records webcam
+webcam() {
+  ffmpeg \
+    -f v4l2 \
+    -i /dev/video0 \
+    -video_size 1920x1080 \
+    "$HOME/media/videos/recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
+  echo $! >/tmp/recordingpid
+  updateicon "[ 󰻂 REC ]"
+}
+
+askrecording() {
+  choice=$(printf "screengrab\nwindowgrab\nscreencast\naudio\nwebcam" | dmenu -i -p "Select recording style:")
+  case "$choice" in
+  "screengrab") screengrab ;;
+  "windowgrab") windowgrab ;;
+  "screencast") screencast ;;
+  "audio") audio ;;
+  "webcam") webcam ;;
+  esac
+}
+
+asktoend() {
+  response=$(printf "No\\nYes" | dmenu -p "Recording still active. End recording?") &&
+    [ "$response" = "Yes" ] && killrecording
+}
+
 case "$1" in
-  screengrab) screengrab;;
-  screencast) screencast;;
-  screenall) screenall;;
-  audio) audio;;
-  video) video;;
-  *selected) videoselected;;
-  kill) killrecording;;
-  *) ([ -f /tmp/recordingpid ] && asktoend && exit) || askrecording;;
+screengrab) screengrab ;;
+windowgrab) windowgrab ;;
+screencast) screencast ;;
+audio) audio ;;
+webcam) webcam ;;
+kill) killrecording ;;
+*) ([ -f /tmp/recordingpid ] && asktoend && exit) || askrecording ;;
 esac

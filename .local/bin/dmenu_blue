@@ -2,271 +2,107 @@
 
 # script that generates a front-end for bluetoothctl
 
-# Constants
+# constants
 divider="      "
 
-# Checks if bluetooth controller is powered on
-power_on() {
-  if bluetoothctl show | grep -F -q "Powered: yes"; then
-    return 0
-  else
-    return 1
-  fi
+# check if the bluetooth controller is powered on
+bluetooth_status() {
+  bluetoothctl show | grep -F -q "$1: yes"
 }
 
-# Toggles power state
+# toggle power state
 toggle_power() {
-  if power_on; then
+  if bluetooth_status "Powered"; then
     bluetoothctl power off
-    show_menu
   else
     if rfkill list bluetooth | grep -F -q 'blocked: yes'; then
-      rfkill unblock bluetooth && sleep 3
+      rfkill unblock bluetooth 2>/dev/null && sleep 3
     fi
     bluetoothctl power on
-    show_menu
   fi
+  show_menu
 }
 
-# Checks if controller is scanning for new devices
-scan_on() {
-  if bluetoothctl show | grep -F -q "Discovering: yes"; then
-    echo "Scan: on"
-    return 0
+# fetch device information
+device_info() {
+  bluetoothctl info "$1" | grep -F -q "$2: yes"
+}
+
+# notify user about connection status
+notify_connection() {
+  local device_name="$1"
+  local status="$2"
+  notify-send -a "Bluetooth" "󰂱 $device_name - $status!"
+}
+
+# toggle bluetooth device states
+toggle_device_state() {
+  local mac="$1"
+  local action="$2"
+  local cmd_on="$3"
+  local cmd_off="$4"
+  local device_name="$5"
+
+  if device_info "$mac" "$action"; then
+    bluetoothctl "$cmd_off" "$mac"
+    notify_connection "$device_name" "disconnected"
   else
-    echo "Scan: off"
-    return 1
+    bluetoothctl "$cmd_on" "$mac"
+    notify_connection "$device_name" "connected"
+    exit 1
   fi
+  device_menu "$mac" "$device_name"
 }
 
-# Toggles scanning state
-toggle_scan() {
-  if scan_on; then
-    kill $(pgrep -F -f "bluetoothctl scan on")
-    bluetoothctl scan off
-    show_menu
-  else
-    bluetoothctl scan on &
-    echo "Scanning..."
-    sleep 5
-    show_menu
-  fi
-}
-
-# Checks if controller is able to pair to devices
-pairable_on() {
-  if bluetoothctl show | grep -F -q "Pairable: yes"; then
-    echo "Pairable: on"
-    return 0
-  else
-    echo "Pairable: off"
-    return 1
-  fi
-}
-
-# Toggles pairable state
-toggle_pairable() {
-  if pairable_on; then
-    bluetoothctl pairable off
-    show_menu
-  else
-    bluetoothctl pairable on
-    show_menu
-  fi
-}
-
-# Checks if controller is discoverable by other devices
-discoverable_on() {
-  if bluetoothctl show | grep -F -q "Discoverable: yes"; then
-    echo "Discoverable: on"
-    return 0
-  else
-    echo "Discoverable: off"
-    return 1
-  fi
-}
-
-# Toggles discoverable state
-toggle_discoverable() {
-  if discoverable_on; then
-    bluetoothctl discoverable off
-    show_menu
-  else
-    bluetoothctl discoverable on
-    show_menu
-  fi
-}
-
-# Checks if a device is connected
-device_connected() {
-  device_info=$(bluetoothctl info "$1")
-  if echo "$device_info" | grep -F -q "Connected: yes"; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-# Toggles device connection
-toggle_connection() {
-  if device_connected $1; then
-    bluetoothctl disconnect $1
-    # device_menu "$device"
-  else
-    bluetoothctl connect $1
-    # device_menu "$device"
-  fi
-}
-
-# Checks if a device is paired
-device_paired() {
-  device_info=$(bluetoothctl info "$1")
-  if echo "$device_info" | grep -F -q "Paired: yes"; then
-    echo "Paired: yes"
-    return 0
-  else
-    echo "Paired: no"
-    return 1
-  fi
-}
-
-# Toggles device paired state
-toggle_paired() {
-  if device_paired $1; then
-    bluetoothctl remove $1
-    device_menu "$device"
-  else
-    bluetoothctl pair $1
-    device_menu "$device"
-  fi
-}
-
-# Checks if a device is trusted
-device_trusted() {
-  device_info=$(bluetoothctl info "$1")
-  if echo "$device_info" | grep -F -q "Trusted: yes"; then
-    echo "Trusted: yes"
-    return 0
-  else
-    echo "Trusted: no"
-    return 1
-  fi
-}
-
-# Toggles device connection
-toggle_trust() {
-  if device_trusted $1; then
-    bluetoothctl untrust $1
-    device_menu "$device"
-  else
-    bluetoothctl trust $1
-    device_menu "$device"
-  fi
-}
-
-# A submenu for a specific device that allows connecting, pairing, and trusting
+# submenu for a specific device
 device_menu() {
-  device=$1
+  local mac="$1"
+  local device_name="$2"
 
-  # Get device name and mac address
-  device_name=$(echo $device | cut -d ' ' -f 3-)
-  mac=$(echo $device | cut -d ' ' -f 2)
+  # check device state
+  local connected=$(device_info "$mac" "Connected" && echo "Connected: yes" || echo "Connected: no")
+  local paired=$(device_info "$mac" "Paired" && echo "Paired: yes" || echo "Paired: no")
+  local trusted=$(device_info "$mac" "Trusted" && echo "Trusted: yes" || echo "Trusted: no")
 
-  # Build options
-  if device_connected $mac; then
-    connected="Connected: yes"
-  else
-    connected="Connected: no"
-  fi
-  paired=$(device_paired $mac)
-  trusted=$(device_trusted $mac)
-  options="$connected\n$paired\n$trusted\n$divider\nBack\nExit"
+  # build the options for dmenu
+  local options="$connected\n$paired\n$trusted\n$divider\nBack"
+  local chosen=$(echo -e "$options" | dmenu -p "$device_name")
 
-  # Open dmenu menu, read chosen option
-  chosen="$(echo -e "$options" | run_dmenu "$device_name")"
-
-  # Match chosen option to command
-  case $chosen in
-    "" | $divider)
-      echo "No option chosen."
-      ;;
-    $connected)
-      toggle_connection $mac
-      ;;
-    $paired)
-      toggle_paired $mac
-      ;;
-    $trusted)
-      toggle_trust $mac
-      ;;
-    Back)
-      show_menu
-      ;;
+  case "$chosen" in
+  "" | $divider) ;;
+  "$connected") toggle_device_state "$mac" "Connected" connect disconnect "$device_name" ;;
+  "$paired") toggle_device_state "$mac" "Paired" pair remove "$device_name" ;;
+  "$trusted") toggle_device_state "$mac" "Trusted" trust untrust "$device_name" ;;
+  Back) show_menu ;;
   esac
 }
 
-# Opens a dmenu menu with current bluetooth status and options to connect
+# show the main menu
 show_menu() {
-  # Get menu options
-  if power_on; then
-    power="Power: on"
-    
-    # Human-readable names of devices, one per line
-    # If scan is off, will only list paired devices
-    devices=$(bluetoothctl devices | grep -F Device | cut -d ' ' -f 3-)
-    
-    # Get controller flags
-    scan=$(scan_on)
-    pairable=$(pairable_on)
-    discoverable=$(discoverable_on)
-    
-    # Options passed to dmenu
-    options="$devices\n$divider\n$power\n$scan\n$pairable\n$discoverable\nExit"
+  local power="Power: $(bluetooth_status 'Powered' && echo on || echo off)"
+
+  if bluetooth_status "Powered"; then
+    local devices=$(bluetoothctl devices | grep -F Device | cut -d ' ' -f 3-)
+    local options="$devices\n$divider\n$power"
   else
-    power="Power: off"
-    options="$power\nExit"
+    local options="$power"
   fi
-  
-  # Open dmenu menu, read chosen option
-  chosen="$(echo -e "$options" | run_dmenu "Bluetooth")"
-  
-  # Match chosen option to command
-  case $chosen in
-    "" | $divider)
-      echo "No option chosen."
-      ;;
-    $power)
-      toggle_power
-      ;;
-    $scan)
-      toggle_scan
-      ;;
-    $discoverable)
-      toggle_discoverable
-      ;;
-    $pairable)
-      toggle_pairable
-      ;;
-    *)
-      device=$(bluetoothctl devices | grep -F "$chosen")
-      # Open a submenu if a device is selected
-      if [[ $device ]]; then device_menu "$device"; fi
-      ;;
+
+  local chosen=$(echo -e "$options" | dmenu -p " Bluetooth")
+
+  case "$chosen" in
+  "" | $divider) ;;
+  "$power") toggle_power ;;
+  *)
+    local device=$(bluetoothctl devices | grep -F "$chosen")
+    if [ "$device" ]; then
+      local mac=$(echo "$device" | cut -d ' ' -f 2)
+      local device_name=$(echo "$device" | cut -d ' ' -f 3-)
+      device_menu "$mac" "$device_name"
+    fi
+    ;;
   esac
 }
 
-original_args=("$@")
-
-# dmenu command to pipe into. Extra arguments to dmenu-bluetooth are passed through to dmenu. This allows the user to set fonts, sizes, colours, etc.
-run_dmenu() {
-  dmenu "${original_args[@]}" -p "$1"
-}
-
-case "$1" in
-  --status)
-    print_status
-    ;;
-  *)
-    show_menu
-    ;;
-esac
+# run the script
+show_menu

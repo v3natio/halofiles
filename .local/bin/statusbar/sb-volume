@@ -12,5 +12,5 @@ elif [ "$VOL" -gt "20" ]; then
 elif [ "$VOL" -gt "0" ]; then
 	echo " 󰕿 ${VOL}%"
 else
-    echo " 󰝟 --%" && exit
+  echo " 󰝟 --%" && exit
 fi
