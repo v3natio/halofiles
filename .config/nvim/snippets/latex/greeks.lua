@@ -9,11 +9,8 @@ return {
   s({ trig = ';b', snippetType = 'autosnippet' }, {
     t('\\beta'),
   }),
-  s({ trig = ';g', snippetType = 'autosnippet' }, {
-    t('\\gamma'),
-  }),
-  s({ trig = ';G', snippetType = 'autosnippet' }, {
-    t('\\Gamma'),
+  s({ trig = ';c', snippetType = 'autosnippet' }, {
+    t('\\chi'),
   }),
   s({ trig = ';d', snippetType = 'autosnippet' }, {
     t('\\delta'),
@@ -24,17 +21,26 @@ return {
   s({ trig = ';e', snippetType = 'autosnippet' }, {
     t('\\epsilon'),
   }),
-  s({ trig = ';z', snippetType = 'autosnippet' }, {
-    t('\\zeta'),
+  s({ trig = ';f', snippetType = 'autosnippet' }, {
+    t('\\phi'),
+  }),
+  s({ trig = ';F', snippetType = 'autosnippet' }, {
+    t('\\Phi'),
+  }),
+  s({ trig = ';g', snippetType = 'autosnippet' }, {
+    t('\\gamma'),
+  }),
+  s({ trig = ';G', snippetType = 'autosnippet' }, {
+    t('\\Gamma'),
   }),
   s({ trig = ';h', snippetType = 'autosnippet' }, {
     t('\\eta'),
   }),
-  s({ trig = ';o', snippetType = 'autosnippet' }, {
-    t('\\theta'),
+  s({ trig = ';i', snippetType = 'autosnippet' }, {
+    t('\\pi'),
   }),
-  s({ trig = ';O', snippetType = 'autosnippet' }, {
-    t('\\Theta'),
+  s({ trig = ';I', snippetType = 'autosnippet' }, {
+    t('\\Pi'),
   }),
   s({ trig = ';k', snippetType = 'autosnippet' }, {
     t('\\kappa'),
@@ -51,17 +57,17 @@ return {
   s({ trig = ';n', snippetType = 'autosnippet' }, {
     t('\\nu'),
   }),
-  s({ trig = ';x', snippetType = 'autosnippet' }, {
-    t('\\xi'),
+  s({ trig = ';o', snippetType = 'autosnippet' }, {
+    t('\\theta'),
   }),
-  s({ trig = ';X', snippetType = 'autosnippet' }, {
-    t('\\Xi'),
+  s({ trig = ';O', snippetType = 'autosnippet' }, {
+    t('\\Theta'),
   }),
-  s({ trig = ';i', snippetType = 'autosnippet' }, {
-    t('\\pi'),
+  s({ trig = ';p', snippetType = 'autosnippet' }, {
+    t('\\psi'),
   }),
-  s({ trig = ';I', snippetType = 'autosnippet' }, {
-    t('\\Pi'),
+  s({ trig = ';P', snippetType = 'autosnippet' }, {
+    t('\\Psi'),
   }),
   s({ trig = ';r', snippetType = 'autosnippet' }, {
     t('\\rho'),
@@ -75,25 +81,16 @@ return {
   s({ trig = ';t', snippetType = 'autosnippet' }, {
     t('\\tau'),
   }),
-  s({ trig = ';f', snippetType = 'autosnippet' }, {
-    t('\\phi'),
-  }),
-  s({ trig = ';F', snippetType = 'autosnippet' }, {
-    t('\\Phi'),
-  }),
-  s({ trig = ';c', snippetType = 'autosnippet' }, {
-    t('\\chi'),
-  }),
-  s({ trig = ';p', snippetType = 'autosnippet' }, {
-    t('\\psi'),
-  }),
-  s({ trig = ';P', snippetType = 'autosnippet' }, {
-    t('\\Psi'),
-  }),
   s({ trig = ';w', snippetType = 'autosnippet' }, {
     t('\\omega'),
   }),
   s({ trig = ';W', snippetType = 'autosnippet' }, {
     t('\\Omega'),
+  }),
+  s({ trig = ';x', snippetType = 'autosnippet' }, {
+    t('\\xi'),
+  }),
+  s({ trig = ';X', snippetType = 'autosnippet' }, {
+    t('\\Xi'),
   }),
 }

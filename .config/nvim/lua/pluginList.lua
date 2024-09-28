@@ -11,7 +11,7 @@ return {
   },
   {
     'hrsh7th/nvim-cmp', -- completion engine
-    event = 'InsertEnter',
+    event = { 'InsertEnter' },
     dependencies = {
       {
         'L3MON4D3/LuaSnip', -- snippet engine
@@ -34,31 +34,30 @@ return {
   -- Development
   {
     'skywind3000/asyncrun.vim', -- asyncronous command runner
-    event = { 'BufReadPre', 'BufNewFile' },
+    cmd = 'AsyncRun',
     config = function()
       vim.g.asyncrun_open = 3
       vim.g.asyncrun_rootmarks = { '.svn', '.git', '.root', '_darcs' }
     end,
   },
   {
-    'williamboman/mason.nvim', -- utilities installer
-    lazy = true,
-    dependencies = 'williamboman/mason-lspconfig.nvim', -- LSP setup
-    config = function()
-      require('pluginSets.lspinstall')
-    end,
-  },
-  {
     'neovim/nvim-lspconfig', -- LSP
     event = { 'BufReadPre', 'BufNewFile' },
-    dependencies = 'mason.nvim',
     config = function()
       require('pluginSets.lspconfig')
     end,
+    dependencies = {
+      'williamboman/mason-lspconfig.nvim', -- LSP setup
+      dependencies = {
+        'williamboman/mason.nvim', -- utilities installer
+        config = function()
+          require('pluginSets.lspinstall')
+        end,
+      },
+    },
   },
   {
     'stevearc/conform.nvim', -- formatter setup
-    lazy = true,
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('pluginSets.formatter')
@@ -66,7 +65,6 @@ return {
   },
   {
     'mfussenegger/nvim-lint', -- linter setup
-    lazy = true,
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('pluginSets.linter')
@@ -77,16 +75,6 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       require('pluginSets.gitsigns')
-    end,
-  },
-  {
-    'TimUntersberger/neogit', -- git UI
-    cmd = {
-      'Neogit',
-    },
-    dependencies = 'sindrets/diffview.nvim', -- diff handler
-    config = function()
-      require('pluginSets.others').neogit()
     end,
   },
   {
@@ -101,8 +89,8 @@ return {
     branch = '0.1.x',
     cmd = 'Telescope',
     dependencies = {
-      { 'nvim-telescope/telescope-fzf-native.nvim' },
-      { 'nvim-lua/plenary.nvim', build = 'make' },
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      { 'nvim-lua/plenary.nvim' },
     },
     config = function()
       require('pluginSets.telescope')
@@ -110,6 +98,15 @@ return {
   },
 
   -- Writting
+  {
+    'epwalsh/obsidian.nvim', -- Obsidian note-taking
+    version = '*',
+    ft = 'markdown',
+    dependencies = 'nvim-lua/plenary.nvim',
+    config = function()
+      require('pluginSets.obsidian')
+    end,
+  },
   {
     'bamonroe/rnoweb-nvim', -- LaTeX symbol folding
     event = 'VeryLazy',
@@ -121,23 +118,21 @@ return {
 
   -- Eye-candy
   {
-    'eddyekofo94/gruvbox-flat.nvim', -- colorscheme
+    'ellisonleao/gruvbox.nvim', -- colorscheme
     priority = 1000,
     config = function()
-      vim.g.gruvbox_transparent = true
-      vim.cmd('colorscheme gruvbox-flat')
+      require('pluginSets.others').gruvbox()
     end,
   },
   {
-    'nvim-lualine/lualine.nvim', -- status bar
+    'nvim-lualine/lualine.nvim', -- statusbar
     config = function()
       require('pluginSets.statusline')
     end,
   },
   {
     'stevearc/dressing.nvim', -- prettier code action menu
-    lazy = true,
-    event = 'InsertEnter',
+    event = 'VeryLazy',
   },
   {
     'lukas-reineke/indent-blankline.nvim', -- indent indicator

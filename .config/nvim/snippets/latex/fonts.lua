@@ -27,15 +27,4 @@ return {
       d(1, get_visual),
     })
   ),
-  -- regular text (in mathmode)
-  s(
-    { trig = '([^%a])tee', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
-    fmta('<>\\text{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      d(1, get_visual),
-    }),
-    { condition = in_mathzone }
-  ),
 }

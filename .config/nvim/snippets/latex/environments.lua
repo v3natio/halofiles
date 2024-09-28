@@ -56,21 +56,6 @@ return {
       i(1),
     })
   ),
-  -- aligned equation
-  s(
-    { trig = 'all', snippetType = 'autosnippet' },
-    fmta(
-      [[
-        \begin{align*}
-          <>
-        \end{align*}
-      ]],
-      {
-        i(1),
-      }
-    ),
-    { condition = line_begin }
-  ),
   -- equation
   s(
     { trig = 'nn', snippetType = 'autosnippet' },
@@ -79,6 +64,21 @@ return {
         \begin{equation*}
           <>
         \end{equation*}
+      ]],
+      {
+        i(1),
+      }
+    ),
+    { condition = line_begin }
+  ),
+  -- aligned equation
+  s(
+    { trig = 'all', snippetType = 'autosnippet' },
+    fmta(
+      [[
+        \begin{align*}
+          <>
+        \end{align*}
       ]],
       {
         i(1),
@@ -135,7 +135,6 @@ return {
     ),
     { condition = line_begin }
   ),
-
   -- definition
   s(
     { trig = 'ndef', snippetType = 'autosnippet' },
@@ -151,7 +150,6 @@ return {
     ),
     { condition = line_begin }
   ),
-
   -- remark
   s(
     { trig = 'nrem', snippetType = 'autosnippet' },
@@ -169,7 +167,7 @@ return {
   ),
   -- figure
   s(
-    { trig = 'img' },
+    { trig = 'fig', snippetType = 'autosnippet' },
     fmta(
       [[
         \begin{figure}[H]

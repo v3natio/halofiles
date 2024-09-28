@@ -4,15 +4,15 @@ if not present then
 end
 
 lint.linters_by_ft = {
-  --lua = { 'luacheck' },
-  python = { 'pylint' },
-  shell = { 'shellcheck' },
+  lua = { 'selene' },
+  python = { 'ruff' },
 }
 
 local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave' }, {
+vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile', 'BufWritePost', 'InsertLeave' }, {
   group = lint_augroup,
   callback = function()
-    lint.try_lint()
+    local client = vim.lsp.get_clients({ bufnr = 0 })[1] or {}
+    lint.try_lint(nil, { cwd = client.root_dir or vim.fn.fnamemodify(vim.fn.finddir('.git', '.;'), ':h') })
   end,
 })

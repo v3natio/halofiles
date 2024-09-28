@@ -11,35 +11,16 @@ telescope.setup({
         ['<C-j>'] = require('telescope.actions').move_selection_next,
       },
     },
-    prompt_prefix = ' λ ',
-    selection_caret = '  ',
-    entry_prefix = '  ',
-    initial_mode = 'insert',
-    selection_strategy = 'reset',
+    prompt_prefix = '  ',
+    layout_strategy = 'vertical',
     sorting_strategy = 'ascending',
-    layout_strategy = 'horizontal',
     layout_config = {
-      horizontal = {
-        prompt_position = 'top',
-        preview_width = 0.55,
-        results_width = 0.8,
-      },
-      width = 0.87,
-      height = 0.80,
-      preview_cutoff = 120,
-    },
-  },
-  extensions = {
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = false,
-      override_file_sorter = true,
+      preview_cutoff = 5,
     },
   },
 })
 
-local extensions = { 'themes', 'terms', 'fzf' }
-
+local extensions = { 'fzf' }
 pcall(function()
   for _, ext in ipairs(extensions) do
     telescope.load_extension(ext)

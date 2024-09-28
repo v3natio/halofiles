@@ -1,0 +1,1 @@
+/home/hooregi/.config/nvim/snippets/latex/greeks.lua

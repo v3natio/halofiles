@@ -11,16 +11,25 @@ local diagnostics = {
   'diagnostics',
   sources = { 'nvim_diagnostic' },
   sections = { 'error', 'warn', 'hint', 'info' },
-  symbols = { error = ' ', warn = ' ', hint = ' ', info = ' ' },
-  colored = false,
+  symbols = { error = ' ', warn = ' ', hint = ' ', info = ' ' },
   update_in_insert = true,
-  always_visible = false,
 }
+
+local function diff_source()
+  local gitsigns = vim.b.gitsigns_status_dict
+  if gitsigns then
+    return {
+      added = gitsigns.added,
+      modified = gitsigns.changed,
+      removed = gitsigns.removed,
+    }
+  end
+end
 
 local diff = {
   'diff',
-  colored = false,
-  symbols = { added = ' ', modified = ' ', removed = ' ' }, -- changes diff symbols
+  source = diff_source,
+  symbols = { added = ' ', modified = ' ', removed = ' ' },
   cond = hide_in_width,
 }
 
@@ -34,39 +43,27 @@ local mode = {
 local filename = {
   'filename',
   symbols = {
-    modified = ' ',
-    readonly = ' ',
-    unnamed = ' ',
+    modified = ' ',
+    readonly = ' ',
+    unnamed = ' ',
   },
 }
 
-local filetype = {
-  'filetype',
-  colored = false,
-  icons_enabled = true,
-  icon = nil,
-}
-
 local branch = {
-  'branch',
-  icons_enabled = true,
-  icon = '',
+  'b:gitsigns_head',
+  icon = '',
 }
 
 lualine.setup({
   options = {
-    icons_enabled = true,
-    theme = 'gruvbox',
     component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
-    disabled_filetypes = { 'dashboard', 'NvimTree', 'Outline' },
-    always_divide_middle = true,
+    section_separators = { left = '', right = '' },
   },
   sections = {
-    lualine_a = { branch, diagnostics },
-    lualine_b = { mode },
+    lualine_a = { mode },
+    lualine_b = { branch, diagnostics },
     lualine_c = { filename },
-    lualine_x = { diff, filetype },
+    lualine_x = { diff },
     lualine_y = {},
     lualine_z = { 'progress' },
   },
@@ -78,6 +75,4 @@ lualine.setup({
     lualine_y = {},
     lualine_z = {},
   },
-  tabline = {},
-  extensions = {},
 })
