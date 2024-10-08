@@ -66,7 +66,7 @@ return {
   ),
   -- superscript
   s(
-    { trig = '([%w%)%]%}])"', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    { trig = "([%w%)%]%}])''", regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>^{<>}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -77,7 +77,7 @@ return {
   ),
   -- subscript
   s(
-    { trig = '([%w%)%]%}]);', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    { trig = '([%w%)%]%}]);;', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('<>_{<>}', {
       f(function(_, snip)
         return snip.captures[1]
@@ -446,6 +446,10 @@ return {
   -- to
   s({ trig = 'to', snippetType = 'autosnippet' }, {
     t('\\to '),
+  }, { condition = in_mathzone }),
+  -- into
+  s({ trig = 'into', snippetType = 'autosnippet' }, {
+    t('\\curvearrowright '),
   }, { condition = in_mathzone }),
   -- dot product
   s({ trig = ',.', snippetType = 'autosnippet' }, {
