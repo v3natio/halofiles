@@ -71,7 +71,7 @@ screens=$(echo "$allposs" | awk '/ connected/ {print $1}')
   {
     onescreen "$screens"
     postrun
-    notify-send -a Display "󰍹 Only one screen detected." "Using it in its optimal settings..."
+    notify-send -a "Display" "󰍹 Only one screen detected." "Using it in its optimal settings..."
     exit
   }
 

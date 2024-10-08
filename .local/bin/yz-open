@@ -42,7 +42,7 @@ function launch_images() {
   done
 }
 
-case $(file --mime-type "$1" -bL) in
+case $(mimetype -b "$(readlink -f $1)") in
   application/x-shellscript|\
   application/toml|\
   application/yaml|\
@@ -61,7 +61,6 @@ case $(file --mime-type "$1" -bL) in
   image/*)
     launch_images nsxiv "$1"
   ;;
-  video/x-ms-asf|\
   video/*)
     launch_gui mpv -quiet "$1"
   ;;

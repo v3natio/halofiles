@@ -20,8 +20,11 @@ py) python "${file}" ;;
 [rR]md) Rscript -e "rmarkdown::render('${file}', quiet=TRUE)" ;;
 rs) cargo build ;;
 tex)
-  textarget="main.tex"
-  [ -f "${textarget}" ] || textarget="${file}"
+  if [ -f "main.tex" ]; then
+    textarget="main.tex"
+  else
+    textarget="${file}"
+  fi
   command="pdflatex -shell-escape"
   ${command} --output-directory="${dir}" "${textarget}" &&
     grep -qi addbibresource "${textarget}" &&

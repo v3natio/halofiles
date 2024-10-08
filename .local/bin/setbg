@@ -6,10 +6,10 @@ bgloc="$HOME/halofiles/.local/share/bg"
 
 trueloc="$(readlink -f "$1")" &&
   case "$(file --mime-type -b "$trueloc")" in
-  image/*) ln -sf "$(readlink -f "$1")" "$bgloc" && notify-send -a Wallpaper -i "$bgloc" "Changing wallpaper..." ;;
-  inode/directory) ln -sf "$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$bgloc" && notify-send -a Wallpaper -i "$bgloc" "Random wallpaper chosen." ;;
+  image/*) ln -sf "$(readlink -f "$1")" "$bgloc" && notify-send -a "Wallpaper" -i "$bgloc" "Changing wallpaper..." ;;
+  inode/directory) ln -sf "$(find "$trueloc" -iregex '.*.\(jpg\|jpeg\|png\|gif\)' -type f | shuf -n 1)" "$bgloc" && notify-send -a "Wallpaper" -i "$bgloc" "Random wallpaper chosen." ;;
   *)
-    notify-send -a Wallpaper "Error, not a valid image."
+    notify-send -a "Wallpaper" "Error, not a valid image."
     exit 1
     ;;
   esac

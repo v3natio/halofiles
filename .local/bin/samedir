@@ -6,12 +6,12 @@ windowPID=$(xprop -id "$(xprop -root | sed -n "/_NET_ACTIVE_WINDOW/ s/^.*# // p"
 PIDlist=$(pstree -lpATna "$windowPID" | sed -En 's/.*,([0-9]+).*/\1/p' | tac)
 for PID in $PIDlist; do
   cmdline=$(ps -o args= -p "$PID")
+  echo "cmdline: $cmdline"
   process_group_leader=$(ps -o comm= -p "$(ps -o pgid= -p "$PID" | tr -d ' ')")
   cwd=$(readlink /proc/"$PID"/cwd)
-  # don't ignore zsh,lf when they show ~ or /
+  # don't ignore zsh,yazi when they show ~ or /
   case "$cmdline" in
-  'lf -server') continue ;;
-  "${SHELL##*/}" | 'lf' | 'lf '*) break ;;
+  "${SHELL##*/}" | 'yazi') break ;;
   esac
   # ignore git as it shows the root of a repo, not the working directory
   [ "$process_group_leader" = 'git' ] || [ ! -d "$cwd" ] && continue

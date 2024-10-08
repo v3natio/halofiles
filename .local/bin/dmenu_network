@@ -4,7 +4,7 @@
 
 # check if iwd service is running
 if [[ "inactive" == $(systemctl is-active iwd.service) ]]; then
-  notify-send -a Network "󰲝 Attempting to start 'iwd'..."
+  notify-send -a "Network" "󰲝 Attempting to start 'iwd'..."
   $(sudo -A systemctl start iwd.service) || exit 1
 fi
 
@@ -28,7 +28,7 @@ else
 fi
 
 if [ -z "$WIFI_DEVICE_LIST" ]; then
-  notify-send -a Network "󰛵 No available WiFi devices. Use 'ip link' to check status."
+  notify-send -a "Network" "󰛵 No available WiFi devices. Use 'ip link' to check status."
   exit 1
 elif echo $WIFI_DEVICE_LIST | grep -q " "; then
   # pipe list of devices to dmenu if there is more than one
@@ -45,10 +45,10 @@ fi
 
 # bring up wifi interface if it is down
 if [[ $WIFI_DEVICE_DOWN ]]; then
-  notify-send -a Network "󰅛 Device $WIFI_DEVICE is down. Attempting to bring it up..."
+  notify-send -a "Network" "󰅛 Device $WIFI_DEVICE is down. Attempting to bring it up..."
   sudo -A ip link set "$WIFI_DEVICE" up &&
-    notify-send -a Network "󰱓 $WIFI_DEVICE is up," ||
-    notify-send -a Network "󰲜 Could not bring $WIFI_DEVICE up."
+    notify-send -a "Network" "󰱓 $WIFI_DEVICE is up," ||
+    notify-send -a "Network" "󰲜 Could not bring $WIFI_DEVICE up."
 fi
 
 # display network options in dmenu
@@ -66,7 +66,7 @@ case "$NETWORK_OPTION" in
   )
 
   if [[ -z $WIFI_NETWORK_LIST ]]; then
-    notify-send -a Network "󰲜 No networks found."
+    notify-send -a "Network" "󰲜 No networks found."
     exit 1
   fi
 
@@ -85,12 +85,12 @@ case "$NETWORK_OPTION" in
 
   WIFI_PASSWORD=$(echo "" | dmenu -P -p "Enter password 󰟵 :")
   iwctl --passphrase="$WIFI_PASSWORD" station "$WIFI_DEVICE" connect "$WIFI_NETWORK" &&
-    notify-send -a Network "󰱓 Connected to $WIFI_NETWORK." ||
-    notify-send -a Network "󰲜 Could not connect to $WIFI_NETWORK."
+    notify-send -a "Network" "󰱓 Connected to $WIFI_NETWORK." ||
+    notify-send -a "Network" "󰲜 Could not connect to $WIFI_NETWORK."
   ;;
 "Disconnect")
   iwctl station "$WIFI_DEVICE" disconnect &&
-    notify-send -a Network "󰲜 Disconnected from $WIFI_NETWORK."
+    notify-send -a "Network" "󰲜 Disconnected from $WIFI_NETWORK."
   ;;
 "Forget")
   WIFI_KNOWN_LIST=$(
@@ -102,7 +102,7 @@ case "$NETWORK_OPTION" in
   )
 
   if [[ -z $WIFI_KNOWN_LIST ]]; then
-    notify-send -a Network "󰛵 No known networks."
+    notify-send -a "Network" "󰛵 No known networks."
     exit 1
   fi
 
@@ -113,12 +113,12 @@ case "$NETWORK_OPTION" in
   fi
 
   iwctl known-networks "$WIFI_NETWORK" forget &&
-    notify-send -a Network "󰍸 Forgot $WIFI_NETWORK."
+    notify-send -a "Network" "󰍸 Forgot $WIFI_NETWORK."
   ;;
 "Reset")
   sudo -A ip link set "$WIFI_DEVICE" down &&
     sudo -A ip link set "$WIFI_DEVICE" up &&
-    notify-send -a Network "󰱓 $WIFI_DEVICE has been reset."
+    notify-send -a "Network" "󰱓 $WIFI_DEVICE has been reset."
   ;;
 *)
   exit 1

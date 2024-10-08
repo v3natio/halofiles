@@ -26,7 +26,6 @@ prepend_previewers = [
   { mime = "video/*", run = "video-ffmpeg" },
   # specific
   { mime = "image/x-xcf", run = "magick" },
-  { mime = "application/x-bittorrent", run = "torrent-preview" },
   { mime = "*opendocument*", run = "office-preview" },
   # archives
   { mime = "application/zip", run = "archive" },
@@ -37,9 +36,4 @@ prepend_previewers = [
   { mime = "application/x-7z-compressed", run = "archive" },
   { mime = "application/x-rar", run = "archive" },
   { mime = "application/xz", run = "archive" },
-]
-
-prepend_preloaders = [
-  { mime = "video/*", run = "video-ffmpeg" },
-  #
 ]

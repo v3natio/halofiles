@@ -8,6 +8,6 @@ prepend_keymap = [
   { on = ["l"], run = ["plugin smart-enter --sync", "escape --visual --select"], desc = "Enter the child directory, or open file." },
   { on = ["L"], run = ["plugin smart-enter --sync --args='detatch'"], desc = "Open in new window." },
   { on = ["="], run = """shell 'printf "Permissions (in mode-bits): "; read ans; chmod $ans "$@"' --block --confirm""", desc = "chmod wrapper." },
-  { on = ["S"], run = """shell $command --block --confirm""", desc = "chmod wrapper." },
+  { on = ["S"], run = """shell 'curl -F "file=@$@" -Fsecret= 0x0.st | qrencode -o "/tmp/qrcode.png" && notify-send -a "Share" -t 0 -i "/tmp/qrcode.png" " File piped to the QR code." && rm -f "/tmp/qrcode.png"' --confirm""", desc = "Share file via QR code." },
   { on = ["Z"], run = "plugin compress", desc = "Archive selected files." },
 ]

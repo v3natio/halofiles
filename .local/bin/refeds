@@ -2,4 +2,4 @@
 
 # back-end script to customize notify-send for newsboat
 
-notify-send -a newsboat "$1"
+notify-send -a "newsboat" "$1"

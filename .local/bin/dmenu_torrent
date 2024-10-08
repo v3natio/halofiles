@@ -5,10 +5,10 @@
 toggle_daemon() {
   if pidof transmission-daemon >/dev/null; then
     killall transmission-daemon
-    notify-send -a Torrent "󰱟 Disabled transmission daemon."
+    notify-send -a "Torrent" "󰱟 Disabled transmission daemon."
   else
     transmission-daemon
-    notify-send -a Torrent "󰱔 Enabled transmission daemon."
+    notify-send -a "Torrent" "󰱔 Enabled transmission daemon."
   fi
 }
 
