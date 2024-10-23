@@ -19,7 +19,12 @@ function launch_gui() {
 
 function launch_term() {
   if [ "$detatch" -eq 1 ]; then
-    setsid -f "$TERMINAL" -e "$SHELL" -c "$(printf '%q ' "$@"); exec $SHELL" >/dev/null 2>&1
+    command_string=""
+    while [ $# -gt 0 ]; do
+      command_string="$command_string \"$1\""
+      shift
+    done
+    setsid -f $TERMINAL -e $SHELL -c "$command_string; exec $SHELL" >/dev/null 2>&1
   else
     clear
     "$@"
