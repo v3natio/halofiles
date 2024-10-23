@@ -247,7 +247,7 @@ return {
   ),
   -- matrix
   s(
-    { trig = '([vp])mt(%d+)x(%d+)', regTrig = true, hidden = true },
+    { trig = '([vp])mt(%d+)x(%d+)', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta(
       [[
         \begin{<>matrix}

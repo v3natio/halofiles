@@ -6,18 +6,17 @@
 
 # News
 https://elcapitalfinanciero.com/category/economia/feed/ "news" "~CF | Panama (News)"
-#https://rss-bridge.org/bridge01/?action=display&bridge=EconomistWorldInBriefBridge&limit=100&format=Atom "news" "~TE | Daily Brief (News)"
 https://www.ft.com/unhedged?format=rss "news" "~FT | Unhedged (News)"
 https://www.ft.com/ft-trading-room/high-frequency-trading?format=rss "news" "~FT | High-Frequency Trading (News)"
 " "
 https://archlinux.org/feeds/news/ "news" "~Arch Linux (News)"
 https://suckless.org/atom.xml "news" "~Suckless Tools (News)"
 https://github.com/LukeSmithxyz/voidrice/commits/master.atom "news" "~Luke Smith's dotfiles (Git)"
+https://github.com/iurimateus/luasnip-latex-snippets.nvim/commits/main.atom "news" "~Math snippets (Git)"
 " "
 
 # Lifestyle
 https://www.youtube.com/feeds/videos.xml?channel_id=UCifHRKwB20dm4dJgxMC48dw "entertainment" "lifestyle" "youtube" "~AshJer (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCmBXw_RVt1cDz9VeRqU6IKA "entertainment" "lifestyle" "youtube" "~SirClaz (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqM1Yw5XfJ5rVwCntLy0KxA "entertainment" "lifestyle" "youtube" "~Low Budget Stories (Youtube)"
 
 # Motorsport
@@ -53,12 +52,12 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCrlZs71h3mTR45FgQNINfrg "ed
 
 # Miscellaneous
 https://www.youtube.com/feeds/videos.xml?channel_id=UCvmNY5Mce0mNCIEHVZb8Xow "education" "miscellaneous" "youtube" "~Attar (Youtube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCbzVRTkX3bzNZuBd9In4XyA "education" "miscellaneous" "youtube" "~Modern MBA (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCRcgy6GzDeccI7dkbbBna3Q "education" "miscellaneous" "youtube" "~LEMMiNO (Youtube)"
 
 # Quantitative Finance
 https://www.youtube.com/feeds/videos.xml?channel_id=UCgUxdfi_5-m67UDbrgcAFBg "education" "quant" "youtube" "~Coding Jesus (Youtube)"
 filter:~/.config/newsboat/scripts/nbytf:https://www.youtube.com/feeds/videos.xml?channel_id=UCLHvJ1KNGE1s-A3ODiSgplw "education" "quant" "youtube" "~Dimitri Bianco (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC8hI87gt0dmTAIEupEcsckA "education" "quant" "youtube" "~Hudson & Thames (Youtube)"
 https://oneraynyday.github.io/atom.xml "education" "quant" "blog" "~Ray Zhang (Blog)"
 https://reasonabledeviations.com/atom.xml "education" "quant" "blog" "~Robert Martin (Blog)"
 

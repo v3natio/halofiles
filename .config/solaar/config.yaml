@@ -50,7 +50,7 @@
     gesture2-params, sidetone, equalizer, adc_power_management]
   _battery: 4100
   _modelId: B36700000000
-  _sensitive: {backlight: false, divert-keys: true, hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore, multiplatform: false}
+  _sensitive: {backlight: false, divert-keys: false, hires-scroll-mode: ignore, hires-smooth-invert: ignore, hires-smooth-resolution: ignore, multiplatform: false}
   _serial: C601D29E
   _unitId: C601D29E
   _wpid: B367
