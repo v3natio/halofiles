@@ -29,7 +29,6 @@ A,gtk-theme-arc-gruvbox-git,Displays GTK+ interfaces using gruvbox color-scheme
 ,imagemagick,Provides utilities to manipulate images
 ,inkscape,Open-source vector graphics editor
 ,iwd,Provides daemons for internet
-,lf,Terminal file manager
 ,libnotify,Sends desktop notifications
 ,libreoffice-still,LibreOffice suite
 ,libva-mesa-driver,Driver for amdgpu and vaapi

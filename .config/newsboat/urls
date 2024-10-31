@@ -33,7 +33,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCPwy2q7BNjdLYu1kM_OEJVw "en
 https://codekabinett.com/rss.php?Lang=2 "education" "coding" "blog" "~Codekabinett (Blog)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLsnK4MPVaqiVx3DSEqbb1A "education" "coding" "youtube" "~Excel Macro Mastery (Youtube)"
 https://www.paritybit.ca/feed.xml "education" "coding" "blog" "~Jake Bauer (Blog)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC6biysICWOJ-C3P4Tyeggzg "education" "coding" "youtube" "~Low Level Learning (Youtube)"
+filter:~/.config/newsboat/scripts/nbytf:https://www.youtube.com/feeds/videos.xml?channel_id=UC6biysICWOJ-C3P4Tyeggzg "education" "coding" "youtube" "~Low Level Learning (Youtube)"
 https://trstringer.com/feed.xml "education" "coding" "blog" "~Thomas Stringer (Blog)"
 
 # Finance

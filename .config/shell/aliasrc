@@ -12,7 +12,7 @@ unset command
 # verbosity and settings we always want
 alias \
   l="ls -al" \
-  lf="yazi" \
+  lf="lfcd" \
   cp="cp -iv" \
   mv="mv -iv" \
   rm="rm -vI" \
