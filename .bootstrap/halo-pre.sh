@@ -62,7 +62,7 @@ installconf() {
 }
 
 mkinitcpioconf() {
-  sed -i '/^MODULES=/c\MODULES=(amdgpu vboxdrv)' /etc/mkinitcpio.conf
+  sed -i '/^MODULES=/c\MODULES=(amdgpu)' /etc/mkinitcpio.conf
   sed -i '/^FILES=/c\FILES=(/etc/modprobe.d/nobeep.conf)' /etc/mkinitcpio.conf
   sed -i '/^HOOKS=/c\HOOKS=(base udev autodetect microcode modconf kms keyboard keymap block encrypt resume filesystems fsck)' /etc/mkinitcpio.conf
   echo "blacklist pcspkr" >>/etc/modprobe.d/nobeep.conf

@@ -10,7 +10,6 @@ A,autofirma-bin,Provides a front-end for Spain e-signature
 ,bottom,Displays monitored activities
 A,brave-bin,Chromium based open-source browser
 ,brightnessctl,Manages screen brightness
-A,ca-certificates-fnmt,Provides certificates for Spanish gov websites
 A,dataspell,JetBrains Python IDE for data scientists
 A,dataspell-jre,JetBrains Runtime for DataSpell
 A,devour,Provides swallowing feature for the terminal emulator
@@ -21,6 +20,7 @@ G,https://github.com/v3natio/dwm.git,Acts as the window manager
 G,https://github.com/v3natio/dwmblocks.git,Acts as the status bar
 ,exfat-utils,Provides utilities for exFAT filesystem
 ,fzf,Acts as fuzzy finder
+,github-cli,Provides Github PAT management
 ,gimp,Open-source image editor
 ,gnome-keyring,Stores passwords and encryption keys
 A,gruvbox-material-icon-theme-git,Displays icons using gruvbox color-scheme
@@ -86,8 +86,6 @@ A,ueberzugpp,Allows image viewing on terminal
 ,unclutter,Hides mouse cursor when not in use
 A,upd72020x-fw,Firmware for Renesas USB 3.0 chipsets
 ,urlscan,Terminal URL selector
-,virtualbox,Virtualization software
-,virtualbox-guest-iso,Holds ISO images for Guest Additions
 ,wget,Retrieves files from web
 ,xcape,Manages keymaps to act as other keys depending on pressure
 ,xclip,CLI for X11 clipboard
