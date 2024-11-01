@@ -1,0 +1,16 @@
+[user]
+  email = 72844565+v3natio@users.noreply.github.com
+  name = v3natio
+[alias]
+  a = add
+  s = status
+  d = diff
+  cm = commit -m
+  pm = push origin main
+  rs = remote set-url origin
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential

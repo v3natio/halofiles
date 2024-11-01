@@ -1,1 +1,1 @@
-/home/hooregi/.config/nvim/snippets/latex/greeks.lua
+/home/venatio/.config/nvim/snippets/latex/greeks.lua
