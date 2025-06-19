@@ -9,7 +9,7 @@ else
 fi
 
 case "$url" in
-*mkv | *webm | *mp4 | *youtube.com/watch* | *youtube.com/playlist* | *youtu.be* | *watch?v=* | *twitch.tv* | *hooktube.com* | *bitchute.com* | *odysee.com*)
+*mkv | *webm | *mp4 | *youtube.com/watch* | *youtube.com/shorts* | *youtube.com/playlist* | *youtu.be* | *watch?v=* | *twitch.tv* | *hooktube.com* | *bitchute.com* | *odysee.com*)
   setsid -f mpv -quiet "$url" >/dev/null 2>&1
   ;;
 *png | *jpg | *jpe | *jpeg | *gif | *webp)

@@ -52,14 +52,14 @@ set -e
 test -n "$alldrives"
 
 # feed all found drives to dmenu and get user choice.
-chosen="$(echo "$alldrives" | dmenu -p "Mount which drive?" -i)"
+chosen="$(echo "$alldrives" | dmenu -l 5 -p "Mount which drive?" -i)"
 
 # prompt user for a mountpoint
 getmount() {
-  mp="$(find /mnt /media /mount /home -maxdepth 5 -type d 2>/dev/null | dmenu -i -p "Mount this drive where?")"
+  mp="$(find /mnt /media /mount /home -maxdepth 5 -type d 2>/dev/null | dmenu -l 5 -i -p "Mount this drive where?")"
   test -n "$mp"
   if [ ! -d "$mp" ]; then
-    mkdiryn=$(printf "No\\nYes" | dmenu -i -p "$mp does not exist. Create it?")
+    mkdiryn=$(printf "No\\nYes" | dmenu -l 5 -i -p "$mp does not exist. Create it?")
     [ "$mkdiryn" = "Yes" ] && (mkdir -p "$mp" || sudo -A mkdir -p "$mp")
   fi
 }

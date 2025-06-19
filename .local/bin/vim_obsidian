@@ -21,6 +21,24 @@ create_note() {
   nvim "$INBOX_DIR/$formatted_file_name"
 }
 
+create_annotation() {
+  if [ -z "$1" ]; then
+    echo -e "${RED}Error: A valid file path must be specified.${RESET}"
+    exit 1
+  fi
+
+  # get the filename
+  local file_name
+  file_name=$(basename "$1")
+  # create the placeholder PDF
+  echo "file://$1" >"./$file_name"
+  # open placeholder PDF in obsidian
+  xdg-open "obsidian://open?path=$(realpath "./$file_name")" >/dev/null 2>&1 &
+  disown
+  # create and open the annotation file
+  nvim "./notes_${file_name%.*}.md"
+}
+
 index_notes() {
   count=1
   find "$INBOX_DIR" -maxdepth 1 -type f -name "*.md" | while read -r file; do
@@ -59,6 +77,10 @@ case "$1" in
   shift
   create_note "$@"
   ;;
+--paper)
+  shift
+  create_annotation "$@"
+  ;;
 --vault)
   vault
   ;;
@@ -72,6 +94,7 @@ case "$1" in
   echo -e "Usage: vim_obsidian <options> [args]"
   echo -e "Options:"
   echo -e "  --note <filename>    Create new note"
+  echo -e "  --paper <filepath>   Create a new annotation"
   echo -e "  --vault              Go to vault directory"
   echo -e "  --index              Index orphan notes"
   echo -e "  --review             Open orphan notes"

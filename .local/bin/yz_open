@@ -3,13 +3,13 @@
 # back-end script to open files depending on their mimetype
 
 # arg to open in a new window
-detatch=0
-[ "$1" = "detatch" ] && detatch=1 && shift 1
+detach=0
+[ "$1" = "detach" ] && detach=1 && shift 1
 # arg must be a file
 [ ! -f "$1" ] && echo "Not a file: '$1'" && exit 1
 
 function launch_gui() {
-  if [ "$detatch" -eq 0 ]; then
+  if [ "$detach" -eq 0 ]; then
     precmd="devour"
   else
     precmd="setsid -f"
@@ -18,7 +18,7 @@ function launch_gui() {
 }
 
 function launch_term() {
-  if [ "$detatch" -eq 1 ]; then
+  if [ "$detach" -eq 1 ]; then
     command_string=""
     while [ $# -gt 0 ]; do
       command_string="$command_string \"$1\""

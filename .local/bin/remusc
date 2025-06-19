@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# back-end script that monitors music
+
+#playerctl -p spotify metadata --format="{{title}} - {{artist}}" --follow | while read -r _; do
+#  pkill -RTMIN+2 "$STATUSBAR"
+#done
+player="spotify"
+
+{
+  playerctl -p "$player" metadata --format '{{title}} - {{artist}}' --follow &
+  playerctl -p "$player" status --follow &
+} | while read -r _; do
+  pkill -RTMIN+2 "${STATUSBAR:-dwmblocks}"
+done

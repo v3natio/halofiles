@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# back-end script that themes the statusbar scripts
+
+display() {
+  if [ -n "$2" ]; then
+    color="$2"
+  else
+    case "$(basename "$0")" in
+    sb-record) color=9 ;;
+    sb-music) color=7 ;;
+    sb-cpu) color=8 ;;
+    sb-wifi) color=8 ;;
+    sb-volume) color=8 ;;
+    sb-battery) color=10 ;;
+    sb-time) color=8 ;;
+    sb-date) color=8 ;;
+    *) color=8 ;;
+    esac
+  fi
+
+  case "$STATUSBAR" in
+  dwmblocks) echo "^C$color^$1" ;;
+  *) echo "$1" ;;
+  esac
+}

@@ -9,11 +9,11 @@ if [[ "inactive" == $(systemctl is-active iwd.service) ]]; then
 fi
 
 # select wifi interface device
-if ip link | egrep -q '^[0-9]+: w.* state UP '; then
+if ip link | grep -E -q '^[0-9]+: w.* state UP '; then
   # prioritize devices that are up already
   WIFI_DEVICE_LIST=$(
     ip link |
-      egrep -i '^[0-9]+: w.* state UP ' |
+      grep -E -i '^[0-9]+: w.* state UP ' |
       sed 's/^[0-9]\+: //g' |
       sed 's/:.*//g'
   )
@@ -21,7 +21,7 @@ else
   WIFI_DEVICE_DOWN=1
   WIFI_DEVICE_LIST=$(
     ip link |
-      egrep -i '^[0-9]+: w' |
+      grep -E -i '^[0-9]+: w' |
       sed 's/^[0-9]\+: //g' |
       sed 's/:.*//g'
   )
@@ -33,7 +33,7 @@ if [ -z "$WIFI_DEVICE_LIST" ]; then
 elif echo $WIFI_DEVICE_LIST | grep -q " "; then
   # pipe list of devices to dmenu if there is more than one
   WIFI_DEVICE=$(
-    echo "$WIFI_DEVICE_LIST" | dmenu -p "Select device:" -l 30
+    echo "$WIFI_DEVICE_LIST" | dmenu -l 5 -p "Select device:" -l 30
   )
   if [[ -z $WIFI_DEVICE ]]; then
     exit 0
@@ -52,7 +52,7 @@ if [[ $WIFI_DEVICE_DOWN ]]; then
 fi
 
 # display network options in dmenu
-NETWORK_OPTION=$(echo -e "Connect\nDisconnect\nForget\nReset" | dmenu -p "󰛳 Network:")
+NETWORK_OPTION=$(echo -e "Connect\nDisconnect\nForget\nReset" | dmenu -l 5 -p "󰛳 Network:")
 
 case "$NETWORK_OPTION" in
 "Connect")
@@ -73,7 +73,7 @@ case "$NETWORK_OPTION" in
   # trim selected network for SSID
   WIFI_NETWORK=$(
     echo "$WIFI_NETWORK_LIST" |
-      dmenu -p "Select network:" -l 30 |
+      dmenu -l 5 -p "Select network:" -l 30 |
       sed 's/ *\(psk\|open\|8021x\) \+\*\+//g' |
       sed 's/^ *>\? *//g' |
       sed 's/ *$//g'
@@ -106,7 +106,7 @@ case "$NETWORK_OPTION" in
     exit 1
   fi
 
-  WIFI_NETWORK=$(echo "$WIFI_KNOWN_LIST" | dmenu -p "Select Wifi 󰛳:" -l 30)
+  WIFI_NETWORK=$(echo "$WIFI_KNOWN_LIST" | dmenu -l 5 -p "Select Wifi 󰛳:" -l 30)
 
   if [[ -z $WIFI_NETWORK ]]; then
     exit 0

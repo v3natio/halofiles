@@ -66,7 +66,7 @@ device_menu() {
 
   # build the options for dmenu
   local options="$connected\n$paired\n$trusted\n$divider\nBack"
-  local chosen=$(echo -e "$options" | dmenu -p "$device_name")
+  local chosen=$(echo -e "$options" | dmenu -l 5 -p "$device_name")
 
   case "$chosen" in
   "" | $divider) ;;
@@ -88,7 +88,7 @@ show_menu() {
     local options="$power"
   fi
 
-  local chosen=$(echo -e "$options" | dmenu -p " Bluetooth")
+  local chosen=$(echo -e "$options" | dmenu -l 5 -p " Bluetooth")
 
   case "$chosen" in
   "" | $divider) ;;

@@ -1,4 +1,8 @@
 #!/bin/sh
 
+# statusbar script to display the date
+
 DATE=$(date "+%a %d %b")
-echo " 󰃭 $DATE"
+
+. sb-theme
+display "󰃭 $DATE"

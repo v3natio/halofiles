@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# statusbar script to display music status
+
+# keep helper alive
+pidof -x remusc >/dev/null 2>&1 || remusc >/dev/null 2>&1 &
+
+. sb-theme
+
+if ! status=$(playerctl -p spotify --no-messages status 2>/dev/null); then
+  # no player, return blank and quit
+  printf '\n'
+  exit 0
+fi
+
+# player stopped, return blank and quit
+[ "$status" = "Stopped" ] && {
+  printf '\n'
+  exit 0
+}
+
+if ! song=$(playerctl -p spotify metadata --format '{{title}} - {{artist}}' 2>/dev/null); then
+  printf '\n'
+  exit 0
+fi
+
+case $status in
+Playing)
+  icon="󰓇"
+  icon_col=12 # green
+  ;;
+Paused)
+  icon="󰏤"
+  icon_col=8 # darker gray
+  ;;
+esac
+
+text_col=7 # gray
+payload="^C${icon_col}^${icon} ^C${text_col}^${song}"
+display "$payload" "$text_col"

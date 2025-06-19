@@ -1,16 +1,30 @@
 #!/bin/sh
 
-MUTE=$(amixer sget Master | awk -F'[][]' '/Front Left:/ { print $4 }' | head -n 1)
-[ "$MUTE" = "off" ] && echo " 󰝟 --%" && exit
+# statusbar script to display the volume level
 
-VOL=$(amixer sget Master | awk -F'[][]' '/%]/ { if ($2 == "off") { print "0" } else { gsub(/%/, "", $2); print $2 } }' | head -n 1)
+. sb-theme
 
-if [ "$VOL" -gt "50" ]; then
-	echo " 󰕾 ${VOL}%"
-elif [ "$VOL" -gt "20" ]; then
-  echo " 󰖀 ${VOL}%"
-elif [ "$VOL" -gt "0" ]; then
-	echo " 󰕿 ${VOL}%"
-else
-  echo " 󰝟 --%" && exit
-fi
+LINE=$(wpctl get-volume @DEFAULT_AUDIO_SINK@) || exit 1
+
+# muted
+case $LINE in
+*MUTED*)
+  icon="󰝟"
+  vol="--"
+  col=9 # mute colour
+  display "$icon $vol%" "$col"
+  exit
+  ;;
+esac
+
+# volume
+VOL=$(printf '%s\n' "$LINE" | awk '{printf "%d", $2 * 100}')
+
+case $VOL in
+'') exit 1 ;;
+[0-9] | 1[0-5]) ICON="󰕿" ;;             # 0-15 %
+1[6-9] | [2-3][0-9] | 4[0]) ICON="󰖀" ;; # 16-40 %
+*) ICON="󰕾" ;;                          # > 40%
+esac
+
+display "$ICON ${VOL}%"

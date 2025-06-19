@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# statusbar script to display whenever the screen is being recorded
+
+PID_FILE=/tmp/recordingpid
+
+if [ ! -f "$PID_FILE" ]; then
+  exit
+fi
+
+. sb-theme
+display "[󰻂 REC]"

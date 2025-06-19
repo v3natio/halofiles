@@ -1,22 +1,20 @@
 #!/bin/sh
 
-TIME=$(date "+%H:%M")
-HOUR=$(date "+%I")
+# statusbar script to display the time
 
-case $HOUR in
-  00) ICON="󱑖" ;;
-  01) ICON="󱑋" ;;
-  02) ICON="󱑌" ;;
-  03) ICON="󱑍" ;;
-  04) ICON="󱑎" ;;
-  05) ICON="󱑏" ;;
-  06) ICON="󱑐" ;;
-  07) ICON="󱑑" ;;
-  08) ICON="󱑒" ;;
-  09) ICON="󱑓" ;;
-  10) ICON="󱑔" ;;
-  11) ICON="󱑕" ;;
-  12) ICON="󱑖" ;;
-esac
+. sb-theme
 
-echo " $ICON $TIME"
+set -- $(date '+%H:%M %H') # $1 = "HH:MM" [display], $2 = "HH" (00-23) [internal]
+TIME=$1
+H24=$2
+
+ICONS="󱑖 󱑋 󱑌 󱑍 󱑎 󱑏 󱑐 󱑑 󱑒 󱑓 󱑔 󱑕 󱑖"
+
+# find icon by index
+idx=$((10#$H24 % 12))
+[ $idx -eq 0 ] && idx=12
+
+set -- $ICONS
+eval ICON=\${$idx}
+
+display "$ICON $TIME"

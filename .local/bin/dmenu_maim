@@ -6,14 +6,11 @@ output="$HOME/media/pictures/screenshots/$(date '+%y%m%d-%H%M-%S').png"
 xclip_cmd="xclip -sel clip -t image/png"
 ocr_cmd="xclip -sel clip"
 
-case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)\\na selected area (OCR)" | dmenu -l 7 -i -p 'Screenshot which area?')" in
+case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p 'Screenshot which area?')" in
 "a selected area") maim -s "${output}" && notify-send -a "Screenshot" -i "$output" "Saved as $output." ;;
 "current window") maim -B -q -d 0.2 -i "$(slop -f "%i")" "${output}" && notify-send -a "Screenshot" -i "$output" "Saved as $output." ;;
 "full screen") maim -q -d 0.2 "${output}" && notify-send -a "Screenshot" -i "$output" "Saved as $output." ;;
 "a selected area (copy)") maim -s | ${xclip_cmd} && notify-send -a "Screenshot" "Copied to clipboard." ;;
 "current window (copy)") maim -B -q -d 0.2 -i "$(slop -f "%i")" | ${xclip_cmd} && notify-send -a "Screenshot" "Copied to clipboard." ;;
 "full screen (copy)") maim -q -d 0.2 | ${xclip_cmd} && notify-send -a "Screenshot" "Copied to clipboard." ;;
-"a selected area (OCR)")
-  tmpfile=$(mktemp /tmp/ocr-XXXXXX.png) && maim -u -s >"$tmpfile" && tesseract "$tmpfile" - -l eng | ${ocr_cmd} && rm "$tmpfile" && notify-send -a "OCR" "Copied to clipboard."
-  ;;
 esac

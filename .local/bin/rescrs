@@ -4,35 +4,34 @@
 
 intern="eDP"
 extern="HDMI-A-0"
-intern_audio="alsa_output.pci-0000_04_00.6.analog-stereo"
 extern_audio="alsa_output.pci-0000_04_00.1.hdmi-stereo"
+status_path="/sys/class/drm/card1-HDMI-A-1/status"
 
-function is_bluetooth_audio() {
-  [[ $(pactl info | grep "Default Sink" | cut -d' ' -f3) == bluez_output* ]]
+is_headphone() {
+  local default_sink=$(pactl info | awk -F': ' '/Default Sink/ {print $2}')
+  pactl list sinks | awk "/Name: $default_sink/,/^$/" | grep -q "Active Port:.*head"
 }
 
-function connect() {
-  xrandr --output "$extern" --auto --primary --output "$intern" --auto --left-of "$extern"
-  if ! is_bluetooth_audio; then
-    pactl set-default-sink "$extern_audio"
-  fi
+set_display_and_audio() {
+  local mode="$1"
+  case "$mode" in
+  connect)
+    xrandr --output "$extern" --auto --primary --output "$intern" --auto --left-of "$extern"
+    if ! is_headphone; then
+      pactl set-default-sink "$extern_audio"
+    fi
+    ;;
+  disconnect)
+    xrandr --output "$extern" --off --output "$intern" --auto --primary
+    ;;
+  esac
   $HOME/.local/bin/setbg
   $HOME/.local/bin/remaps
 }
 
-function disconnect() {
-  xrandr --output "$extern" --off --output "$intern" --auto --primary
-  if ! is_bluetooth_audio; then
-    pactl set-default-sink "$intern_audio"
-  fi
-  $HOME/.local/bin/setbg
-  $HOME/.local/bin/remaps
-}
-
-if [ "$(cat /sys/class/drm/card1-HDMI-A-1/status)" == "connected" ]; then
-  connect
-elif [ "$(cat /sys/class/drm/card1-HDMI-A-1/status)" == "disconnected" ]; then
-  disconnect
-else
-  exit
+if [[ -f "$status_path" ]]; then
+  case "$(cat "$status_path")" in
+  connected) set_display_and_audio "connect" ;;
+  disconnected) set_display_and_audio "disconnect" ;;
+  esac
 fi

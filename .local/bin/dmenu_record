@@ -2,19 +2,13 @@
 
 # script that generates a front-end for ffmpeg recordings
 
-updateicon() {
-  echo "$1" >/tmp/recordingicon
-  pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
-}
-
 killrecording() {
   recpid="$(cat /tmp/recordingpid)"
   kill -15 "$recpid"
   rm -f /tmp/recordingpid
-  updateicon ""
   pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
   sleep 3
-  kill -9 "$recpid"
+  kill -9 "$recpid" 2>/dev/null
   exit
 }
 
@@ -25,7 +19,7 @@ select_display() {
   if [ "$display_count" -eq 1 ]; then
     selected=$displays
   else
-    selected=$(echo "$displays" | dmenu -i -p "Select display to record:")
+    selected=$(echo "$displays" | dmenu -l 5 -i -p "Select display to record:")
     # exit if no screen was selected
     if [ -z "$selected" ]; then
       exit 1
@@ -46,7 +40,7 @@ screengrab() {
   fi
   ffmpeg -y \
     -f x11grab \
-    -framerate 30 \
+    -framerate 60 \
     -video_size "$resolution" \
     -i "$DISPLAY+$offset" \
     -f pulse -i default \
@@ -56,7 +50,7 @@ screengrab() {
     -c:a aac \
     "$HOME/media/videos/recordings/screengrab-$(date '+%y%m%d-%H%M-%S').mp4" &
   echo $! >/tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
+  pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}"
 }
 
 # records a selected area
@@ -72,7 +66,7 @@ windowgrab() {
     -c:v h264_vaapi -qp 23 -r 30 \
     "$HOME/media/videos/recordings/windowgrab-$(date '+%y%m%d-%H%M-%S').mkv" &
   echo $! >/tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
+  pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}" 
 }
 
 # records screen, and microphone
@@ -92,7 +86,7 @@ screencast() {
     -c:a aac \
     "$HOME/media/videos/recordings/screencast-$(date '+%y%m%d-%H%M-%S').mp4" &
   echo $! >/tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
+  pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}" 
 }
 
 # records audio
@@ -102,7 +96,7 @@ audio() {
     -c:a flac \
     "$HOME/media/videos/recordings/audio-$(date '+%y%m%d-%H%M-%S').flac" &
   echo $! >/tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
+  pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}" 
 }
 
 # records webcam
@@ -113,11 +107,11 @@ webcam() {
     -video_size 1920x1080 \
     "$HOME/media/videos/recordings/webcam-$(date '+%y%m%d-%H%M-%S').mkv" &
   echo $! >/tmp/recordingpid
-  updateicon "[ 󰻂 REC ]"
+  pkill -RTMIN+9 "${STATUSBAR:-dwmblocks}" 
 }
 
 askrecording() {
-  choice=$(printf "screengrab\nwindowgrab\nscreencast\naudio\nwebcam" | dmenu -i -p "Select recording style:")
+  choice=$(printf "screengrab\nwindowgrab\nscreencast\naudio\nwebcam" | dmenu -l 5 -i -p "Select recording style:")
   case "$choice" in
   "screengrab") screengrab ;;
   "windowgrab") windowgrab ;;
@@ -128,7 +122,7 @@ askrecording() {
 }
 
 asktoend() {
-  response=$(printf "No\\nYes" | dmenu -p "Recording still active. End recording?") &&
+  response=$(printf "No\\nYes" | dmenu -l 5 -p "Recording still active. End recording?") &&
     [ "$response" = "Yes" ] && killrecording
 }
 

@@ -19,18 +19,6 @@ md) pandoc -t ms --highlight-style=kate -s -o "${base}".pdf "${file}" ;;
 py) python "${file}" ;;
 [rR]md) Rscript -e "rmarkdown::render('${file}', quiet=TRUE)" ;;
 rs) cargo build ;;
-tex)
-  if [ -f "main.tex" ]; then
-    textarget="main.tex"
-  else
-    textarget="${file}"
-  fi
-  command="pdflatex -shell-escape"
-  ${command} --output-directory="${dir}" "${textarget}" &&
-    grep -qi addbibresource "${textarget}" &&
-    biber --input-directory="${dir}" "${textarget%.*}" &&
-    ${command} --output-directory="${dir}" "${textarget}" &&
-    ${command} --output-directory="${dir}" "${textarget}"
-  ;;
+tex) latexmk -pdf ;;
 *) sed -n '/^#!/s/^#!//p; q' "${file}" | xargs -r -I % "${file}" ;;
 esac
