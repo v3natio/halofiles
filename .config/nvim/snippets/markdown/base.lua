@@ -11,28 +11,37 @@ local generate_markdown_table = function(args, snip)
   local rows = tonumber(snip.captures[1])
   local cols = tonumber(snip.captures[2])
   local nodes = {}
+  local i_counter = 0
+
   -- header
   table.insert(nodes, t('| '))
   for k = 1, cols do
-    table.insert(nodes, i(k, ' '))
-    table.insert(nodes, t(' | '))
+    i_counter = i_counter + 1
+    table.insert(nodes, i(i_counter, 'Column' .. i_counter))
+    if k < cols then
+      table.insert(nodes, t(' | '))
+    else
+      table.insert(nodes, t(' |'))
+    end
   end
   table.insert(nodes, t({ '', '' }))
+
   -- separator
-  table.insert(nodes, t('|'))
-  for k = 1, cols do
-    table.insert(nodes, t(':---:'))
-    table.insert(nodes, t('|'))
-  end
+  local hlines = string.rep('|:---:', cols):sub(1, -2) .. '|'
+  table.insert(nodes, t(hlines))
   table.insert(nodes, t({ '', '' }))
+
   -- content
-  local ins_indx = cols + 1
-  for j = 1, rows - 1 do
+  for _ = 1, rows - 1 do
     table.insert(nodes, t('| '))
     for k = 1, cols do
-      table.insert(nodes, i(ins_indx, ' '))
-      table.insert(nodes, t(' | '))
-      ins_indx = ins_indx + 1
+      i_counter = i_counter + 1
+      table.insert(nodes, i(i_counter))
+      if k < cols then
+        table.insert(nodes, t(' | '))
+      else
+        table.insert(nodes, t(' |'))
+      end
     end
     table.insert(nodes, t({ '', '' }))
   end
@@ -68,16 +77,17 @@ return {
       d(1, get_visual),
     })
   ),
+  -- new subsubsection
+  s(
+    { trig = 'h5', snippetType = 'autosnippet' },
+    fmta('##### <>', {
+      d(1, get_visual),
+    })
+  ),
   -- new math item
   s({ trig = 'ii', snippetType = 'autosnippet' }, { t('&') }, { condition = in_mathzone }),
   -- new item
   s({ trig = 'ii', snippetType = 'autosnippet' }, { t('- ') }, { condition = line_begin }),
-  -- math line end
-  s({ trig = 'br', snippetType = 'autosnippet' }, { t('&&\\\\') }, { condition = in_mathzone }),
-  -- TODO
-  s({ trig = 'TODOO', snippetType = 'autosnippet' }, {
-    t('**TODO:** '),
-  }),
   -- URL
   s(
     { trig = 'LL', snippetType = 'autosnippet' },
@@ -86,110 +96,10 @@ return {
       d(1, get_visual),
     })
   ),
-  -- bold
-  s(
-    { trig = 'tbb', snippetType = 'autosnippet' },
-    fmta('**<>**', {
-      d(1, get_visual),
-    })
-  ),
-  -- italics
-  s(
-    { trig = 'tii', snippetType = 'autosnippet' },
-    fmta('*<>*', {
-      d(1, get_visual),
-    })
-  ),
-  -- underline
-  s(
-    { trig = 'tuu', snippetType = 'autosnippet' },
-    fmt([[<u>{}</u>]], {
-      d(1, get_visual),
-    })
-  ),
-  -- highlight
-  s(
-    { trig = 'thh', snippetType = 'autosnippet' },
-    fmta('==<>==', {
-      d(1, get_visual),
-    })
-  ),
   -- table
   s(
     { trig = 'tbl(%d+)x(%d+)', regTrig = true, snippetType = 'autosnippet' },
     d(1, generate_markdown_table),
-    { condition = line_begin }
-  ),
-  -- inline math
-  s(
-    { trig = 'mm', snippetType = 'autosnippet' },
-    fmta('$<>$', {
-      i(1),
-    })
-  ),
-  -- equation
-  s(
-    { trig = 'nn', snippetType = 'autosnippet' },
-    fmta(
-      [[
-        $$
-        \begin{flalign*}
-          &<>
-        \end{flalign*}
-        $$
-      ]],
-      {
-        i(1),
-      }
-    ),
-    { condition = line_begin }
-  ),
-  -- split equation
-  s(
-    { trig = 'sss', snippetType = 'autosnippet' },
-    fmta(
-      [[
-        $$
-        \begin{split}
-          <>
-        \end{split}
-        $$
-      ]],
-      {
-        d(1, get_visual),
-      }
-    ),
-    { condition = line_begin }
-  ),
-  -- equation with cases
-  s(
-    { trig = 'ssc', snippetType = 'autosnippet' },
-    fmta(
-      [[
-      \begin{cases}
-        <>
-      \end{cases}
-      ]],
-      {
-        d(1, get_visual),
-      }
-    ),
-    { condition = in_mathzone }
-  ),
-  -- code block
-  s(
-    { trig = 'cc', snippetType = 'autosnippet' },
-    fmta(
-      [[
-        ```<>
-        <>
-        ```
-      ]],
-      {
-        i(1),
-        d(2, get_visual),
-      }
-    ),
     { condition = line_begin }
   ),
 }

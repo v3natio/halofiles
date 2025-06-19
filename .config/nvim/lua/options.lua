@@ -38,7 +38,7 @@ end
 -- clean .tex files when closing
 vim.api.nvim_create_autocmd('VimLeavePre', {
   pattern = '*.tex',
-  command = 'silent !vim_texclear %',
+  command = 'silent !latexmk -c %',
 })
 
 -- set latex filetype

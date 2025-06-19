@@ -13,6 +13,7 @@ local generate_matrix = function(args, snip)
   local ins_indx = 1
 
   for j = 1, rows do
+    table.insert(nodes, t('  ')) -- indent
     table.insert(nodes, r(ins_indx, tostring(j) .. 'x1', i(1)))
     ins_indx = ins_indx + 1
     for k = 2, cols do
@@ -20,10 +21,14 @@ local generate_matrix = function(args, snip)
       table.insert(nodes, r(ins_indx, tostring(j) .. 'x' .. tostring(k), i(1)))
       ins_indx = ins_indx + 1
     end
-    table.insert(nodes, t({ ' \\\\', '' }))
+    -- add line break (\\) if not in last row
+    if j < rows then
+      table.insert(nodes, t({ ' \\\\', '' }))
+    else
+      table.insert(nodes, t(''))
+    end
   end
-  -- fix last node.
-  nodes[#nodes] = t('\\\\')
+
   return sn(nil, nodes)
 end
 
@@ -110,6 +115,56 @@ return {
   s(
     { trig = '([%w\\]+)hat', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('\\hat{<>}', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    }),
+    { condition = in_mathzone }
+  ),
+  -- wide hat
+  s(
+    { trig = '([%w\\]+)Hat', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('\\widehat{<>}', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    }),
+    { condition = in_mathzone }
+  ),
+  -- tilde
+  s(
+    { trig = '([%w\\]+)tld', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('\\tilde{<>}', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    }),
+    { condition = in_mathzone }
+  ),
+  -- wide tilde
+  s(
+    { trig = '([%w\\]+)Tld', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('\\widetilde{<>}', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    }),
+    { condition = in_mathzone }
+  ),
+  -- dot
+  s(
+    { trig = '([%w\\]+)dot', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('\\dot{<>}', {
+      f(function(_, snip)
+        return snip.captures[1]
+      end),
+    }),
+    { condition = in_mathzone }
+  ),
+  -- two dots
+  s(
+    { trig = '([%w\\]+)Dot', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('\\ddot{<>}', {
       f(function(_, snip)
         return snip.captures[1]
       end),
@@ -214,12 +269,19 @@ return {
   ),
   -- underbrace
   s(
-    { trig = '([%w\\]+)ubr', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    { trig = 'ubr', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
     fmta('\\underbrace{<>}_{<>}', {
-      f(function(_, snip)
-        return snip.captures[1]
-      end),
-      i(1),
+      d(1, get_visual),
+      i(2),
+    }),
+    { condition = in_mathzone }
+  ),
+  -- overbrace
+  s(
+    { trig = 'ovr', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('\\overbrace{<>}^{<>}', {
+      d(1, get_visual),
+      i(2),
     }),
     { condition = in_mathzone }
   ),
@@ -231,6 +293,23 @@ return {
         return snip.captures[1]
       end),
       i(1),
+    }),
+    { condition = in_mathzone }
+  ),
+  -- boxed
+  s(
+    { trig = 'bxd', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('\\boxed{<>}', {
+      d(1, get_visual),
+    }),
+    { condition = in_mathzone }
+  ),
+  -- text color
+  s(
+    { trig = 'tc', regTrig = true, wordTrig = false, snippetType = 'autosnippet' },
+    fmta('\\textcolor{<>}{<>}', {
+      i(1),
+      d(2, get_visual),
     }),
     { condition = in_mathzone }
   ),
@@ -420,8 +499,36 @@ return {
     t('\\equiv '),
   }, { condition = in_mathzone }),
   -- approximate
-  s({ trig = 'px', snippetType = 'autosnippet' }, {
+  s({ trig = 'pxx', snippetType = 'autosnippet' }, {
     t('\\approx '),
+  }, { condition = in_mathzone }),
+  -- approximately equal to
+  s({ trig = 'pxq', snippetType = 'autosnippet' }, {
+    t('\\approxeq '),
+  }, { condition = in_mathzone }),
+  -- less than or equal to
+  s({ trig = 'lee', snippetType = 'autosnippet' }, {
+    t('\\le '),
+  }, { condition = in_mathzone }),
+  -- approximately less than
+  s({ trig = 'leq', snippetType = 'autosnippet' }, {
+    t('\\lesssim '),
+  }, { condition = in_mathzone }),
+  -- much less than
+  s({ trig = 'll', snippetType = 'autosnippet' }, {
+    t('\\ll '),
+  }, { condition = in_mathzone }),
+  -- greater than or equal to
+  s({ trig = 'gee', snippetType = 'autosnippet' }, {
+    t('\\ge '),
+  }, { condition = in_mathzone }),
+  -- approximately greater than
+  s({ trig = 'geq', snippetType = 'autosnippet' }, {
+    t('\\gtrsim '),
+  }, { condition = in_mathzone }),
+  -- much greater than
+  s({ trig = 'gg', snippetType = 'autosnippet' }, {
+    t('\\gg '),
   }, { condition = in_mathzone }),
   -- proprtional
   s({ trig = 'pt', snippetType = 'autosnippet' }, {
@@ -443,6 +550,14 @@ return {
   s({ trig = 'iff', snippetType = 'autosnippet' }, {
     t('\\iff '),
   }, { condition = in_mathzone }),
+  -- up arrow
+  s({ trig = 'urr', snippetType = 'autosnippet' }, {
+    t('\\uparrow '),
+  }, { condition = in_mathzone }),
+  -- down arrow
+  s({ trig = 'drr', snippetType = 'autosnippet' }, {
+    t('\\downarrow '),
+  }, { condition = in_mathzone }),
   -- to
   s({ trig = 'to', snippetType = 'autosnippet' }, {
     t('\\to '),
@@ -450,6 +565,10 @@ return {
   -- into
   s({ trig = 'into', snippetType = 'autosnippet' }, {
     t('\\curvearrowright '),
+  }, { condition = in_mathzone }),
+  -- maps to
+  s({ trig = 'mto', snippetType = 'autosnippet' }, {
+    t('\\mapsto '),
   }, { condition = in_mathzone }),
   -- dot product
   s({ trig = ',.', snippetType = 'autosnippet' }, {
@@ -490,6 +609,10 @@ return {
   -- subset
   s({ trig = 'sbb', snippetType = 'autosnippet' }, {
     t('\\subset '),
+  }, { condition = in_mathzone }),
+  -- subset or equal to
+  s({ trig = 'sbq', snippetType = 'autosnippet' }, {
+    t('\\subseteq '),
   }, { condition = in_mathzone }),
   -- union
   s({ trig = 'cup', snippetType = 'autosnippet' }, {

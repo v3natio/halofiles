@@ -14,39 +14,29 @@ local TEXT_NODES = {
   label_reference = true,
 }
 
-local function get_node_at_cursor()
-  local pos = vim.api.nvim_win_get_cursor(0)
-  -- Subtract one to account for 1-based row indexing in nvim_win_get_cursor
-  local row, col = pos[1] - 1, pos[2]
-
-  local parser = ts.get_parser(0, 'latex')
-  if not parser then
-    return
-  end
-
-  local root_tree = parser:parse({ row, col, row, col })[1]
-  local root = root_tree and root_tree:root()
-  if not root then
-    return
-  end
-
-  return root:named_descendant_for_range(row, col, row, col)
-end
+local CODE_BLOCK_NODES = {
+  fenced_code_block = true,
+  indented_code_block = true,
+}
 
 function M.in_text(check_parent)
-  local node = get_node_at_cursor()
+  local node = ts.get_node({ ignore_injections = false })
   while node do
-    if node:type() == 'text_mode' then
+    local node_type = node:type()
+    -- if in code block, always consider it as text
+    if CODE_BLOCK_NODES[node_type] then
+      return true
+    end
+    if node_type == 'text_mode' then
       if check_parent then
-        -- For \text{}
         local parent = node:parent()
         if parent and MATH_NODES[parent:type()] then
           return false
         end
       end
-
       return true
-    elseif MATH_NODES[node:type()] then
+    end
+    if MATH_NODES[node_type] then
       return false
     end
     node = node:parent()
@@ -55,11 +45,18 @@ function M.in_text(check_parent)
 end
 
 function M.in_mathzone()
-  local node = get_node_at_cursor()
+  local node = ts.get_node({ ignore_injections = false })
+  local is_markdown = vim.bo.filetype == 'markdown'
   while node do
-    if TEXT_NODES[node:type()] then
+    local node_type = node:type()
+    -- for markdown, if in code block, don't consider it math.
+    if is_markdown and CODE_BLOCK_NODES[node_type] then
       return false
-    elseif MATH_NODES[node:type()] then
+    end
+    if TEXT_NODES[node_type] then
+      return false
+    end
+    if MATH_NODES[node_type] then
       return true
     end
     node = node:parent()

@@ -99,22 +99,23 @@ return {
 
   -- Writting
   {
-    'epwalsh/obsidian.nvim', -- Obsidian note-taking
-    version = '*',
+    'obsidian-nvim/obsidian.nvim', -- Obsidian note-taking
+    --dir = '~/documents/projects/obsidian.nvim',
+    lazy = true,
     ft = 'markdown',
     dependencies = 'nvim-lua/plenary.nvim',
     config = function()
       require('pluginSets.obsidian')
     end,
   },
-  {
-    'bamonroe/rnoweb-nvim', -- LaTeX symbol folding
-    event = 'VeryLazy',
-    dependencies = 'nvim-lua/plenary.nvim',
-    config = function()
-      require('pluginSets.others').rnoweb()
-    end,
-  },
+  --{
+  --  'bamonroe/rnoweb-nvim', -- LaTeX symbol folding
+  --  event = 'VeryLazy',
+  --  dependencies = 'nvim-lua/plenary.nvim',
+  --  config = function()
+  --    require('pluginSets.others').rnoweb()
+  --  end,
+  --},
 
   -- Eye-candy
   {

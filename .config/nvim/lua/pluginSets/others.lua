@@ -13,6 +13,7 @@ M.luasnip = function()
   if present then
     luasnip.setup({
       enable_autosnippets = true,
+      store_selection_keys = '<Tab>',
     })
     require('luasnip.loaders.from_lua').lazy_load({ paths = '~/.config/nvim/snippets' })
   end

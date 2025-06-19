@@ -19,12 +19,15 @@ obsidian.setup({
     date_format = '%Y-%m-%d',
     time_format = '%H:%M',
   },
-  image_name_func = function()
-    return string.format('%s-', os.time())
-  end,
   attachments = {
     img_folder = 'files',
+    img_name_func = function()
+      return string.format('%s-', os.date('%Y_%m_%d_%H%M'))
+    end,
   },
+  follow_url_func = function(url)
+    vim.ui.open(url)
+  end,
   mappings = {
     ['gf'] = {
       action = function()
@@ -44,6 +47,10 @@ obsidian.setup({
     },
     ['<leader>bs'] = {
       action = '<cmd>ObsidianSearch<cr>',
+      opts = { buffer = true },
+    },
+    ['<leader>bo'] = {
+      action = '<cmd>ObsidianOpen<cr>',
       opts = { buffer = true },
     },
     ['<leader>bt'] = {
