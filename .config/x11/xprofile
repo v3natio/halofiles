@@ -10,6 +10,7 @@ dunst
 dwmblocks
 unclutter
 solaar -w hide
+remusc
 pactl load-module module-switch-on-connect"
 
 echo "$autostart" | while IFS= read -r program; do

@@ -42,6 +42,7 @@ alias \
 alias \
   og="vim_obsidian --index" \
   on="vim_obsidian --note" \
+  op="vim_obsidian --paper" \
   oo="cd $(vim_obsidian --vault)" \
   or="vim_obsidian --review"
 
@@ -51,4 +52,4 @@ alias \
   mirror-update="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist" \
   zsh-update="find '$ZDOTDIR/plugins' -type d -exec test -e '{}/.git' ';' -print0 | xargs -0 -I {} sh -c 'echo Updating {}; git -C {} pull -q'" \
   halo_list_systemctl="systemctl list-unit-files --state=enabled" \
-  terraria="'/home/${USER}/media/games/Terraria/start.sh' ''"
+  terraria="'/home/${USER}/media/games/terraria/start.sh' ''"

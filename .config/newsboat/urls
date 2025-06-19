@@ -16,7 +16,6 @@ https://github.com/iurimateus/luasnip-latex-snippets.nvim/commits/main.atom "new
 " "
 
 # Lifestyle
-https://www.youtube.com/feeds/videos.xml?channel_id=UCifHRKwB20dm4dJgxMC48dw "entertainment" "lifestyle" "youtube" "~AshJer (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCqM1Yw5XfJ5rVwCntLy0KxA "entertainment" "lifestyle" "youtube" "~Low Budget Stories (Youtube)"
 
 # Motorsport
@@ -31,9 +30,9 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCPwy2q7BNjdLYu1kM_OEJVw "en
 # Coding
 #https://www.defconq.tech/blog/rss.xml "education" "coding" "blog" "~Alex Unterr (Blog)"
 https://codekabinett.com/rss.php?Lang=2 "education" "coding" "blog" "~Codekabinett (Blog)"
+filter:~/.config/newsboat/scripts/nbytf:https://www.youtube.com/feeds/videos.xml?channel_id=UCgUxdfi_5-m67UDbrgcAFBg "education" "quant" "youtube" "~Coding Jesus (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLsnK4MPVaqiVx3DSEqbb1A "education" "coding" "youtube" "~Excel Macro Mastery (Youtube)"
 https://www.paritybit.ca/feed.xml "education" "coding" "blog" "~Jake Bauer (Blog)"
-filter:~/.config/newsboat/scripts/nbytf:https://www.youtube.com/feeds/videos.xml?channel_id=UC6biysICWOJ-C3P4Tyeggzg "education" "coding" "youtube" "~Low Level Learning (Youtube)"
 https://trstringer.com/feed.xml "education" "coding" "blog" "~Thomas Stringer (Blog)"
 
 # Finance
@@ -41,27 +40,23 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCkcnYVAVZQOB-nXHechtXDg "ed
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-hKNOj4P-Y8hR9QEHpZPig "education" "finance" "youtube" "~Bridgewater (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCGBoWe1mzCvbbqDNncmxm8A "education" "finance" "youtube" "~FINAiUS (Youtube)"
 
-
 # History
 https://www.youtube.com/feeds/videos.xml?channel_id=UCv_vLHiWVBh_FR9vbeuiY-A "education" "history" "youtube" "~Historia Civilis (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCNIuvl7V8zACPpTmmNIqP2A "education" "history" "youtube" "~OverSimplified (Youtube)"
 
 # Mathematics
-https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw "education" "math" "youtube" "~3B1B (Youtube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCrlZs71h3mTR45FgQNINfrg "education" "math" "youtube" "~Mathemaniac (Youtube)"
+filter:~/.config/newsboat/scripts/nbytf:https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw "education" "math" "youtube" "~3B1B (Youtube)"
+filter:~/.config/newsboat/scripts/nbytf:https://www.youtube.com/feeds/videos.xml?channel_id=UCrlZs71h3mTR45FgQNINfrg "education" "math" "youtube" "~Mathemaniac (Youtube)"
 
 # Miscellaneous
 https://www.youtube.com/feeds/videos.xml?channel_id=UCbzVRTkX3bzNZuBd9In4XyA "education" "miscellaneous" "youtube" "~Modern MBA (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCRcgy6GzDeccI7dkbbBna3Q "education" "miscellaneous" "youtube" "~LEMMiNO (Youtube)"
 
 # Quantitative Finance
-filter:~/.config/newsboat/scripts/nbytf:https://www.youtube.com/feeds/videos.xml?channel_id=UCgUxdfi_5-m67UDbrgcAFBg "education" "quant" "youtube" "~Coding Jesus (Youtube)"
 filter:~/.config/newsboat/scripts/nbytf:https://www.youtube.com/feeds/videos.xml?channel_id=UCLHvJ1KNGE1s-A3ODiSgplw "education" "quant" "youtube" "~Dimitri Bianco (Youtube)"
-https://oneraynyday.github.io/atom.xml "education" "quant" "blog" "~Ray Zhang (Blog)"
 https://reasonabledeviations.com/atom.xml "education" "quant" "blog" "~Robert Martin (Blog)"
 
 # Thought
-https://odysee.com/$/rss/@academyofideas:3 "education" "thought" "odysee" "~Academy Of Ideas (Odysee)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC3TUCGI-7rSjvHsE4ONXRww "education" "thought" "youtube" "~MilleniaThinker (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCo0dClJ22RkVtNgdhB75wFg "education" "thought" "youtube" "~MilleniaThinker RAW (Youtube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC-tLyAaPbRZiYrOJxAGB7dQ "education" "thought" "youtube" "~Pursuit of Wonder (Youtube)"

@@ -66,6 +66,11 @@ bindkey -s '^g' '^ulfcd\n'
 bindkey -s '^f' '^ucd "$(dirname "$(rg --files | fzf)")"\n' # fuzzy find with ctrl-f
 bindkey '^[[P' delete-char
 
+# start poetry shell
+pys() {
+  eval "$(poetry env activate)"
+}
+
 # edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line

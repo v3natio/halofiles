@@ -28,5 +28,15 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:git:*' formats "%{$fg[white]%}[%{$fg[red]%}%m%u%c%{$fg[white]%} %{$fg[yellow]%}%b%{$fg[white]%}]-"
 
+# add a function to check for python-poetry env
+poetry_env_prompt() {
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    local python_version
+    python_version=$(python --version 2>/dev/null | awk '{print $2}' | cut -d. -f1,2)
+    echo "%{$fg[white]%}[%{$fg[cyan]%} %{$reset_color%}$python_version%{$fg[white]%}]-"
+  fi
+}
+
 # prompt format
-PS1="\$vcs_info_msg_0_%{$fg[white]%}[%{$fg[yellow]%}%c%{$reset_color%}%{$fg[white]%}]%{$reset_color%}%(?:%B%{$fg_bold[green]%}  %{$reset_color%}:%B%{$fg_bold[red]%}  %{$reset_color%})%{$reset_color%}"
+#PS1="\$vcs_info_msg_0_%{$fg[white]%}[%{$fg[yellow]%}%c%{$reset_color%}%{$fg[white]%}]%{$reset_color%}%(?:%B%{$fg_bold[green]%}  %{$reset_color%}:%B%{$fg_bold[red]%}  %{$reset_color%})%{$reset_color%}"
+PS1='$(poetry_env_prompt)$vcs_info_msg_0_%{$fg[white]%}[%{$fg[yellow]%}%c%{$reset_color%}%{$fg[white]%}]%{$reset_color%}%(?:%B%{$fg_bold[green]%}  %{$reset_color%}:%B%{$fg_bold[red]%}  %{$reset_color%})%{$reset_color%}'

@@ -8,6 +8,7 @@ unsetopt PROMPT_SP 2>/dev/null
 # default programs:
 export TERMINAL="st"
 export TERMINAL_PROG="st"
+export STATUSBAR="dwmblocks"
 export EDITOR="nvim"
 export BROWSER="brave"
 export READER="zathura"
@@ -63,6 +64,7 @@ export QT_QPA_PLATFORMTHEME="gtk2" # have QT use QTK2 theme
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export QT_SCALE_FACTOR=1
 export MOZ_USE_XINPUT2=1 # mozilla smooth scrolling/touchpads.
+export VIRTUAL_ENV_DISABLE_PROMPT=1 # we replace this w custom prompt
 
 # start graphical server on user's current tty if not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"

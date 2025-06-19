@@ -15,3 +15,6 @@ image/jpeg=img.desktop;
 image/gif=img.desktop;
 video/x-matroska=video.desktop
 inode/directory=file.desktop
+application/x-colpkg=anki.desktop
+application/x-apkg=anki.desktop
+application/x-ankiaddon=anki.desktop

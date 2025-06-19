@@ -13,5 +13,16 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-eval $(ssh-agent)
-exec dwm
+#eval $(ssh-agent)
+#exec dwm
+
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  eval "$(ssh-agent -s)"
+fi
+
+while :; do
+  dwm || break
+done
+
+# cleanup on session end
+ssh-agent -k

@@ -10,7 +10,7 @@
 # Whether to hide the average cpu entry.
 #hide_avg_cpu = false
 # Whether to use dot markers rather than braille.
-#dot_marker = false
+#dot_marker = true
 # The update rate of the application.
 #rate = "1s"
 # Whether to put the CPU legend to the left.

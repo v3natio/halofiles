@@ -1,0 +1,38 @@
+command_key = ";"
+use_nerdfont = true
+flip_status_indicators = true
+volnorm = true
+notify = true
+repeat = "playlist"
+
+[theme]
+primary = "#ebdbb2"
+secondary = "#b8bb26"
+title = "#b8bb26"
+playing = "#b8bb26"
+playing_selected = "#b8bb26"
+playing_bg = "#282828"
+highlight = "#fabd2f"
+highlight_bg = "#282828"
+error = "#ebdbb2"
+error_bg = "#fb4934"
+statusbar = "#ebdbb2"
+statusbar_progress = "#b8bb26"
+statusbar_bg = "#282828"
+cmdline = "#ebdbb2"
+cmdline_bg = "#282828"
+search_match = "#b8bb26"
+
+[keybindings]
+"1" = "focus queue"
+"2" = "focus library"
+"3" = "focus search"
+"4" = "focus cover"
+"q" = "back"
+"gg" = "move top"
+"G" = "move bottom"
+"Space" = "playpause"
+"n" = "next"
+"p" = "previous"
+"Q" = "queue"
+"s" = "shuffle"
