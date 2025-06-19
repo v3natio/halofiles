@@ -49,16 +49,6 @@ local function is_command_available(cmd)
 	end
 end
 
--- Archive command list --> string
-local function find_binary(cmd_list)
-	for _, cmd in ipairs(cmd_list) do
-		if is_command_available(cmd) then
-			return cmd
-		end
-	end
-	return cmd_list[1] -- Return first command as fallback
-end
-
 -- Check if file exists
 local function file_exists(name)
 	local f = io.open(name, "r")
@@ -174,34 +164,35 @@ return {
 
 		-- If file exists show overwrite prompt
 		local output_url = combine_url(output_dir, output_name)
-		if file_exists(output_url) then
-			local overwrite_answer = ya.input({
-				title = "Overwrite " .. output_name .. "? y/N:",
-				position = { "top-center", y = 3, w = 40 },
-			})
-			if overwrite_answer:lower() ~= "y" then
-				notify_error("Operation canceled", "warn")
-				return -- If no overwrite selected, exit
+		while true do
+			if file_exists(output_url) then
+				local overwrite_answer = ya.input({
+					title = "Overwrite " .. output_name .. "? y/N:",
+					position = { "top-center", y = 3, w = 40 },
+				})
+				if overwrite_answer:lower() ~= "y" then
+					notify_error("Operation canceled", "warn")
+					return -- If no overwrite selected, exit
+				else
+					local rm_status, rm_err = os.remove(output_url)
+					if not rm_status then
+						notify_error(string.format("Failed to remove %s, exit code %s", output_name, rm_err), "error")
+						return
+					end -- If overwrite fails, exit
+				end
+			end
+			if archive_compress and not output_name:match("%.tar$") then
+				output_name = output_name:match("(.*%.tar)") -- Test for .tar and .tar.*
+				output_url = combine_url(output_dir, output_name) -- Update output_url
 			else
-				local rm_status, rm_err = os.remove(output_url)
-				if not rm_status then
-					notify_error(string.format("Failed to remove %s, exit code %s", output_name, rm_err), "error")
-					return
-				end -- If overwrite fails, exit
+				break
 			end
 		end
 
 		-- Add to output archive in each path, their respective files
 		for path, names in pairs(path_fnames) do
-			local archive_status, archive_err
-			if archive_compress then
-				-- For compressed tar archives, we need to handle them differently
-				archive_status, archive_err =
-					Command(archive_cmd):args(archive_args):arg(output_url):args(names):cwd(path):spawn():wait()
-			else
-				archive_status, archive_err =
-					Command(archive_cmd):args(archive_args):arg(output_url):args(names):cwd(path):spawn():wait()
-			end
+			local archive_status, archive_err =
+				Command(archive_cmd):args(archive_args):arg(output_url):args(names):cwd(path):spawn():wait()
 			if not archive_status or not archive_status.success then
 				notify_error(
 					string.format(
@@ -211,14 +202,13 @@ return {
 					),
 					"error"
 				)
-				return
 			end
 		end
 
-		-- Use compress command if needed (this should now only be for fallback cases)
+		-- Use compress command if needed
 		if archive_compress then
 			local compress_status, compress_err =
-				Command(archive_compress):arg(output_url):cwd(output_dir):spawn():wait()
+				Command(archive_compress):arg(output_name):cwd(output_dir):spawn():wait()
 			if not compress_status or not compress_status.success then
 				notify_error(
 					string.format(
@@ -231,7 +221,5 @@ return {
 				)
 			end
 		end
-
-		notify_error("Archive created successfully", "info")
 	end,
 }

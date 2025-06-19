@@ -1,6 +1,6 @@
 "$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
 
-[manager]
+[mgr]
 ratio = [1, 2, 3]
 sort_by = "natural"
 linemode = "size"
@@ -11,29 +11,22 @@ max_width = 1000
 max_height = 1500
 
 [opener]
-open = [{ run = 'yz-open "$@"', block = true, desc = "Open" }]
+open = [{ run = 'yz_open "$@"', block = true, desc = "Open" }]
+edit = [{ run = 'mimeopen --ask "$@"', block = true, desc = "Edit" }]
 
 [open]
 rules = [
   { name = "*/", use = ["open", "reveal"] },
-  { mime = "*", use = ["open", "extract"] },
+  { mime = "*", use = ["open", "edit", "extract"] },
 ]
 
 [plugin]
 prepend_previewers = [
   # general
   { mime = "audio/*", run = "exifaudio" },
-  { mime = "video/*", run = "video-ffmpeg" },
   # specific
-  { mime = "image/x-xcf", run = "magick" },
-  { mime = "*opendocument*", run = "office-preview" },
+  { mime = "image/xcf", run = "magick" },
+  #{ mime = "*opendocument*", run = "office-preview" },
   # archives
-  { mime = "application/zip", run = "archive" },
-  { mime = "application/gzip", run = "archive" },
-  { mime = "application/x-tar", run = "archive" },
-  { mime = "application/x-bzip", run = "archive" },
-  { mime = "application/x-bzip2", run = "archive" },
-  { mime = "application/x-7z-compressed", run = "archive" },
-  { mime = "application/x-rar", run = "archive" },
-  { mime = "application/xz", run = "archive" },
+  { mime = "application/{zip,gzip,tar,bzip,bzip2,7z-compressed,rar,xz}", run = "archive" },
 ]
