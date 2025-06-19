@@ -53,6 +53,7 @@ sudo udevadm trigger
 command systemctl --user daemon-reload
 command systemctl --user start notify-battery.timer
 command systemctl --user enable notify-battery.timer
+command systemctl --user enable gdrive-rclone.service
 
 # configure tlp
 sudo sed -i '/#START_CHARGE_THRESH_BAT0=0/s/^#//;/#STOP_CHARGE_THRESH_BAT0=1/s/^#//' /etc/tlp.conf

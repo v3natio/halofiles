@@ -1,4 +1,5 @@
 TAG,NAME,DESCRIPTION
+,7zip,Provides (de)compression for archives
 ,acpi,Reads battery power and thermal sensors
 ,acpid,Delivers ACPI power management events
 ,alsa-utils,Provides utilities for sound architecture
@@ -14,7 +15,10 @@ A,dataspell,JetBrains Python IDE for data scientists
 A,dataspell-jre,JetBrains Runtime for DataSpell
 A,devour,Provides swallowing feature for the terminal emulator
 G,https://github.com/v3natio/dmenu.git,Acts as the application selector
+,dmidecode,Retrieves hardware info from host machine for VMs
+,dnsmasq,Provides networking servers for VMs
 ,dosfstools,Provides utilities for DOS filesystem
+A,dragon-drop,Provides utilities to drag-drop terminal files
 ,dunst,Provides customizable daemons for notifications
 G,https://github.com/v3natio/dwm.git,Acts as the window manager
 G,https://github.com/v3natio/dwmblocks.git,Acts as the status bar
@@ -25,17 +29,16 @@ G,https://github.com/v3natio/dwmblocks.git,Acts as the status bar
 ,gnome-keyring,Stores passwords and encryption keys
 A,gruvbox-material-icon-theme-git,Displays icons using gruvbox color-scheme
 A,gtk-theme-arc-gruvbox-git,Displays GTK+ interfaces using gruvbox color-scheme
+A,gretl,Open-source econometric analysis toolkit
 ,highlight,Highlights source code
 ,imagemagick,Provides utilities to manipulate images
 ,inkscape,Open-source vector graphics editor
 ,iwd,Provides daemons for internet
 ,libnotify,Sends desktop notifications
 ,libreoffice-still,LibreOffice suite
-,libva-mesa-driver,Driver for amdgpu and vaapi
 ,maim,Takes screenshots using imlib2
 ,man-db,Tool for reading manual pages
 ,mat2,Removes metadata from files
-,mesa-vdpau,Driver for amdgpu and mesa
 ,moreutils,Collection of Unix tools
 ,mpv-mpris,Allows media keys to control mpv
 ,neovim,Fork of vim with useful features
@@ -47,7 +50,6 @@ A,nordvpn-bin,CLI utility to enable Nord's VPN service
 ,obsidian,Private note-taking system
 A,ocrmypdf,Adds OCR text layer to scanned PDFs
 ,optipng,Compresses PNG files without quality loss
-,p7zip,Provides (de)compression for archives
 ,pacman-contrib,Provides scripts and tools for pacman
 A,pandoc-bin,Converts most document formats
 ,perl-file-mimeinfo,Determines filetypes
@@ -60,7 +62,9 @@ A,pfetch,Displays system information
 ,pulsemixer,CLI audio mixer
 ,pyenv,Manages python versions
 ,python-poetry,Manages and installs python package dependencies
+,qemu-desktop,Provides the backend for running VMs
 ,qrencode,Encodes data in QR symbol
+,rclone,Syncs files with cloud services
 ,reflector,Retrieves and filters latest pacman mirrors
 ,ripgrep,Finds text quickly
 A,sct,Sets color temperatures
@@ -68,6 +72,7 @@ G,https://github.com/v3natio/slock.git,Acts as the lockscreen
 ,solaar,Manages Logitech devices
 G,https://github.com/v3natio/st.git,Acts as the terminal emulator
 ,stow,Manages software installs in same tree
+A,spotify,Proprietary music streaming service
 A,task-spooler,Queues up tasks from shell
 ,tesseract-data-eng,OCR data for English language
 ,texlive-basic,Provides the essential binaries for TeX
@@ -86,6 +91,8 @@ A,ueberzugpp,Allows image viewing on terminal
 ,unclutter,Hides mouse cursor when not in use
 A,upd72020x-fw,Firmware for Renesas USB 3.0 chipsets
 ,urlscan,Terminal URL selector
+,virt-manager,Provides the graphical interface to configure VMs
+,virt-viewer,Provides the graphical interface to connect to VMs
 ,wget,Retrieves files from web
 ,xcape,Manages keymaps to act as other keys depending on pressure
 ,xclip,CLI for X11 clipboard

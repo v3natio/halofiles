@@ -77,7 +77,7 @@ bootconf() {
   [ ! -f /boot/loader/entries/halo.conf ] && printf "title Halo Linux
 linux /vmlinuz-linux
 initrd /initramfs-linux.img
-options cryptdevice=UUID=${uuid}:cryptroot root=/dev/mapper/cryptroot resume=/dev/mapper/cryptroot resume_offset=${swap} rw mem_sleep_default=s2idle" >/boot/loader/entries/halo.conf
+options cryptdevice=UUID=${uuid}:cryptroot root=/dev/mapper/cryptroot resume=/dev/mapper/cryptroot resume_offset=${swap} rw" >/boot/loader/entries/halo.conf
 
   rm -rf /boot/loader/loader.conf
   [ ! -f /boot/loader/loader.conf ] && printf 'default halo.conf
@@ -87,7 +87,7 @@ editor no' >/boot/loader/loader.conf
 }
 
 servicesconf() {
-  for service in acpid avahi-daemon bluetooth iwd nordvpnd systemd-boot-update systemd-networkd systemd-resolved thermald tlp; do
+  for service in acpid avahi-daemon bluetooth iwd libvirtd nordvpnd systemd-boot-update systemd-networkd systemd-resolved thermald tlp; do
     systemctl enable "$service"
   done
   unset service
@@ -106,6 +106,9 @@ EndSection' >/etc/X11/xorg.conf.d/40-libinput.conf
 
   # disable bluetooth autostart
   sed -i 's/^#AutoEnable=true/AutoEnable=false/' /etc/bluetooth/main.conf
+
+  # disable tlp's bluetooth handling
+  sed -i 's/^#USB_EXCLUDE_BTUSB=0/USB_EXCLUDE_BTUSB=1/' /etc/tlp.conf
 
   # pacman bootctl hook
   mkdir /etc/pacman.d/hooks
@@ -148,6 +151,11 @@ ExecStart=-/sbin/agetty -o "-p -f -- \\u" --noclear --autologin venatio %%I $TER
 
   # setting up nordvpn
   gpasswd -a venatio nordvpn
+
+  # setting up virtualization
+  sed -i '/^#unix_sock_group = "libvirt"/s/^#//' /etc/libvirt/libvirtd.conf
+  sed -i '/^#unix_sock_rw_perms = "0770"/s/^#//' /etc/libvirt/libvirtd.conf
+  gpasswd -a venatio libvirt
 }
 
 homeconf() {
@@ -160,7 +168,7 @@ homeconf() {
   rm -rf /halofiles
   cd /home/venatio/
   rm .config/placeholder.txt
-  mkdir -p desktop/{public,mounted} downloads/torrents/pending documents/templates media/{games,music,pictures/screenshots,videos/recordings}
+  mkdir -p desktop/{public,mounted} downloads/torrents/pending documents/{cloud,templates} media/{games,music,pictures/screenshots,videos/recordings}
   mkdir /home/venatio/.cache/zsh
   touch /home/venatio/.cache/zsh/history
   mkdir /home/venatio/.local/share/gnupg
